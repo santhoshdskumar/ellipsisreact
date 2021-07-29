@@ -1,0 +1,275 @@
+
+@import './variables.scss';
+@import './fonts.scss';
+@import './colors.scss';
+@import './header.scss';
+@import './Modal.scss';
+@import './projects.scss';
+@import './projectedit.scss';
+@import './dashboard.scss';
+@import './profile.scss';
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+.owl-carousel .owl-stage-outer {
+  /* override */
+  overflow: initial;
+}
+.owl-stage-outer, .tab-content, .tab-pane {
+  width: 100%  !important;
+}
+body {
+  background-color: #fff;
+  font-family: $fontreg;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+  display: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 10px;
+  display: none;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #333;
+  display: block;
+}
+
+.main-section {
+  margin-left: 220px;
+}
+.sidemain {
+  margin-left: 80px;
+}
+.innerPage {
+  padding:90px 20px 50px;
+}
+.pageTitle {
+  position: absolute;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 26px;
+  letter-spacing: 0.05em;
+  color: #000000;
+  text-transform: uppercase;
+  top: 28px;
+}
+.addproject{
+  background: #FFFFFF;
+  border: 1px solid #0028B4;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 9px 26px;
+  display: inline-block;
+  float: right;
+  margin-bottom: 30px;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #0028B4;
+
+  text-decoration: none;
+}
+.workspace {
+  table {
+    border:1px solid rgba(90, 136, 213, 0.3);
+  }
+}
+.slides {
+  position: relative;
+  .slick-prev,
+  .slick-next {
+    position: absolute;
+    top: 50%;
+  }
+  .slick-prev {
+    left: 5%;
+  }
+  .slick-next {
+    right: 5%;
+  }
+}
+
+@media screen and (min-width: 1201px) {
+  .item-list {
+    width: 20%;
+    flex: 20%;
+    max-width: 20%;
+  }
+  .card-body {
+    .item-list {
+      width: 25%;
+      flex: 25%;
+      max-width: 25%;
+    }
+  }
+}
+
+@media screen and (max-width: 1401px) and (min-width: 991px) {
+  .item-list {
+    width: 25%;
+    flex: 25%;
+    max-width: 25%;
+  }
+  .card-body {
+    .item-list {
+      width: 49%;
+      flex: 49%;
+      max-width: 49%;
+    }
+  }
+}
+
+@media screen and (max-width: 991px) and (min-width: 767px) {
+  .item-list {
+    width: 49%;
+    flex: 49%;
+    max-width: 49%;
+  }
+  .card-body {
+    .item-list {
+      width: 100%;
+      flex: 100%;
+      max-width: 100%;
+    }
+  }
+}
+
+.innerPage {
+  .container {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+.topBar {
+  padding: 0px 50px;
+  .container {
+    max-width: 100%;
+  }
+}
+
+.headTitle {
+  position: fixed;
+  top: 26px;
+  margin: 0px;
+  font-family: Lato;
+  font-style: normal;
+  z-index:99999;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 26px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+
+  color: #000000;
+}
+.makeStyles-content-2 {
+  width:100%;
+  overflow-x: hidden;
+}
+
+
+form {
+  padding:35px 2rem;
+  label {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.05em;
+    color: #000000;
+  }
+  input.form-control {
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    height: 46px;
+    border-radius: 6px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.05em;
+    color: #000000;
+    &:focus {
+      box-shadow: none;
+    }
+  }
+  textarea.form-control {
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    border-radius: 6px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.05em;
+    color: #000000;
+    &:focus {
+      box-shadow: none;
+    }
+  }
+  button {
+    width: 159px;
+    height: 46px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background: #5433FF;
+    border-radius: 8px;
+  }
+}
+.card {
+  border: 1px solid rgba(90, 136, 213, 0.3);
+  border-radius: 8px;
+  height: 100%;
+}
+.btn-wishlist {
+  padding: 0px;
+  display: flex;
+  i {
+    font-size: 22px;
+    align-self: center;
+  }
+}
+.card-header:first-child {
+  border-radius: inherit;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.card-body {
+  height: 100%;
+}
+
+.popular {
+  background: #F2F5FC !important;
+}
+

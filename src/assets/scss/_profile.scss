@@ -1,0 +1,54 @@
+.profileEdit {
+    .card-body {
+      padding: 50px 70px;
+      @media screen and (max-width:991px) {
+        padding: 30px 40px;
+      }
+    }
+    form {
+      padding: 0px;
+    }
+  }
+
+  .billingRow {
+    .card {
+            box-shadow: 0px 1px 4px 3px rgba(159, 159, 159, 0.11);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: 0.3s ease-in-out;
+        &:hover{
+            box-shadow: 0px 1px 4px 3px rgba(159, 159, 159, 0.11);
+        }
+        i {
+            color:#fff;
+            font-size: 40px;
+        }
+        h3 {
+            font-family: Lato;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 29px;
+            color: #FFFFFF;
+            margin:15px 0px;
+        }
+        p{
+            font-family: Lato;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 19px;
+            text-align: center;
+            color: #FFFFFF;
+        }
+    }
+    .billing  {
+      background:$billingbg;
+      border-color:$billingbrdr;
+    }
+    .order {
+      background: $orderbg;
+      border-color:$orderbrdr;
+    }
+  }
