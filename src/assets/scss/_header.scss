@@ -107,7 +107,7 @@
 }
 }
 .MuiListItemIcon-root {
-  min-width:37px !important;
+  min-width:27px !important;
 }
 .MuiListItemText-primary {
   font-family: Lato !important;
@@ -124,9 +124,13 @@ color: #FFFFFF;
     text-decoration: none  !important;
     width: 100%;
     padding-right: 15px;
-    padding-left: 40px;
+    padding-left: 20px;
     padding-top: 6px;
     padding-bottom: 6px;
+  }
+  svg {
+    font-size: 18px;
+    align-self: center;
   }
   a.active {
     background-color: #fff !important;
@@ -177,6 +181,7 @@ color: #FFFFFF;
   h5 {
     text-align: center;
     color: $colorwhite;
+    font-size: 16px;
     font-weight: 700;
   }
 }
@@ -309,4 +314,8 @@ color:#fff;
 
 .makeStyles-drawerClose-12 .MuiListItem-gutters a {
   padding-left: 15px !important;
+  svg {
+    font-size: 18px !important;
+    align-self: center;
+  }
 }

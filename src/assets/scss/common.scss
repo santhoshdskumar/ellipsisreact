@@ -23,8 +23,8 @@
   width: 100%  !important;
 }
 body {
-  background-color: #fff;
-  font-family: $fontreg;
+  background-color: #fff !important;
+  font-family: $fontreg !important;
 }
 
 /* width */
@@ -59,7 +59,7 @@ body {
   margin-left: 80px;
 }
 .innerPage {
-  padding:90px 20px 50px;
+  padding:70px 20px 50px;
 }
 .pageTitle {
   position: absolute;
@@ -124,6 +124,11 @@ body {
       max-width: 25%;
     }
   }
+  .dashboard-row .item-list {
+    width: 33%;
+    flex: 33%;
+    max-width: 33%;
+  }
 }
 
 @media screen and (max-width: 1401px) and (min-width: 991px) {
@@ -171,13 +176,13 @@ body {
 
 .headTitle {
   position: fixed;
-  top: 26px;
+  top: 18px;
   margin: 0px;
   font-family: Lato;
   font-style: normal;
   z-index:99999;
   font-weight: bold;
-  font-size: 22px;
+  font-size: 18px;
   line-height: 26px;
   letter-spacing: 0.05em;
   text-transform: uppercase;

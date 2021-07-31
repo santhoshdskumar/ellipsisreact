@@ -18,7 +18,7 @@ export default class AllTools extends Component {
         </div>
         <div className="container">
           <div className="row">
-            <div className="col-12  mb-4 mt-4">
+            <div className="col-12  mb-4 mt-5">
               <h2>Email Toolkit</h2>
             </div>
           </div>

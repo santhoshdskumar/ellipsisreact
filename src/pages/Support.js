@@ -39,15 +39,8 @@ const Support = () => {
           </Box>
 
           <Form className="p-0">
-            <Form.Group
-              className="mb-3 col-12 col-md-4"
-              controlId="formBasicEmail"
-            >
-              <Form.Label>Email </Form.Label>
-              <Form.Control type="email" placeholder="Email Id" />
-            </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Group className="mb-4" controlId="formBasicPassword">
               <Form.Label>Comments</Form.Label>
               <Form.Control
                 as="textarea"

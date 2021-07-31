@@ -12,7 +12,7 @@ const ToolkitCustom = (props) => {
     <div className={props.className}>
       {props.toolkit.map((product, index) => {
         return (
-          <div key={index} className="col-lg-4 col-md-4 col-12 my-2">
+          <div key={index} className="item-list">
             <div className="dashboardProduct">
               <h2>
                 <a title={product.title} href="/">

@@ -58,6 +58,8 @@ export default class ProjectCustom extends Component {
   render() {
     const Button = styled.button`
       background: #5433ff;
+      width:125px;
+      letter-spacing:0.08rem;
       mix-blend-mode: normal;
       box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.11);
       border-radius: 8px;
@@ -133,7 +135,7 @@ export default class ProjectCustom extends Component {
                 <h2>Edit Project</h2>
               </div>
               <Form>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Group className="mb-4" controlId="formBasicEmail">
                   <Form.Label>Project Name</Form.Label>
                   <Form.Control
                     type="text"
@@ -143,7 +145,7 @@ export default class ProjectCustom extends Component {
                   />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Group className="mb-4" controlId="formBasicPassword">
                   <Form.Label>Project Description</Form.Label>
                   <Form.Control
                     as="textarea"
@@ -156,7 +158,7 @@ export default class ProjectCustom extends Component {
                   type="submit"
                   onClick={(e) => this.handleSubmit(e)}
                 >
-                  Update Project
+                  Update 
                 </Button>
               </Form>
               {/* <div className="form-group">

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { products } from './products';
 import { toolkit } from './products';
 import { projects } from './projects';
-
+import {Link} from 'react-router-dom';
 import { Tabs, Tab, Container, NavDropdown } from 'react-bootstrap';
 import ProductSlider from '../components/ProductSlider';
 import ToolkitCustom from '../components/ToolkitCustom';
@@ -35,15 +35,16 @@ class Dashboard extends React.Component {
                 </div>
                 <div className="card-body">
                   <ProjectCustom projects={projects} />
+                  <Link to="/" className="viewAll">View All &gt;&gt;</Link>
                 </div>
               </div>
             </div>
             <div className="col-12 col-sm-12 col-lg-8">
               <div class="card">
                 <div class="card-header">
-                  <h3>Most Popular Tools</h3>
+                  <h3>Favourite Tools</h3>
                 </div>
-                <div className="card-body">
+                <div className="card-body dashboard-row">
                   <ToolkitCustom
                     toolkit={this.state.topFour}
                     className="row justify-content-between"

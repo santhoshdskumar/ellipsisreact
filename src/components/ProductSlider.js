@@ -5,7 +5,7 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 const options = {
-  margin: 30,
+  margin: 15,
   responsiveClass: true,
   nav: true,
   dots: false,

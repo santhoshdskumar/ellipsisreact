@@ -9,6 +9,7 @@ import {
   Tab,
   Tabs,
 } from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import { ToolkitNotification } from '../components/ToolkitNotification';
 import { AllNotificationData, FavNotificationData } from './NotificationData';
@@ -27,6 +28,7 @@ class WebsiteToolkit extends React.Component {
       text-align: center;
       display: block;
       width: 100%;
+      letter-spacing:0.05rem;
       border: 1px solid #5433ff;
       margin-bottom: 30px;
       &:hover {
@@ -42,17 +44,17 @@ class WebsiteToolkit extends React.Component {
           <Col xs={12} lg={4} sm={12} md={12} className="mb-md-5">
             <Card>
               <Card.Header>
-                <h3>Website Headlie</h3>
+                <h3>Website Headline</h3>
               </Card.Header>
               <Card.Body>
                 <p>Hero text positions your product in the customer's mind</p>
                 <Form className="p-0">
-                  <Form.Group className="mb-3" controlId="formBasicEmail">
+                  <Form.Group className="mb-4" controlId="formBasicEmail">
                     <Form.Label>Compan/Brand* </Form.Label>
                     <Form.Control type="text" placeholder="UI and UX" />
                   </Form.Group>
 
-                  <Form.Group className="mb-3" controlId="comments">
+                  <Form.Group className="mb-4" controlId="comments">
                     <Form.Label>Describe your product & benefits*</Form.Label>
                     <Form.Control
                       as="textarea"
@@ -72,15 +74,16 @@ class WebsiteToolkit extends React.Component {
             <Card>
               <Tabs
                 transition={false}
-                defaultActiveKey="digital"
+                defaultActiveKey="all"
                 id="uncontrolled-tab-example"
                 className="mb-3"
               >
-                <Tab eventKey="digital" title="All(6)">
+                <Tab eventKey="all" title="All(6)">
                   <ToolkitNotification notifcation={AllNotificationData} />
                 </Tab>
-                <Tab eventKey="email" title="Favourite(1)">
+                <Tab eventKey="favourite" title="Favourite(1)">
                   <ToolkitNotification notifcation={FavNotificationData} />
+                  <Link to="/workspaceedit" className="viewAll">Edit your fav items &gt; &gt;</Link>
                 </Tab>
               </Tabs>
             </Card>

@@ -24,7 +24,7 @@ class WorkspaceSwith extends React.Component {
             <ul className="nav switchNav">
               <li>Switch Workspace</li>
               <li>
-                <Link to="/">Workspace Name</Link>
+                <Link to="/projects">Workspace Name</Link>
               </li>
             </ul>
           </Col>
