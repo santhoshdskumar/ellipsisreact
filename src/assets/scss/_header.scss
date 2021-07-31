@@ -84,7 +84,7 @@
     }
   }
 }
-.makeStyles-drawerClose-12{
+.makeStyles-drawerClose-12, .jss12 {
   h5 {
     font-size: 11px;
   }
@@ -102,7 +102,7 @@
   display: flex;
 }
 @media (min-width: 600px){
-.makeStyles-drawerClose-12 {
+.makeStyles-drawerClose-12, .jss12  {
     width: 119px !important;
 }
 }
@@ -312,7 +312,7 @@ color:#fff;
   }
 }
 
-.makeStyles-drawerClose-12 .MuiListItem-gutters a {
+.makeStyles-drawerClose-12 .MuiListItem-gutters a, .jss12 .MuiListItem-gutters a {
   padding-left: 15px !important;
   svg {
     font-size: 18px !important;
