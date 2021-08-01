@@ -10,6 +10,15 @@
   border-radius: 4px;
   padding: 20px;
   height: 100%;
+  position: relative;
+  .popularClass {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+  }
   .btn-next {
     background: #ffffff;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);

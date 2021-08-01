@@ -10,6 +10,7 @@ import LinkedinTextAds from '../assets/images/icons/linkedIntextads.svg';
 
 export const products = [
   {
+    popular:'Popular',
     socialtype:facebook,
     title: 'Facebook Ads',
     text: 'Lorem Ipsum is simply dummy text of the printing.',
@@ -54,6 +55,7 @@ export const toolkit = [
   },
   {
     socialtype: facebook,
+    popular:'Popular',
     title: 'Facebook Ads',
     text: 'Lorem Ipsum is simply dummy text of the printing.',
   },
@@ -64,6 +66,7 @@ export const toolkit = [
   },
   {
     socialtype: facebook,
+    popular:'Popular',
     title: 'Facebook Ads',
     text: 'Lorem Ipsum is simply dummy text of the printing.',
   },

@@ -153,6 +153,14 @@ export default class ProjectCustom extends Component {
                     placeholder="Project Description"
                   />
                 </Form.Group>
+
+                <select aria-label="Default select example">
+                    <option>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                  
                 <Button
                   class="update"
                   type="submit"

@@ -20,6 +20,7 @@ const ToolkitCustom = (props) => {
                 </a>
               </h2>
               <h3>{product.title}</h3>
+              <span className="popularClass">{product.popular}</span>
               <p>{product.text} </p>
               <div className="d-flex justify-content-between">
                 <Link
