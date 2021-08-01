@@ -222,6 +222,23 @@ form {
       box-shadow: none;
     }
   }
+  select.form-control {
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    height: 46px;
+    border-radius: 6px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    -webkit-appearance: button;
+    letter-spacing: 0.05em;
+    color: #000000;
+    &:focus {
+      box-shadow: none;
+    }
+  }
   textarea.form-control {
     background: #FFFFFF;
     border: 1px solid rgba(0, 0, 0, 0.4);
@@ -278,4 +295,33 @@ form {
 .popular {
   background: #F2F5FC !important;
 }
+.itemst {
+  .dashboardProduct {
+    margin:4px;
+  }
+}
 
+
+.MuiDrawer-paperAnchorDockedLeft {
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
+.MuiDrawer-paperAnchorDockedLeft {
+  background: linear-gradient(
+294deg
+, #5433ff 0%, #e613d5 100%) !important;
+}
+.dashboardProduct .popularClass {
+  position: absolute;
+  top: 13px;
+  right: 15px;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient( 
+294deg
+, #5433ff 0%, #e613d5 100%);
+  color: #FFF;
+  padding: 3px 12px;
+  border-radius: 12px;
+}

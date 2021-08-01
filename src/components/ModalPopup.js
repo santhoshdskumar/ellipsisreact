@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Modal from './Modal';
 import styled from 'styled-components';
-
 import { Form, Button } from 'react-bootstrap';
-export default class ProjectCustom extends Component {
+export default class ModalPopup extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: props.projects,
       show: false,
       name: [],
       modalInputName: '',
@@ -16,14 +14,6 @@ export default class ProjectCustom extends Component {
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
   }
-  onRemoveItem = (slno) => {
-    this.setState((state) => {
-      const list = state.list.filter((item) => item.slno !== slno);
-      return {
-        list,
-      };
-    });
-  };
 
   handleChange(e) {
     const target = e.target;
@@ -73,61 +63,6 @@ export default class ProjectCustom extends Component {
     `;
     return (
       <>
-        <div className="table">
-          <table className="table borderless">
-            <thead>
-              <tr>
-                <th>Sl No</th>
-                <th>Name</th>
-                <th>Created Date</th>
-                <th>Description</th>
-                <th>Actions</th>
-                <th className="view">View</th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.state.list.map((item) => (
-                <tr>
-                  <td>
-                    <h5>{item.slno}</h5>
-                  </td>
-                  <td>
-                    <h5>{item.name}</h5>
-                  </td>
-                  <td>
-                    <h5>{item.date}</h5>
-                  </td>
-                  <td>
-                    <h5>{item.text}</h5>
-                  </td>
-
-                  <td>
-                    <ul className="pl-0">
-                      <li className="edit" onClick={this.showModal}>
-                        <div className="badge">
-                          <i class="far fa-edit"></i>
-                        </div>
-                      </li>
-                      <li
-                        className="delete remove"
-                        onClick={() => this.onRemoveItem(item.slno)}
-                      >
-                        <span className="badge">
-                          <i className="fas fa-times"></i>
-                        </span>
-                      </li>
-                    </ul>
-                  </td>
-                  <td className="view">
-                    <h5>
-                      <a href="#">{item.view}</a>
-                    </h5>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
         <Modal show={this.state.show} handleClose={this.hideModal}>
           <div className="modal-dialog m-0">
             <div className="modal-content">
@@ -169,6 +104,21 @@ export default class ProjectCustom extends Component {
                   Update 
                 </Button>
               </Form>
+              {/* <div className="form-group">
+                <label>Project Name:</label>
+                <input
+                  type="text"
+                  value={this.state.modalInputName}
+                  name="modalInputName"
+                  onChange={(e) => this.handleChange(e)}
+                  className="form-control"
+                />
+              </div> */}
+              {/* <div className="form-group">
+                <button onClick={(e) => this.handleSubmit(e)} type="button">
+                  Update Project
+                </button>
+              </div> */}
             </div>
           </div>
         </Modal>

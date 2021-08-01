@@ -20,10 +20,12 @@ const ToolkitCustom = (props) => {
                 </a>
               </h2>
               <h3>{product.title}</h3>
-              <span className="popularClass">{product.popular}</span>
+              {product.popular && product.popular.length > 0 ? (
+                  <span className="popularClass">{product.popular}</span>
+                ) : null}
               <p>{product.text} </p>
               <div className="d-flex justify-content-between">
-                <Link
+                <Link 
                   className="btn btn-wishlist align-self-center"
                   href="javascript:void(0)"
                   onClick={(e) => {
