@@ -155,11 +155,16 @@ export default class ProjectCustom extends Component {
                 </Form.Group>
                 <Form.Group className="mb-4" controlId="formBasicPassword">
                 <select aria-label="Default select example" className="form-control">
-                    <option>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
+                    <option>Ecommerce</option>
+                    <option value="1">SaaS</option>
+                    <option value="2">Enterprise Tech
+                    </option>
+                     <option value="3">Blockchain/ Crypto
+                    </option>
+                    <option>Fintech</option>
+                    <option>Edtech</option>
+                    <option>Martech</option>
+                   </select>
                   </Form.Group>
                 <Button
                   class="update"

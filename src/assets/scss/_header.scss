@@ -1,8 +1,27 @@
 
-.MuiDrawer-paperAnchorDockedLeft {
+.MuiDrawer-paperAnchorDockedLeft, .makeStyles-drawerClose-14 {
   background: linear-gradient(
 128deg
 , rgb(56, 184, 242), rgb(132, 60, 246))!important;
+}
+@media screen and (max-width:991px) {
+  .makeStyles-drawerClose-14 {
+    width: 240px !important;
+    z-index: 9999 !important;
+    .makeStyles-toolbar-8 {
+      .MuiButtonBase-root {
+        display: none;
+      }
+    }
+  }
+  .MuiAppBar-positionFixed {
+    width:100% !important;
+  }
+}
+@media screen and (min-width:991px) {
+  .makeStyles-buttonnew-5  {
+    display: none !important;
+  }
 }
 .side-menu {
   position: fixed;
@@ -163,7 +182,7 @@ color: #FFFFFF;
     text-align: center;
     img {
       margin: 0 auto;
-      width: 130px;
+      width: 150px;
     }
   }
   .avatar {

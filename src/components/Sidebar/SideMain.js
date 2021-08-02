@@ -16,6 +16,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import MenuData from './MenuData';
 import NavBar from '../Header/NavBar';
 const drawerWidth = 240;
@@ -31,12 +32,28 @@ const useStyles = makeStyles((theme) => ({
     color: '#fff',
     position: 'fixed',
   },
+  buttonnew: {
 
+  },
   container: {
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
   },
-
+  drawerPaper: {
+    width: drawerWidth
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+    [theme.breakpoints.up("md")]: {
+      display: "none"
+    }
+  },
+  toolbar: {
+    ...theme.mixins.toolbar,
+    [theme.breakpoints.down("sm")]: {
+      display: "none"
+    }
+  },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
@@ -100,9 +117,21 @@ const SideMain = () => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [menuActive, setMenuState] = useState(false);
+  const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
   const handleDrawerOpen = () => {
     setMenuState(menuActive);
     setOpen(false);
+  };
+
+  const toggleDrawer = event => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+
+    setOpen(!open);
   };
 
   const handleDrawerClose = () => {
@@ -131,6 +160,15 @@ const SideMain = () => {
             >
               <MenuIcon />
             </IconButton>
+            <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={toggleDrawer}
+            className={classes.menuButton, classes.buttonnew }
+            >
+              <MenuIcon />
+            </IconButton>
             <NavBar />
           </Toolbar>
         </AppBar>
@@ -148,6 +186,10 @@ const SideMain = () => {
               [classes.drawerClose]: open,
             }),
           }}
+          variant={isMdUp ? "permanent" : "temporary"}
+          open={open}
+          onClose={toggleDrawer}
+
         >
           <div className={classes.toolbar}>
             <IconButton onClick={handleDrawerClose}>

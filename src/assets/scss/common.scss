@@ -160,7 +160,11 @@ body {
     }
   }
 }
-
+@media screen and (max-width: 991px) {
+.headTitle {
+  z-index: 2999 !important;
+}
+}
 .innerPage {
   .container {
     width: 100%;
@@ -320,4 +324,12 @@ form {
   color: #FFF;
   padding: 3px 12px;
   border-radius: 12px;
+}
+
+table tr:last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+
+table tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
 }

@@ -13,11 +13,16 @@
   position: relative;
   .popularClass {
     position: absolute;
-    top: 10px;
+    top: 13px;
     right: 15px;
-    font-size: 12px;
+    font-size: 10px;
+    letter-spacing: .5px;
     font-weight: 700;
     cursor: pointer;
+    background: #528ff4;
+    color: #ffffff;
+    padding: 3px 12px;
+    border-radius: 12px;
   }
   .btn-next {
     background: #ffffff;
@@ -86,14 +91,15 @@
     text-transform: uppercase;
     position: relative;
     &::after {
-      content: '';
+      content: "";
       width: 50px;
       position: absolute;
       height: 5px;
-      background: linear-gradient(90deg, #5433ff 0%, #e613d5 100%);
-
+      background: linear-gradient(
+  90deg
+  ,#5433ff,#e613d5);
       left: 0;
-      bottom: -16px;
+      bottom: -10px;
     }
   }
 }
