@@ -8,7 +8,7 @@
   border-right: 0 !important;
 }
 @media screen and (max-width:991px) {
-  .makeStyles-drawerClose-14 {
+  .jss14 {
     width: 240px !important;
     z-index: 9999 !important;
     .makeStyles-toolbar-8 {
@@ -29,7 +29,7 @@
     display: none !important;
   }
   .MuiDrawer-paperAnchorLeft{ 
-width: 240px !important;
+    width: 240px !important;
   }
 }
 .side-menu {
@@ -113,28 +113,12 @@ width: 240px !important;
     }
   }
 }
-.makeStyles-drawerClose-12, .jss12 {
-  h5 {
-    font-size: 11px;
-  }
-  .MuiListItemText-root {
-    display: none;
-  }
-  .MuiListItemIcon-root {
-    min-width: inherit;
-  }
-  .makeStyles-menuItem-15 {
-    justify-content:center;
-  }
-}
+
+
 .MuiListItem-gutters a {
   display: flex;
 }
-@media (min-width: 600px){
-.makeStyles-drawerClose-12, .jss12  {
-    width: 119px !important;
-}
-}
+
 .MuiListItemIcon-root {
   min-width:27px !important;
 }
