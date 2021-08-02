@@ -31,6 +31,9 @@
   .MuiDrawer-paperAnchorLeft{ 
     width: 240px !important;
   }
+  .MuiIconButton-root {
+    display: none;
+  }
 }
 .side-menu {
   position: fixed;
