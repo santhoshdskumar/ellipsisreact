@@ -1,10 +1,10 @@
 
-.MuiDrawer-paperAnchorDockedLeft, .makeStyles-drawerClose-14{
+.MuiDrawer-paperAnchorLeft{
   background: linear-gradient(
 128deg
 , rgb(56, 184, 242), rgb(132, 60, 246))!important;
 }
-.MuiDrawer-paperAnchorDockedLeft {
+.MuiDrawer-paperAnchorLeft{
   border-right: 0 !important;
 }
 @media screen and (max-width:991px) {
@@ -27,6 +27,9 @@
 @media screen and (min-width:991px) {
   .makeStyles-buttonnew-5  {
     display: none !important;
+  }
+  .MuiDrawer-paperAnchorLeft{ 
+width: 240px !important;
   }
 }
 .side-menu {
