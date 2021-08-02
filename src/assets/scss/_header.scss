@@ -1,8 +1,11 @@
 
-.MuiDrawer-paperAnchorDockedLeft, .makeStyles-drawerClose-14 {
+.MuiDrawer-paperAnchorDockedLeft, .makeStyles-drawerClose-14{
   background: linear-gradient(
 128deg
 , rgb(56, 184, 242), rgb(132, 60, 246))!important;
+}
+.MuiDrawer-paperAnchorDockedLeft {
+  border-right: 0 !important;
 }
 @media screen and (max-width:991px) {
   .makeStyles-drawerClose-14 {
@@ -16,6 +19,9 @@
   }
   .MuiAppBar-positionFixed {
     width:100% !important;
+  }
+  .makeStyles-hide-11 {
+    display: block !important;
   }
 }
 @media screen and (min-width:991px) {
@@ -178,6 +184,7 @@ color: #FFFFFF;
 }
 .side-menu-top {
   padding-bottom: 30px;
+  margin-top: -10px;
   .logo {
     text-align: center;
     img {
@@ -248,10 +255,9 @@ color:#fff;
   color: #fff;
   padding: 8px 24px;
   box-shadow: none;
-  border:1px solid #5433ff;
+  border:0px;
   &:hover {
-    color:#5433ff;
-    background: #fff;
+    color:#fff;
   }
   &:focus {
     box-shadow: none;

@@ -23,7 +23,7 @@ const Routing = () => {
           <Dashboard />
         </div>
       </Route>
-      <Route path="/projects">
+      <Route path="/Workspace">
         <div className="innerPage">
           <Workspace />
         </div>

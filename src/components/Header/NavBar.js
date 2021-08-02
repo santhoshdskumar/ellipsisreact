@@ -20,6 +20,11 @@ const NavBar = () => {
                 </Link>
               </Nav.Item>
               <Nav.Item>
+                <Link to="/Workspace" className="nav-link">
+                  Workspace
+                </Link>
+              </Nav.Item>
+              <Nav.Item>
                 <Link to="/Pricing" className="nav-link">
                   Pricing
                 </Link>

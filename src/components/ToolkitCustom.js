@@ -5,9 +5,7 @@ const ToolkitCustom = (props) => {
   let wishlist = (e) => {
     window.alert('The product has been shared!');
   };
-  let next = (e) => {
-    window.alert('Next product');
-  };
+
   return (
     <div className={props.className}>
       {props.toolkit.map((product, index) => {
@@ -36,7 +34,7 @@ const ToolkitCustom = (props) => {
                 </Link>
                 <Link
                   className="btn btn-next  align-self-center"
-                  to="/ProjectEdit"
+                  to="/WebsiteToolkit"
                 >
                   <i className="fas fa-arrow-right"></i>
                 </Link>

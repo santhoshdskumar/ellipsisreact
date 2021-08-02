@@ -149,25 +149,14 @@ const SideMain = () => {
           })}
         >
           <Toolbar>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              edge="start"
-              className={clsx(classes.menuButton, {
-                [classes.hide]: !open,
-              })}
-            >
-              <MenuIcon />
-            </IconButton>
-            <IconButton
+          <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={toggleDrawer}
             className={classes.menuButton, classes.buttonnew }
             >
-              <MenuIcon />
+               <MenuIcon />
             </IconButton>
             <NavBar />
           </Toolbar>
@@ -189,16 +178,9 @@ const SideMain = () => {
           variant={isMdUp ? "permanent" : "temporary"}
           open={open}
           onClose={toggleDrawer}
-
         >
           <div className={classes.toolbar}>
-            <IconButton onClick={handleDrawerClose}>
-              {theme.direction === 'rtl' ? (
-                <ChevronRightIcon />
-              ) : (
-                <ChevronLeftIcon />
-              )}
-            </IconButton>
+
           </div>
           <AppMenu menuData={MenuData} />
         </Drawer>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Modal from './Modal';
 import styled from 'styled-components';
-
+import {Link} from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 export default class ProjectCustom extends Component {
   constructor(props) {
@@ -92,7 +92,7 @@ export default class ProjectCustom extends Component {
                     <h5>{item.slno}</h5>
                   </td>
                   <td>
-                    <h5>{item.name}</h5>
+                    <h5><Link to="/Alltools/">{item.name}</Link></h5>
                   </td>
                   <td>
                     <h5>{item.date}</h5>
