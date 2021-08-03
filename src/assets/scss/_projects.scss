@@ -1,4 +1,8 @@
-.table {
+.divTable {
+  border:0px;
+  div {
+    border:0px;
+  }
   h5 {
     font-family: Lato;
     font-style: normal;
@@ -38,6 +42,7 @@
 
     li {
       float: left;
+      cursor: pointer;
       &:first-child {
         margin-right: 10px;
       }
@@ -50,29 +55,25 @@
 .borderless th {
   border: none;
 }
-.borderless {
+.divTable {
   border: 1px solid #f2f5fc;
   border-radius: 10px !important;
-  td {
+  .divTableCell {
     border: none;
     vertical-align: middle;
     padding: 10px 20px;
   }
-  th {
-    padding: 15px 20px;
-    border: none;
-  }
-  tr:nth-child(even) {
+  .divTableRow:nth-child(even) {
     background: rgba(181, 181, 181, 0.08);
   }
-  tr:nth-child(odd) {
+  .divTableRow:nth-child(odd) {
     background: #fff;
   }
-  tr {
-    th {
+  .tableHead {
+    .divTableRow {
       background: #f2f5fc;
     }
-  }
+    }
 }
 
 .workspace {

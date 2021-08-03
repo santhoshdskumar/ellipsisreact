@@ -336,8 +336,9 @@ color: #FFFFFF;
           padding-left: 0px;
         }
         &:last-child{
+          padding: 0px;
           background: #FFFFFF;
-          border: 1px solid rgba(159, 159, 159, 0.11);
+          border:0px;
           box-sizing: border-box;
           border-radius: 10px;
         a {

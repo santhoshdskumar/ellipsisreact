@@ -8,8 +8,7 @@ import Support from '../pages/Support';
 import Workspace from '../pages/Workspace';
 import ProjectEdit from '../pages/ProjectEdit';
 import WebsiteToolkit from '../pages/WebsiteToolkit';
-import WorkspaceSwith from '../pages/WorkspaceSwitch';
-
+import { Ckeditor5Build } from '../pages/WorkspaceSwitch';
 const Routing = () => {
   return (
     <Switch>
@@ -80,7 +79,7 @@ const Routing = () => {
       </Route>
       <Route path="/workspaceedit">
         <div className="innerPage">
-          <WorkspaceSwith />
+          <Ckeditor5Build />
         </div>
       </Route>
     </Switch>

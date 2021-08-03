@@ -366,3 +366,45 @@ input[type=checkbox]:checked + label:before {
   letter-spacing: 5px;
 }
 /* allow space for check mark */
+
+/* DivTable.com */
+.divTable{
+	display: table;
+	width: 100%;
+}
+.divTableRow {
+	display: table-row;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+}
+.divTableCell, .divTableHead {
+	border: 1px solid #999999;
+	display: table-cell;
+	padding: 3px 10px;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+	font-weight: bold;
+}
+.divTableFoot {
+	background-color: #EEE;
+	display: table-footer-group;
+	font-weight: bold;
+}
+.divTableBody {
+	display: table-row-group;
+}
+
+.pagination {
+  justify-content: center;
+  margin-top: 15px;
+}
+.switchNav form {
+  padding: 0px;
+ li:last-child {
+   padding: 0px;
+ }
+}

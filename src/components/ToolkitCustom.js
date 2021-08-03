@@ -40,13 +40,13 @@ const ToolkitCustom = (props) => {
               <div className="d-flex justify-content-between">
                 <input
                     type="checkbox"
-                    id={`custom-checkbox-${index}`}
+                    id={`custom-checkbox-${product.title}`}
                     value={product.title}
                     name={product.title}
                     checked={checkedState[index]}
                     onChange={() => handleOnChange(index)}
                   />
-                <label htmlFor={`custom-checkbox-${index}`}></label>
+                <label htmlFor={`custom-checkbox-${product.title}`}></label>
                 <Link
                   className="btn btn-next  align-self-center"
                   to="/WebsiteToolkit"

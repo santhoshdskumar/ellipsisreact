@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Modal from './Modal';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Pagination } from 'react-bootstrap';
 import Edit from './../assets/images/edit.svg';
 import Delete from './../assets/images/delete.svg';
 
@@ -76,35 +76,36 @@ export default class ProjectCustom extends Component {
     `;
     return (
       <>
-        <div className="table">
-          <table className="table borderless">
-            <thead>
-              <tr>
-                <th>Sl No</th>
-                <th>Name</th>
-                <th>Created Date</th>
-                <th>Description</th>
-                <th>Actions</th>
-                <th className="view">View</th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.state.list.map((item) => (
-                <tr>
-                  <td>
-                    <h5>{item.slno}</h5>
-                  </td>
-                  <td>
-                    <h5><Link to="/Alltools/">{item.name}</Link></h5>
-                  </td>
-                  <td>
-                    <h5>{item.date}</h5>
-                  </td>
-                  <td>
-                    <h5>{item.text}</h5>
-                  </td>
+      <div>
+      <div className="divTable" >
+        <div className="divTableBody tableHead">
+        <div className="divTableRow">
+        <div className="divTableCell">Sl No</div>
+        <div className="divTableCell">Name</div>
+        <div className="divTableCell">Created Date</div>
+        <div className="divTableCell">Description</div>
+        <div className="divTableCell">Actions</div>
+        <div className="divTableCell view">View</div>
+        </div>
+        </div>
 
-                  <td>
+            <div className="divTableBody ">
+              {this.state.list.map((item) => (
+            <div class="divTableRow">
+                    <div class="divTableCell">
+                    <h5>{item.slno}</h5>
+                  </div>
+                  <div class="divTableCell">
+                    <h5><Link to="/">{item.name}</Link></h5>
+                  </div>
+                  <div class="divTableCell">
+                    <h5>{item.date}</h5>
+                  </div>
+                  <div class="divTableCell">
+                    <h5>{item.text}</h5>
+                  </div>
+
+                  <div class="divTableCell">
                     <ul className="pl-0">
                       <li className="edit" onClick={this.showModal}>
                           <img src={Edit}></img>
@@ -116,16 +117,31 @@ export default class ProjectCustom extends Component {
                         <img src={Delete}></img>
                       </li>
                     </ul>
-                  </td>
-                  <td className="view">
+                  </div>
+                  <div className="view">
                     <h5>
                       <a href="#">{item.view}</a>
                     </h5>
-                  </td>
-                </tr>
+                  </div>
+                </div>
               ))}
-            </tbody>
-          </table>
+             </div>
+ 
+             </div>
+             <Pagination>
+              <Pagination.First />
+              <Pagination.Prev />
+              <Pagination.Item active>{1}</Pagination.Item>
+              <Pagination.Ellipsis />
+
+              <Pagination.Item>{2}</Pagination.Item>
+              <Pagination.Item active>{3}</Pagination.Item>
+
+              <Pagination.Ellipsis />
+              <Pagination.Item>{20}</Pagination.Item>
+              <Pagination.Next />
+              <Pagination.Last />
+            </Pagination>
         </div>
         <Modal show={this.state.show} handleClose={this.hideModal}>
           <div className="modal-dialog m-0">
