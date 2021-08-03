@@ -66,7 +66,24 @@ const AppMenu = (props) => {
               onClick={() => {
                 handleClicks(index);
               }}
-            >
+            >   {data.subMenus && data.subMenus.length > 0 ? (
+              <a className="nav-link" href="javascript:void(0);"  exact={data.exact} activeClassName="active">
+                <ListItemIcon className={classes.menuItemIcon}>
+                  {data.icon}
+                </ListItemIcon>
+                <ListItemText primary={data.name} />
+                {data.subMenus && data.subMenus.length > 0 ? (
+                  <React.Fragment>
+                    {index === selectedIndex ? (
+                      <IconExpandLess />
+                    ) : (
+                      <IconExpandMore />
+                    )}
+                  </React.Fragment>
+                ) : null}
+              </a>
+
+              ) : 
               <NavLink to={data.to} exact={data.exact} activeClassName="active">
                 <ListItemIcon className={classes.menuItemIcon}>
                   {data.icon}
@@ -82,6 +99,7 @@ const AppMenu = (props) => {
                   </React.Fragment>
                 ) : null}
               </NavLink>
+              }
             </ListItem>
 
             {data.subMenus && data.subMenus.length > 0 ? (

@@ -11,6 +11,11 @@ import WebsiteToolkit from '../pages/WebsiteToolkit';
 import { Ckeditor5Build } from '../pages/WorkspaceSwitch';
 import GoogleAds from '../pages/DigitalAds/GoogleAds';
 import MobileAppNotifications from '../pages/DigitalAds/MobileAppNotifications';
+import ABTesting from '../pages/DigitalAds/ABTesting';
+import FacebookAds from '../pages/DigitalAds/FacebookAds';
+import LinkedinDescription from '../pages/DigitalAds/LinkedinDescriptions';
+import LinekedinTextAds from '../pages/DigitalAds/LinkedinTextAds';
+
 const Routing = () => {
   return (
     <Switch>
@@ -92,6 +97,26 @@ const Routing = () => {
         <Route path="/mobile_notification">
         <div className="innerPage">
           <MobileAppNotifications />
+        </div>
+      </Route>
+      <Route path="/facebookads">
+        <div className="innerPage">
+          <FacebookAds />
+        </div>
+      </Route>
+      <Route path="/linkedinads">
+        <div className="innerPage">
+          <LinekedinTextAds />
+        </div>
+      </Route>
+      <Route path="/meta_tags">
+        <div className="innerPage">
+          <LinkedinDescription />
+        </div>
+      </Route>
+      <Route path="/ad_copies">
+        <div className="innerPage">
+          <ABTesting />
         </div>
       </Route>
     </Switch>

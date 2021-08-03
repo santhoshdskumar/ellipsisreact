@@ -335,3 +335,18 @@ color:#fff;
     align-self: center;
   }
 }
+
+.MuiCollapse-wrapperInner {
+  a {
+    text-decoration: none;
+  }
+  .active {
+    color:#5a88d5 !important;
+    .MuiListItem-button {
+      background-color: #fff;
+      span {
+        color:#5a88d5 !important;
+      }
+    }
+  }
+}

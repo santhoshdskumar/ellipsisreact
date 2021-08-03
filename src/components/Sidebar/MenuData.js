@@ -99,7 +99,7 @@ const MenuData = [
   {
     name: 'Event Toolkit',
     exact: true,
-    to: "javascript:void(0)",
+    to: "#javascript:void(0)",
     icon: <CreateIcon />,
     subMenus: [
       { name: 'Sales EMails', to: '/Eventtoolkit' },
