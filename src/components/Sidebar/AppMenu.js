@@ -67,7 +67,7 @@ const AppMenu = (props) => {
                 handleClicks(index);
               }}
             >
-              <NavLink to={data.to} activeClassName="active">
+              <NavLink to={data.to} exact={data.exact} activeClassName="active">
                 <ListItemIcon className={classes.menuItemIcon}>
                   {data.icon}
                 </ListItemIcon>
@@ -94,7 +94,7 @@ const AppMenu = (props) => {
                   {data.subMenus.map((sub, index) => {
                     return (
                       <List component="div" disablePadding>
-                        <NavLink to={sub.to}>
+                        <NavLink to={sub.to} exact={sub.exact} activeClassName="active">
                           <ListItem button className={classes.menuItem}>
                             <ListItemText inset primary={sub.name} />
                           </ListItem>

@@ -20,7 +20,8 @@ const MenuData = [
   },
   {
     name: 'Digital Ads',
-    to: `#`,
+    to: "javascript:void(0)",
+    exact: true,
     icon: <EmailIcon />,
     submenuClass: 'subActive',
     subMenus: [
@@ -38,7 +39,7 @@ const MenuData = [
   {
     name: 'Email Toolkit',
     exact: true,
-    to: `#`,
+    to: "javascript:void(0)",
     icon: <EmailIcon />,
     subMenus: [
       { name: 'Sales EMails', to: '/sales_emails' },
@@ -52,7 +53,7 @@ const MenuData = [
   {
     name: 'Linkedin Toolkit',
     exact: true,
-    to: `#`,
+    to: "javascript:void(0)",
     icon: <LinkedInIcon />,
     submenuClass: 'subActive',
     subMenus: [
@@ -68,7 +69,7 @@ const MenuData = [
   {
     name: 'Website Toolkit',
     exact: true,
-    to: `#`,
+    to: "javascript:void(0)",
     icon: <WebIcon />,
     subMenus: [
       { name: 'Sales EMails', to: '/Websitetoolkit' },
@@ -85,7 +86,7 @@ const MenuData = [
   {
     name: 'Article Toolkit',
     exact: true,
-    to: `/Articletoolkit`,
+    to: "javascript:void(0)",
     icon: <AssignmentIcon />,
     subMenus: [
       { name: 'Sales EMails', to: '/Websitetoolkit' },
@@ -98,7 +99,7 @@ const MenuData = [
   {
     name: 'Event Toolkit',
     exact: true,
-    to: `/Eventtoolkit`,
+    to: "javascript:void(0)",
     icon: <CreateIcon />,
     subMenus: [
       { name: 'Sales EMails', to: '/Eventtoolkit' },
@@ -111,7 +112,7 @@ const MenuData = [
   {
     name: 'Writing Toolkit',
     exact: true,
-    to: `/Writingtoolkit`,
+    to:"#javascript:void(0)",
     icon: <CreateIcon />,
     subMenus: [
       { name: 'Sales EMails', to: '/Writingtoolkit' },
