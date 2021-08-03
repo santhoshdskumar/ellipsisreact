@@ -49,7 +49,7 @@ const Support = () => {
               />
             </Form.Group>
             <Button class="update" type="submit">
-              Update Project
+              Send
             </Button>
           </Form>
         </div>

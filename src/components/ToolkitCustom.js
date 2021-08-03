@@ -1,11 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
+import { InputGroup } from 'react-bootstrap';
 
 const ToolkitCustom = (props) => {
   let wishlist = (e) => {
     window.alert('The product has been shared!');
   };
+  const [checkedState, setCheckedState] = useState(
+    new Array(props.length).fill(false)
+  );
+  const [total, setTotal] = useState(0);
 
+  const handleOnChange = (position) => {
+    const updatedCheckedState = checkedState.map((item, index) => {
+      if (index === position) {
+        return !item;
+      } else {
+        return item;
+      }
+    });
+    setCheckedState(updatedCheckedState);
+  };
   return (
     <div className={props.className}>
       {props.toolkit.map((product, index) => {
@@ -23,15 +38,15 @@ const ToolkitCustom = (props) => {
                 ) : null}
               <p>{product.text} </p>
               <div className="d-flex justify-content-between">
-                <Link 
-                  className="btn btn-wishlist align-self-center"
-                  href="javascript:void(0)"
-                  onClick={(e) => {
-                    wishlist(e);
-                  }}
-                >
-                  <i className="fas fa-heart"></i>
-                </Link>
+                <input
+                    type="checkbox"
+                    id={`custom-checkbox-${index}`}
+                    value={product.title}
+                    name={product.title}
+                    checked={checkedState[index]}
+                    onChange={() => handleOnChange(index)}
+                  />
+                <label htmlFor={`custom-checkbox-${index}`}></label>
                 <Link
                   className="btn btn-next  align-self-center"
                   to="/WebsiteToolkit"

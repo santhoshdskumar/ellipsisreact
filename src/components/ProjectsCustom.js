@@ -4,6 +4,9 @@ import Modal from './Modal';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
+import Edit from './../assets/images/edit.svg';
+import Delete from './../assets/images/delete.svg';
+
 export default class ProjectCustom extends Component {
   constructor(props) {
     super(props);
@@ -104,17 +107,13 @@ export default class ProjectCustom extends Component {
                   <td>
                     <ul className="pl-0">
                       <li className="edit" onClick={this.showModal}>
-                        <div className="badge">
-                          <i class="far fa-edit"></i>
-                        </div>
+                          <img src={Edit}></img>
                       </li>
                       <li
                         className="delete remove"
                         onClick={() => this.onRemoveItem(item.slno)}
                       >
-                        <span className="badge">
-                          <i className="fas fa-times"></i>
-                        </span>
+                        <img src={Delete}></img>
                       </li>
                     </ul>
                   </td>
@@ -154,7 +153,10 @@ export default class ProjectCustom extends Component {
                   />
                 </Form.Group>
                 <Form.Group className="mb-4" controlId="formBasicPassword">
+                  <Form.Label>Industry Type</Form.Label>
                 <select aria-label="Default select example" className="form-control">
+                <option>Ecommerce</option>
+
                     <option>Ecommerce</option>
                     <option value="1">SaaS</option>
                     <option value="2">Enterprise Tech

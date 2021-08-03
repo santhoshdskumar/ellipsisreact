@@ -41,7 +41,7 @@ class WebsiteToolkit extends React.Component {
       <React.Fragment>
         <h1 class="headTitle">Website Toolkit</h1>
         <Row>
-          <Col xs={12} lg={4} sm={12} md={12} className="mb-md-5">
+          <Col xs={12} lg={4} sm={12} md={12} className="mb-md-5 toolkitWebsite">
             <Card>
               <Card.Header>
                 <h3>Website Headline</h3>

@@ -11,6 +11,9 @@
   padding:30px 20px;
   height: 100%;
   position: relative;
+  label {
+    padding: 9px 0px 0px;
+  }
   .popularClass {
     position: absolute;
     top: 13px;
@@ -111,7 +114,7 @@
     font-family: Lato;
     font-style: normal;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 0.05rem;
     text-transform: uppercase;
     font-size: 18px;
     margin: 0px;
@@ -365,6 +368,13 @@ color: #FFFFFF;
     img {
       width: 48px !important;
       height: auto;
+    }
+  }
+}
+.toolkitWebsite {
+  .card-header {
+   h3 {
+      text-transform:inherit;
     }
   }
 }
