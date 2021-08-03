@@ -9,6 +9,8 @@ import Workspace from '../pages/Workspace';
 import ProjectEdit from '../pages/ProjectEdit';
 import WebsiteToolkit from '../pages/WebsiteToolkit';
 import { Ckeditor5Build } from '../pages/WorkspaceSwitch';
+import GoogleAds from '../pages/DigitalAds/GoogleAds';
+import MobileAppNotifications from '../pages/DigitalAds/MobileAppNotifications';
 const Routing = () => {
   return (
     <Switch>
@@ -80,6 +82,16 @@ const Routing = () => {
       <Route path="/workspaceedit">
         <div className="innerPage">
           <Ckeditor5Build />
+        </div>
+      </Route>
+      <Route path="/google-adsense">
+        <div className="innerPage">
+          <GoogleAds />
+        </div>
+        </Route>
+        <Route path="/mobile_notification">
+        <div className="innerPage">
+          <MobileAppNotifications />
         </div>
       </Route>
     </Switch>
