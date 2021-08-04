@@ -23,8 +23,124 @@ class GoogleAds extends React.Component {
         valueFour:'',
         valueFive:'',
         valueSix:'',
+        form: {
+          companyname: "",
+          Category: "",
+          customer: "",
+          reaching:'',
+          promotions:'',
+          product:'',
+        },
+        formErrors: {
+          companyname: null,
+          Category: null,
+          customer: null,
+          reaching:null,
+          promotions:null,
+          product:null,
+        }
     };
   }
+  handleChange = (e) => {
+    const { name, value, checked } = e.target;
+    const { form, formErrors } = this.state;
+    let formObj = {};
+    if (name === "language") {
+      // handle the change event of language field
+      if (checked) {
+        // push selected value in list
+        formObj = { ...form };
+        formObj[name].push(value);
+      } else {
+        // remove unchecked value from the list
+        formObj = {
+          ...form,
+          [name]: form[name].filter(x => x !== value)
+        };
+      }
+    } else {
+      // handle change event except language field
+      formObj = {
+        ...form,
+        [name]: value
+      };
+    }
+    this.setState({ form: formObj }, () => {
+      if (!Object.keys(formErrors).includes(name)) return;
+      let formErrorsObj = {};
+      if (name === "password" || name === "confirmPassword") {
+        let refValue = this.state.form[
+          name === "password" ? "confirmPassword" : "password"
+        ];
+        const errorMsg = this.validateField(name, value, refValue);
+        formErrorsObj = { ...formErrors, [name]: errorMsg };
+        if (!errorMsg && refValue) {
+          formErrorsObj.confirmPassword = null;
+          formErrorsObj.password = null;
+        }
+      } else {
+        const errorMsg = this.validateField(
+          name,
+          name === "language" ? this.state.form["language"] : value
+        );
+        formErrorsObj = { ...formErrors, [name]: errorMsg };
+      }
+      this.setState({ formErrors: formErrorsObj });
+    });
+  };
+  
+  validateField = (name, value, refValue) => {
+    let errorMsg = null;
+    switch (name) {
+      case "companyname":
+            if (!value) errorMsg = "Please fill the required field.";
+            break;
+      case "Category":
+          if (!value) errorMsg = "Please fill the required field.";
+          break;
+      case "customer":
+            if (!value) errorMsg = "Please fill the required field.";
+            break;
+      case "reaching":
+            if (!value) errorMsg = "Please fill the required field.";
+            break;
+      case "promotions":
+        if (!value) errorMsg = "Please fill the required field.";
+        break;
+      case "product":
+        if (!value) errorMsg = "Please fill the required field.";
+        break;
+      default:
+        break;
+    }
+    return errorMsg;
+  };
+  
+  
+  validateForm = (form, formErrors, validateFunc) => {
+    const errorObj = {};
+    Object.keys(formErrors).map(x => {
+      let refValue = null;
+      if (x === "password" || x === "confirmPassword") {
+        refValue = form[x === "password" ? "confirmPassword" : "password"];
+      }
+      const msg = validateFunc(x, form[x], refValue);
+      if (msg) errorObj[x] = msg;
+    });
+    return errorObj;
+  };
+  
+  
+  handleSubmit = () => {
+    const { form, formErrors } = this.state;
+    const errorObj = this.validateForm(form, formErrors, this.validateField);
+    if (Object.keys(errorObj).length !== 0) {
+      this.setState({ formErrors: { ...formErrors, ...errorObj } });
+      return false;
+    }
+    console.log("Data: ", form);
+  };
+  
 
   wordCountOne(event) {
     this.setState({ valueOne:event.target.value });
@@ -56,6 +172,7 @@ class GoogleAds extends React.Component {
     lengthFour = this.state.valueFour?this.state.valueFour.length:0,
     lengthFive = this.state.valueFive?this.state.valueFive.length:0,
     lengthSix = this.state.valueSix?this.state.valueSix.length:0;
+    const { form, formErrors } = this.state;
     const Button = styled.button`
       background: #5433ff;
       mix-blend-mode: normal;
@@ -87,36 +204,53 @@ class GoogleAds extends React.Component {
                 <Form className="p-0">
                   <Form.Group className="mb-4" controlId="companyname">
                     <Form.Label>Enter your Company/Brand name *</Form.Label>
-                    <Form.Control type="text" name="Brand" value={this.state.Brand} maxLength="20" 
-                    onChange={(event)=>this.wordCountOne(event)}
+                    <Form.Control type="text" name="companyname" value={this.state.companyname} maxLength="20" 
+                    onChange={e => { this.wordCountOne(e); this.handleChange(e)}}
                     />
+                    {formErrors.companyname && (
+                      <span className="err">{formErrors.companyname}</span>
+                    )}
                     <p className="float-end"><span>{lengthOne}/</span><span>20</span></p>
                   </Form.Group>
                   <Form.Group className="mb-4" controlId="Category">
                     <Form.Label>Product Category *</Form.Label>
                     <Form.Control type="text" name="Category" value={this.state.Category} maxLength="20" 
-                    onChange={(event)=>this.wordCountFour(event)}
-                    />
-                    <p className="float-end"><span>{lengthFour}/</span><span>20</span></p>
+                      onChange={e => { this.wordCountTwo(e); this.handleChange(e)}}
+                      />
+                      {formErrors.Category && (
+                        <span className="err">{formErrors.Category}</span>
+                      )}
+                    <p className="float-end"><span>{lengthTwo}/</span><span>20</span></p>
                   </Form.Group>
-                  <Form.Group className="mb-4" controlId="companyname">
+                  <Form.Group className="mb-4" controlId="customer">
                     <Form.Label>Describe your customer *</Form.Label>
                     <Form.Control type="text" name="customer" value={this.state.customer} maxLength="20" 
-                    onChange={(event)=>this.wordCountTwo(event)}
+                    onChange={e => { this.wordCountThree(e); this.handleChange(e)}}
                     />
-                    <p className="float-end"><span>{lengthTwo}/</span><span>20</span></p>
+                    {formErrors.customer && (
+                      <span className="err">{formErrors.customer}</span>
+                    )}
+                    <p className="float-end"><span>{lengthThree}/</span><span>20</span></p>
                   </Form.Group>
                   <Form.Group className="mb-4" controlId="reaching">
                     <Form.Label>Name of the person you are reaching out to</Form.Label>
                     <Form.Control type="text" name="reaching" value={this.state.reaching} maxLength="20" 
-                    onChange={(event)=>this.wordCountThree(event)}
+                    onChange={e => { this.wordCountFour(e); this.handleChange(e)}}
                     />
-                    <p className="float-end"><span>{lengthThree}/</span><span>20</span></p>
+                    {formErrors.reaching && (
+                      <span className="err">{formErrors.reaching}</span>
+                    )}
+                    <p className="float-end"><span>{lengthFour}/</span><span>20</span></p>
                   </Form.Group>
 
                   <Form.Group className="mb-4" controlId="promotions">
                     <Form.Label>Offers or promotions? *</Form.Label>
-                    <Form.Control type="text" maxLength="20" name="promotions"  value={this.state.audience}   onChange={(event)=>this.wordCountFive(event)}/>
+                    <Form.Control type="text" maxLength="20" name="promotions"  value={this.state.audience}  
+                    onChange={e => { this.wordCountFive(e); this.handleChange(e)}}
+                    />
+                    {formErrors.promotions && (
+                      <span className="err">{formErrors.promotions}</span>
+                    )}
                     <p className="float-end"><span>{lengthFive}/</span><span>20</span></p>
                   </Form.Group>
 
@@ -128,11 +262,14 @@ class GoogleAds extends React.Component {
                       maxLength="140"
                       name="product"
                       value={this.state.product}
-                      onChange={(event)=>this.wordCountSix(event)}
+                      onChange={e => { this.wordCountSix(e); this.handleChange(e)}}
                     />
+                    {formErrors.product && (
+                      <span className="err">{formErrors.product}</span>
+                    )}
                     <p className="float-end"><span>{lengthSix}/</span><span>120</span></p>
                   </Form.Group>
-                  <Button class="update" type="submit">
+                  <Button class="update" type="button"  onClick={this.handleSubmit}>
                     Generate Copy
                   </Button>
                 </Form>

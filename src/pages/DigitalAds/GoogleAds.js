@@ -162,7 +162,7 @@ class GoogleAds extends React.Component {
     `;
     return (
       <React.Fragment>
-        <h1 class="headTitle">Google Adwords</h1>
+        <h1 class="headTitle">Digital Ads</h1>
         <Row>
           <Col xs={12} lg={4} sm={12} md={12} className="mb-md-5 toolkitWebsite">
             <Card>
