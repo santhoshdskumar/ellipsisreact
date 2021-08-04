@@ -235,33 +235,29 @@
     }
   }
 }
-.projectList tr td:nth-child(1) {
+.projectList  .divTable {
+  margin-bottom: 10px;
+}
+.projectList .divTableCell:nth-child(1) {
   display: none;
 }
 
-.projectList tr th:nth-child(1) {
+.projectList .divTableCell:nth-child(3) {
   display: none;
 }
 
-.projectList tr td:nth-child(3) {
+.projectList .divTableCell:nth-child(4) {
   display: none;
 }
 
-.projectList tr th:nth-child(3) {
+.projectList .divTableCell:nth-child(4) {
   display: none;
 }
-.projectList tr td:nth-child(4) {
-  display: none;
-}
-
-.projectList tr th:nth-child(4) {
-  display: none;
-}
-.projectList tr td:nth-child(5) {
+.projectList .divTableCell:nth-child(5) {
   display: none;
 }
 
-.projectList tr th:nth-child(5) {
+.projectList .divTableCell:nth-child(5) {
   display: none;
 }
 .projectList tr td.view {

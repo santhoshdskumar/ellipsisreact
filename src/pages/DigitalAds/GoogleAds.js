@@ -175,8 +175,6 @@ class GoogleAds extends React.Component {
                   <Form.Group className="mb-4" controlId="companyname">
                     <Form.Label>Enter company / product name *</Form.Label>
                     <Form.Control type="text" name="companyname" value={form.companyname} maxLength="20" 
-                    
-                    onChange={(event)=>this.wordCount(event)}
                     onChange={e => { this.wordCount(e); this.handleChange(e)}}
                     />
                     <p className="float-end"><span>{lengthOne}/</span><span>20</span></p>

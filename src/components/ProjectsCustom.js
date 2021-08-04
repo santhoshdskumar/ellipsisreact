@@ -118,7 +118,7 @@ export default class ProjectCustom extends Component {
                       </li>
                     </ul>
                   </div>
-                  <div className="view">
+                  <div className="divTableCell view">
                     <h5>
                       <a href="#">{item.view}</a>
                     </h5>

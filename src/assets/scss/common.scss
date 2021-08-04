@@ -418,3 +418,10 @@ input[type=checkbox]:checked + label:before {
   font-size:12px;
   color: red;
 }
+
+.projectList {
+
+  .pagination {
+    display: none;
+  }
+}
