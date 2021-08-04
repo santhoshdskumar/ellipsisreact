@@ -6,17 +6,18 @@ import WebIcon from '@material-ui/icons/Web';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import CreateIcon from '@material-ui/icons/Create';
 const MenuData = [
-  {
-    name: 'All Tools',
-    exact: true,
-    to: '/',
-    icon:<i class="fas fa-border-all"></i>,
-  },
+
   {
     name: 'Dashboard',
     exact: true,
     to: `/Dashboard`,
     icon: <IconDashboard />,
+  },
+  {
+    name: 'All Tools',
+    exact: true,
+    to: '/',
+    icon:<i class="fas fa-border-all"></i>,
   },
   {
     name: 'Digital Ads',
