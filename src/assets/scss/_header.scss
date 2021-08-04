@@ -148,13 +148,20 @@ color: #FFFFFF;
     font-size: 18px;
     align-self: center;
   }
+  i {
+    font-size: 18px;
+    align-self: center;
+  }
   a.active {
     background-color: #fff !important;
     span {
       color:#5a88d5 !important;
     }
-    svg {
-      color:#5a88d5 ;
+    i {
+      color: #5a88d5 !important;
+    }
+    svg{
+      color:#5a88d5 !important;
     }
     
   }
@@ -165,6 +172,9 @@ color: #FFFFFF;
   }
   a {
     text-decoration: none;
+  }
+  i {
+    color: #5a88d5 !important;
   }
   background: #fff !important;
   span {

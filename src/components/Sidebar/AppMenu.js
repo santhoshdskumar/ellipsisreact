@@ -54,7 +54,7 @@ const AppMenu = (props) => {
           <img src={user} alt="user" />
         </div>
         <div className="user-info">
-          <h5>Ranga Babu</h5>
+          <h5>Lorem Ipsum</h5>
         </div>
       </div>
       {props.menuData.map((data, index) => {

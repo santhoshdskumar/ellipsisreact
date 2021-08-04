@@ -17,46 +17,29 @@ class GoogleAds extends React.Component {
   constructor() {
     super();
     this.state = {
-        valueOne:'',
-        valueTwo:'',
+        valueone:'',
         valueThree:'',
         valueFour:'',
-        valueFive:'',
-        valueSix:'',
     };
   }
 
-  wordCountOne(event) {
-    this.setState({ valueOne:event.target.value });
+  wordCount(event) {
+    this.setState({ valueone:event.target.value });
   }
 
   wordCountTwo(event) {
-    this.setState({ valueTwo:event.target.value });
-  }
-  wordCountThree(event) {
     this.setState({ valueThree:event.target.value });
   }
 
-  wordCountFour(event) {
+  wordCountThree(event) {
     this.setState({ valueFour:event.target.value });
-  }
-  wordCountFive(event) {
-    this.setState({ valueFive:event.target.value });
-  }
-
-  wordCountSix(event) {
-    this.setState({ valueSix:event.target.value });
   }
 
   render() {
     let count = 0,
-    lengthOne = this.state.valueOne?this.state.valueOne.length:0,
-    lengthTwo = this.state.valueTwo?this.state.valueTwo.length:0,
-    lengthThree = this.state.valueThree?this.state.valueThree.length:0,
-    lengthFour = this.state.valueFour?this.state.valueFour.length:0,
-    lengthFive = this.state.valueFive?this.state.valueFive.length:0,
-    lengthSix = this.state.valueSix?this.state.valueSix.length:0;
-    
+    lengthOne = this.state.valueone?this.state.valueone.length:0,
+    lengthTwo = this.state.valueThree?this.state.valueThree.length:0,
+    lengthThree = this.state.valueFour?this.state.valueFour.length:0;
     const Button = styled.button`
       background: #5433ff;
       mix-blend-mode: normal;
@@ -76,60 +59,42 @@ class GoogleAds extends React.Component {
     `;
     return (
       <React.Fragment>
-        <h1 class="headTitle">Email Toolkit</h1>
+        <h1 class="headTitle">Website Toolkit</h1>
         <Row>
           <Col xs={12} lg={4} sm={12} md={12} className="mb-md-5 toolkitWebsite">
             <Card>
               <Card.Header>
-                <h3>Hail Mary Pass</h3>
+                <h3>Website Description</h3>
               </Card.Header>
               <Card.Body>
                 <p>Hero text positions your product in the customer's mind</p>
                 <Form className="p-0">
                   <Form.Group className="mb-4" controlId="companyname">
-                    <Form.Label>Enter your Company/Brand name *</Form.Label>
-                    <Form.Control type="text" name="Brand" value={this.state.Brand} maxLength="20" 
-                    onChange={(event)=>this.wordCountOne(event)}
+                    <Form.Label>Enter company / product name *</Form.Label>
+                    <Form.Control type="text" name="companyname" value={this.state.companyname} maxLength="20" 
+                    
+                    onChange={(event)=>this.wordCount(event)}
+                    
                     />
                     <p className="float-end"><span>{lengthOne}/</span><span>20</span></p>
                   </Form.Group>
-                  <Form.Group className="mb-4" controlId="companyname">
-                    <Form.Label>Describe your customer *</Form.Label>
-                    <Form.Control type="text" name="customer" value={this.state.customer} maxLength="20" 
-                    onChange={(event)=>this.wordCountTwo(event)}
-                    />
+                  <Form.Group className="mb-4" controlId="Category">
+                    <Form.Label>Product Category *</Form.Label>
+                    <Form.Control type="text" maxLength="20" name="Category"  value={this.state.Category}   onChange={(event)=>this.wordCountTwo(event)}/>
                     <p className="float-end"><span>{lengthTwo}/</span><span>20</span></p>
                   </Form.Group>
-                  <Form.Group className="mb-4" controlId="reaching">
-                    <Form.Label>Who are you reaching out to *</Form.Label>
-                    <Form.Control type="email" name="reaching" value={this.state.reaching} maxLength="20" 
-                    onChange={(event)=>this.wordCountThree(event)}
-                    />
-                    <p className="float-end"><span>{lengthThree}/</span><span>20</span></p>
-                  </Form.Group>
-                     <Form.Group className="mb-4" controlId="Category">
-                    <Form.Label>Product Category *</Form.Label>
-                    <Form.Control type="text" name="Category" value={this.state.Category} maxLength="20" 
-                    onChange={(event)=>this.wordCountFour(event)}
-                    />
-                    <p className="float-end"><span>{lengthFour}/</span><span>20</span></p>
-                  </Form.Group>
-                  <Form.Group className="mb-4" controlId="promotions">
-                    <Form.Label>Offers or promotions? *</Form.Label>
-                    <Form.Control type="text" maxLength="20" name="promotions"  value={this.state.audience}   onChange={(event)=>this.wordCountFive(event)}/>
-                    <p className="float-end"><span>{lengthFive}/</span><span>20</span></p>
-                  </Form.Group>
+
                   <Form.Group className="mb-4" controlId="product">
-                    <Form.Label>Explain what does your product do</Form.Label>
+                    <Form.Label>Describe your product *</Form.Label>
                     <Form.Control
                       as="textarea"
                       rows={3}
                       maxLength="140"
                       name="product"
                       value={this.state.product}
-                      onChange={(event)=>this.wordCountSix(event)}
+                      onChange={(event)=>this.wordCountThree(event)}
                     />
-                    <p className="float-end"><span>{lengthSix}/</span><span>120</span></p>
+                    <p className="float-end"><span>{lengthThree}/</span><span>120</span></p>
                   </Form.Group>
                   <Button class="update" type="submit">
                     Generate Copy

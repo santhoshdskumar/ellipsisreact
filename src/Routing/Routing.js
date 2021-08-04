@@ -16,6 +16,46 @@ import FacebookAds from '../pages/DigitalAds/FacebookAds';
 import LinkedinDescription from '../pages/DigitalAds/LinkedinDescriptions';
 import LinekedinTextAds from '../pages/DigitalAds/LinkedinTextAds';
 
+import FreeuserEngagement from '../pages/EmailToolkit/FreeUserEngagement';
+import HailMaryPass from '../pages/EmailToolkit/HailMaryPass';
+import NewLeadEngagement from '../pages/EmailToolkit/NewLeadEngagement';
+import PostPurchaseEngagement from '../pages/EmailToolkit/PostPurchaseEngagement';
+import SalesEmails from '../pages/EmailToolkit/SalesEmails';
+import ScheduleProductDeom from '../pages/EmailToolkit/SchedulepRoductDemo';
+
+
+import AdLinkDescriptions from '../pages/LinkedinToolkit/AdLinkDescriptions';
+import CarouselAds from '../pages/LinkedinToolkit/CarouselAds';
+import DynamicAds from '../pages/LinkedinToolkit/DynamicAds';
+import ConversationalPitches from '../pages/LinkedinToolkit/ConversationalPitches';
+import SalesInMails from '../pages/LinkedinToolkit/SalesInMails';
+import ColdCallingInvestors from '../pages/LinkedinToolkit/ColdCallingInvestors';
+import ColdCallingRecruiters from '../pages/LinkedinToolkit/ColdCallingRecruiters';
+
+
+
+import HeroText from '../pages/WebsiteToolkit/HeroText';
+import ProductReview from '../pages/WebsiteToolkit/ProductReview';
+import ProblemSolution from '../pages/WebsiteToolkit/ProblemSolution';
+import WebsiteDescription from '../pages/WebsiteToolkit/WebsiteDescription';
+import FeatureBenefits from '../pages/WebsiteToolkit/FeatureBenefits';
+
+import ArticleIdeas from '../pages/ArticelToolkit/ArticleIdeas';
+import ArticleTitle from '../pages/ArticelToolkit/ArticleTitle';
+import ArticleOutlines from '../pages/ArticelToolkit/ArticleOutlines';
+import ArticleIntro from '../pages/ArticelToolkit/ArticleIntro';
+
+
+import EventPromoEmails from '../pages/EventToolkit/EventPromoEmails';
+import EventDigitalAds from '../pages/EventToolkit/EventDigitalAds';
+import EventFollowUpEmails from '../pages/EventToolkit/EventFollowUpEmails';
+import WebinarPromoEmails from '../pages/EventToolkit/WebinarPromoEmails';
+
+
+import WriteLikeMe from '../pages/WritingToolkit/WriteLikeMe';
+
+
+
 const Routing = () => {
   return (
     <Switch>
@@ -89,6 +129,8 @@ const Routing = () => {
           <Ckeditor5Build />
         </div>
       </Route>
+
+      {/* Digital Ads */}
       <Route path="/google-adsense">
         <div className="innerPage">
           <GoogleAds />
@@ -119,6 +161,171 @@ const Routing = () => {
           <ABTesting />
         </div>
       </Route>
+
+      {/* Ends Here */}
+
+
+      {/* Email Toolkit */}
+       <Route path="/sales_emails">
+        <div className="innerPage">
+          <SalesEmails />
+        </div>
+        </Route>
+        <Route path="/new_lead_engagement">
+        <div className="innerPage">
+          <NewLeadEngagement />
+        </div>
+      </Route>
+      <Route path="/free_user_engagement">
+        <div className="innerPage">
+          <FreeuserEngagement />
+        </div>
+      </Route>
+      <Route path="/post_purchase_engagement">
+        <div className="innerPage">
+          <PostPurchaseEngagement />
+        </div>
+      </Route>
+      <Route path="/schedule_product_demo">
+        <div className="innerPage">
+          <ScheduleProductDeom />
+        </div>
+      </Route>
+      <Route path="/hail_mary_mail">
+        <div className="innerPage">
+          <HailMaryPass />
+        </div>
+      </Route>
+
+      {/* Ends Here */}
+
+
+     {/* LinkedIn Toolkit */}
+       <Route path="/linkedinlinkdesc">
+        <div className="innerPage">
+          <AdLinkDescriptions />
+        </div>
+        </Route>
+        <Route path="/carousel_ads">
+        <div className="innerPage">
+          <CarouselAds />
+        </div>
+      </Route>
+      <Route path="/dynamic_ads">
+        <div className="innerPage">
+          <DynamicAds />
+        </div>
+      </Route>
+      <Route path="/sponsored_msg">
+        <div className="innerPage">
+          <ConversationalPitches />
+        </div>
+      </Route>
+      <Route path="/sponsoredmail">
+        <div className="innerPage">
+          <SalesInMails />
+        </div>
+      </Route>
+      <Route path="/coldcalling">
+        <div className="innerPage">
+          <ColdCallingInvestors />
+        </div>
+      </Route>
+      <Route path="/coldcalling_rec">
+        <div className="innerPage">
+          <ColdCallingRecruiters />
+        </div>
+      </Route>
+      {/* Ends Here */}
+
+
+     {/* Website Toolkit */}
+     <Route path="/hero_text">
+        <div className="innerPage">
+          <HeroText />
+        </div>
+        </Route>
+        <Route path="/productreview">
+        <div className="innerPage">
+          <ProductReview />
+        </div>
+      </Route>
+      <Route path="/problemsoln">
+        <div className="innerPage">
+          <ProblemSolution />
+        </div>
+      </Route>
+      <Route path="/web_desc">
+        <div className="innerPage">
+          <WebsiteDescription />
+        </div>
+      </Route>
+      <Route path="/feature_benefit">
+        <div className="innerPage">
+          <FeatureBenefits />
+        </div>
+      </Route>
+      {/* Ends Here */}
+
+
+     {/* Article Toolkit */}
+     <Route path="/article_ideas">
+        <div className="innerPage">
+          <ArticleIdeas />
+        </div>
+        </Route>
+        <Route path="/article_title">
+        <div className="innerPage">
+          <ArticleTitle />
+        </div>
+      </Route>
+      <Route path="/article_outlines">
+        <div className="innerPage">
+          <ArticleOutlines />
+        </div>
+      </Route>
+      <Route path="/article_intro">
+        <div className="innerPage">
+          <ArticleIntro />
+        </div>
+        </Route>
+        {/* Ends Here */}
+
+
+      {/* Event Toolkit */}
+     <Route path="/event_promo_mail">
+        <div className="innerPage">
+          <EventPromoEmails />
+        </div>
+        </Route>
+        <Route path="/webinar_promo_mail">
+        <div className="innerPage">
+          <WebinarPromoEmails />
+        </div>
+      </Route>
+      <Route path="/event_followup_mail">
+        <div className="innerPage">
+          <EventFollowUpEmails />
+        </div>
+      </Route>
+      <Route path="/event_digitalads">
+        <div className="innerPage">
+          <EventDigitalAds />
+        </div>
+        </Route>
+        {/* Ends Here */}
+
+
+      {/* Event Toolkit */}
+
+
+      <Route path="/write_like_me">
+        <div className="innerPage">
+          <WriteLikeMe />
+        </div>
+        </Route>
+        {/* Ends Here */}
+
     </Switch>
   );
 };

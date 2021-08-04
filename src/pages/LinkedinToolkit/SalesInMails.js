@@ -56,7 +56,6 @@ class GoogleAds extends React.Component {
     lengthFour = this.state.valueFour?this.state.valueFour.length:0,
     lengthFive = this.state.valueFive?this.state.valueFive.length:0,
     lengthSix = this.state.valueSix?this.state.valueSix.length:0;
-    
     const Button = styled.button`
       background: #5433ff;
       mix-blend-mode: normal;
@@ -76,12 +75,12 @@ class GoogleAds extends React.Component {
     `;
     return (
       <React.Fragment>
-        <h1 class="headTitle">Email Toolkit</h1>
+        <h1 class="headTitle">LinkedIn Toolkit</h1>
         <Row>
           <Col xs={12} lg={4} sm={12} md={12} className="mb-md-5 toolkitWebsite">
             <Card>
               <Card.Header>
-                <h3>Hail Mary Pass</h3>
+                <h3>Sales Emails</h3>
               </Card.Header>
               <Card.Body>
                 <p>Hero text positions your product in the customer's mind</p>
@@ -93,6 +92,15 @@ class GoogleAds extends React.Component {
                     />
                     <p className="float-end"><span>{lengthOne}/</span><span>20</span></p>
                   </Form.Group>
+                  
+                  <Form.Group className="mb-4" controlId="Category">
+                    <Form.Label>Product Category *</Form.Label>
+                    <Form.Control type="text" name="Category" value={this.state.Category} maxLength="20" 
+                    onChange={(event)=>this.wordCountFour(event)}
+                    />
+                    <p className="float-end"><span>{lengthFour}/</span><span>20</span></p>
+                  </Form.Group>
+
                   <Form.Group className="mb-4" controlId="companyname">
                     <Form.Label>Describe your customer *</Form.Label>
                     <Form.Control type="text" name="customer" value={this.state.customer} maxLength="20" 
@@ -100,27 +108,15 @@ class GoogleAds extends React.Component {
                     />
                     <p className="float-end"><span>{lengthTwo}/</span><span>20</span></p>
                   </Form.Group>
+   
                   <Form.Group className="mb-4" controlId="reaching">
-                    <Form.Label>Who are you reaching out to *</Form.Label>
-                    <Form.Control type="email" name="reaching" value={this.state.reaching} maxLength="20" 
-                    onChange={(event)=>this.wordCountThree(event)}
-                    />
-                    <p className="float-end"><span>{lengthThree}/</span><span>20</span></p>
-                  </Form.Group>
-                     <Form.Group className="mb-4" controlId="Category">
-                    <Form.Label>Product Category *</Form.Label>
-                    <Form.Control type="text" name="Category" value={this.state.Category} maxLength="20" 
-                    onChange={(event)=>this.wordCountFour(event)}
-                    />
-                    <p className="float-end"><span>{lengthFour}/</span><span>20</span></p>
-                  </Form.Group>
-                  <Form.Group className="mb-4" controlId="promotions">
-                    <Form.Label>Offers or promotions? *</Form.Label>
-                    <Form.Control type="text" maxLength="20" name="promotions"  value={this.state.audience}   onChange={(event)=>this.wordCountFive(event)}/>
+                    <Form.Label>Who are you reaching out to? *</Form.Label>
+                    <Form.Control type="text" maxLength="20" name="reaching"  value={this.state.reaching}   onChange={(event)=>this.wordCountFive(event)}/>
                     <p className="float-end"><span>{lengthFive}/</span><span>20</span></p>
                   </Form.Group>
+
                   <Form.Group className="mb-4" controlId="product">
-                    <Form.Label>Explain what does your product do</Form.Label>
+                    <Form.Label>Explain what your product does</Form.Label>
                     <Form.Control
                       as="textarea"
                       rows={3}
