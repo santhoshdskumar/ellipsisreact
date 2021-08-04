@@ -1,192 +1,137 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { useState } from 'react';
-import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Drawer from '@material-ui/core/Drawer';
-import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
-import AppMenu from './AppMenu';
+import React from 'react';
+import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
+import Drawer from '@material-ui/core/Drawer';
+import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import MenuData from './MenuData';
+import AppMenu from './AppMenu';
 import NavBar from '../Header/NavBar';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
-  drawerPaper: {
-    position: 'relative',
-    whiteSpace: 'nowrap',
-    width: drawerWidth,
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
-    background: '#5A88D5',
-    color: '#fff',
-    position: 'fixed',
+  root: {
+    display: 'flex',
   },
-  buttonnew: {
-
+  drawer: {
+    [theme.breakpoints.up('sm')]: {
+      width: drawerWidth,
+      flexShrink: 0,
+    },
   },
-  container: {
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
-  },
-  drawerPaper: {
-    width: drawerWidth
+  appBar: {
+    [theme.breakpoints.up('sm')]: {
+      width: `calc(100% - ${drawerWidth}px)`,
+      marginLeft: drawerWidth,
+    },
   },
   menuButton: {
     marginRight: theme.spacing(2),
-    [theme.breakpoints.up("md")]: {
-      display: "none"
-    }
-  },
-  toolbar: {
-    ...theme.mixins.toolbar,
-    [theme.breakpoints.down("sm")]: {
-      display: "none"
-    }
-  },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginRight: 36,
-  },
-  hide: {
-    display: 'none',
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-    whiteSpace: 'nowrap',
-  },
-  drawerOpen: {
-    width: drawerWidth,
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  drawerClose: {
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    overflowX: 'hidden',
-    width: theme.spacing(7) + 1,
     [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(9) + 1,
+      display: 'none',
     },
   },
+  // necessary for content to be below app bar
+  toolbar: theme.mixins.toolbar,
   drawerPaper: {
-    width: '100%',
+    width: drawerWidth,
   },
-  toolbar: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
   },
 }));
 
-const SideMain = () => {
-  const [inactive, setInactive] = useState(false);
+function ResponsiveDrawer(props) {
+  const { window } = props;
   const classes = useStyles();
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-  const [menuActive, setMenuState] = useState(false);
-  const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
-  const handleDrawerOpen = () => {
-    setMenuState(menuActive);
-    setOpen(false);
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
   };
 
-  const toggleDrawer = event => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
+  const drawer = (
+    <div>
+      <div className={classes.toolbar} />
+      <Divider />
+      <AppMenu menuData={MenuData} />
+    </div>
+  );
 
-    setOpen(!open);
-  };
+  const container = window !== undefined ? () => window().document.body : undefined;
 
-  const handleDrawerClose = () => {
-    setMenuState(!menuActive);
-    setOpen(true);
-  };
   return (
     <div className={classes.root}>
-      <div className={clsx('App')} id={`${menuActive ? '' : 'halfwidth'}`}>
-        <CssBaseline />
-        <AppBar
-          position="fixed"
-          className={clsx(classes.appBar, {
-            [classes.appBarShift]: !open,
-          })}
-        >
-          <Toolbar>
+      <CssBaseline />
+      <AppBar position="fixed" className={classes.appBar}>
+        <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
-            onClick={toggleDrawer}
-            className={classes.menuButton, classes.buttonnew }
-            >
-               <MenuIcon />
-            </IconButton>
-            <NavBar />
-          </Toolbar>
-        </AppBar>
+            onClick={handleDrawerToggle}
+            className={classes.menuButton}
+          >
+            <MenuIcon />
+          </IconButton>
+          <NavBar />
 
-        <Drawer
-          variant="permanent"
-          className={clsx(classes.drawer, {
-            [classes.drawerOpen]: !open,
-            [classes.drawerClose]: open,
-            paper: classes.drawerPaper,
-          })}
-          classes={{
-            paper: clsx({
-              [classes.drawerOpen]: !open,
-              [classes.drawerClose]: open,
-            }),
-          }}
-          variant={isMdUp ? "permanent" : "temporary"}
-          open={open}
-          onClose={toggleDrawer}
-        >
-          <div className={classes.toolbar}>
-
-          </div>
-          <AppMenu menuData={MenuData} />
-        </Drawer>
-      </div>
+        </Toolbar>
+      </AppBar>
+      <nav className={classes.drawer} aria-label="mailbox folders">
+        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+        <Hidden smUp implementation="css">
+          <Drawer
+            container={container}
+            variant="temporary"
+            anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+            open={mobileOpen}
+            onClose={handleDrawerToggle}
+            classes={{
+              paper: classes.drawerPaper,
+            }}
+            ModalProps={{
+              keepMounted: true, // Better open performance on mobile.
+            }}
+          >
+            {drawer}
+          </Drawer>
+        </Hidden>
+        <Hidden xsDown implementation="css">
+          <Drawer
+            classes={{
+              paper: classes.drawerPaper,
+            }}
+            variant="permanent"
+            open
+          >
+            {drawer}
+          </Drawer>
+        </Hidden>
+      </nav>
+      <main className={classes.content}>
+        <div className={classes.toolbar} />
+      </main>
     </div>
   );
+}
+
+ResponsiveDrawer.propTypes = {
+
+  window: PropTypes.func,
 };
 
-export default SideMain;
+export default ResponsiveDrawer;

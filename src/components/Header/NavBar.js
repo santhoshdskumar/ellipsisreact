@@ -6,6 +6,7 @@ import Pricing from '../../pages/Pricing';
 import Support from '../../pages/Support';
 import Profile from '../../pages/Profile';
 import ProjectEdit from '../../pages/ProjectEdit';
+import MenuData from '../Sidebar/MenuData';
 const NavBar = () => {
   return (
     <Navbar expand="lg" className="topBar">
@@ -13,6 +14,8 @@ const NavBar = () => {
         <div className="navbar">
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
+            
+            <a href="#"></a>
             <Nav className="justify-content-end w-100" activeKey="/home">
               <Nav.Item>
                 <Link to="/Profile" className="nav-link">
