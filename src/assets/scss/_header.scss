@@ -1,8 +1,6 @@
 
 .MuiDrawer-paperAnchorLeft{
-  background: linear-gradient(
-128deg
-, rgb(56, 184, 242), rgb(132, 60, 246))!important;
+  background: $headerbg !important;
 }
 .MuiDrawer-paperAnchorLeft{
   border-right: 0 !important;
