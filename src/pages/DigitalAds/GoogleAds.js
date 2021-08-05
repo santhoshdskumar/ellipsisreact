@@ -11,24 +11,29 @@ import {
 } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
+import axios from 'axios';
 import { ToolkitNotification } from './../../components/ToolkitNotification';
 import { AllNotificationData, FavNotificationData } from '../NotificationData';
 class GoogleAds extends React.Component {
   constructor() {
     super();
+    this.formSubmit = this.formSubmit.bind(this);
     this.state = {
+      company: [],
+      audience: [],
+      background: [],
+      form: {
         valueone:'',
         valueThree:'',
         valueFour:'',
-        form: {
-          companyname: "",
-          product: "",
-          audeince: "",
+        company: "",
+        audience: "",
+        background: "",
         },
         formErrors: {
-          companyname: null,
-          product: null,
-          audeince: null,
+          company: null,
+          audience: null,
+          background: null,
         }
     };
   }
@@ -57,6 +62,7 @@ class GoogleAds extends React.Component {
         [name]: value
       };
     }
+    this.setState({ [e.target.name]: e.target.value });
     this.setState({ form: formObj }, () => {
       if (!Object.keys(formErrors).includes(name)) return;
       let formErrorsObj = {};
@@ -84,13 +90,13 @@ class GoogleAds extends React.Component {
   validateField = (name, value, refValue) => {
     let errorMsg = null;
     switch (name) {
-      case "companyname":
+      case "company":
         if (!value) errorMsg = "Please fill the required field.";
         break;
-      case "audeince":
+      case "audience":
           if (!value) errorMsg = "Please fill the required field.";
           break;
-      case "product":
+      case "background":
             if (!value) errorMsg = "Please fill the required field.";
             break;
       default:
@@ -98,7 +104,6 @@ class GoogleAds extends React.Component {
     }
     return errorMsg;
   };
-
   
   validateForm = (form, formErrors, validateFunc) => {
     const errorObj = {};
@@ -121,10 +126,21 @@ class GoogleAds extends React.Component {
       this.setState({ formErrors: { ...formErrors, ...errorObj } });
       return false;
     }
-    console.log("Data: ", form);
   };
 
-
+formSubmit(e) {
+  e.preventDefault();
+  const posts = {
+    company: this.state.company,
+    audience: this.state.audience,
+    background:  this.state.background,
+  }
+  axios
+    .post(`https://jsonplaceholder.typicode.com/posts`, { posts })
+    .then(res => {
+      console.log(res.data);
+    });
+};
   wordCount(event) {
     this.setState({ valueone:event.target.value });
   }
@@ -171,45 +187,45 @@ class GoogleAds extends React.Component {
               </Card.Header>
               <Card.Body>
                 <p>Hero text positions your product in the customer's mind</p>
-                <Form className="p-0">
-                  <Form.Group className="mb-4" controlId="companyname">
+                <Form className="p-0" onSubmit={this.formSubmit}>
+                  <Form.Group className="mb-4" controlId="company">
                     <Form.Label>Enter company / product name *</Form.Label>
-                    <Form.Control type="text" name="companyname" value={form.companyname} maxLength="20" 
+                    <Form.Control type="text" name="company" value={this.state.value} maxLength="20" 
                     onChange={e => { this.wordCount(e); this.handleChange(e)}}
                     />
                     <p className="float-end"><span>{lengthOne}/</span><span>20</span></p>
-                    {formErrors.companyname && (
-                      <span className="err">{formErrors.companyname}</span>
+                    {formErrors.company && (
+                      <span className="err">{formErrors.company}</span>
                     )}
                   </Form.Group>
-                  <Form.Group className="mb-4" controlId="audeince">
-                    <Form.Label>Who is your audeince *</Form.Label>
-                    <Form.Control type="text" maxLength="20" name="audeince"  value={form.audience} 
+                  <Form.Group className="mb-4" controlId="audience">
+                    <Form.Label>Who is your audience *</Form.Label>
+                    <Form.Control type="text" maxLength="20" name="audience"  value={this.state.value}
                     onChange={e => { this.wordCountTwo(e); this.handleChange(e)}}
 
                     />
                     <p className="float-end"><span>{lengthTwo}/</span><span>20</span></p>
-                    {formErrors.audeince && (
-                      <span className="err">{formErrors.audeince}</span>
+                    {formErrors.audience && (
+                      <span className="err">{formErrors.audience}</span>
                     )}
                   </Form.Group>
 
-                  <Form.Group className="mb-4" controlId="product">
+                  <Form.Group className="mb-4" controlId="background">
                     <Form.Label>Description of your product</Form.Label>
                     <Form.Control
                       as="textarea"
                       rows={3}
                       maxLength="140"
-                      name="product"
-                      value={form.product}
+                      name="background"
+                      value={this.state.value}
                        onChange={e => { this.wordCountThree(e); this.handleChange(e)}}
                     />
-                        {formErrors.product && (
-                        <span className="err">{formErrors.product}</span>
+                        {formErrors.background && (
+                        <span className="err">{formErrors.background}</span>
                       )}
                     <p className="float-end"><span>{lengthThree}/</span><span>120</span></p>
                   </Form.Group>
-                  <Button class="update"  type="button" onClick={this.handleSubmit} >
+                  <Button class="update"   type="submit" onClick={this.handleSubmit}  >
                     Generate Copy
                   </Button>
                 </Form>
