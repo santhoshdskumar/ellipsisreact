@@ -48,39 +48,39 @@ export const Email = [
   {
     socialtype: ArticleIdeas,
     title: 'Sales Emails',
-    text: 'Lorem Ipsum is simply dummy text of the printing.',
+    text: 'Framework for writing thoughtful emails',
     link:'/sales_emails'
   },
   {
     socialtype: GoogleAds,
     title: 'New Lead Engagement',
-    text: 'Lorem Ipsum is simply dummy text of the printing.',
+    text: 'Make a good first impression with new users',
     link:'/new_lead_engagement'
   },
   {
     socialtype: AdLinkDescriptions,
     title: 'Free Trail Engagement',
-    text: 'Lorem Ipsum is simply dummy text of the printing.',
+    text: 'Convert free users into paid users',
     link:'/free_user_engagement'
   },
   {
     socialtype: facebook,
     popular:'Popular',
     title: 'Post Purchase Engagement',
-    text: 'Lorem Ipsum is simply dummy text of the printing.',
+    text: 'Engage with existing users to reduce churn',
     link:'/post_purchase_engagement'
   },
   {
     socialtype: LinkedinTextAds,
     title: 'Schedule Product Demo',
-    text: 'Lorem Ipsum is simply dummy text of the printing.',
+    text: 'Get that time time commitment from users for demo',
     link:'schedule_product_demo'
   },
   {
     socialtype: facebook,
     popular:'Popular',
     title: 'Hail Mary Pass',
-    text: 'Lorem Ipsum is simply dummy text of the printing.',
+    text: 'Engage users who may have ghosted you',
     link:'/hail_mary_mail',
   }
 ];
@@ -90,7 +90,7 @@ export const Linkedin = [
   {
     socialtype: ArticleIdeas,
     title: 'Ad Link Description',
-    text: 'Lorem Ipsum is simply dummy text of the printing.',
+    text: 'Drive Thought Leadership through LinkedIn Text Ads',
     link:'/linkedinlinkdesc',
   },
   {
@@ -137,7 +137,7 @@ export const Website = [
   {
     socialtype: ArticleIdeas,
     title: 'Hero Text',
-    text: 'Lorem Ipsum is simply dummy text of the printing.',
+    text: 'Hero Text content for positioning your brand ',
     link:'/hero_text'
   },
   {
@@ -149,7 +149,7 @@ export const Website = [
   {
     socialtype: AdLinkDescriptions,
     title: 'Problem-Solution',
-    text: 'Lorem Ipsum is simply dummy text of the printing.',
+    text: 'Translate customer pain-points into product benefits',
     link:'/problemsoln'
 
   },
@@ -157,14 +157,14 @@ export const Website = [
     socialtype: facebook,
     popular:'Popular',
     title: 'Website Description',
-    text: 'Lorem Ipsum is simply dummy text of the printing.',
+    text: 'Tell Search engines what your website is all about',
     link:'/web_desc'
 
   },
   {
     socialtype: LinkedinTextAds,
     title: 'Feature - Benefits',
-    text: 'Lorem Ipsum is simply dummy text of the printing.',
+    text: 'Convert product features into benefits ',
     link:'/feature_benefit'
   }
 ];
@@ -180,13 +180,13 @@ export const Article = [
   {
     socialtype: GoogleAds,
     title: 'Article Title',
-    text: 'Lorem Ipsum is simply dummy text of the printing.',
+    text: 'Non clickbait yet engaging headlines',
     link:'article_title'
   },
   {
     socialtype: AdLinkDescriptions,
     title: 'Article Outlines',
-    text: 'Lorem Ipsum is simply dummy text of the printing.',
+    text: 'Framework for your next article',
     link:'/article_outlines'
 
   },
@@ -194,7 +194,7 @@ export const Article = [
     socialtype: facebook,
     popular:'Popular',
     title: 'Article Intro',
-    text: 'Lorem Ipsum is simply dummy text of the printing.',
+    text: 'Let AI write the first 200 words of your article',
     link:'/article_intro'
 
   }

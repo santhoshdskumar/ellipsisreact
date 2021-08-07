@@ -199,7 +199,7 @@ class GoogleAds extends React.Component {
                 <h3>Event Digital Ads</h3>
               </Card.Header>
               <Card.Body>
-                <p>Hero text positions your product in the customer's mind</p>
+                <p>Ad copy fine tuned for event promotions</p>
                 <Form className="p-0">
                   <Form.Group className="mb-4" controlId="companyname">
                     <Form.Label>Event Name *</Form.Label>

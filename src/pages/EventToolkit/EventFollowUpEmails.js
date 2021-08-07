@@ -198,7 +198,7 @@ class GoogleAds extends React.Component {
                 <h3>Event Follow-up Emails</h3>
               </Card.Header>
               <Card.Body>
-                <p>Hero text positions your product in the customer's mind</p>
+                <p>Block your calendar reminders and follow-ups</p>
                 <Form className="p-0">
                   <Form.Group className="mb-4" controlId="companyname">
                     <Form.Label>Event Name *</Form.Label>

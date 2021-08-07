@@ -163,7 +163,7 @@ class GoogleAds extends React.Component {
                 <h3>Hero Text</h3>
               </Card.Header>
               <Card.Body>
-                <p>Hero text positions your product in the customer's mind</p>
+                <p>Hero Text content for positioning your brand </p>
                 <Form className="p-0">
                   <Form.Group className="mb-4" controlId="companyname">
                     <Form.Label>Enter company / product name *</Form.Label>

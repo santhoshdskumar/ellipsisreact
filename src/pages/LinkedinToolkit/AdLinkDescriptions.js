@@ -167,7 +167,7 @@ class GoogleAds extends React.Component {
                 <h3>Ad Link Description</h3>
               </Card.Header>
               <Card.Body>
-                <p>Hero text positions your product in the customer's mind</p>
+                <p>Drive Thought Leadership through LinkedIn Text Ads</p>
                 <Form className="p-0">
                   <Form.Group className="mb-4" controlId="companyname">
                     <Form.Label>Enter company / product name *</Form.Label>

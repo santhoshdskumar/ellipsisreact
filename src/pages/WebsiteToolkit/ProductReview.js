@@ -174,10 +174,10 @@ class GoogleAds extends React.Component {
           <Col xs={12} lg={4} sm={12} md={12} className="mb-md-5 toolkitWebsite">
             <Card>
               <Card.Header>
-                <h3>Cold Calling Investors</h3>
+                <h3>Product Reviews</h3>
               </Card.Header>
               <Card.Body>
-                <p>Hero text positions your product in the customer's mind</p>
+                <p>Convert product features into benefits</p>
                 <Form className="p-0">
                   <Form.Group className="mb-4" controlId="companynamee">
                     <Form.Label>Enter your Company / Brand name *</Form.Label>
