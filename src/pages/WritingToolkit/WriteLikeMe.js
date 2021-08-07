@@ -11,21 +11,25 @@ import {
 } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
+import axios from 'axios';
 import { ToolkitNotification } from './../../components/ToolkitNotification';
 import { AllNotificationData, FavNotificationData } from '../NotificationData';
 class GoogleAds extends React.Component {
   constructor() {
     super();
+    this.formSubmit = this.formSubmit.bind(this);
     this.state = {
-        valueone:'',
-        valueThree:'',
+        company: [],
+        background: [],
         form: {
-          topic: "",
-          writing: "",
+          valueone:'',
+          valueThree:'',
+          company: "",
+          background: "",
         },
         formErrors: {
-          topic: null,
-          writing: null,
+          company: null,
+          background: null,
         }
     };
   }
@@ -53,6 +57,7 @@ class GoogleAds extends React.Component {
         [name]: value
       };
     }
+    this.setState({ [e.target.name]: e.target.value });
     this.setState({ form: formObj }, () => {
       if (!Object.keys(formErrors).includes(name)) return;
       let formErrorsObj = {};
@@ -80,10 +85,10 @@ class GoogleAds extends React.Component {
   validateField = (name, value, refValue) => {
     let errorMsg = null;
     switch (name) {
-      case "topic":
+      case "company":
         if (!value) errorMsg = "Please fill the required field.";
         break;
-      case "writing":
+      case "background":
           if (!value) errorMsg = "Please fill the required field.";
           break;
       default:
@@ -116,12 +121,27 @@ class GoogleAds extends React.Component {
     }
     console.log("Data: ", form);
   };
+
+  formSubmit(e) {
+    e.preventDefault();
+    const writelikeme = {
+      company: this.state.company,
+      background:  this.state.background,
+    }
+    axios.post("https://app2.ellipsis-ai.com/api/v1/writelikeme/", writelikeme,{auth:{
+      username: 'jaffrinkirthiga@gmail.com',
+      password: 'demo@123'
+    }},).then(res => {
+              console.log(res.data);
+          });
+  };
+
   wordCount(event) {
     this.setState({ valueone:event.target.value });
   }
 
-  wordCountThree(event) {
-    this.setState({ valueFour:event.target.value });
+  wordCountTwo(event) {
+    this.setState({ valueThree:event.target.value });
   }
 
   render() {
@@ -157,29 +177,29 @@ class GoogleAds extends React.Component {
               </Card.Header>
               <Card.Body>
                 <p>Hero text positions your product in the customer's mind</p>
-                <Form className="p-0">
-                  <Form.Group className="mb-4" controlId="topic">
+                <Form className="p-0"  onSubmit={this.formSubmit}>
+                  <Form.Group className="mb-4" controlId="company">
                     <Form.Label>Topic *</Form.Label>
-                    <Form.Control type="text" name="topic" value={this.state.topic} maxLength="20" 
+                    <Form.Control type="text" name="company" value={this.state.value} maxLength="20" 
                     onChange={e => { this.wordCount(e); this.handleChange(e)}}
                     
                     />
-                    {formErrors.topic && (
-                      <span className="err">{formErrors.topic}</span>
+                    {formErrors.company && (
+                      <span className="err">{formErrors.company}</span>
                     )}
                     <p className="float-end"><span>{lengthOne}/</span><span>20</span></p>
                   </Form.Group>
-                  <Form.Group className="mb-4" controlId="writing">
+                  <Form.Group className="mb-4" controlId="background">
                     <Form.Label>Paste what you are writing here *</Form.Label>
-                    <Form.Control type="text" maxLength="20" name="writing"  value={this.state.writing}  
+                    <Form.Control type="text" maxLength="20" name="background"  value={this.state.value}  
                      onChange={e => { this.wordCountTwo(e); this.handleChange(e)}}
                      />
-                    {formErrors.writing && (
-                      <span className="err">{formErrors.writing}</span>
+                    {formErrors.background && (
+                      <span className="err">{formErrors.background}</span>
                     )}
                     <p className="float-end"><span>{lengthTwo}/</span><span>20</span></p>
                   </Form.Group>
-                  <Button class="update" type="button"  onClick={this.handleSubmit}> 
+                  <Button class="update" type="submit"  onClick={this.handleSubmit}> 
                     Generate Copy
                   </Button>
                 </Form>

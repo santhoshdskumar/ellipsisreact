@@ -130,16 +130,17 @@ class GoogleAds extends React.Component {
 
 formSubmit(e) {
   e.preventDefault();
-  const posts = {
+  const googleadwords = {
     company: this.state.company,
     audience: this.state.audience,
     background:  this.state.background,
   }
-  axios
-    .post(`https://jsonplaceholder.typicode.com/posts`, { posts })
-    .then(res => {
-      console.log(res.data);
-    });
+  axios.post("https://app2.ellipsis-ai.com/api/v1/googleadwords/", googleadwords,{auth:{
+    username: 'jaffrinkirthiga@gmail.com',
+    password: 'demo@123'
+  }},).then(res => {
+            console.log(res.data);
+        });
 };
   wordCount(event) {
     this.setState({ valueone:event.target.value });

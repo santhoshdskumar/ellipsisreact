@@ -49,7 +49,7 @@ const ToolkitCustom = (props) => {
                 <label htmlFor={`custom-checkbox-${product.title}`}></label>
                 <Link
                   className="btn btn-next  align-self-center"
-                  to="/WebsiteToolkit"
+                  to={product.link}
                 >
                   <i className="fas fa-arrow-right"></i>
                 </Link>

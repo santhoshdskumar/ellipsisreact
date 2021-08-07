@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { products } from './products';
-import { toolkit } from './products';
 import { projects } from './projects';
+import { Digital, Email, Linkedin, Event, Website, Writing, Article } from './products';
 import { Tabs, Tab, Container, NavDropdown } from 'react-bootstrap';
 import ProductSlider from '../components/ProductSlider';
 import ToolkitCustom from '../components/ToolkitCustom';
@@ -87,22 +86,22 @@ class ProjectEdit extends React.Component {
                 className="m-0"
               >
                 <Tab eventKey="digital" title="Digital Ads">
-                  <ProductSlider toolkit={toolkit} />
+                  <ProductSlider toolkit={Digital} />
                 </Tab>
                 <Tab eventKey="email" title="Email Toolkit" as="Card.Header">
-                  <ProductSlider toolkit={products} />
+                  <ProductSlider toolkit={Email} />
                 </Tab>
                 <Tab eventKey="linkedin" title="Linkedin Toolkit">
-                  <ProductSlider toolkit={toolkit} />
+                  <ProductSlider toolkit={Linkedin} />
                 </Tab>
                 <Tab eventKey="website" title="Website Toolkit">
-                  <ProductSlider toolkit={products} />
+                  <ProductSlider toolkit={Website} />
                 </Tab>
                 <Tab eventKey="artical" title="Artical Toolkit">
-                  <ProductSlider toolkit={toolkit} />
+                  <ProductSlider toolkit={Article} />
                 </Tab>
                 <Tab eventKey="writing" title="Writing Toolkit">
-                  <ProductSlider toolkit={products} />
+                  <ProductSlider toolkit={Writing} />
                 </Tab>
               </Tabs>
             </Card>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { products } from './products';
-import { toolkit } from './products';
+import { Digital, Email, Linkedin, Event, Website, Writing, Article } from './products';
 import { projects } from './projects';
 import {Link} from 'react-router-dom';
 import { Tabs, Tab, Container, NavDropdown } from 'react-bootstrap';
@@ -16,7 +15,7 @@ class Dashboard extends React.Component {
     };
   }
   componentDidMount() {
-    let filteredData = products.filter((i, v) => {
+    let filteredData = Digital.filter((i, v) => {
       return v <= 2;
     });
     this.setState({ topFour: filteredData });
@@ -72,22 +71,22 @@ class Dashboard extends React.Component {
                       title="Digital Ads"
                       className="w-100"
                     >
-                      <ProductSlider toolkit={toolkit} />
+                      <ProductSlider toolkit={Digital} />
                     </Tab>
                     <Tab eventKey="email" title="Email Toolkit">
-                      <ProductSlider toolkit={products} />
+                      <ProductSlider toolkit={Email} />
                     </Tab>
                     <Tab eventKey="linkedin" title="Linkedin Toolkit">
-                      <ProductSlider toolkit={toolkit} />
+                      <ProductSlider toolkit={Linkedin} />
                     </Tab>
                     <Tab eventKey="website" title="Website Toolkit">
-                      <ProductSlider toolkit={products} />
+                      <ProductSlider toolkit={Website} />
                     </Tab>
                     <Tab eventKey="artical" title="Artical Toolkit">
-                      <ProductSlider toolkit={toolkit} />
+                      <ProductSlider toolkit={Article} />
                     </Tab>
                     <Tab eventKey="writing" title="Writing Toolkit">
-                      <ProductSlider toolkit={products} />
+                      <ProductSlider toolkit={Writing} />
                     </Tab>
                   </Tabs>
                 </div>

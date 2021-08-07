@@ -11,24 +11,29 @@ import {
 } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
+import axios from 'axios';
 import { ToolkitNotification } from './../../components/ToolkitNotification';
 import { AllNotificationData, FavNotificationData } from '../NotificationData';
 class GoogleAds extends React.Component {
   constructor() {
     super();
+    this.formSubmit = this.formSubmit.bind(this);
     this.state = {
+        company: [],
+        audience: [],
+        background: [],
         valueone:'',
         valueThree:'',
         valueFour:'',
         form: {
-          about: "",
-          audeincee: "",
-          writing:'',
+          company: "",
+          audience: "",
+          background:'',
          },
         formErrors: {
-          about: null,
-          audeincee: null,
-          writing:null,
+          company: null,
+          audience: null,
+          background:null,
         }
     };
   }
@@ -56,6 +61,7 @@ class GoogleAds extends React.Component {
         [name]: value
       };
     }
+    this.setState({ [e.target.name]: e.target.value });
     this.setState({ form: formObj }, () => {
       if (!Object.keys(formErrors).includes(name)) return;
       let formErrorsObj = {};
@@ -83,13 +89,13 @@ class GoogleAds extends React.Component {
   validateField = (name, value, refValue) => {
     let errorMsg = null;
     switch (name) {
-      case "about":
+      case "company":
             if (!value) errorMsg = "Please fill the required field.";
             break;
-      case "audeincee":
+      case "audience":
             if (!value) errorMsg = "Please fill the required field.";
             break;
-      case "writing":
+      case "background":
             if (!value) errorMsg = "Please fill the required field.";
             break;
       default:
@@ -122,6 +128,22 @@ class GoogleAds extends React.Component {
     }
     console.log("Data: ", form);
   };
+
+  formSubmit(e) {
+    e.preventDefault();
+    const articletitle = {
+      company: this.state.company,
+      audience: this.state.audience,
+      background:  this.state.background,
+    }
+    axios.post("https://app2.ellipsis-ai.com/api/v1/articleoutlines/", articletitle,{auth:{
+      username: 'jaffrinkirthiga@gmail.com',
+      password: 'demo@123'
+    }},).then(res => {
+              console.log(res.data);
+          });
+  };
+
   wordCount(event) {
     this.setState({ valueone:event.target.value });
   }
@@ -168,44 +190,44 @@ class GoogleAds extends React.Component {
               </Card.Header>
               <Card.Body>
                 <p>Framework for your next article</p>
-                <Form className="p-0">
-                  <Form.Group className="mb-4" controlId="about">
-                    <Form.Label>What are you writing about *</Form.Label>
-                    <Form.Control type="text" name="about" value={this.state.about} maxLength="20" 
+                <Form className="p-0" onSubmit={this.formSubmit}>
+                  <Form.Group className="mb-4" controlId="company">
+                    <Form.Label>What are you Writing About *</Form.Label>
+                    <Form.Control type="text" name="company" value={this.state.value} maxLength="20" 
                     onChange={e => { this.wordCount(e); this.handleChange(e)}}
                     />
-                    {formErrors.about && (
-                      <span className="err">{formErrors.about}</span>
+                    {formErrors.company && (
+                      <span className="err">{formErrors.company}</span>
                     )}
                     <p className="float-end"><span>{lengthOne}/</span><span>20</span></p>
                   </Form.Group>
-                  <Form.Group className="mb-4" controlId="audeincee">
+                  <Form.Group className="mb-4" controlId="audience">
                     <Form.Label>Who is your audeince *</Form.Label>
-                    <Form.Control type="text" maxLength="20" name="audeincee"  value={form.audeincee}  
+                    <Form.Control type="text" maxLength="20" name="audience"  value={this.state.value}   
                     onChange={e => { this.wordCountTwo(e); this.handleChange(e)}}
-                    />
+                   />
                     <p className="float-end"><span>{lengthTwo}/</span><span>20</span></p>
-                    {formErrors.audeincee && (
-                      <span className="err">{formErrors.audeincee}</span>
+                    {formErrors.audience && (
+                      <span className="err">{formErrors.audience}</span>
                     )}
                   </Form.Group>
 
-                  <Form.Group className="mb-4" controlId="writing">
+                  <Form.Group className="mb-4" controlId="background">
                     <Form.Label>Overview of the article you are writing</Form.Label>
                     <Form.Control
                       as="textarea"
                       rows={3}
                       maxLength="140"
-                      name="writing"
-                      value={this.state.writing}
+                      name="background"
+                      value={this.state.value}   
                       onChange={e => { this.wordCountThree(e); this.handleChange(e)}}
                     />
-                    {formErrors.writing && (
-                      <span className="err">{formErrors.writing}</span>
+                    {formErrors.background && (
+                      <span className="err">{formErrors.background}</span>
                     )}
                     <p className="float-end"><span>{lengthThree}/</span><span>120</span></p>
                   </Form.Group>
-                  <Button class="update" type="button" onClick={this.handleSubmit}>
+                  <Button class="update" type="submit" onClick={this.handleSubmit}>
                     Generate Copy
                   </Button>
                 </Form>
