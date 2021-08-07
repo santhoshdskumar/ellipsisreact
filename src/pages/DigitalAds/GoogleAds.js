@@ -22,6 +22,9 @@ class GoogleAds extends React.Component {
       company: [],
       audience: [],
       background: [],
+      headline:false,
+      consumedData:null,
+      allCount:'',
       form: {
         valueone:'',
         valueThree:'',
@@ -128,6 +131,7 @@ class GoogleAds extends React.Component {
     }
   };
 
+
 formSubmit(e) {
   e.preventDefault();
   const googleadwords = {
@@ -139,8 +143,15 @@ formSubmit(e) {
     username: 'jaffrinkirthiga@gmail.com',
     password: 'demo@123'
   }},).then(res => {
-            console.log(res.data);
-        });
+      this.setState({
+        consumedData:res.data
+      })
+      let retData = this.state.consumedData;
+      this.setState({
+        allCount:res.data.data.output.length
+      })
+      // console.log(this.state.consumedData)
+   });
 };
   wordCount(event) {
     this.setState({ valueone:event.target.value });
@@ -177,7 +188,9 @@ formSubmit(e) {
         transition: 0.3s ease-in;
       }
     `;
+
     return (
+
       <React.Fragment>
         <h1 class="headTitle">Digital Ads</h1>
         <Row>
@@ -242,11 +255,12 @@ formSubmit(e) {
                 id="uncontrolled-tab-example"
                 className="mb-3"
               >
-                <Tab eventKey="all" title="All(6)">
-                  <ToolkitNotification notifcation={AllNotificationData} />
+               
+                <Tab eventKey="all" title={`All ${this.state.allCount}`}>
+                  <ToolkitNotification notifcation={this.state.consumedData} />
                 </Tab>
                 <Tab eventKey="favourite" title="Favourite(1)">
-                  <ToolkitNotification notifcation={FavNotificationData} />
+                  <ToolkitNotification notifcation={this.state.consumedData} />
                   <Link to="/workspaceedit" className="viewAll">Edit your fav items &gt; &gt;</Link>
                 </Tab>
               </Tabs>

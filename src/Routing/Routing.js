@@ -54,8 +54,8 @@ import WebinarPromoEmails from '../pages/EventToolkit/WebinarPromoEmails';
 
 import WriteLikeMe from '../pages/WritingToolkit/WriteLikeMe';
 
-
-
+import { PrivacyPolicy } from '../pages/PrivacyPolicy';
+import { Terms } from '../pages/TermsAndConditions';
 const Routing = () => {
   return (
     <Switch>
@@ -326,6 +326,20 @@ const Routing = () => {
         </Route>
         {/* Ends Here */}
 
+
+        <Route path="/privacy_policy">
+        <div className="innerPage">
+          <PrivacyPolicy />
+        </div>
+        </Route>
+
+        <Route path="/terms_conditions">
+        <div className="innerPage">
+          <Terms />
+        </div>
+        </Route>
+
+        
     </Switch>
   );
 };

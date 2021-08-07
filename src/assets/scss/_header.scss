@@ -358,3 +358,25 @@ color:#fff;
     }
   }
 }
+
+.bottomLine {
+  @media screen and (min-width:1201px) {
+    position: absolute;
+    bottom: 10px;
+  }
+  @media screen and (max-width:1201px) {
+    margin-top: 10px;;
+  }
+  font-size: 11px;
+  text-align: center;
+  padding: 0px 22px;
+  a {
+    color:#fff;
+    text-align: center;
+    font-size: 10px;
+    text-decoration: none;
+    &:last-child {
+      margin-left: 10px;
+    }
+  }
+}

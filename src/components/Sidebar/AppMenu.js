@@ -43,6 +43,7 @@ const AppMenu = (props) => {
   };
 
   return (
+    <>
     <List component="nav" className={classes.appMenu} disablePadding>
       <div className="side-menu-top">
         <div className="logo">
@@ -126,7 +127,15 @@ const AppMenu = (props) => {
           </>
         );
       })}
+
     </List>
+    <ul className="nav bottomLine">
+    <li className="">
+          <Link to="/privacy_policy">Privacy Policy</Link>
+          <Link to="/terms_conditions">Terms and Conditions</Link>
+        </li>
+    </ul>
+        </>
   );
 };
 
