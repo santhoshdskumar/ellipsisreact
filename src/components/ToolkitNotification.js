@@ -7,9 +7,10 @@ export const ToolkitNotification = (props) => {
   if(data.notifcation==null){
     data = null;
   }
+  console.log(data);
   return (
     <React.Fragment>
-      {data == null? <div>Data Not Found</div> : data.map((item) => (
+      {data == null? <div>Data Not Found</div> : data.notifcation.map((item) => (
         <Alert>
           <p>
             {item.suggestion.Headline}
