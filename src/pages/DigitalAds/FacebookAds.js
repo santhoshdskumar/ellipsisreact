@@ -188,7 +188,7 @@ class GoogleAds extends React.Component {
                 <h3>Facebook Ads</h3>
               </Card.Header>
               <Card.Body>
-                <p>Hero text positions your product in the customer's mind</p>
+                <p>Manage content for multiple audiences on Facebook </p>
                 <Form className="p-0"  onSubmit={this.formSubmit}>
                   <Form.Group className="mb-4" controlId="company">
                     <Form.Label>Enter company / product name *</Form.Label>

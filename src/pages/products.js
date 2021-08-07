@@ -10,36 +10,42 @@ import LinkedinTextAds from '../assets/images/icons/linkedIntextads.svg';
 
 export const Digital = [
   {
+    socialtype:GoogleAds,
+    title: 'Google Ads',
+    text: 'High converting ads for Google Search',
+    link:'/google-adsense'
+  },
+  {
     popular:'Popular',
     socialtype:facebook,
     title: 'Facebook Ads',
-    text: 'Lorem Ipsum is simply dummy text of the printing.',
+    text: 'Manage content for multiple audiences on Facebook ',
     link:'/facebookads'
   },
   {
     socialtype: linkedin,
     title: 'Linkedin Text Ads',
-    text: 'Lorem Ipsum is simply dummy text of the printing.',
+    text: 'Drive thought leadership with LinkedIn Text ads',
     link:'/linkedinads'
   },
   {
     socialtype: MobileAppNotifications,
     title: 'Mobile App Notification',
-    text: 'Lorem Ipsum is simply dummy text of the printing.',
+    text: 'Engaging mobile app notification alerts',
     link:'/mobile_notification'
     
   },
   {
     socialtype: SalesEmail,
     title: 'Ad Copies For A/B Testing',
-    text: 'Lorem Ipsum is simply dummy text of the printingy.',
+    text: 'Generate multiple variations for AB testing',
     link:'/ad_copies'
 
   },
   {
     socialtype: CarouselAds,
     title: 'Link Descriptions',
-    text: 'Lorem Ipsum is simply dummy text of the printing.',
+    text: 'Metadata for all your landing pages',
     link:'/meta_tags'
   },
 ];
@@ -65,7 +71,6 @@ export const Email = [
   },
   {
     socialtype: facebook,
-    popular:'Popular',
     title: 'Post Purchase Engagement',
     text: 'Engage with existing users to reduce churn',
     link:'/post_purchase_engagement'

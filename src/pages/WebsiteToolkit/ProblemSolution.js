@@ -167,7 +167,7 @@ class GoogleAds extends React.Component {
                 <h3>Problem-Solution</h3>
               </Card.Header>
               <Card.Body>
-                <p>Translate customer pain-points into product benefits</p>
+                <p>Translate customer pain-points into product benefit</p>
                 <Form className="p-0">
                   <Form.Group className="mb-4" controlId="companyname">
                     <Form.Label>Enter company / product name *</Form.Label>

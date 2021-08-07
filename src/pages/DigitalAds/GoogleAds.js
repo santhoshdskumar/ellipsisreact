@@ -25,6 +25,7 @@ class GoogleAds extends React.Component {
       headline:false,
       consumedData:null,
       allCount:'',
+      isDirty:true,
       form: {
         valueone:'',
         valueThree:'',
@@ -153,6 +154,11 @@ formSubmit(e) {
       })
       // console.log(this.state.consumedData)
    });
+   this.setState(
+     {
+       isDirty:false
+     }
+   )
 };
   wordCount(event) {
     this.setState({ valueone:event.target.value });
@@ -201,7 +207,7 @@ formSubmit(e) {
                 <h3>Google Adwords</h3>
               </Card.Header>
               <Card.Body>
-                <p>Hero text positions your product in the customer's mind</p>
+                <p>High converting ads for Google Search</p>
                 <Form className="p-0" onSubmit={this.formSubmit}>
                   <Form.Group className="mb-4" controlId="company">
                     <Form.Label>Enter company / product name *</Form.Label>

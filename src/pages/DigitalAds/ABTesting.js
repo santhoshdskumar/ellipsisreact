@@ -188,7 +188,7 @@ class GoogleAds extends React.Component {
                 <h3>Ad Copies For A/B Testing</h3>
               </Card.Header>
               <Card.Body>
-                <p>Hero text positions your product in the customer's mind</p>
+                <p>Generate multiple variations for AB testing</p>
                 <Form className="p-0"  onSubmit={this.formSubmit}>
                   <Form.Group className="mb-4" controlId="company">
                     <Form.Label>Enter company / product name *</Form.Label>

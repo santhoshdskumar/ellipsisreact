@@ -12,10 +12,11 @@ export const ToolkitNotification = (props) => {
     <React.Fragment>
       {data == null? <div>Data Not Found</div> : data.notifcation.map((item) => (
         <Alert>
-          <p>
-            {item.suggestion.Headline}
+          <div>
+            <h6>{item.suggestion.Headline}</h6>
+            <p>{item.suggestion.Description}</p>
             <span className="text-right float-end">{item.wishlist}</span>
-          </p>
+          </div>
         </Alert>
       ))} 
       
