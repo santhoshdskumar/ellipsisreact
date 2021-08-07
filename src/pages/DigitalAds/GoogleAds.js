@@ -143,12 +143,13 @@ formSubmit(e) {
     username: 'jaffrinkirthiga@gmail.com',
     password: 'demo@123'
   }},).then(res => {
+     let retData = res.data.data.output;
       this.setState({
-        consumedData:res.data
+        consumedData:retData
       })
-      let retData = this.state.consumedData;
+      
       this.setState({
-        allCount:res.data.data.output.length
+        allCount:retData.length
       })
       // console.log(this.state.consumedData)
    });

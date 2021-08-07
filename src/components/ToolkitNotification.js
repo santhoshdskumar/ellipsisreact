@@ -4,9 +4,7 @@ import { Link } from 'react-router-dom';
 
 export const ToolkitNotification = (props) => {
   let data = props;
-  if(data.notifcation!=null){
-    data =  props.notifcation.data.output;
-  } else {
+  if(data.notifcation==null){
     data = null;
   }
   return (
