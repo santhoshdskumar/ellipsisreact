@@ -360,6 +360,13 @@ color:#fff;
 }
 
 .bottomLine {
+  p {
+    a {
+      margin-left: 0px !important;
+    }
+  }
+  border-top: 1px dotted #fff;
+  padding-top: 7px !important;
   @media screen and (min-width:1201px) {
     position: absolute;
     bottom: 10px;

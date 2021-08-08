@@ -7,6 +7,31 @@ import ArticleIdeas from '../assets/images/icons/articleideas.svg';
 import GoogleAds from '../assets/images/icons/googleads.svg';
 import AdLinkDescriptions from '../assets/images/icons/adlinkdescription.svg';
 import LinkedinTextAds from '../assets/images/icons/linkedIntextads.svg';
+import Descriptions from '../assets/images/icons/Descriptions.svg';
+import Testing from '../assets/images/icons/Testing.svg';
+import Lead from '../assets/images/icons/Lead.svg';
+import User from '../assets/images/icons/user.svg';
+import Post from '../assets/images/icons/post.svg';
+import Schedule from '../assets/images/icons/Schedule.svg';
+import Dormant from '../assets/images/icons/Dormant.svg';
+import Conversional from '../assets/images/icons/Conversional.svg';
+import Recruiters from '../assets/images/icons/Recruiters.svg';
+import Investors from '../assets/images/icons/Investors.svg';
+import Dynamic from '../assets/images/icons/Dynamic.svg';
+import HeroText from '../assets/images/icons/HeroText.svg'
+import ProductReviews from '../assets/images/icons/ProductReviews.svg'
+import ProductSolution from '../assets/images/icons/Product-Solution.svg'
+import WebsiteDescription from '../assets/images/icons/WebsiteDescription.svg'
+import  FeatureBenefits from '../assets/images/icons/FeatureBenefits.svg';
+import articletitle from '../assets/images/icons/articletitle.svg';
+import Outlines from '../assets/images/icons/Outlines.svg';
+import Intro from '../assets/images/icons/Intro.svg';
+import EventDigitalAds from '../assets/images/icons/EventDigitalAds.svg';
+import EventFollowupEmailsupEmailsro from '../assets/images/icons/EventFollow-upEmails.svg';
+import EventPromoEmails from '../assets/images/icons/EventPromoEmails.svg';
+import WebinarPromoEmails from '../assets/images/icons/WebinarPromoEmails.svg';
+import Write from '../assets/images/icons/Write.svg';
+
 
 export const Digital = [
   {
@@ -36,14 +61,14 @@ export const Digital = [
     
   },
   {
-    socialtype: SalesEmail,
+    socialtype: Testing,
     title: 'Ad Copies For A/B Testing',
     text: 'Generate multiple variations for AB testing',
     link:'/ad_copies'
 
   },
   {
-    socialtype: CarouselAds,
+    socialtype: Descriptions,
     title: 'Link Descriptions',
     text: 'Metadata for all your landing pages',
     link:'/meta_tags'
@@ -52,39 +77,39 @@ export const Digital = [
 
 export const Email = [
   {
-    socialtype: ArticleIdeas,
+    socialtype: SalesEmail,
     title: 'Sales Emails',
     text: 'Framework for writing thoughtful emails',
     link:'/sales_emails'
   },
   {
-    socialtype: GoogleAds,
+    socialtype: Lead,
     title: 'New Lead Engagement',
     text: 'Make a good first impression with new users',
     link:'/new_lead_engagement'
   },
   {
-    socialtype: AdLinkDescriptions,
-    title: 'Free Trail Engagement',
+    socialtype: User,
+    title: 'Free User Engagement',
     text: 'Convert free users into paid users',
     link:'/free_user_engagement'
   },
   {
-    socialtype: facebook,
+    socialtype: Post,
     title: 'Post Purchase Engagement',
     text: 'Engage with existing users to reduce churn',
     link:'/post_purchase_engagement'
   },
   {
-    socialtype: LinkedinTextAds,
+    socialtype: Schedule,
     title: 'Schedule Product Demo',
     text: 'Get that time time commitment from users for demo',
     link:'schedule_product_demo'
   },
   {
-    socialtype: facebook,
+    socialtype: Dormant,
     popular:'Popular',
-    title: 'Hail Mary Pass',
+    title: 'Engage Dormant Users',
     text: 'Engage users who may have ghosted you',
     link:'/hail_mary_mail',
   }
@@ -93,45 +118,45 @@ export const Email = [
 
 export const Linkedin = [
   {
-    socialtype: ArticleIdeas,
+    socialtype: AdLinkDescriptions,
     title: 'Ad Link Description',
     text: 'Drive Thought Leadership through LinkedIn Text Ads',
     link:'/linkedinlinkdesc',
   },
   {
-    socialtype: GoogleAds,
+    socialtype: CarouselAds,
     title: 'Carousel Ads',
     text: 'Lorem Ipsum is simply dummy text of the printing.',
     link:'/carousel_ads',
   },
   {
-    socialtype: AdLinkDescriptions,
+    socialtype: Dynamic,
     title: 'Dynamic Ads',
     text: 'Lorem Ipsum is simply dummy text of the printing.',
     link:'/dynamic_ads',
   },
   {
-    socialtype: facebook,
+    socialtype: SalesEmail,
     popular:'Popular',
     title: 'Sales Emails',
     text: 'Lorem Ipsum is simply dummy text of the printing.',
     link:'/sponsored_msg',
   },
   {
-    socialtype: LinkedinTextAds,
+    socialtype: Investors,
     title: 'Cold Calling Investors',
     text: 'Lorem Ipsum is simply dummy text of the printing.',
     link:'/coldcalling',
   },
   {
-    socialtype: facebook,
+    socialtype: Recruiters,
     popular:'Popular',
     title: 'Cold Calling Recruiters',
     text: 'Lorem Ipsum is simply dummy text of the printing.',
     link:'/coldcalling_rec'
   },
   {
-    socialtype: facebook,
+    socialtype: Conversional,
     title: 'Conversational Pitches',
     text: 'Lorem Ipsum is simply dummy text of the printing.',
     link:'/sponsored_msg'
@@ -140,26 +165,26 @@ export const Linkedin = [
 
 export const Website = [
   {
-    socialtype: ArticleIdeas,
+    socialtype: HeroText,
     title: 'Hero Text',
     text: 'Hero Text content for positioning your brand ',
     link:'/hero_text'
   },
   {
-    socialtype: GoogleAds,
+    socialtype: ProductReviews,
     title: 'Product Reviews',
     text: 'Lorem Ipsum is simply dummy text of the printing.',
     link:'/productreview'
   },
   {
-    socialtype: AdLinkDescriptions,
+    socialtype: ProductSolution,
     title: 'Problem-Solution',
     text: 'Translate customer pain-points into product benefits',
     link:'/problemsoln'
 
   },
   {
-    socialtype: facebook,
+    socialtype: WebsiteDescription,
     popular:'Popular',
     title: 'Website Description',
     text: 'Tell Search engines what your website is all about',
@@ -167,7 +192,7 @@ export const Website = [
 
   },
   {
-    socialtype: LinkedinTextAds,
+    socialtype: FeatureBenefits,
     title: 'Feature - Benefits',
     text: 'Convert product features into benefits ',
     link:'/feature_benefit'
@@ -183,20 +208,20 @@ export const Article = [
 
   },
   {
-    socialtype: GoogleAds,
+    socialtype: articletitle,
     title: 'Article Title',
     text: 'Non clickbait yet engaging headlines',
     link:'article_title'
   },
   {
-    socialtype: AdLinkDescriptions,
+    socialtype: Outlines,
     title: 'Article Outlines',
     text: 'Framework for your next article',
     link:'/article_outlines'
 
   },
   {
-    socialtype: facebook,
+    socialtype: Intro,
     popular:'Popular',
     title: 'Article Intro',
     text: 'Let AI write the first 200 words of your article',
@@ -207,27 +232,27 @@ export const Article = [
 
 export const Event = [
   {
-    socialtype: ArticleIdeas,
+    socialtype: EventPromoEmails,
     title: 'Event Promo Emails',
     text: 'Drive registrations for events',
     link:'/event_promo_mail'
 
   },
   {
-    socialtype: GoogleAds,
+    socialtype: WebinarPromoEmails,
     title: 'Webinar Promo Emails',
     text: 'Drive Registrations for online format events',
     link:'/webinar_promo_mail'
   },
   {
-    socialtype: AdLinkDescriptions,
+    socialtype: EventFollowupEmailsupEmailsro,
     title: 'Event Follow-up Emails',
     text: 'Block your calendar reminders and follow-ups',
     link:'event_followup_mail'
 
   },
   {
-    socialtype: facebook,
+    socialtype: EventDigitalAds,
     popular:'Popular',
     title: 'Event Digital Ads',
     text: 'Ad copy fine tuned for event promotions',
@@ -238,7 +263,7 @@ export const Event = [
 
 export const Writing = [
   {
-    socialtype: ArticleIdeas,
+    socialtype: Write,
     title: 'Write Like Me',
     text: 'Lorem Ipsum is simply dummy text of the printing.',
     link:'/write_like_me'
