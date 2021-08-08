@@ -212,7 +212,7 @@ export default class ProjectCustom extends Component {
                   type="submit"
                   onClick={(e) => this.handleSubmit(e)}
                 >
-                  Update 
+                  Add 
                 </Button>
               </Form>
             </div>

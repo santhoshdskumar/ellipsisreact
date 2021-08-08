@@ -101,7 +101,9 @@ class Profile extends React.Component {
             <ProductsCustom products={Billing} />
           </Col>
           <Col xl={4} lg={4} md="4" sm={12}>
+            <Link to="/Usage">
             <ProductsCustom products={Order} />
+            </Link>
           </Col>
   
         </Row>

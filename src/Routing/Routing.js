@@ -57,6 +57,7 @@ import WriteLikeMe from '../pages/WritingToolkit/WriteLikeMe';
 import { PrivacyPolicy } from '../pages/PrivacyPolicy';
 import { Terms } from '../pages/TermsAndConditions';
 import PasswordChange from '../pages/PasswordChange';
+import { Usage } from '../pages/Usage';
 const Routing = () => {
   return (
     <Switch>
@@ -343,6 +344,12 @@ const Routing = () => {
         <Route path="/Passwordchange">
         <div className="innerPage">
           <PasswordChange />
+        </div>
+        </Route>
+
+        <Route path="/Usage">
+        <div className="innerPage">
+          <Usage />
         </div>
         </Route>
 
