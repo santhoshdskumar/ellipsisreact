@@ -68,7 +68,7 @@ class Workspace extends React.Component {
     return (
       <div className="workspace">
         <h1 className="headTitle">WorkSpace</h1>
-        <Button  onClick={this.showModal}>Add Project</Button>
+        <Button  onClick={this.showModal}>Add Workspace</Button>
         <ProjectCustom projects={projects}></ProjectCustom>
         <Modal show={this.state.show} handleClose={this.hideModal}>
           <div className="modal-dialog m-0">
@@ -96,6 +96,7 @@ class Workspace extends React.Component {
                   />
                 </Form.Group>
                 <Form.Group className="mb-4" controlId="formBasicPassword">
+                <Form.Label>Industry Type</Form.Label>
                 <select aria-label="Default select example" className="form-control">
                     <option>Ecommerce</option>
                     <option value="1">SaaS</option>
