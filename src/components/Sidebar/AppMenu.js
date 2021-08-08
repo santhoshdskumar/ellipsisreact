@@ -54,7 +54,7 @@ const AppMenu = (props) => {
             <img src={ellipsis} alt="Ellipsis" />
           </Link>
         </div>
-        <div className="avatar d-none">
+        <div className="avatar">
           <img src={user} alt="user" />
         </div>
         <div className="userDrop p-3">
