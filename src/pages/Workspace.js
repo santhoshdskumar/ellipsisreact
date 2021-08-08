@@ -74,7 +74,7 @@ class Workspace extends React.Component {
           <div className="modal-dialog m-0">
             <div className="modal-content">
               <div class="modal-header">
-                <h2>Add Project</h2>
+                <h2>Add Workspace</h2>
               </div>
               <Form>
                 <Form.Group className="mb-4" controlId="formBasicEmail">

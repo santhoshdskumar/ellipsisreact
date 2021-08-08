@@ -77,7 +77,7 @@ export default class ProductSlider extends Component {
                   >
                     <i className="fas fa-heart"></i>
                   </a>
-                  <Link className="btn btn-next" to="/WebsiteToolkit">
+                  <Link className="btn btn-next" to={product.link}>
                     <i className="fas fa-arrow-right"></i>
                   </Link>
                 </div>

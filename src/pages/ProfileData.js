@@ -1,6 +1,9 @@
+import DataUsageIcon from '@material-ui/icons/DataUsage';
+import ReceiptIcon from '@material-ui/icons/Receipt';
+
 export const Billing = [
   {
-    icon: <i class="fas fa-money-bill"></i>,
+    icon:<ReceiptIcon />,
     title: 'Manage Billing',
     text: 'Expiring products, billing dates and recurring events',
     className: 'billing',
@@ -9,8 +12,8 @@ export const Billing = [
 
 export const Order = [
   {
-    icon: <i class="fas fa-money-bill"></i>,
-    title: 'Order History',
+    icon:<DataUsageIcon />,
+    title: 'Usage',
     text: 'Past and pending orders, reciepts and refunds',
     className: 'order',
   },

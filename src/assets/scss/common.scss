@@ -399,8 +399,12 @@ input[type=checkbox]:checked + label:before {
 }
 
 .pagination {
-  justify-content: center;
+  justify-content: flex-end;
   margin-top: 15px;
+  .page-item.active .page-link {
+    background-color: #5433ef;
+    border-color: #5433ef;
+  }
 }
 .switchNav form {
   padding: 0px;

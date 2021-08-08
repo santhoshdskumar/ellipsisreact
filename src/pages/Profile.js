@@ -101,9 +101,7 @@ class Profile extends React.Component {
           <Col xl={4} lg={4} md="4" sm={12}>
             <ProductsCustom products={Order} />
           </Col>
-          <Col xl={4} lg={4} md="4" sm={12}>
-            <ProductsCustom products={Billing} />
-          </Col>
+  
         </Row>
       </React.Fragment>
     );

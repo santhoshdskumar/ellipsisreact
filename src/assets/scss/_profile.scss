@@ -11,6 +11,10 @@
   }
 
   .billingRow {
+    svg {
+      font-size: 54px;
+      color:#fff;
+    }
     .card {
             box-shadow: 0px 1px 4px 3px rgba(159, 159, 159, 0.11);
             border-radius: 10px;
@@ -46,6 +50,7 @@
     .billing  {
       background:$billingbg;
       border-color:$billingbrdr;
+
     }
     .order {
       background: $orderbg;

@@ -34,7 +34,7 @@ class Dashboard extends React.Component {
                 </div>
                 <div className="card-body">
                   <ProjectCustom projects={projects} />
-                  <Link to="/" className="viewAll">View All &gt;&gt;</Link>
+                  <Link to="/Workspace" className="viewAll">View All &gt;&gt;</Link>
                 </div>
               </div>
             </div>
