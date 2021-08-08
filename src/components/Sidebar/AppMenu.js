@@ -23,6 +23,9 @@ import IconLibraryBooks from '@material-ui/icons/LibraryBooks';
 import user from '../../assets/user.jpg';
 import ellipsis from '../../assets/images/ellipsis_logo.png';
 import { Link, NavLink } from 'react-router-dom';
+import {
+  Form,
+} from 'react-bootstrap';
 
 const AppMenu = (props) => {
   const classes = useStyles();
@@ -54,9 +57,27 @@ const AppMenu = (props) => {
         <div className="avatar d-none">
           <img src={user} alt="user" />
         </div>
-        <div className="user-info">
-          <h5>Lorem Ipsum</h5>
+        <div className="userDrop p-3">
+          <p className="m-0">Switch</p>
+        <Form className="p-0">
+                <Form.Group className="mb-4" controlId="formBasicPassword">
+                <select aria-label="Default select example" className="form-control">
+                  <option>Select industry type</option>
+                <option>Ecommerce</option>
+                    <option>Ecommerce</option>
+                    <option value="1">SaaS</option>
+                    <option value="2">Enterprise Tech
+                    </option>
+                     <option value="3">Blockchain/ Crypto
+                    </option>
+                    <option>Fintech</option>
+                    <option>Edtech</option>
+                    <option>Martech</option>
+                   </select>
+                  </Form.Group>
+                  </Form>
         </div>
+
       </div>
       {props.menuData.map((data, index) => {
         return (
