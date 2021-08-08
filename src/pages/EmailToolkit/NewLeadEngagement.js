@@ -12,31 +12,36 @@ import {
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import { ToolkitNotification } from './../../components/ToolkitNotification';
+import axios from 'axios';
 import { AllNotificationData, FavNotificationData } from '../NotificationData';
 class GoogleAds extends React.Component {
   constructor() {
     super();
+    this.formSubmit = this.formSubmit.bind(this);
     this.state = {
         valueOne:'',
         valueTwo:'',
         valueThree:'',
         valueFour:'',
         valueFive:'',
+        company: [],
+        category: [],
+        audience: [],
+        event: [],
+        background: [],
         form: {
-          companyname: "",
-          Category: "",
-          customer: "",
-          reaching:'',
-          product:'',
-          Trigger:'',
+          company: "",
+          category: "",
+          audience: "",
+          event:'',
+          background:'',
         },
         formErrors: {
-          companyname: null,
-          Category: null,
-          customer: null,
-          reaching:null,
-          product:null,
-          Trigger:null,
+          company: null,
+          category: null,
+          audience: null,
+          event:null,
+          background:null,
         }
     };
   }
@@ -64,6 +69,7 @@ class GoogleAds extends React.Component {
         [name]: value
       };
     }
+    this.setState({ [e.target.name]: e.target.value });
     this.setState({ form: formObj }, () => {
       if (!Object.keys(formErrors).includes(name)) return;
       let formErrorsObj = {};
@@ -91,22 +97,22 @@ class GoogleAds extends React.Component {
   validateField = (name, value, refValue) => {
     let errorMsg = null;
     switch (name) {
-      case "companyname":
+      case "company":
             if (!value) errorMsg = "Please fill the required field.";
             break;
-      case "customer":
+      case "audience":
           if (!value) errorMsg = "Please fill the required field.";
           break;
       case "reaching":
             if (!value) errorMsg = "Please fill the required field.";
             break;
-      case "Category":
+      case "category":
             if (!value) errorMsg = "Please fill the required field.";
             break;
-      case "Trigger":
+      case "event":
         if (!value) errorMsg = "Please fill the required field.";
         break;
-      case "product":
+      case "background":
         if (!value) errorMsg = "Please fill the required field.";
         break;
       default:
@@ -140,6 +146,23 @@ class GoogleAds extends React.Component {
     console.log("Data: ", form);
   };
   
+  formSubmit(e) {
+    e.preventDefault();
+    const newleadengagement = {
+      company: this.state.company,
+      category: this.state.category,
+      audience: this.state.audience,
+      event:this.state.event,
+      background: this.state.background,
+    }
+    axios.post("https://app2.ellipsis-ai.com/api/v1/newlead_engagement/", newleadengagement,{auth:{
+      username: 'jaffrinkirthiga@gmail.com',
+      password: 'demo@123'
+    }},).then(res => {
+              console.log(res.data);
+          });
+  };
+
   wordCountOne(event) {
     this.setState({ valueOne:event.target.value });
   }
@@ -194,64 +217,64 @@ class GoogleAds extends React.Component {
               </Card.Header>
               <Card.Body>
                 <p>Make a good first impression with new users</p>
-                <Form className="p-0">
-                  <Form.Group className="mb-4" controlId="companyname">
+                <Form className="p-0" onSubmit={this.formSubmit}>
+                  <Form.Group className="mb-4" controlId="company">
                     <Form.Label>Enter your Company/Brand name *</Form.Label>
-                    <Form.Control type="text" name="companyname" value={this.state.companyname} maxLength="20" 
+                    <Form.Control type="text" name="company" value={this.state.company} maxLength="20" 
                     onChange={e => { this.wordCountOne(e); this.handleChange(e)}}
                     />
-                    {formErrors.companyname && (
-                      <span className="err">{formErrors.companyname}</span>
+                    {formErrors.company && (
+                      <span className="err">{formErrors.company}</span>
                     )}
                     <p className="float-end"><span>{lengthOne}/</span><span>20</span></p>
                   </Form.Group>
-                     <Form.Group className="mb-4" controlId="Category">
+                     <Form.Group className="mb-4" controlId="category">
                     <Form.Label>Product Category *</Form.Label>
-                    <Form.Control type="text" name="Category" value={this.state.Category} maxLength="20" 
+                    <Form.Control type="text" name="category" value={this.state.category} maxLength="20" 
                     onChange={e => { this.wordCountTwo(e); this.handleChange(e)}}
                     />
-                    {formErrors.Category && (
-                      <span className="err">{formErrors.Category}</span>
+                    {formErrors.category && (
+                      <span className="err">{formErrors.category}</span>
                     )}
                     <p className="float-end"><span>{lengthTwo}/</span><span>20</span></p>
                   </Form.Group>
-                  <Form.Group className="mb-4" controlId="customer">
-                    <Form.Label>Describe your customer *</Form.Label>
-                    <Form.Control type="text" name="customer" value={this.state.customer} maxLength="20" 
+                  <Form.Group className="mb-4" controlId="audience">
+                    <Form.Label>Describe your Customer *</Form.Label>
+                    <Form.Control type="text" name="audience" value={this.state.audience} maxLength="20" 
                     onChange={e => { this.wordCountThree(e); this.handleChange(e)}}
                     />
-                    {formErrors.customer && (
-                      <span className="err">{formErrors.customer}</span>
+                    {formErrors.audience && (
+                      <span className="err">{formErrors.audience}</span>
                     )}
                     <p className="float-end"><span>{lengthThree}/</span><span>20</span></p>
                   </Form.Group>
-                  <Form.Group className="mb-4" controlId="Trigger">
+                  <Form.Group className="mb-4" controlId="event">
                     <Form.Label>Trigger for email *</Form.Label>
-                    <Form.Control type="email" name="Trigger" value={this.state.Trigger} maxLength="20" 
+                    <Form.Control type="email" name="event" value={this.state.event} maxLength="20" 
                     onChange={e => { this.wordCountFour(e); this.handleChange(e)}}
                     />
-                    {formErrors.Trigger && (
-                      <span className="err">{formErrors.Trigger}</span>
+                    {formErrors.event && (
+                      <span className="err">{formErrors.event}</span>
                     )}
                     <p className="float-end"><span>{lengthFour}/</span><span>20</span></p>
                   </Form.Group>
 
-                  <Form.Group className="mb-4" controlId="product">
+                  <Form.Group className="mb-4" controlId="background">
                     <Form.Label>Explain what your product does</Form.Label>
                     <Form.Control
                       as="textarea"
                       rows={3}
                       maxLength="140"
-                      name="product"
-                      value={this.state.product}
+                      name="background"
+                      value={this.state.background}
                       onChange={e => { this.wordCountFive(e); this.handleChange(e)}}
                       />
-                      {formErrors.product && (
-                        <span className="err">{formErrors.product}</span>
+                      {formErrors.background && (
+                        <span className="err">{formErrors.background}</span>
                       )}
                     <p className="float-end"><span>{lengthFive}/</span><span>120</span></p>
                   </Form.Group>
-                  <Button class="update"  type="button"  onClick={this.handleSubmit}>
+                  <Button class="update"  type="submit"  onClick={this.handleSubmit}>
                     Generate Copy
                   </Button>
                 </Form>

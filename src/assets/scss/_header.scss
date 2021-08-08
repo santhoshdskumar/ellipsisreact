@@ -127,7 +127,7 @@
   font-family: Lato !important;
 font-style: normal Im !important;
 font-weight: normal !important;
-font-size: 13px !important;
+font-size: 15px !important;
 line-height: 16px !important;
 
 color: #FFFFFF;
@@ -378,5 +378,15 @@ color:#fff;
     &:last-child {
       margin-left: 10px;
     }
+  }
+}
+.MuiListItemText-root {
+  margin: 7px 0px;
+}
+
+.MuiCollapse-wrapper {
+  .MuiButtonBase-root {
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
   }
 }
