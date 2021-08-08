@@ -126,39 +126,39 @@ export const Linkedin = [
   {
     socialtype: CarouselAds,
     title: 'Carousel Ads',
-    text: 'Lorem Ipsum is simply dummy text of the printing.',
+    text: 'Storyboard inspiration for LinkedIn carousel ads',
     link:'/carousel_ads',
   },
   {
     socialtype: Dynamic,
     title: 'Dynamic Ads',
-    text: 'Lorem Ipsum is simply dummy text of the printing.',
+    text: 'Engage prospects with right-rail ads on LinkedIn ',
     link:'/dynamic_ads',
   },
   {
     socialtype: SalesEmail,
     popular:'Popular',
     title: 'Sales Emails',
-    text: 'Lorem Ipsum is simply dummy text of the printing.',
+    text: 'Direct messages to your audience to spark action',
     link:'/sponsored_msg',
   },
   {
     socialtype: Investors,
     title: 'Cold Calling Investors',
-    text: 'Lorem Ipsum is simply dummy text of the printing.',
+    text: 'Stand out among hundreds of cold calling emails',
     link:'/coldcalling',
   },
   {
     socialtype: Recruiters,
     popular:'Popular',
     title: 'Cold Calling Recruiters',
-    text: 'Lorem Ipsum is simply dummy text of the printing.',
+    text: 'Apply for that dream job!',
     link:'/coldcalling_rec'
   },
   {
     socialtype: Conversional,
     title: 'Conversational Pitches',
-    text: 'Lorem Ipsum is simply dummy text of the printing.',
+    text: 'Short & crisp elevator pitch to connect with prospects',
     link:'/sponsored_msg'
   }
 ];
@@ -265,7 +265,7 @@ export const Writing = [
   {
     socialtype: Write,
     title: 'Write Like Me',
-    text: 'Lorem Ipsum is simply dummy text of the printing.',
+    text: 'Write Like Me',
     link:'/write_like_me'
   }
 ];

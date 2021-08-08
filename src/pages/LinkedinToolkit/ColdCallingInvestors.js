@@ -177,7 +177,7 @@ class GoogleAds extends React.Component {
                 <h3>Cold Calling Investors</h3>
               </Card.Header>
               <Card.Body>
-                <p>Hero text positions your product in the customer's mind</p>
+                <p>Stand out among hundreds of cold calling emails</p>
                 <Form className="p-0">
                   <Form.Group className="mb-4" controlId="companyname">
                     <Form.Label>Enter your company name *</Form.Label>
