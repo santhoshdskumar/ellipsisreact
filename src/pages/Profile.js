@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col, Card, Tabs, Tab, Form, Button } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Billing, Order } from './ProfileData';
 import ProductsCustom from '../components/ProductsCustom';
@@ -89,6 +90,7 @@ class Profile extends React.Component {
                   <Button variant="primary" type="submit">
                     Update
                   </Button>
+                  <Link to="/Passwordchange" className="changepassword">Change Password</Link>
                 </Form>
               </Col>
             </Row>

@@ -6,7 +6,8 @@ import {Link} from 'react-router-dom';
 import { Form, Button, Pagination } from 'react-bootstrap';
 import Edit from './../assets/images/edit.svg';
 import Delete from './../assets/images/delete.svg';
-
+import DeletePop from './../assets/images/del-pop.svg';
+import DeleteModal from './DeleteModal';
 export default class ProjectCustom extends Component {
   constructor(props) {
     super(props);
@@ -15,19 +16,41 @@ export default class ProjectCustom extends Component {
       show: false,
       name: [],
       modalInputName: '',
+      isOpen: false,
+      loading: false,
+      success: false,   
+      deleteid:'',
     };
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
   }
-  onRemoveItem = (slno) => {
+
+  toggleModal = () => {
+    this.setState({
+      isOpen: !this.state.isOpen,
+      deleteid:this.state.list
+    });
+    console.log(this.state.deleteid);
+  };
+
+  onRemoveItem = (deleteid) => {
     this.setState((state) => {
-      const list = state.list.filter((item) => item.slno !== slno);
+      const list = state.list.filter((item) => item.slno !== deleteid);
       return {
         list,
       };
     });
   };
-
+  approveModal = () => {
+    this.setState({loading: true });
+    setTimeout(() => this.setState({ 
+      loading: false,
+      success: true 
+    }), 1000)
+    setTimeout(() => this.setState({ 
+      isOpen: false 
+    }), 3000)
+  };
   handleChange(e) {
     const target = e.target;
     const name = target.name;
@@ -112,7 +135,7 @@ export default class ProjectCustom extends Component {
                       </li>
                       <li
                         className="delete remove"
-                        onClick={() => this.onRemoveItem(item.slno)}
+                        onClick={this.toggleModal}
                       >
                         <img src={Delete}></img>
                       </li>
@@ -195,6 +218,19 @@ export default class ProjectCustom extends Component {
             </div>
           </div>
         </Modal>
+
+        <DeleteModal show={this.state.isOpen} onApprove={this.approveModal} onClose={this.toggleModal}>
+        <a onClick={this.toggleModal} className="close-icon">
+          <img src={DeletePop}></img>
+        </a>
+          <div class="deleteText">
+          <p>Are you sure ? you want to delete ?</p>
+          <div className="footer">
+            <Button onClick={() => this.onRemoveItem(this.deleteid), this.onApprove } class="update">Delete</Button>
+            <Button onClick={this.toggleModal}>Cancel</Button>
+          </div>
+          </div>
+        </DeleteModal>
       </>
     );
   }
