@@ -268,9 +268,6 @@ class GoogleAds extends React.Component {
 
                     />
                     <p className="float-end"><span>{lengthSix}/</span><span>120</span></p>
-                    {formErrors.event && (
-                      <span className="err">{formErrors.event}</span>
-                    )} 
                   </Form.Group>
                   <Button class="update" type="button" onClick={this.handleSubmit}>
                     Generate Copy
@@ -296,6 +293,10 @@ class GoogleAds extends React.Component {
                   <Link to="/workspaceedit" className="viewAll">Edit your fav items &gt; &gt;</Link>
                 </Tab>
               </Tabs>
+              <div className="clearConsole">
+                <a href="#" className="clear">Clear</a>
+                <a href="#" className="clear"><i class="fas fa-copy"></i></a>
+              </div>
             </Card>
           </Col>
         </Row>

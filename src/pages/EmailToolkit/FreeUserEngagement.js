@@ -290,9 +290,6 @@ class GoogleAds extends React.Component {
                       value={this.state.value}
                       onChange={e => { this.wordCountSix(e); this.handleChange(e)}}
                     />
-                    {formErrors.background && (
-                      <span className="err">{formErrors.background}</span>
-                    )}
                     <p className="float-end"><span>{lengthSix}/</span><span>120</span></p>
                   </Form.Group>
                   <Button class="update" type="submit"  onClick={this.handleSubmit}>
@@ -319,6 +316,10 @@ class GoogleAds extends React.Component {
                   <Link to="/workspaceedit" className="viewAll">Edit your fav items &gt; &gt;</Link>
                 </Tab>
               </Tabs>
+              <div className="clearConsole">
+                <a href="#" className="clear">Clear</a>
+                <a href="#" className="clear"><i class="fas fa-copy"></i></a>
+              </div>
             </Card>
           </Col>
         </Row>

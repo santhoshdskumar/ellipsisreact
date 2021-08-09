@@ -238,9 +238,6 @@ formSubmit(e) {
                       onChange={e => { this.wordCountFour(e); this.handleChange(e)}}
                     />
                     <p className="float-end"><span>{lengthFour}/</span><span>120</span></p>
-                    {formErrors.background && (
-                      <span className="err">{formErrors.background}</span>
-                    )}
                   </Form.Group>
                   <Button class="update" type="submit"  onClick={this.handleSubmit}>
                     Generate Copy
@@ -266,6 +263,10 @@ formSubmit(e) {
                   <Link to="/workspaceedit" className="viewAll">Edit your fav items &gt; &gt;</Link>
                 </Tab>
               </Tabs>
+              <div className="clearConsole">
+                <a href="#" className="clear">Clear</a>
+                <a href="#" className="clear"><i class="fas fa-copy"></i></a>
+              </div>
             </Card>
           </Col>
         </Row>

@@ -274,6 +274,10 @@ class GoogleAds extends React.Component {
                   <Link to="/workspaceedit" className="viewAll">Edit your fav items &gt; &gt;</Link>
                 </Tab>
               </Tabs>
+              <div className="clearConsole">
+                <a href="#" className="clear">Clear</a>
+                <a href="#" className="clear"><i class="fas fa-copy"></i></a>
+              </div>
             </Card>
           </Col>
         </Row>
