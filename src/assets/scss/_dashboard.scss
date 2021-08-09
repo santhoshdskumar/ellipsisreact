@@ -11,6 +11,10 @@
   padding:30px 20px;
   height: 100%;
   position: relative;
+  img {
+    width: 48px;
+    min-height: 62px;
+  }
   label {
     padding: 9px 0px 0px;
   }
@@ -70,6 +74,7 @@
   h3 {
     font-family: Lato;
     font-style: normal;
+    min-height: 35px;
     font-weight: 600;
     font-size: 16px;
     line-height: 19px;
@@ -365,6 +370,7 @@ color: #FFFFFF;
     img {
       width: 48px !important;
       height: auto;
+      min-height: 62px;
     }
   }
 }

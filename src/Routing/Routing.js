@@ -63,12 +63,12 @@ const Routing = () => {
     <Switch>
       <Route exact path="/">
         <div className="innerPage">
-          <AllTools />
+          <Dashboard />
         </div>
       </Route>
-      <Route path="/Dashboard">
+      <Route path="/Alltools">
         <div className="innerPage">
-          <Dashboard />
+          <AllTools />
         </div>
       </Route>
       <Route path="/Workspace">
@@ -193,7 +193,7 @@ const Routing = () => {
           <ScheduleProductDeom />
         </div>
       </Route>
-      <Route path="/hail_mary_mail">
+      <Route path="/activate_dormant_users">
         <div className="innerPage">
           <HailMaryPass />
         </div>

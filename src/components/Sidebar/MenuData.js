@@ -10,13 +10,13 @@ const MenuData = [
   {
     name: 'Dashboard',
     exact: true,
-    to: `/Dashboard`,
+    to: `/`,
     icon: <IconDashboard />,
   },
   {
     name: 'All Tools',
     exact: true,
-    to: '/',
+    to: '/Alltools',
     icon:<i class="fas fa-border-all"></i>,
   },
   {
@@ -38,21 +38,21 @@ const MenuData = [
     ],
   },
   {
-    name: 'Email Toolkit',
+    name: 'Emails',
     exact: true,
     to: "javascript:void(0)",
     icon:<i class="nav-icon fas fa-envelope"></i>,
     subMenus: [
-      { name: 'Sales EMails', to: '/sales_emails' },
+      { name: 'Sales Emails', to: '/sales_emails' },
       { name: 'New Lead Engagement', to: '/new_lead_engagement' },
-      { name: 'Free user engagement', to: '/free_user_engagement' },
+      { name: 'Free User Engagement', to: '/free_user_engagement' },
       { name: 'Post Purchase Engagement ', to: '/post_purchase_engagement' },
       { name: 'Schedule Product Demo', to: '/schedule_product_demo' },
-      { name: 'Hail Mary Passs', to: '/hail_mary_mail' },
+      { name: 'Activate Dormant Users', to: '/activate_dormant_users' },
     ],
   },
   {
-    name: 'Linkedin Toolkit',
+    name: 'LinkedIn',
     exact: true,
     to: "javascript:void(0)",
     icon: <i class="nav-icon fab fa-linkedin-in"></i>,
@@ -68,7 +68,7 @@ const MenuData = [
     ],
   },
   {
-    name: 'Website Toolkit',
+    name: 'Website',
     exact: true,
     to: "javascript:void(0)",
     icon: <i class="nav-icon fas fa-globe"></i>,
@@ -82,7 +82,7 @@ const MenuData = [
     
   },
   {
-    name: 'Article Toolkit',
+    name: 'Articles',
     exact: true,
     to: "javascript:void(0)",
     icon: <i class="nav-icon fas fa-newspaper"></i>,
@@ -94,7 +94,7 @@ const MenuData = [
     ],
   },
   {
-    name: 'Event Toolkit',
+    name: 'Event Promotions',
     exact: true,
     to: "#javascript:void(0)",
     icon:<i class="nav-icon fa fa-calendar"></i>,
@@ -106,7 +106,7 @@ const MenuData = [
     ],
   },
   {
-    name: 'Writing Toolkit',
+    name: 'Writing',
     exact: true,
     to:"#javascript:void(0)",
     icon:<i class="nav-icon fas fa-newspaper"></i>,

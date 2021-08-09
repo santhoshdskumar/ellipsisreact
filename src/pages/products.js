@@ -37,11 +37,11 @@ export const Digital = [
   {
     socialtype:GoogleAds,
     title: 'Google Ads',
+    popular:'Popular',
     text: 'High converting ads for Google Search',
     link:'/google-adsense'
   },
   {
-    popular:'Popular',
     socialtype:facebook,
     title: 'Facebook Ads',
     text: 'Manage content for multiple audiences on Facebook ',
@@ -49,7 +49,7 @@ export const Digital = [
   },
   {
     socialtype: linkedin,
-    title: 'Linkedin Text Ads',
+    title: 'LinkedIn Text Ads',
     text: 'Drive thought leadership with LinkedIn Text ads',
     link:'/linkedinads'
   },
@@ -102,6 +102,7 @@ export const Email = [
   },
   {
     socialtype: Schedule,
+    popular:'Popular',
     title: 'Schedule Product Demo',
     text: 'Get that time time commitment from users for demo',
     link:'schedule_product_demo'
@@ -157,6 +158,7 @@ export const Linkedin = [
   },
   {
     socialtype: Conversional,
+    popular:'Popular',
     title: 'Conversational Pitches',
     text: 'Short & crisp elevator pitch to connect with prospects',
     link:'/sponsored_msg'
@@ -215,6 +217,7 @@ export const Article = [
   },
   {
     socialtype: Outlines,
+    popular:'Popular',
     title: 'Article Outlines',
     text: 'Framework for your next article',
     link:'/article_outlines'
@@ -234,6 +237,7 @@ export const Event = [
   {
     socialtype: EventPromoEmails,
     title: 'Event Promo Emails',
+    popular:'Popular',
     text: 'Drive registrations for events',
     link:'/event_promo_mail'
 

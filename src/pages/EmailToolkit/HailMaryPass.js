@@ -216,7 +216,7 @@ class GoogleAds extends React.Component {
           <Col xs={12} lg={4} sm={12} md={12} className="mb-md-5 toolkitWebsite">
             <Card>
               <Card.Header>
-                <h3>Hail Mary Pass</h3>
+                <h3>Activate Dormant Users</h3>
               </Card.Header>
               <Card.Body>
               <p>Engage users who may have ghosted you</p>

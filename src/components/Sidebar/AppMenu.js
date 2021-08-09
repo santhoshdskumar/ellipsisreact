@@ -150,12 +150,10 @@ const AppMenu = (props) => {
       })}
 
     </List>
-    <ul className="nav bottomLine">
+    <ul className="nav bottomLine flex-column">
       <p className="mb-0  "><a className="ml-0" href="mailto:support@ellipsis-ai.com">support@ellipsis-ai.com</a></p>
-    <li className="">
-          <Link to="/privacy_policy">Privacy Policy</Link>
-          <Link to="/terms_conditions">Terms and Conditions</Link>
-        </li>
+      <p className="mb-0  "><Link to="/privacy_policy">Privacy Policy</Link></p>
+      <p className="mb-0  "><Link to="/terms_conditions">Terms and Conditions</Link></p>
     </ul>
         </div>
   );
