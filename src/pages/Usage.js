@@ -7,39 +7,92 @@ export const Usage = () =>{
             <Col xs={12}>
                 <Card >
                     <Card.Header>
-                        Usage
+                        <h3>Usage</h3>
                     </Card.Header>
                     <Card.Body>
-                    <Table className="borderless">
-                    <thead>
-                        <tr>
-                        <th>TYpe</th>
-                        <th>Date</th>
-                        <th>Credits Used</th>
-                        <th>Credits Remaining</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                        <td>Total</td>
-                        <td>2021-05-12</td>
-                        <td>5</td>
-                        <td>9995</td>
-                        </tr>
-                        <tr>
-                        <td>Total</td>
-                        <td>2021-05-12</td>
-                        <td>5</td>
-                        <td>9995</td>
-                        </tr>
-                        <tr>
-                        <td>Total</td>
-                        <td>2021-05-12</td>
-                        <td>5</td>
-                        <td>9995</td>
-                        </tr>
-                    </tbody>
-                     </Table>
+                        <div className="divTable" >
+                        <div className="divTableBody tableHead">
+                        <div className="divTableRow">
+                        <div className="divTableCell">Type</div>
+                        <div className="divTableCell">Date</div>
+                        <div className="divTableCell">Credits Used</div>
+                        <div className="divTableCell">Credits Remaining</div>
+                        </div>
+                     </div>
+
+                    <div className="divTableBody">
+                        <div class="divTableRow">
+                                <div class="divTableCell">
+                                <h5>Total</h5>
+                        </div>
+                        <div class="divTableCell">
+                                <h5>2021-05-12</h5>
+                    </div>
+                        <div class="divTableCell">
+                                <h5>5</h5>
+                        </div>
+                        <div class="divTableCell">
+                                <h5>1</h5>
+                        </div>
+                        </div>
+                        <div class="divTableRow">
+                                <div class="divTableCell">
+                                <h5>Total</h5>
+                        </div>
+                        <div class="divTableCell">
+                                <h5>2021-05-12</h5>
+                    </div>
+                        <div class="divTableCell">
+                                <h5>5</h5>
+                        </div>
+                        <div class="divTableCell">
+                                <h5>1</h5>
+                        </div>
+                        </div>
+                        <div class="divTableRow">
+                                <div class="divTableCell">
+                                <h5>Total</h5>
+                        </div>
+                        <div class="divTableCell">
+                                <h5>2021-05-12</h5>
+                    </div>
+                        <div class="divTableCell">
+                                <h5>5</h5>
+                        </div>
+                        <div class="divTableCell">
+                                <h5>1</h5>
+                        </div>
+                        </div>
+                        <div class="divTableRow">
+                                <div class="divTableCell">
+                                <h5>Total</h5>
+                        </div>
+                        <div class="divTableCell">
+                                <h5>2021-05-12</h5>
+                    </div>
+                        <div class="divTableCell">
+                                <h5>5</h5>
+                        </div>
+                        <div class="divTableCell">
+                                <h5>1</h5>
+                        </div>
+                        </div>
+                        <div class="divTableRow">
+                                <div class="divTableCell">
+                                <h5>Total</h5>
+                        </div>
+                        <div class="divTableCell">
+                                <h5>2021-05-12</h5>
+                    </div>
+                        <div class="divTableCell">
+                                <h5>5</h5>
+                        </div>
+                        <div class="divTableCell">
+                                <h5>1</h5>
+                        </div>
+                        </div>
+                        </div>
+                </div>
                     </Card.Body>
                     </Card>
 

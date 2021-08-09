@@ -12,26 +12,28 @@ import {
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import { ToolkitNotification } from './../../components/ToolkitNotification';
+import axios from 'axios';
 import { AllNotificationData, FavNotificationData } from '../NotificationData';
 class GoogleAds extends React.Component {
   constructor() {
     super();
+    this.formSubmit = this.formSubmit.bind(this);
     this.state = {
       valueone:'',
       valueTwo:'',
       valueThree:'',
       valueFour:'',
       form: {
-        companyname: "",
+        company: "",
         role: "",
-        reaching: "",
-        product:'',
+        audience: "",
+        background:'',
       },
       formErrors: {
-        companyname: null,
+        company: null,
         role: null,
-        reaching: null,
-        product:null,
+        audience: null,
+        background:null,
       }
   };
 }
@@ -59,6 +61,7 @@ handleChange = (e) => {
       [name]: value
     };
   }
+  this.setState({ [e.target.name]: e.target.value });
   this.setState({ form: formObj }, () => {
     if (!Object.keys(formErrors).includes(name)) return;
     let formErrorsObj = {};
@@ -86,16 +89,16 @@ handleChange = (e) => {
 validateField = (name, value, refValue) => {
   let errorMsg = null;
   switch (name) {
-    case "companyname":
+    case "company":
       if (!value) errorMsg = "Please fill the required field.";
       break;
     case "role":
         if (!value) errorMsg = "Please fill the required field.";
         break;
-    case "reaching":
+    case "audience":
           if (!value) errorMsg = "Please fill the required field.";
           break;
-    case "product":
+    case "background":
     if (!value) errorMsg = "Please fill the required field.";
     break;
     default:
@@ -103,7 +106,6 @@ validateField = (name, value, refValue) => {
   }
   return errorMsg;
 };
-
 
 validateForm = (form, formErrors, validateFunc) => {
   const errorObj = {};
@@ -127,6 +129,21 @@ handleSubmit = () => {
     return false;
   }
   console.log("Data: ", form);
+};
+formSubmit(e) {
+  e.preventDefault();
+  const sponsoredmsg = {
+    company: this.state.company,
+    role: this.state.role,
+    audience: this.state.audience,
+    background: this.state.background,
+  }
+  axios.post("https://app2.ellipsis-ai.com/api/v1/sponsoredmsg/", sponsoredmsg,{auth:{
+    username: 'jaffrinkirthiga@gmail.com',
+    password: 'demo@123'
+  }},).then(res => {
+            console.log(res.data);
+        });
 };
   wordCount(event) {
     this.setState({ valueone:event.target.value });
@@ -178,14 +195,14 @@ handleSubmit = () => {
               </Card.Header>
               <Card.Body>
                 <p>Short & crisp elevator pitch to connect with prospects</p>
-                <Form className="p-0">
-                  <Form.Group className="mb-4" controlId="companyname">
+                <Form className="p-0" onSubmit={this.formSubmit}>
+                  <Form.Group className="mb-4" controlId="company">
                     <Form.Label>Enter company / product name *</Form.Label>
-                    <Form.Control type="text" name="companyname" value={this.state.companyname} maxLength="20" 
+                    <Form.Control type="text" name="company" value={this.state.company} maxLength="20" 
                     onChange={e => { this.wordCount(e); this.handleChange(e)}}
                     />
-                    {formErrors.companyname && (
-                      <span className="err">{formErrors.companyname}</span>
+                    {formErrors.company && (
+                      <span className="err">{formErrors.company}</span>
                     )}
                     <p className="float-end"><span>{lengthOne}/</span><span>20</span></p>
                   </Form.Group>
@@ -199,33 +216,33 @@ handleSubmit = () => {
                       <span className="err">{formErrors.role}</span>
                     )}
                   </Form.Group>
-                  <Form.Group className="mb-4" controlId="reaching">
+                  <Form.Group className="mb-4" controlId="audience">
                     <Form.Label>Who are you reaching out to? *</Form.Label>
-                    <Form.Control type="text" maxLength="20" name="reaching"  value={this.state.reaching}   
+                    <Form.Control type="text" maxLength="20" name="audience"  value={this.state.audience}   
                     onChange={e => { this.wordCountThree(e); this.handleChange(e)}}
                     />
                     <p className="float-end"><span>{lengthThree}/</span><span>20</span></p>
-                    {formErrors.reaching && (
-                      <span className="err">{formErrors.reaching}</span>
+                    {formErrors.audience && (
+                      <span className="err">{formErrors.audience}</span>
                     )}
                   </Form.Group>
 
-                  <Form.Group className="mb-4" controlId="product">
+                  <Form.Group className="mb-4" controlId="background">
                     <Form.Label>Description of your product</Form.Label>
                     <Form.Control
                       as="textarea"
                       rows={3}
                       maxLength="140"
-                      name="companyname"
-                      value={this.state.companyname}
+                      name="background"
+                      value={this.state.background}
                       onChange={e => { this.wordCountFour(e); this.handleChange(e)}}
                     />
                     <p className="float-end"><span>{lengthFour}/</span><span>120</span></p>
-                    {formErrors.product && (
-                      <span className="err">{formErrors.product}</span>
+                    {formErrors.background && (
+                      <span className="err">{formErrors.background}</span>
                     )}
                   </Form.Group>
-                  <Button class="update" type="button"  onClick={this.handleSubmit}>
+                  <Button class="update" type="submit"  onClick={this.handleSubmit}>
                     Generate Copy
                   </Button>
                 </Form>

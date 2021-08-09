@@ -82,7 +82,7 @@ class Dashboard extends React.Component {
                     <Tab eventKey="website" title="Website Toolkit">
                       <ProductSlider toolkit={Website} />
                     </Tab>
-                    <Tab eventKey="artical" title="Artical Toolkit">
+                    <Tab eventKey="artical" title="Article Toolkit">
                       <ProductSlider toolkit={Article} />
                     </Tab>
                     <Tab eventKey="writing" title="Writing Toolkit">

@@ -12,24 +12,30 @@ import {
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import { ToolkitNotification } from './../../components/ToolkitNotification';
+import axios from 'axios';
 import { AllNotificationData, FavNotificationData } from '../NotificationData';
 class GoogleAds extends React.Component {
   constructor() {
     super();
+    this.formSubmit = this.formSubmit.bind(this);
     this.state = {
         valueone:'',
         valueTwo:'',
         valueThree:'',
         valueFour:'',
+        company: [],
+        problem: [],
+        market: [],
+        traction: [],
         form: {
-          companyname: "",
-          solve: "",
+          company: "",
+          problem: "",
           market: "",
           traction:'',
         },
         formErrors: {
-          companyname: null,
-          solve: null,
+          company: null,
+          problem: null,
           market: null,
           traction:null,
         }
@@ -59,6 +65,7 @@ class GoogleAds extends React.Component {
         [name]: value
       };
     }
+    this.setState({ [e.target.name]: e.target.value });
     this.setState({ form: formObj }, () => {
       if (!Object.keys(formErrors).includes(name)) return;
       let formErrorsObj = {};
@@ -86,10 +93,10 @@ class GoogleAds extends React.Component {
   validateField = (name, value, refValue) => {
     let errorMsg = null;
     switch (name) {
-      case "companyname":
+      case "company":
         if (!value) errorMsg = "Please fill the required field.";
         break;
-      case "solve":
+      case "problem":
           if (!value) errorMsg = "Please fill the required field.";
           break;
       case "market":
@@ -128,6 +135,23 @@ class GoogleAds extends React.Component {
     }
     console.log("Data: ", form);
   };
+
+  formSubmit(e) {
+    e.preventDefault();
+    const coldcalling = {
+      company: this.state.company,
+      problem: this.state.problem,
+      market: this.state.market,
+      traction: this.state.traction,
+    }
+    axios.post("https://app2.ellipsis-ai.com/api/v1/coldcalling/", coldcalling,{auth:{
+      username: 'jaffrinkirthiga@gmail.com',
+      password: 'demo@123'
+    }},).then(res => {
+              console.log(res.data);
+          });
+  };
+
   wordCount(event) {
     this.setState({ valueone:event.target.value });
   }
@@ -178,24 +202,24 @@ class GoogleAds extends React.Component {
               </Card.Header>
               <Card.Body>
                 <p>Stand out among hundreds of cold calling emails</p>
-                <Form className="p-0">
-                  <Form.Group className="mb-4" controlId="companyname">
+                <Form className="p-0" onSubmit={this.formSubmit}>
+                  <Form.Group className="mb-4" controlId="company">
                     <Form.Label>Enter your company name *</Form.Label>
-                    <Form.Control type="text" name="companyname" value={this.state.companyname} maxLength="20" 
+                    <Form.Control type="text" name="company" value={this.state.company} maxLength="20" 
                     onChange={e => { this.wordCount(e); this.handleChange(e)}}
                     />
-                    {formErrors.companyname && (
-                      <span className="err">{formErrors.companyname}</span>
+                    {formErrors.company && (
+                      <span className="err">{formErrors.company}</span>
                     )}
                     <p className="float-end"><span>{lengthOne}/</span><span>20</span></p>
                   </Form.Group>
-                  <Form.Group className="mb-4" controlId="solve">
+                  <Form.Group className="mb-4" controlId="problem">
                     <Form.Label>What problem does your company solve *</Form.Label>
-                    <Form.Control type="text" maxLength="20" name="solve"  value={this.state.solve}   
+                    <Form.Control type="text" maxLength="20" name="problem"  value={this.state.problem}   
                     onChange={e => { this.wordCountTwo(e); this.handleChange(e)}}
                     />
-                    {formErrors.solve && (
-                      <span className="err">{formErrors.solve}</span>
+                    {formErrors.problem && (
+                      <span className="err">{formErrors.problem}</span>
                     )}
                     <p className="float-end"><span>{lengthTwo}/</span><span>20</span></p>
                   </Form.Group>
@@ -225,7 +249,7 @@ class GoogleAds extends React.Component {
                     )} 
                     <p className="float-end"><span>{lengthFour}/</span><span>120</span></p>
                   </Form.Group>
-                  <Button class="update" type="button"  onClick={this.handleSubmit}>
+                  <Button class="update" type="submit"  onClick={this.handleSubmit}>
                     Generate Copy
                   </Button>
                 </Form>

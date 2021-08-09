@@ -213,6 +213,7 @@ formSubmit(e) {
                     <Form.Label>Enter company / product name *</Form.Label>
                     <Form.Control type="text" name="company" value={this.state.value} maxLength="20" 
                     onChange={e => { this.wordCount(e); this.handleChange(e)}}
+                    placeholder="JBL"
                     />
                     <p className="float-end"><span>{lengthOne}/</span><span>20</span></p>
                     {formErrors.company && (
@@ -223,7 +224,7 @@ formSubmit(e) {
                     <Form.Label>Who is your audience *</Form.Label>
                     <Form.Control type="text" maxLength="20" name="audience"  value={this.state.value}
                     onChange={e => { this.wordCountTwo(e); this.handleChange(e)}}
-
+                      placeholder="Music Lovers"
                     />
                     <p className="float-end"><span>{lengthTwo}/</span><span>20</span></p>
                     {formErrors.audience && (
@@ -238,12 +239,10 @@ formSubmit(e) {
                       rows={3}
                       maxLength="140"
                       name="background"
+                      placeholder="30% OFF on HD-quality earphones, wireless connectivity, use at work, gym, movies, free shipping"
                       value={this.state.value}
-                       onChange={e => { this.wordCountThree(e); this.handleChange(e)}}
+                       onChange={e => { this.handleChange(e)}}
                     />
-                        {formErrors.background && (
-                        <span className="err">{formErrors.background}</span>
-                      )}
                     <p className="float-end"><span>{lengthThree}/</span><span>120</span></p>
                   </Form.Group>
                   <Button class="update"   type="submit" onClick={this.handleSubmit}  >
@@ -266,11 +265,15 @@ formSubmit(e) {
                 <Tab eventKey="all" title={`All ${this.state.allCount}`}>
                   <ToolkitNotification notifcation={this.state.consumedData} />
                 </Tab>
-                <Tab eventKey="favourite" title="Favourite(1)">
+                <Tab eventKey="favourite" title="Favourite (1)">
                   <ToolkitNotification notifcation={this.state.consumedData} />
                   <Link to="/workspaceedit" className="viewAll">Edit your fav items &gt; &gt;</Link>
                 </Tab>
               </Tabs>
+              <div className="clearConsole">
+                <a href="#" className="clear">Clear</a>
+                <a href="#" className="clear"><i class="fas fa-copy"></i></a>
+              </div>
             </Card>
           </Col>
         </Row>

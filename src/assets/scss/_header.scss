@@ -409,3 +409,15 @@ color:#fff;
     font-size: 12px;
   }
 }
+
+.MuiDrawer-paperAnchorDockedLeft {
+  &>div {
+    height: 100%;
+  }
+  .mainMenu {
+    display: flex;
+    flex-direction: column;
+    height: 88%;
+    justify-content: space-between;
+  }
+}

@@ -49,7 +49,7 @@ class Workspace extends React.Component {
   render() {
     const Button = styled.button`
     background: #fff;
-    width:125px;
+    width:165px;
     letter-spacing:0.08rem;
     mix-blend-mode: normal;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.11);
@@ -114,7 +114,7 @@ class Workspace extends React.Component {
                   type="submit"
                   onClick={(e) => this.handleSubmit(e)}
                 >
-                  Update 
+                  Add 
                 </Button>
               </Form>
             </div>

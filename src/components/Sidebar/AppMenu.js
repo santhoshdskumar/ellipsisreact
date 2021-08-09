@@ -46,7 +46,7 @@ const AppMenu = (props) => {
   };
 
   return (
-    <>
+    <div className="mainMenu">
     <List component="nav" className={classes.appMenu} disablePadding>
       <div className="side-menu-top">
         <div className="logo">
@@ -58,7 +58,7 @@ const AppMenu = (props) => {
           <img src={user} alt="user" />
         </div>
         <div className="userDrop p-3">
-          <p className="m-0">Switch</p>
+          <p className="m-0">Switch Workspace</p>
         <Form className="p-0">
                 <Form.Group className="mb-4" controlId="formBasicPassword">
                 <select aria-label="Default select example" className="form-control">
@@ -157,7 +157,7 @@ const AppMenu = (props) => {
           <Link to="/terms_conditions">Terms and Conditions</Link>
         </li>
     </ul>
-        </>
+        </div>
   );
 };
 

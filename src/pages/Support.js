@@ -30,7 +30,7 @@ const Support = () => {
     <div className="support">
       <div className="card col-12 col-md-9">
         <div className="card-header">
-          <h3>Support Us</h3>
+          <h3>Contact Us</h3>
         </div>
         <div className="card-body" as="Card">
           <Box>

@@ -468,3 +468,27 @@ input[type=checkbox]:checked + label:before {
     text-decoration: none;
   }
 }
+.card-body {
+  .float-end {
+    font-size: 12px;
+    margin-top: 10px;
+  }
+}
+
+.clearConsole {
+  position: absolute;
+  right: 21px;
+  top: 17px;
+  font-size: 13px;
+  color:#5433ef;
+  a {
+    text-decoration: none;
+    font-size: 18px;
+  color:#5433ef;
+  }
+  i {
+    margin-left: 15px;
+    font-size: 18px;
+  color:#5433ef;
+  }
+}

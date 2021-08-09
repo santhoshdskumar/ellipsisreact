@@ -194,6 +194,7 @@ class GoogleAds extends React.Component {
                     <Form.Label>Enter company / product name *</Form.Label>
                     <Form.Control type="text" name="company" value={this.state.value} maxLength="20" 
                     onChange={e => { this.wordCount(e); this.handleChange(e)}}
+                    placeholedr="Fashionphile"
                     />
                     {formErrors.company && (
                       <span className="err">{formErrors.company}</span>
@@ -204,6 +205,7 @@ class GoogleAds extends React.Component {
                     <Form.Label>Who is your audeince *</Form.Label>
                     <Form.Control type="text" maxLength="20" name="audience"  value={this.state.value}   
                      onChange={e => { this.wordCountTwo(e); this.handleChange(e)}}
+                     placeholder="Fashion Lovers"
                      />
                     <p className="float-end"><span>{lengthTwo}/</span><span>20</span></p>
                           {formErrors.audience && (
@@ -219,12 +221,9 @@ class GoogleAds extends React.Component {
                       maxLength="140"
                       name="background"
                       value={this.state.value}
-                      onChange={e => { this.wordCountThree(e); this.handleChange(e)}}
+                      placeholder="Buy and sell used designer, luxury handbags, and accessories. 70% off on designer brands."
+                      onChange={e => {this.handleChange(e)}}
                     />
-                    <p className="float-end"><span>{lengthThree}/</span><span>120</span></p>
-                    {formErrors.background && (
-                        <span className="err">{formErrors.background}</span>
-                      )}
                   </Form.Group>
                   <Button class="update" type="submit" onClick={this.handleSubmit} >
                     Generate Copy
