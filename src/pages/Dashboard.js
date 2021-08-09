@@ -73,20 +73,23 @@ class Dashboard extends React.Component {
                     >
                       <ProductSlider toolkit={Digital} />
                     </Tab>
-                    <Tab eventKey="email" title="Email Toolkit">
+                    <Tab eventKey="email" title="Emails ">
                       <ProductSlider toolkit={Email} />
                     </Tab>
-                    <Tab eventKey="linkedin" title="LinkedIn Toolkit">
+                    <Tab eventKey="linkedin" title="LinkedIn ">
                       <ProductSlider toolkit={Linkedin} />
                     </Tab>
-                    <Tab eventKey="website" title="Website Toolkit">
+                    <Tab eventKey="website" title="Website ">
                       <ProductSlider toolkit={Website} />
                     </Tab>
-                    <Tab eventKey="artical" title="Article Toolkit">
+                    <Tab eventKey="artical" title="Articles ">
                       <ProductSlider toolkit={Article} />
                     </Tab>
-                    <Tab eventKey="writing" title="Writing Toolkit">
+                    <Tab eventKey="writing" title="Writing ">
                       <ProductSlider toolkit={Writing} />
+                    </Tab>
+                     <Tab eventKey="writing" title="Event Promotions ">
+                      <ProductSlider toolkit={Event} />
                     </Tab>
                   </Tabs>
                 </div>

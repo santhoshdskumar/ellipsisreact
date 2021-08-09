@@ -25,7 +25,7 @@ class GoogleAds extends React.Component {
       headline:false,
       consumedData:null,
       allCount:'',
-      isDirty:true,
+      inputzValue:'',
       form: {
         valueone:'',
         valueThree:'',
@@ -154,12 +154,14 @@ formSubmit(e) {
       })
       // console.log(this.state.consumedData)
    });
-   this.setState(
-     {
-       isDirty:false
-     }
-   )
 };
+ resetInputField(event) {
+    this.setState({
+      company:null,
+      audience:'',
+      background:''
+    })
+  };
   wordCount(event) {
     this.setState({ valueone:event.target.value });
   }
@@ -265,14 +267,14 @@ formSubmit(e) {
                 <Tab eventKey="all" title={`All ${this.state.allCount}`}>
                   <ToolkitNotification notifcation={this.state.consumedData} />
                 </Tab>
-                <Tab eventKey="favourite" title="Favourite (1)">
-                  <ToolkitNotification notifcation={this.state.consumedData} />
+                <Tab eventKey="favourite" title="Favourite">
+                  <ToolkitNotification notifcation={FavNotificationData} />
                   <Link to="/workspaceedit" className="viewAll">Edit your fav items &gt; &gt;</Link>
                 </Tab>
               </Tabs>
               <div className="clearConsole">
-                <a href="#" className="clear">Clear</a>
-                <a href="#" className="clear"><i class="fas fa-copy"></i></a>
+                <a onClick={this.resetInputField} className="clear">Clear Output</a>
+                <a href="#" className="clear">Select All</a>
               </div>
             </Card>
           </Col>

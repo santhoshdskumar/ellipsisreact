@@ -18,7 +18,7 @@ export default class AllTools extends Component {
         <div className="container">
           <div className="row">
             <div className="col-12  mb-4 mt-5">
-              <h2>Email Toolkit</h2>
+              <h2>Emails</h2>
             </div>
           </div>
           <ToolkitCustom className="row " toolkit={Email} />
@@ -26,7 +26,7 @@ export default class AllTools extends Component {
         <div className="container">
           <div className="row ">
             <div className="col-12  mb-4">
-              <h2>Linkedin Ads</h2>
+              <h2>LinkedIn</h2>
             </div>
           </div>
           <ToolkitCustom className="row " toolkit={Linkedin} />
@@ -34,7 +34,7 @@ export default class AllTools extends Component {
         <div className="container">
           <div className="row">
             <div className="col-12  mb-4 mt-5">
-              <h2>Website Toolkit</h2>
+              <h2>Website</h2>
             </div>
           </div>
           <ToolkitCustom className="row " toolkit={Website} />
@@ -42,7 +42,7 @@ export default class AllTools extends Component {
         <div className="container">
           <div className="row ">
             <div className="col-12  mb-4">
-              <h2>Article Ads</h2>
+              <h2>Articles</h2>
             </div>
           </div>
           <ToolkitCustom className="row " toolkit={Article} />
@@ -50,7 +50,7 @@ export default class AllTools extends Component {
         <div className="container">
           <div className="row">
             <div className="col-12  mb-4 mt-5">
-              <h2>Event Toolkit</h2>
+              <h2>Event Promotions </h2>
             </div>
           </div>
           <ToolkitCustom className="row " toolkit={Event} />
@@ -58,7 +58,7 @@ export default class AllTools extends Component {
         <div className="container">
           <div className="row">
             <div className="col-12  mb-4 mt-5">
-              <h2>Writing Toolkit</h2>
+              <h2>Writing Tools</h2>
             </div>
           </div>
           <ToolkitCustom className="row " toolkit={Writing} />

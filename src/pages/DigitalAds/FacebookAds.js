@@ -241,10 +241,10 @@ class GoogleAds extends React.Component {
                 id="uncontrolled-tab-example"
                 className="mb-3"
               >
-                <Tab eventKey="all" title="All(6)">
+                <Tab eventKey="all" title="All (6)">
                   <ToolkitNotification notifcation={AllNotificationData} />
                 </Tab>
-                <Tab eventKey="favourite" title="Favourite(1)">
+                <Tab eventKey="favourite" title="Favourite (1)">
                   <ToolkitNotification notifcation={FavNotificationData} />
                   <Link to="/workspaceedit" className="viewAll">Edit your fav items &gt; &gt;</Link>
                 </Tab>

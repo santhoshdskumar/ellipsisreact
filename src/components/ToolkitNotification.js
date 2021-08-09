@@ -15,10 +15,14 @@ export const ToolkitNotification = (props) => {
           <div>
             <h6>{item.suggestion.Headline}</h6>
             <p>{item.suggestion.Description}</p>
-            <span className="text-right float-end">{item.wishlist}</span>
+            <div className="randomIcons">
+            <span className="text-right float-end"><i class="fas fa-plus"></i></span>
+            <span className="text-right float-end"><i class="fas fa-copy"></i></span>
+            </div>
           </div>
         </Alert>
       ))} 
+        <button className="loadmore">Load More</button>
       
     </React.Fragment>
     
