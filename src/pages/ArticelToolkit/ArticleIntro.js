@@ -25,6 +25,8 @@ class GoogleAds extends React.Component {
         valueone:'',
         valueThree:'',
         valueFour:'',
+        consumedData:null,
+        allCount:'',
         form: {
           company: "",
           audience: "",
@@ -141,8 +143,14 @@ formSubmit(e) {
     username: 'jaffrinkirthiga@gmail.com',
     password: 'demo@123'
   }},).then(res => {
-            console.log(res.data);
-        });
+    let retData = res.data.data.output;
+     this.setState({
+       consumedData:retData
+     })
+     this.setState({
+       allCount:retData.length
+     })
+  });
 };
 
   wordCount(event) {
@@ -242,8 +250,8 @@ formSubmit(e) {
                 id="uncontrolled-tab-example"
                 className="mb-3"
               >
-                <Tab eventKey="all" title="All(6)">
-                  <ToolkitNotification notifcation={AllNotificationData} />
+                <Tab eventKey="all" title={`All ${this.state.allCount}`}>
+                  <ToolkitNotification notifcation={this.state.consumedData} />
                 </Tab>
                 <Tab eventKey="favourite" title="Favourite(1)">
                   <ToolkitNotification notifcation={FavNotificationData} />

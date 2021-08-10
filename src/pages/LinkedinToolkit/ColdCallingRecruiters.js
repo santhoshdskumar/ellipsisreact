@@ -27,6 +27,8 @@ class GoogleAds extends React.Component {
         audience: [],
         background: [],
         role: [],
+        consumedData:null,
+        allCount:'',
         form: {
           company: "",
           audience: "",
@@ -148,8 +150,14 @@ class GoogleAds extends React.Component {
       username: 'jaffrinkirthiga@gmail.com',
       password: 'demo@123'
     }},).then(res => {
-              console.log(res.data);
-          });
+      let retData = res.data.data.output;
+       this.setState({
+         consumedData:retData
+       })
+       this.setState({
+         allCount:retData.length
+       })
+    });
   };
 
   wordCount(event) {
@@ -266,8 +274,8 @@ class GoogleAds extends React.Component {
                 id="uncontrolled-tab-example"
                 className="mb-3"
               >
-                <Tab eventKey="all" title="All(6)">
-                  <ToolkitNotification notifcation={AllNotificationData} />
+                <Tab eventKey="all" title={`All ${this.state.allCount}`}>
+                  <ToolkitNotification notifcation={this.state.consumedData} />
                 </Tab>
                 <Tab eventKey="favourite" title="Favourite(1)">
                   <ToolkitNotification notifcation={FavNotificationData} />
@@ -275,8 +283,8 @@ class GoogleAds extends React.Component {
                 </Tab>
               </Tabs>
               <div className="clearConsole">
-                <a href="#" className="clear">Clear</a>
-                <a href="#" className="clear"><i class="fas fa-copy"></i></a>
+                <a onClick={this.resetInputField} className="clear">Clear Output</a>
+                <a href="#" className="clear">Select All</a>
               </div>
             </Card>
           </Col>

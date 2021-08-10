@@ -12,10 +12,12 @@ import {
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import { ToolkitNotification } from './../../components/ToolkitNotification';
+import axios from 'axios';
 import { AllNotificationData, FavNotificationData } from '../NotificationData';
 class GoogleAds extends React.Component {
   constructor() {
     super();
+    this.formSubmit = this.formSubmit.bind(this);
     this.state = {
         valueOne:'',
         valueTwo:'',
@@ -23,21 +25,29 @@ class GoogleAds extends React.Component {
         valueFour:'',
         valueFive:'',
         valueSix:'',
+        company: [],
+        audience: [],
+        product: [],
+        date: [],
+        background: [],
+        offer: [],
+        consumedData:null,
+        allCount:'',
         form: {
-          companyname: "",
-          audiencee: "",
-          Category:'',
-          Date:'',
-          event:'',
-          promotions:'',
+          company: "",
+          audience: "",
+          product:'',
+          date:'',
+          background:'',
+          offer:'',
         },
         formErrors: {
-          companyname: null,
-          audiencee: null,
-          Category:null,
-          Date:null,
-          event:null,
-          promotions:null,
+          company: null,
+          audience: null,
+          product:null,
+          date:null,
+          background:null,
+          offer:null,
         }
     };
   }
@@ -65,6 +75,7 @@ class GoogleAds extends React.Component {
         [name]: value
       };
     }
+    this.setState({ [e.target.name]: e.target.value });
     this.setState({ form: formObj }, () => {
       if (!Object.keys(formErrors).includes(name)) return;
       let formErrorsObj = {};
@@ -92,22 +103,22 @@ class GoogleAds extends React.Component {
   validateField = (name, value, refValue) => {
     let errorMsg = null;
     switch (name) {
-      case "companyname":
+      case "company":
             if (!value) errorMsg = "Please fill the required field.";
             break;
-      case "Category":
+      case "product":
             if (!value) errorMsg = "Please fill the required field.";
             break;
-      case "Date":
+      case "date":
             if (!value) errorMsg = "Please fill the required field.";
             break;
-      case "promotions":
+      case "offer":
             if (!value) errorMsg = "Please fill the required field.";
             break;
-      case "event":
+      case "background":
             if (!value) errorMsg = "Please fill the required field.";
             break;
-      case "audiencee":
+      case "audience":
         if (!value) errorMsg = "Please fill the required field.";
         break;
       default:
@@ -140,6 +151,31 @@ class GoogleAds extends React.Component {
     }
     console.log("Data: ", form);
   };
+
+  formSubmit(e) {
+    e.preventDefault();
+    const event_digitalads = {
+      company: this.state.company,
+      product: this.state.product,
+      audience: this.state.audience,
+      date: this.state.date,
+      offer: this.state.offer,
+      background: this.state.background,
+    }
+    axios.post("https://app2.ellipsis-ai.com/api/v1/event_digitalads/", event_digitalads,{auth:{
+      username: 'jaffrinkirthiga@gmail.com',
+      password: 'demo@123'
+    }},).then(res => {
+      let retData = res.data.data.output;
+       this.setState({
+         consumedData:retData
+       })
+       this.setState({
+         allCount:retData.length
+       })
+    });
+  };
+
   wordCountOne(event) {
     this.setState({ valueOne:event.target.value });
   }
@@ -199,76 +235,77 @@ class GoogleAds extends React.Component {
                 <h3>Event Digital Ads</h3>
               </Card.Header>
               <Card.Body>
-                <p>Ad copy fine tuned for event promotions</p>
-                <Form className="p-0">
-                  <Form.Group className="mb-4" controlId="companyname">
+                <p>Ad copy fine tuned for event offer</p>
+                <Form className="p-0" onSubmit={this.formSubmit}>
+                  <Form.Group className="mb-4" controlId="company">
                     <Form.Label>Event Name *</Form.Label>
-                    <Form.Control type="text" name="companyname" value={form.companyname} maxLength="20" 
+                    <Form.Control type="text" name="company" value={form.company} maxLength="20" 
                     onChange={e => { this.wordCountOne(e); this.handleChange(e)}}
                     />
-                    {formErrors.companyname && (
-                      <span className="err">{formErrors.companyname}</span>
+                    {formErrors.company && (
+                      <span className="err">{formErrors.company}</span>
                     )}
                     <p className="float-end"><span>{lengthOne}/</span><span>20</span></p>
                   </Form.Group>
-                  <Form.Group className="mb-4" controlId="audiencee">
+                  <Form.Group className="mb-4" controlId="audience">
                     <Form.Label>Describe your audience *</Form.Label>
-                    <Form.Control type="text" name="audiencee" value={form.audiencee} maxLength="20" 
+                    <Form.Control type="text" name="audience" value={form.audience} maxLength="20" 
                     onChange={e => { this.wordCountTwo(e); this.handleChange(e)}}
                     />
 
                     <p className="float-end"><span>{lengthTwo}/</span><span>20</span></p>
-                    {formErrors.audiencee && (
-                      <span className="err">{formErrors.audiencee}</span>
+                    {formErrors.audience && (
+                      <span className="err">{formErrors.audience}</span>
                     )}
                   </Form.Group>
                              
-                  <Form.Group className="mb-4" controlId="Category">
+                  <Form.Group className="mb-4" controlId="product">
                     <Form.Label>Event Category *</Form.Label>
-                    <Form.Control type="text" name="Category" value={this.state.Category} maxLength="20" 
+                    <Form.Control type="text" name="product" value={this.state.product} maxLength="20" 
                     onChange={e => { this.wordCountThree(e); this.handleChange(e)}}
                     />
                     <p className="float-end"><span>{lengthThree}/</span><span>20</span></p>
-                    {formErrors.Category && (
-                      <span className="err">{formErrors.Category}</span>
+                    {formErrors.product && (
+                      <span className="err">{formErrors.product}</span>
                     )}
                   </Form.Group>
-                  <Form.Group className="mb-4" controlId="Date">
+                  <Form.Group className="mb-4" controlId="date">
                     <Form.Label>Event Date *</Form.Label>
-                    <Form.Control type="text" name="Date" value={this.state.Category} maxLength="20" 
+                    <Form.Control type="text" name="date" value={this.state.date} maxLength="20" 
                     onChange={e => { this.wordCountFour(e); this.handleChange(e)}}
                     />
                     <p className="float-end"><span>{lengthFour}/</span><span>20</span></p>
-                    {formErrors.Date && (
-                      <span className="err">{formErrors.Date}</span>
+                    {formErrors.date && (
+                      <span className="err">{formErrors.date}</span>
                     )}
                   </Form.Group>
-   
-
-                  <Form.Group className="mb-4" controlId="promotions">
+                  <Form.Group className="mb-4" controlId="offer">
                     <Form.Label>Any offers or promotions? *</Form.Label>
-                    <Form.Control type="text" maxLength="20" name="promotions"  value={this.state.audience}   
+                    <Form.Control type="text" maxLength="20" name="offer"  value={this.state.offer}   
                     onChange={e => { this.wordCountFive(e); this.handleChange(e)}}
                     />
                     <p className="float-end"><span>{lengthFive}/</span><span>20</span></p>
-                    {formErrors.promotions && (
-                      <span className="err">{formErrors.promotions}</span>
+                    {formErrors.offer && (
+                      <span className="err">{formErrors.offer}</span>
                     )}
                   </Form.Group>
 
-                  <Form.Group className="mb-4" controlId="event">
+                  <Form.Group className="mb-4" controlId="background">
                     <Form.Label>Why should one attend the event?</Form.Label>
                     <Form.Control
                       as="textarea"
                       rows={3}
                       maxLength="140"
-                      name="event"
-                      value={this.state.event}
+                      name="background"
+                      value={this.state.background}
                       onChange={e => { this.wordCountSix(e); this.handleChange(e)}}
                     />
                     <p className="float-end"><span>{lengthSix}/</span><span>120</span></p>
+                    {formErrors.background && (
+                      <span className="err">{formErrors.background}</span>
+                    )}
                   </Form.Group>
-                  <Button class="update" type="button" onClick={this.handleSubmit}>
+                  <Button class="update" type="submit" onClick={this.handleSubmit}>
                     Generate Copy
                   </Button>
                 </Form>
@@ -284,8 +321,9 @@ class GoogleAds extends React.Component {
                 id="uncontrolled-tab-example"
                 className="mb-3"
               >
-                <Tab eventKey="all" title="All(6)">
-                  <ToolkitNotification notifcation={AllNotificationData} />
+               
+               <Tab eventKey="all" title={`All ${this.state.allCount}`}>
+                  <ToolkitNotification notifcation={this.state.consumedData} />
                 </Tab>
                 <Tab eventKey="favourite" title="Favourite(1)">
                   <ToolkitNotification notifcation={FavNotificationData} />
@@ -293,8 +331,8 @@ class GoogleAds extends React.Component {
                 </Tab>
               </Tabs>
               <div className="clearConsole">
-                <a href="#" className="clear">Clear</a>
-                <a href="#" className="clear"><i class="fas fa-copy"></i></a>
+                <a onClick={this.resetInputField} className="clear">Clear Output</a>
+                <a href="#" className="clear">Select All</a>
               </div>
             </Card>
           </Col>

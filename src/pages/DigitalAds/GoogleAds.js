@@ -14,6 +14,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { ToolkitNotification } from './../../components/ToolkitNotification';
 import { AllNotificationData, FavNotificationData } from '../NotificationData';
+import Loader from './../../components/Loader';
 class GoogleAds extends React.Component {
   constructor() {
     super();
@@ -25,7 +26,8 @@ class GoogleAds extends React.Component {
       headline:false,
       consumedData:null,
       allCount:'',
-      inputzValue:'',
+      copySuccess: '',
+      loading: true,
       form: {
         valueone:'',
         valueThree:'',
@@ -146,22 +148,21 @@ formSubmit(e) {
   }},).then(res => {
      let retData = res.data.data.output;
       this.setState({
-        consumedData:retData
+        consumedData:retData,
+        loading: false
       })
-      
       this.setState({
         allCount:retData.length
       })
-      // console.log(this.state.consumedData)
    });
 };
- resetInputField(event) {
-    this.setState({
-      company:null,
-      audience:'',
-      background:''
-    })
-  };
+copyToClipboard = (e) => {
+  this.textArea.select();
+  document.execCommand('copy');
+  e.target.focus();
+  this.setState({ copySuccess: 'Copied!' });
+};
+
   wordCount(event) {
     this.setState({ valueone:event.target.value });
   }
@@ -179,7 +180,7 @@ formSubmit(e) {
     lengthOne = this.state.valueone?this.state.valueone.length:0,
     lengthTwo = this.state.valueThree?this.state.valueThree.length:0,
     lengthThree = this.state.valueFour?this.state.valueFour.length:0;
-    const { form, formErrors } = this.state;
+    const { form, formErrors, loading } = this.state;
     const Button = styled.button`
       background: #5433ff;
       mix-blend-mode: normal;
@@ -265,7 +266,8 @@ formSubmit(e) {
               >
                
                 <Tab eventKey="all" title={`All ${this.state.allCount}`}>
-                  <ToolkitNotification notifcation={this.state.consumedData} />
+                {this.state.loading ? <Loader /> : null}
+                <ToolkitNotification notifcation={this.state.consumedData} />
                 </Tab>
                 <Tab eventKey="favourite" title="Favourite">
                   <ToolkitNotification notifcation={FavNotificationData} />
