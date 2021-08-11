@@ -35,6 +35,7 @@ import Write from '../assets/images/icons/Write.svg';
 
 export const Digital = [
   {
+    id:'digital1',
     socialtype:GoogleAds,
     title: 'Google Ads',
     popular:'Popular',
@@ -42,18 +43,21 @@ export const Digital = [
     link:'/google-adsense'
   },
   {
+    id:'digital2',
     socialtype:facebook,
     title: 'Facebook Ads',
     text: 'Manage content for multiple audiences on Facebook ',
     link:'/facebookads'
   },
   {
+    id:'digital3',
     socialtype: linkedin,
     title: 'LinkedIn Text Ads',
     text: 'Drive thought leadership with LinkedIn Text ads',
     link:'/linkedinads'
   },
   {
+    id:'digital4',
     socialtype: MobileAppNotifications,
     title: 'Mobile App Notification',
     text: 'Engaging mobile app notification alerts',
@@ -61,6 +65,7 @@ export const Digital = [
     
   },
   {
+    id:'digital5',
     socialtype: Testing,
     title: 'Ad Copies For A/B Testing',
     text: 'Generate multiple variations for AB testing',
@@ -68,6 +73,7 @@ export const Digital = [
 
   },
   {
+    id:'digital6',
     socialtype: Descriptions,
     title: 'Link Descriptions',
     text: 'Metadata for all your landing pages',
@@ -77,30 +83,35 @@ export const Digital = [
 
 export const Email = [
   {
+    id:'email1',
     socialtype: SalesEmail,
     title: 'Sales Emails',
     text: 'Framework for writing thoughtful emails',
     link:'/sales_emails'
   },
   {
+    id:'email2',
     socialtype: Lead,
     title: 'New Lead Engagement',
     text: 'Make a good first impression with new users',
     link:'/new_lead_engagement'
   },
   {
+    id:'email3',
     socialtype: User,
     title: 'Free User Engagement',
     text: 'Convert free users into paid users',
     link:'/free_user_engagement'
   },
   {
+    id:'email4',
     socialtype: Post,
     title: 'Post Purchase Engagement',
     text: 'Engage with existing users to reduce churn',
     link:'/post_purchase_engagement'
   },
   {
+    id:'email5',
     socialtype: Schedule,
     popular:'Popular',
     title: 'Schedule Product Demo',
@@ -108,6 +119,7 @@ export const Email = [
     link:'schedule_product_demo'
   },
   {
+    id:'email6',
     socialtype: Dormant,
     popular:'Popular',
     title: 'Engage Dormant Users',
@@ -119,24 +131,28 @@ export const Email = [
 
 export const Linkedin = [
   {
+    id:'linkedin1',
     socialtype: AdLinkDescriptions,
     title: 'Ad Link Description',
     text: 'Drive Thought Leadership through LinkedIn Text Ads',
     link:'/linkedinlinkdesc',
   },
   {
+    id:'linkedin2',
     socialtype: CarouselAds,
     title: 'Carousel Ads',
     text: 'Storyboard inspiration for LinkedIn carousel ads',
     link:'/carousel_ads',
   },
   {
+    id:'linkedin3',
     socialtype: Dynamic,
     title: 'Dynamic Ads',
     text: 'Engage prospects with right-rail ads on LinkedIn ',
     link:'/dynamic_ads',
   },
   {
+    id:'linkedin4',
     socialtype: SalesEmail,
     popular:'Popular',
     title: 'Sales Emails',
@@ -144,12 +160,14 @@ export const Linkedin = [
     link:'/sponsored_msg',
   },
   {
+    id:'linkedin5',
     socialtype: Investors,
     title: 'Cold Calling Investors',
     text: 'Stand out among hundreds of cold calling emails',
     link:'/coldcalling',
   },
   {
+    id:'linkedin6',
     socialtype: Recruiters,
     popular:'Popular',
     title: 'Cold Calling Recruiters',
@@ -157,6 +175,7 @@ export const Linkedin = [
     link:'/coldcalling_rec'
   },
   {
+    id:'linkedin7',
     socialtype: Conversional,
     popular:'Popular',
     title: 'Conversational Pitches',
@@ -167,18 +186,21 @@ export const Linkedin = [
 
 export const Website = [
   {
+    id:'website1',
     socialtype: HeroText,
     title: 'Hero Text',
     text: 'Hero Text content for positioning your brand ',
     link:'/hero_text'
   },
   {
+    id:'website2',
     socialtype: ProductReviews,
     title: 'Product Reviews',
     text: 'Lorem Ipsum is simply dummy text of the printing.',
     link:'/productreview'
   },
   {
+    id:'website3',
     socialtype: ProductSolution,
     title: 'Problem-Solution',
     text: 'Translate customer pain-points into product benefits',
@@ -186,6 +208,7 @@ export const Website = [
 
   },
   {
+    id:'website4',
     socialtype: WebsiteDescription,
     popular:'Popular',
     title: 'Website Description',
@@ -194,6 +217,7 @@ export const Website = [
 
   },
   {
+    id:'website5',
     socialtype: FeatureBenefits,
     title: 'Feature - Benefits',
     text: 'Convert product features into benefits ',
@@ -203,6 +227,7 @@ export const Website = [
 
 export const Article = [
   {
+    id:'article1',
     socialtype: ArticleIdeas,
     title: 'Article ideas',
     text: 'Convert keywords into article ideas',
@@ -210,12 +235,14 @@ export const Article = [
 
   },
   {
+    id:'article2',
     socialtype: articletitle,
     title: 'Article Title',
     text: 'Non clickbait yet engaging headlines',
     link:'article_title'
   },
   {
+    id:'article3',
     socialtype: Outlines,
     popular:'Popular',
     title: 'Article Outlines',
@@ -224,17 +251,18 @@ export const Article = [
 
   },
   {
+    id:'article4',
     socialtype: Intro,
     popular:'Popular',
     title: 'Article Intro',
     text: 'Let AI write the first 200 words of your article',
     link:'/article_intro'
-
   }
 ];
 
 export const Event = [
   {
+    id:'event1',
     socialtype: EventPromoEmails,
     title: 'Event Promo Emails',
     popular:'Popular',
@@ -243,12 +271,15 @@ export const Event = [
 
   },
   {
+    id:'event2',
     socialtype: WebinarPromoEmails,
     title: 'Webinar Promo Emails',
     text: 'Drive Registrations for online format events',
     link:'/webinar_promo_mail'
   },
   {
+
+    id:'event3',
     socialtype: EventFollowupEmailsupEmailsro,
     title: 'Event Follow-up Emails',
     text: 'Block your calendar reminders and follow-ups',
@@ -256,17 +287,18 @@ export const Event = [
 
   },
   {
+    id:'event4',
     socialtype: EventDigitalAds,
     popular:'Popular',
     title: 'Event Digital Ads',
     text: 'Ad copy fine tuned for event promotions',
     link:'event_digitalads'
-
   }
 ];
 
 export const Writing = [
   {
+    id:'writing1',
     socialtype: Write,
     title: 'Write Like Me',
     text: 'Write Like Me',

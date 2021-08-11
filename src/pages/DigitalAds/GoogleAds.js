@@ -27,7 +27,7 @@ class GoogleAds extends React.Component {
       consumedData:null,
       allCount:'',
       copySuccess: '',
-      loading: true,
+      loading: false,
       form: {
         valueone:'',
         valueThree:'',
@@ -102,9 +102,6 @@ class GoogleAds extends React.Component {
       case "audience":
           if (!value) errorMsg = "Please fill the required field.";
           break;
-      case "background":
-            if (!value) errorMsg = "Please fill the required field.";
-            break;
       default:
         break;
     }
@@ -146,22 +143,16 @@ formSubmit(e) {
     username: 'jaffrinkirthiga@gmail.com',
     password: 'demo@123'
   }},).then(res => {
-     let retData = res.data.data.output;
-      this.setState({
-        consumedData:retData,
-        loading: false
-      })
-      this.setState({
-        allCount:retData.length
-      })
-   });
+    let retData = res.data.data.output;
+     this.setState({
+       consumedData:retData
+     })
+     this.setState({
+       allCount:retData.length
+     })
+  });
 };
-copyToClipboard = (e) => {
-  this.textArea.select();
-  document.execCommand('copy');
-  e.target.focus();
-  this.setState({ copySuccess: 'Copied!' });
-};
+
 
   wordCount(event) {
     this.setState({ valueone:event.target.value });
@@ -266,17 +257,17 @@ copyToClipboard = (e) => {
               >
                
                 <Tab eventKey="all" title={`All ${this.state.allCount}`}>
-                {this.state.loading ? <Loader /> : null}
-                <ToolkitNotification notifcation={this.state.consumedData} />
+                {this.state.loading ? <Loader /> : <ToolkitNotification notifcation={this.state.consumedData} />}
                 </Tab>
-                <Tab eventKey="favourite" title="Favourite">
+                <Tab eventKey="slected" title="Selected">
                   <ToolkitNotification notifcation={FavNotificationData} />
                   <Link to="/workspaceedit" className="viewAll">Edit your fav items &gt; &gt;</Link>
                 </Tab>
               </Tabs>
               <div className="clearConsole">
-                <a onClick={this.resetInputField} className="clear">Clear Output</a>
+                 <a onClick={this.resetInputField} className="clear">Download All</a>
                 <a href="#" className="clear">Select All</a>
+                <a onClick={this.resetInputField} className="clear">Clear Outputs</a>
               </div>
             </Card>
           </Col>

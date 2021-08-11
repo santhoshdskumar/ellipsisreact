@@ -54,7 +54,7 @@ export const Ckeditor5Build = () => {
     <Col xs={5} lg={5} md={12} sm={12}>
       <Card>
         <Card.Header>
-          <h3>Output</h3>
+          <h3>Selected Outputs</h3>
         </Card.Header>
         <Card.Body>
           <h3>Edit and Update the result</h3>
@@ -78,7 +78,7 @@ export const Ckeditor5Build = () => {
     <Col xs={7} lg={7} md={12} sm={12}>
       <Card>
         <Card.Header>
-          <h3>Beautification Window</h3>
+          <h3>Content Editor</h3>
         </Card.Header>
         <Card.Body className="p-3">
           <CKEditor

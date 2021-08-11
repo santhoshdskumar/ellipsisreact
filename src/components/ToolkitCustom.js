@@ -10,6 +10,7 @@ const ToolkitCustom = (props) => {
     new Array(props.length).fill(false)
   );
   const [total, setTotal] = useState(0);
+  const [favoriteCats, setFavoriteCats] = useState([])
 
   const handleOnChange = (position) => {
     const updatedCheckedState = checkedState.map((item, index) => {
@@ -21,6 +22,12 @@ const ToolkitCustom = (props) => {
     });
     setCheckedState(updatedCheckedState);
   };
+
+const favoriteCat = cat => {
+    setFavoriteCats(favoriteCats.concat(cat))
+  }
+
+
   return (
     <div className={props.className}>
       {props.toolkit.map((product, index) => {
@@ -38,7 +45,7 @@ const ToolkitCustom = (props) => {
                 ) : null}
               <p>{product.text} </p>
               <div className="d-flex justify-content-between">
-                <input
+                {/* <input
                     type="checkbox"
                     id={`custom-checkbox-${product.title}`}
                     value={product.title}
@@ -46,7 +53,16 @@ const ToolkitCustom = (props) => {
                     checked={checkedState[index]}
                     onChange={() => handleOnChange(index)}
                   />
-                <label htmlFor={`custom-checkbox-${product.title}`}></label>
+                <label htmlFor={`custom-checkbox-${product.title}`}></label> */}
+                <div
+                onClick={handleToggleFavourite} id={product.id}
+              >
+                {isFavourited ? (
+                  'Add here your full heart icon'
+                ) : (
+                  'Add here your empty heart icon'
+                )}
+              </div>
                 <Link
                   className="btn btn-next  align-self-center"
                   to={product.link}
