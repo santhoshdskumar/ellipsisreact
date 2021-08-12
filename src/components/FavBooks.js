@@ -34,7 +34,7 @@ class BookFavorite extends React.Component {
                       checked={checkedState[index]}
                       onChange={() => handleOnChange(index)}
                     />
-                  <label htmlFor={`custom-checkbox-${product.title}`}></label> */}
+                  <label htmlFor={`custom-checkbox-${product.title}`}></label>*/}
                     <button onClick={() => this.props.delete(product.id)}>
                     Delete from Favorite
                     </button>

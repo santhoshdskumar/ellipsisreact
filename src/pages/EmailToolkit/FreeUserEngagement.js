@@ -99,7 +99,7 @@ class GoogleAds extends React.Component {
       this.setState({ formErrors: formErrorsObj });
     });
   };
-  
+
   validateField = (name, value, refValue) => {
     let errorMsg = null;
     switch (name) {
@@ -126,8 +126,8 @@ class GoogleAds extends React.Component {
     }
     return errorMsg;
   };
-  
-  
+
+
   validateForm = (form, formErrors, validateFunc) => {
     const errorObj = {};
     Object.keys(formErrors).map(x => {
@@ -140,8 +140,8 @@ class GoogleAds extends React.Component {
     });
     return errorObj;
   };
-  
-  
+
+
   handleSubmit = () => {
     const { form, formErrors } = this.state;
     const errorObj = this.validateForm(form, formErrors, this.validateField);
@@ -151,7 +151,7 @@ class GoogleAds extends React.Component {
     }
     console.log("Data: ", form);
   };
-  
+
   formSubmit(e) {
     e.preventDefault();
     const freeuserengagement = {
@@ -237,8 +237,8 @@ class GoogleAds extends React.Component {
                 <p>Convert free users into paid users</p>
                 <Form className="p-0" onSubmit={this.formSubmit}>
                   <Form.Group className="mb-4" controlId="company">
-                    <Form.Label>Enter your Company/Brand name *</Form.Label>
-                    <Form.Control type="text" name="company" value={this.state.value} maxLength="20" 
+                    <Form.Label>Enter your Company/Brand name*</Form.Label>
+                    <Form.Control type="text" name="company" value={this.state.value} maxLength="20"
                     onChange={e => { this.wordCountOne(e); this.handleChange(e)}}
                     />
                     {formErrors.company && (
@@ -247,8 +247,8 @@ class GoogleAds extends React.Component {
                     <p className="float-end"><span>{lengthOne}/</span><span>20</span></p>
                   </Form.Group>
                   <Form.Group className="mb-4" controlId="category">
-                    <Form.Label>Product Category *</Form.Label>
-                    <Form.Control type="text" name="category" value={this.state.value} maxLength="20" 
+                    <Form.Label>Product Category*</Form.Label>
+                    <Form.Control type="text" name="category" value={this.state.value} maxLength="20"
                       onChange={e => { this.wordCountTwo(e); this.handleChange(e)}}
                       />
                       {formErrors.category && (
@@ -257,8 +257,8 @@ class GoogleAds extends React.Component {
                     <p className="float-end"><span>{lengthTwo}/</span><span>20</span></p>
                   </Form.Group>
                   <Form.Group className="mb-4" controlId="audience">
-                    <Form.Label>Describe your customer *</Form.Label>
-                    <Form.Control type="text" name="audience" value={this.state.value} maxLength="20" 
+                    <Form.Label>Describe your customer*</Form.Label>
+                    <Form.Control type="text" name="audience" value={this.state.value} maxLength="20"
                     onChange={e => { this.wordCountThree(e); this.handleChange(e)}}
                     />
                     {formErrors.audience && (
@@ -267,8 +267,8 @@ class GoogleAds extends React.Component {
                     <p className="float-end"><span>{lengthThree}/</span><span>20</span></p>
                   </Form.Group>
                   <Form.Group className="mb-4" controlId="name">
-                    <Form.Label>Name of the person you are reaching out to</Form.Label>
-                    <Form.Control type="text" name="name" value={this.state.value} maxLength="20" 
+                    <Form.Label>Customer Name</Form.Label>
+                    <Form.Control type="text" name="name" value={this.state.value} maxLength="20"
                     onChange={e => { this.wordCountFour(e); this.handleChange(e)}}
                     />
                     {formErrors.name && (
@@ -278,8 +278,8 @@ class GoogleAds extends React.Component {
                   </Form.Group>
 
                   <Form.Group className="mb-4" controlId="offer">
-                    <Form.Label>Offers or promotions? *</Form.Label>
-                    <Form.Control type="text" maxLength="20" name="offer"  value={this.state.value}  
+                    <Form.Label>Offers or promotions?</Form.Label>
+                    <Form.Control type="text" maxLength="20" name="offer"  value={this.state.value}
                     onChange={e => { this.wordCountFive(e); this.handleChange(e)}}
                     />
                     {formErrors.offer && (

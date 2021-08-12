@@ -226,7 +226,7 @@ wordCountFive(event) {
                 <p>Direct messages to your audience to spark action</p>
                 <Form className="p-0" onSubmit={this.formSubmit}>
                   <Form.Group className="mb-4" controlId="company">
-                    <Form.Label>Enter your Company/Brand name *</Form.Label>
+                    <Form.Label>Enter your Company/Brand name*</Form.Label>
                     <Form.Control type="text" name="company" value={this.state.company} maxLength="20" 
                     onChange={e => { this.wordCount(e); this.handleChange(e)}}
                     />
@@ -237,7 +237,7 @@ wordCountFive(event) {
                   </Form.Group>
                   
                   <Form.Group className="mb-4" controlId="product">
-                    <Form.Label>Product category *</Form.Label>
+                    <Form.Label>Product category*</Form.Label>
                     <Form.Control type="text" name="product" value={this.state.product} maxLength="20" 
                     onChange={e => { this.wordCountTwo(e); this.handleChange(e)}}
                     />
@@ -248,7 +248,7 @@ wordCountFive(event) {
                   </Form.Group>
 
                   <Form.Group className="mb-4" controlId="audience">
-                    <Form.Label>Describe your Customer *</Form.Label>
+                    <Form.Label>Describe your Customer*</Form.Label>
                     <Form.Control type="text" name="audience" value={this.state.audience} maxLength="20" 
                     onChange={e => { this.wordCountThree(e); this.handleChange(e)}}
                     />
@@ -259,7 +259,7 @@ wordCountFive(event) {
                   </Form.Group>
    
                   <Form.Group className="mb-4" controlId="name">
-                    <Form.Label>Who are you reaching out to? *</Form.Label>
+                    <Form.Label>Who are you reaching out to?*</Form.Label>
                     <Form.Control type="text" maxLength="20" name="name"  value={this.state.name}   
                     onChange={e => { this.wordCountFour(e); this.handleChange(e)}}
                     />

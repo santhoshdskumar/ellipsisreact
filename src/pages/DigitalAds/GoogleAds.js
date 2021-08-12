@@ -31,6 +31,7 @@ class GoogleAds extends React.Component {
       copySuccess: '',
       loading: false,
       copied: false,
+      isBoxVisible:false,
       form: {
         valueone:'',
         valueThree:'',
@@ -105,6 +106,9 @@ class GoogleAds extends React.Component {
       case "audience":
           if (!value) errorMsg = "Please fill the required field.";
           break;
+      case "background":
+        if (!value) errorMsg = "Please fill the required field.";
+        break;
       default:
         break;
     }
@@ -156,13 +160,15 @@ formSubmit(e) {
        allCount:retData.length
      })
   });
+
+  this.setState(prevState => ({ isBoxVisible: !prevState.isBoxVisible }));
 };
 
   resetForm = () => {
     this.setState({ 
-    company: '', 
-    audience: '' 
+      consumedData:null 
   })
+  console.log(this.state.consumedData);
   }
   wordCount(event) {
     this.setState({ valueone:event.target.value });
@@ -181,7 +187,7 @@ formSubmit(e) {
     lengthOne = this.state.valueone?this.state.valueone.length:0,
     lengthTwo = this.state.valueThree?this.state.valueThree.length:0,
     lengthThree = this.state.valueFour?this.state.valueFour.length:0;
-    const { form, formErrors, loading } = this.state;
+    const { form, formErrors, loading, isBoxVisible } = this.state;
     const Button = styled.button`
       background: #5433ff;
       mix-blend-mode: normal;
@@ -214,7 +220,7 @@ formSubmit(e) {
                 <p>High converting ads for Google Search</p>
                 <Form className="p-0" onSubmit={this.formSubmit}>
                   <Form.Group className="mb-4" controlId="company">
-                    <Form.Label>Enter company / product name *</Form.Label>
+                    <Form.Label>Enter company / product name*</Form.Label>
                     <Form.Control type="text" name="company" value={this.state.value} maxLength="20" 
                     onChange={e => { this.wordCount(e); this.handleChange(e)}}
                     placeholder="JBL"
@@ -225,7 +231,7 @@ formSubmit(e) {
                     )}
                   </Form.Group>
                   <Form.Group className="mb-4" controlId="audience">
-                    <Form.Label>Who is your audience *</Form.Label>
+                    <Form.Label>Who is your audience*</Form.Label>
                     <Form.Control type="text" maxLength="20" name="audience"  value={this.state.value}
                     onChange={e => { this.wordCountTwo(e); this.handleChange(e)}}
                       placeholder="Music Lovers"
@@ -248,11 +254,15 @@ formSubmit(e) {
                        onChange={e => { this.handleChange(e)}}
                     />
                     <p className="float-end"><span>{lengthThree}/</span><span>120</span></p>
+                    {formErrors.background && (
+                      <span className="err">{formErrors.background}</span>
+                    )}
                   </Form.Group>
                   <Button class="update"   type="submit" onClick={this.handleSubmit}  >
                     Generate Copy
                   </Button>
-                  <button onClick={() => this.reset()}>Reset</button>
+                  <button type="reset" onClick={this.resetForm} className="clear">Clear Outputs</button>
+                  {/* <button className={`loadmore box ${isBoxVisible  ? "show" : "hidden"}`} type="submit" >Load More</button>*/}
                 </Form>
               </Card.Body>
             </Card>
@@ -268,7 +278,7 @@ formSubmit(e) {
               >
                
                 <Tab eventKey="all" title={`All ${this.state.allCount}`}>
-                {loading ? <LoadingSpinner  /> : <ToolkitNotification notifcation={this.state.consumedData} />}
+                {loading ? <LoadingSpinner  /> : <ToolkitNotification notifcation={this.state.consumedData}  />}
                 </Tab>
                 <Tab eventKey="slected" title="Selected">
                   <ToolkitNotification notifcation={FavNotificationData} copy={this.onCopy} />
@@ -278,7 +288,6 @@ formSubmit(e) {
               <div className="clearConsole">
                  <a className="clear">Download All</a>
                 <a href="#" className="clear">Select All</a>
-                <a onClick={this.resetForm} className="clear">Clear Outputs</a>
               </div>
             </Card>
           </Col>

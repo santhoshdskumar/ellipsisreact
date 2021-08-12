@@ -213,7 +213,7 @@ class GoogleAds extends React.Component {
                 <p>Apply for that dream job!</p>
                 <Form className="p-0" onSubmit={this.formSubmit}>
                   <Form.Group className="mb-4" controlId="company">
-                    <Form.Label>The company you are applying to *</Form.Label>
+                    <Form.Label>The company you are applying to*</Form.Label>
                     <Form.Control type="text" name="company" value={this.state.company} maxLength="20" 
                     onChange={e => { this.wordCount(e); this.handleChange(e)}}
                     />
@@ -233,7 +233,7 @@ class GoogleAds extends React.Component {
                     )}
                   </Form.Group>
                   <Form.Group className="mb-4" controlId="background">
-                    <Form.Label>Why does this company/ role interest you *</Form.Label>
+                    <Form.Label>Why does this company/ role interest you*</Form.Label>
                     <Form.Control type="text" maxLength="20" name="background"  value={this.state.background}   
                     onChange={e => { this.wordCountThree(e); this.handleChange(e)}}
                     />
@@ -244,7 +244,7 @@ class GoogleAds extends React.Component {
                   </Form.Group>
 
                   <Form.Group className="mb-4" controlId="role">
-                    <Form.Label>Outline your traction so far *</Form.Label>
+                    <Form.Label>Outline your traction so far*</Form.Label>
                     <Form.Control
                       as="textarea"
                       rows={3}

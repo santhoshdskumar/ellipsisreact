@@ -212,7 +212,7 @@ class GoogleAds extends React.Component {
                 <p>Convert product features into benefits</p>
                 <Form className="p-0" onSubmit={this.formSubmit}>
                   <Form.Group className="mb-4" controlId="company">
-                    <Form.Label>Enter your Company / Brand name *</Form.Label>
+                    <Form.Label>Enter your Company / Brand name*</Form.Label>
                     <Form.Control type="text" name="company" value={form.company} maxLength="20" 
                     onChange={e => { this.wordCount(e); this.handleChange(e)}}
                     />
@@ -222,7 +222,7 @@ class GoogleAds extends React.Component {
                     )}
                   </Form.Group>
                   <Form.Group className="mb-4" controlId="product">
-                    <Form.Label>Product Category *</Form.Label>
+                    <Form.Label>Product Category*</Form.Label>
                     <Form.Control type="text" maxLength="20" name="product"  value={form.product}   
                     onChange={e => { this.wordCountTwo(e); this.handleChange(e)}}
                     />
@@ -232,7 +232,7 @@ class GoogleAds extends React.Component {
                     )}
                   </Form.Group>
                   <Form.Group className="mb-4" controlId="audience">
-                    <Form.Label>Describe your customer *</Form.Label>
+                    <Form.Label>Describe your customer*</Form.Label>
                     <Form.Control type="text" maxLength="20" name="audience"  value={this.state.audience}  
                      onChange={e => { this.wordCountThree(e); this.handleChange(e)}} />
                     <p className="float-end"><span>{lengthThree}/</span><span>20</span></p>
@@ -242,7 +242,7 @@ class GoogleAds extends React.Component {
                   </Form.Group>
 
                   <Form.Group className="mb-4" controlId="background">
-                    <Form.Label>Describe your product *</Form.Label>
+                    <Form.Label>Describe your product*</Form.Label>
                     <Form.Control
                       as="textarea"
                       rows={3}

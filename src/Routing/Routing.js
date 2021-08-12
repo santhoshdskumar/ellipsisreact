@@ -132,7 +132,7 @@ const Routing = () => {
         </div>
       </Route>
 
-      {/* Digital Ads */}
+      {/* Digital Ads*/}
       <Route path="/google-adsense">
         <div className="innerPage">
           <GoogleAds />
@@ -164,10 +164,10 @@ const Routing = () => {
         </div>
       </Route>
 
-      {/* Ends Here */}
+      {/* Ends Here*/}
 
 
-      {/* Email Toolkit */}
+      {/* Email Toolkit*/}
        <Route path="/sales_emails">
         <div className="innerPage">
           <SalesEmails />
@@ -199,10 +199,10 @@ const Routing = () => {
         </div>
       </Route>
 
-      {/* Ends Here */}
+      {/* Ends Here*/}
 
 
-     {/* LinkedIn Toolkit */}
+     {/* LinkedIn Toolkit*/}
        <Route path="/linkedinlinkdesc">
         <div className="innerPage">
           <AdLinkDescriptions />
@@ -238,10 +238,10 @@ const Routing = () => {
           <ColdCallingRecruiters />
         </div>
       </Route>
-      {/* Ends Here */}
+      {/* Ends Here*/}
 
 
-     {/* Website Toolkit */}
+     {/* Website Toolkit*/}
      <Route path="/hero_text">
         <div className="innerPage">
           <HeroText />
@@ -267,10 +267,10 @@ const Routing = () => {
           <FeatureBenefits />
         </div>
       </Route>
-      {/* Ends Here */}
+      {/* Ends Here*/}
 
 
-     {/* Article Toolkit */}
+     {/* Article Toolkit*/}
      <Route path="/article_ideas">
         <div className="innerPage">
           <ArticleIdeas />
@@ -291,10 +291,10 @@ const Routing = () => {
           <ArticleIntro />
         </div>
         </Route>
-        {/* Ends Here */}
+        {/* Ends Here*/}
 
 
-      {/* Event Toolkit */}
+      {/* Event Toolkit*/}
      <Route path="/event_promo_mail">
         <div className="innerPage">
           <EventPromoEmails />
@@ -315,10 +315,10 @@ const Routing = () => {
           <EventDigitalAds />
         </div>
         </Route>
-        {/* Ends Here */}
+        {/* Ends Here*/}
 
 
-      {/* Event Toolkit */}
+      {/* Event Toolkit*/}
 
 
       <Route path="/write_like_me">
@@ -326,7 +326,7 @@ const Routing = () => {
           <WriteLikeMe />
         </div>
         </Route>
-        {/* Ends Here */}
+        {/* Ends Here*/}
 
 
         <Route path="/privacy_policy">

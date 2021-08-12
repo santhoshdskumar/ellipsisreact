@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col, Form, Button, Alert } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import LandingImage from './../assets/images/landing_image.png';
 
 export const ToolkitNotification = (props) => {
   let data = props;
@@ -10,7 +11,7 @@ export const ToolkitNotification = (props) => {
   console.log(data);
   return (
     <React.Fragment>
-      {data == null? <div>Data Not Found</div> : data.notifcation.map((item) => (
+      {data == null? <div><img src={LandingImage} className="img-fluid"></img></div> : data.notifcation.map((item) => (
         <Alert>
           <div onCopy={item.copy}>
             <h6>{item.suggestion.Headline}</h6>
@@ -22,8 +23,7 @@ export const ToolkitNotification = (props) => {
           </div>
         </Alert>
       ))} 
-        <button className="loadmore">Load More</button>
-      
+
     </React.Fragment>
     
   );

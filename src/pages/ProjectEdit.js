@@ -38,7 +38,7 @@ class ProjectEdit extends React.Component {
       font-weight: bold;
       font-size: 18px;
       line-height: 22px;
-      /* identical to box height */
+      /* identical to box height*/
 
       letter-spacing: 0.05em;
       text-transform: uppercase;

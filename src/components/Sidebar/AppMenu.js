@@ -56,7 +56,7 @@ const AppMenu = (props) => {
         </div>
         {/* <div className="avatar">
           <img src={user} alt="user" />
-        </div> */}
+        </div>*/}
         <div className="userDrop p-3">
           <p className="m-0">Switch Workspace</p>
         <Form className="p-0">

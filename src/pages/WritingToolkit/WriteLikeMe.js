@@ -187,7 +187,7 @@ class GoogleAds extends React.Component {
                 <p>Write Like Me</p>
                 <Form className="p-0"  onSubmit={this.formSubmit}>
                   <Form.Group className="mb-4" controlId="company">
-                    <Form.Label>Topic *</Form.Label>
+                    <Form.Label>Topic*</Form.Label>
                     <Form.Control type="text" name="company" value={this.state.value} maxLength="20" 
                     onChange={e => { this.wordCount(e); this.handleChange(e)}}
                     
@@ -198,7 +198,7 @@ class GoogleAds extends React.Component {
                     <p className="float-end"><span>{lengthOne}/</span><span>20</span></p>
                   </Form.Group>
                   <Form.Group className="mb-4" controlId="background">
-                    <Form.Label>Paste what you are writing here *</Form.Label>
+                    <Form.Label>Paste what you are writing here*</Form.Label>
                     <Form.Control type="text" maxLength="20" name="background"  value={this.state.value}  
                      onChange={e => { this.wordCountTwo(e); this.handleChange(e)}}
                      />

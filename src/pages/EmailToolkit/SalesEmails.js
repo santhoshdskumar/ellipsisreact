@@ -237,7 +237,7 @@ class GoogleAds extends React.Component {
                 <p>Hero text positions your product in the customer's mind</p>
                 <Form className="p-0" onSubmit={this.formSubmit}>
                   <Form.Group className="mb-4" controlId="company">
-                    <Form.Label>Enter your Company/Brand name *</Form.Label>
+                    <Form.Label>Enter your Company/Brand name*</Form.Label>
                     <Form.Control type="text" name="company" value={this.state.value} maxLength="20" 
                       onChange={e => { this.wordCountOne(e); this.handleChange(e)}}
                       />
@@ -247,7 +247,7 @@ class GoogleAds extends React.Component {
                       <p className="float-end"><span>{lengthOne}/</span><span>20</span></p>
                   </Form.Group>
                   <Form.Group className="mb-4" controlId="audience">
-                    <Form.Label>Describe your customer *</Form.Label>
+                    <Form.Label>Describe your customer*</Form.Label>
                     <Form.Control type="text" name="audience" value={this.state.value} maxLength="20" 
                       onChange={e => { this.wordCountTwo(e); this.handleChange(e)}}
                       />
@@ -257,7 +257,7 @@ class GoogleAds extends React.Component {
                     <p className="float-end"><span>{lengthTwo}/</span><span>20</span></p>
                   </Form.Group>
                   <Form.Group className="mb-4" controlId="name">
-                    <Form.Label>Who are you reaching out to *</Form.Label>
+                    <Form.Label>Who are you reaching out to*</Form.Label>
                     <Form.Control type="text" name="name" value={this.state.value} maxLength="20" 
                       onChange={e => { this.wordCountThree(e); this.handleChange(e)}}
                       />
@@ -267,7 +267,7 @@ class GoogleAds extends React.Component {
                     <p className="float-end"><span>{lengthThree}/</span><span>20</span></p>
                   </Form.Group>
                   <Form.Group className="mb-4" controlId="product">
-                    <Form.Label>Product Category *</Form.Label>
+                    <Form.Label>Product Category*</Form.Label>
                     <Form.Control type="text" name="product" value={this.state.value} maxLength="20" 
                        onChange={e => { this.wordCountFour(e); this.handleChange(e)}}
                        />
@@ -277,7 +277,7 @@ class GoogleAds extends React.Component {
                     <p className="float-end"><span>{lengthFour}/</span><span>20</span></p>
                   </Form.Group>
                   <Form.Group className="mb-4" controlId="offer">
-                    <Form.Label>Offers or promotions? *</Form.Label>
+                    <Form.Label>Offers or promotions?*</Form.Label>
                     <Form.Control type="text" maxLength="20" name="offer"  value={this.state.value}   
                        onChange={e => { this.wordCountFive(e); this.handleChange(e)}}
                        />

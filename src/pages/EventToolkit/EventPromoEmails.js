@@ -237,7 +237,7 @@ class GoogleAds extends React.Component {
                 <p>Hero text positions your product in the customer's mind</p>
                 <Form className="p-0"  onSubmit={this.formSubmit}>
                   <Form.Group className="mb-4" controlId="company">
-                    <Form.Label>Event Name *</Form.Label>
+                    <Form.Label>Event Name*</Form.Label>
                     <Form.Control type="text" name="company" value={form.company} maxLength="20" 
                     onChange={e => { this.wordCountOne(e); this.handleChange(e)}}
                     />
@@ -247,7 +247,7 @@ class GoogleAds extends React.Component {
                     <p className="float-end"><span>{lengthOne}/</span><span>20</span></p>
                   </Form.Group>
                   <Form.Group className="mb-4" controlId="audience">
-                    <Form.Label>Describe your audience *</Form.Label>
+                    <Form.Label>Describe your audience*</Form.Label>
                     <Form.Control type="text" name="audience" value={form.audience} maxLength="20" 
                     onChange={e => { this.wordCountTwo(e); this.handleChange(e)}}
 
@@ -259,7 +259,7 @@ class GoogleAds extends React.Component {
                   </Form.Group>
                              
                   <Form.Group className="mb-4" controlId="product">
-                    <Form.Label>Event Category *</Form.Label>
+                    <Form.Label>Event Category*</Form.Label>
                     <Form.Control type="text" name="product" value={form.product} maxLength="20" 
                     onChange={e => { this.wordCountThree(e); this.handleChange(e)}}
                     />
@@ -269,7 +269,7 @@ class GoogleAds extends React.Component {
                     <p className="float-end"><span>{lengthThree}/</span><span>20</span></p>
                   </Form.Group>
                   <Form.Group className="mb-4" controlId="date">
-                    <Form.Label>Event date *</Form.Label>
+                    <Form.Label>Event date*</Form.Label>
                     <Form.Control type="text" name="date" value={form.date} maxLength="20" 
                     onChange={e => { this.wordCountFour(e); this.handleChange(e)}}
                     />
@@ -281,7 +281,7 @@ class GoogleAds extends React.Component {
    
 
                   <Form.Group className="mb-4" controlId="offer">
-                    <Form.Label>Any offers or promotions? *</Form.Label>
+                    <Form.Label>Any offers or promotions?*</Form.Label>
                     <Form.Control type="text" maxLength="20" name="offer"  value={this.state.offer}   
                     onChange={e => { this.wordCountFive(e); this.handleChange(e)}}
                     />

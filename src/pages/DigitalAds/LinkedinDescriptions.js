@@ -198,7 +198,7 @@ class GoogleAds extends React.Component {
                 <p>Metadata for all your landing pages</p>
                 <Form className="p-0" onSubmit={this.formSubmit}>
                   <Form.Group className="mb-4" controlId="company">
-                    <Form.Label>Enter company / product name *</Form.Label>
+                    <Form.Label>Enter company / product name*</Form.Label>
                     <Form.Control type="text" name="company" value={this.state.value} maxLength="20" 
                     onChange={e => { this.wordCount(e); this.handleChange(e)}}
                     />
@@ -208,7 +208,7 @@ class GoogleAds extends React.Component {
                     <p className="float-end"><span>{lengthOne}/</span><span>20</span></p>
                   </Form.Group>
                   <Form.Group className="mb-4" controlId="product">
-                    <Form.Label>Who is your audeince *</Form.Label>
+                    <Form.Label>Who is your audeince*</Form.Label>
                     <Form.Control type="text" maxLength="20" name="product"  value={this.state.value}   
                      onChange={e => { this.wordCountTwo(e); this.handleChange(e)}}
                      />

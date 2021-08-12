@@ -1,8 +1,8 @@
 import React from 'react';
-
+import loader from './../assets/images/loader.gif';
 const LoadingSpinner = () => (
   <div className="text-center">
-    <i className="fa fa-spinner fa-spin" /> Loading...
+    <img src={loader}></img>
   </div>
 );
 

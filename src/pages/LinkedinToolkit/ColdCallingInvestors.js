@@ -212,7 +212,7 @@ class GoogleAds extends React.Component {
                 <p>Stand out among hundreds of cold calling emails</p>
                 <Form className="p-0" onSubmit={this.formSubmit}>
                   <Form.Group className="mb-4" controlId="company">
-                    <Form.Label>Enter your company name *</Form.Label>
+                    <Form.Label>Enter your company name*</Form.Label>
                     <Form.Control type="text" name="company" value={this.state.company} maxLength="20" 
                     onChange={e => { this.wordCount(e); this.handleChange(e)}}
                     />
@@ -222,7 +222,7 @@ class GoogleAds extends React.Component {
                     <p className="float-end"><span>{lengthOne}/</span><span>20</span></p>
                   </Form.Group>
                   <Form.Group className="mb-4" controlId="problem">
-                    <Form.Label>What problem does your company solve *</Form.Label>
+                    <Form.Label>What problem does your company solve*</Form.Label>
                     <Form.Control type="text" maxLength="20" name="problem"  value={this.state.problem}   
                     onChange={e => { this.wordCountTwo(e); this.handleChange(e)}}
                     />
@@ -232,7 +232,7 @@ class GoogleAds extends React.Component {
                     <p className="float-end"><span>{lengthTwo}/</span><span>20</span></p>
                   </Form.Group>
                   <Form.Group className="mb-4" controlId="market">
-                    <Form.Label>How big is the market *</Form.Label>
+                    <Form.Label>How big is the market*</Form.Label>
                     <Form.Control type="text" maxLength="20" name="market"  value={this.state.market}   
                     onChange={e => { this.wordCountThree(e); this.handleChange(e)}}
                     />
@@ -243,7 +243,7 @@ class GoogleAds extends React.Component {
                   </Form.Group>
 
                   <Form.Group className="mb-4" controlId="traction">
-                    <Form.Label>Outline your traction so far *</Form.Label>
+                    <Form.Label>Outline your traction so far*</Form.Label>
                     <Form.Control
                       as="textarea"
                       rows={3}

@@ -113,12 +113,12 @@ export default class ModalPopup extends Component {
                   onChange={(e) => this.handleChange(e)}
                   className="form-control"
                 />
-              </div> */}
+              </div>*/}
               {/* <div className="form-group">
                 <button onClick={(e) => this.handleSubmit(e)} type="button">
                   Update Project
                 </button>
-              </div> */}
+              </div>*/}
             </div>
           </div>
         </Modal>

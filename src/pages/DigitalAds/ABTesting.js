@@ -200,7 +200,7 @@ class GoogleAds extends React.Component {
                 <p>Generate multiple variations for AB testing</p>
                 <Form className="p-0"  onSubmit={this.formSubmit}>
                   <Form.Group className="mb-4" controlId="company">
-                    <Form.Label>Enter company / product name *</Form.Label>
+                    <Form.Label>Enter company / product name*</Form.Label>
                     <Form.Control type="text" name="company" value={this.state.value} maxLength="20" 
                     onChange={e => { this.wordCount(e); this.handleChange(e)}}
                     />
@@ -210,12 +210,12 @@ class GoogleAds extends React.Component {
                     <p className="float-end"><span>{lengthOne}/</span><span>20</span></p>
                   </Form.Group>
                   <Form.Group className="mb-4" controlId="background">
-                    <Form.Label>Who is your audeince *</Form.Label>
+                    <Form.Label>Who is your audeince*</Form.Label>
                     <Form.Control type="text" maxLength="20" name="background"  value={this.state.value}   
                      onChange={e => { this.wordCountTwo(e); this.handleChange(e)}}
                      />
                     <p className="float-end"><span>{lengthTwo}/</span><span>20</span></p>
-                          {formErrors.background && (
+                     {formErrors.background && (
                       <span className="err">{formErrors.background}</span>
                     )}
                   </Form.Group>
@@ -231,6 +231,9 @@ class GoogleAds extends React.Component {
                       onChange={e => { this.wordCountThree(e); this.handleChange(e)}}
                     />
                     <p className="float-end"><span>{lengthThree}/</span><span>120</span></p>
+                    {formErrors.promo && (
+                      <span className="err">{formErrors.promo}</span>
+                    )}
                   </Form.Group>
                   <Button class="update" type="submit" onClick={this.handleSubmit} >
                     Generate Copy
