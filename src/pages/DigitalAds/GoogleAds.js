@@ -14,7 +14,9 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { ToolkitNotification } from './../../components/ToolkitNotification';
 import { AllNotificationData, FavNotificationData } from '../NotificationData';
-import Loader from './../../components/Loader';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+import LoadingSpinner from '../../components/LoadingSpinner';
+
 class GoogleAds extends React.Component {
   constructor() {
     super();
@@ -28,6 +30,7 @@ class GoogleAds extends React.Component {
       allCount:'',
       copySuccess: '',
       loading: false,
+      copied: false,
       form: {
         valueone:'',
         valueThree:'',
@@ -121,7 +124,9 @@ class GoogleAds extends React.Component {
     return errorObj;
   };
 
-
+  onCopy = () => {
+    this.setState({copied: true});
+  };
   handleSubmit = () => {
     const { form, formErrors } = this.state;
     const errorObj = this.validateForm(form, formErrors, this.validateField);
@@ -142,10 +147,10 @@ formSubmit(e) {
   axios.post("https://app2.ellipsis-ai.com/api/v1/googleadwords/", googleadwords,{auth:{
     username: 'jaffrinkirthiga@gmail.com',
     password: 'demo@123'
-  }},).then(res => {
+  }},this.setState({loading:true}),).then(res => {
     let retData = res.data.data.output;
      this.setState({
-       consumedData:retData
+       consumedData:retData,loading: false,
      })
      this.setState({
        allCount:retData.length
@@ -153,7 +158,12 @@ formSubmit(e) {
   });
 };
 
-
+  resetForm = () => {
+    this.setState({ 
+    company: '', 
+    audience: '' 
+  })
+  }
   wordCount(event) {
     this.setState({ valueone:event.target.value });
   }
@@ -242,6 +252,7 @@ formSubmit(e) {
                   <Button class="update"   type="submit" onClick={this.handleSubmit}  >
                     Generate Copy
                   </Button>
+                  <button onClick={() => this.reset()}>Reset</button>
                 </Form>
               </Card.Body>
             </Card>
@@ -257,17 +268,17 @@ formSubmit(e) {
               >
                
                 <Tab eventKey="all" title={`All ${this.state.allCount}`}>
-                {this.state.loading ? <Loader /> : <ToolkitNotification notifcation={this.state.consumedData} />}
+                {loading ? <LoadingSpinner  /> : <ToolkitNotification notifcation={this.state.consumedData} />}
                 </Tab>
                 <Tab eventKey="slected" title="Selected">
-                  <ToolkitNotification notifcation={FavNotificationData} />
+                  <ToolkitNotification notifcation={FavNotificationData} copy={this.onCopy} />
                   <Link to="/workspaceedit" className="viewAll">Edit your fav items &gt; &gt;</Link>
                 </Tab>
               </Tabs>
               <div className="clearConsole">
-                 <a onClick={this.resetInputField} className="clear">Download All</a>
+                 <a className="clear">Download All</a>
                 <a href="#" className="clear">Select All</a>
-                <a onClick={this.resetInputField} className="clear">Clear Outputs</a>
+                <a onClick={this.resetForm} className="clear">Clear Outputs</a>
               </div>
             </Card>
           </Col>

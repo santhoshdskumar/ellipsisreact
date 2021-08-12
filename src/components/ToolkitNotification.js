@@ -12,7 +12,7 @@ export const ToolkitNotification = (props) => {
     <React.Fragment>
       {data == null? <div>Data Not Found</div> : data.notifcation.map((item) => (
         <Alert>
-          <div>
+          <div onCopy={item.copy}>
             <h6>{item.suggestion.Headline}</h6>
             <p>{item.suggestion.Description}</p>
             <div className="randomIcons">
