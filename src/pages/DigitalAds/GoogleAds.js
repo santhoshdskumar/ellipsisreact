@@ -37,6 +37,7 @@ class GoogleAds extends React.Component {
       isBoxVisible:false,
       booksfav: [],
       favCount:'',
+      csvData:'',
       form: {
         valueone:'',
         valueThree:'',
@@ -54,7 +55,6 @@ class GoogleAds extends React.Component {
           { label: 'Headline', key: 'details.Headline' },
           { label: 'Description', key: 'details.Description' },
         ],
-         
         data :[
           { details: { Headline: '',  Description: '' }},
         ]
@@ -178,12 +178,43 @@ formSubmit(e) {
         {details:retData}
       ]
      })
-     console.log(this.state.data.details);
 
   });
 
   this.setState(prevState => ({ isBoxVisible: !prevState.isBoxVisible }));
+  
+setTimeout(() => {
+  console.log(this.state.consumedData, 'Consumed Data');
+ let csvDatas = this.state.consumedData.map(item => ({
+  Headline: item.suggestion.Headline,
+  Description: item.suggestion.Description
+}))
+ 
+console.log(csvDatas, 'Csv Data');
+ const objectToCsv = (csvDatas) => {
+  const csvRows = [];
+  const headers = Object.keys(csvDatas[0])
+  csvRows.push(headers.join(','));
+  for (const row of csvDatas) {
+    const values = headers.map(header => {
+      const escaped = ('' + row[header]).replace(/"/g, '\\"')
+      return `"${escaped}"`
+    })
+    csvRows.push(values.join(','))
+  }
+  return csvRows.join('\n')
+}
+let csvData = objectToCsv(csvDatas);
+console.log(objectToCsv(csvDatas));
+
+this.setState({
+  csvData:csvData
+})
+}, 3000);
+console.log(this.state.csvData, 'Csv Data Consumed')
 };
+
+
 
   resetForm = () => {
     this.setState({ 
@@ -218,9 +249,10 @@ formSubmit(e) {
     const hapus = this.state.booksfav.filter(item => item.id !== id);
     this.setState({ booksfav: hapus });
   };
-  onCopy = () => {
-    this.setState({copied: true});
-  };
+
+
+
+
   render() {
     let count = 0,
     lengthOne = this.state.valueone?this.state.valueone.length:0,
@@ -326,7 +358,8 @@ formSubmit(e) {
                 </Tab>
               </Tabs>
               <div className="clearConsole">
-              <CsvDownload data={this.state.consumedData} />
+              {/* <CsvDownload data={this.state.consumedData} /> */}
+              <CSVLink data={this.state.csvData}>Download</CSVLink>
                 <a href="#" className="clear">Select All</a>
               </div>
             </Card>
