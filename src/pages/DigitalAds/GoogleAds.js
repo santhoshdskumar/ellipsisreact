@@ -13,10 +13,11 @@ import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 import { ToolkitNotification } from './../../components/ToolkitNotification';
+import { FavNotification } from './../../components/FavNotification';
 import { AllNotificationData, FavNotificationData } from '../NotificationData';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import LoadingSpinner from '../../components/LoadingSpinner';
-
+import { CSVLink } from "react-csv";
 class GoogleAds extends React.Component {
   constructor() {
     super();
@@ -32,6 +33,8 @@ class GoogleAds extends React.Component {
       loading: false,
       copied: false,
       isBoxVisible:false,
+      booksfav: [],
+      favCount:'',
       form: {
         valueone:'',
         valueThree:'',
@@ -44,7 +47,14 @@ class GoogleAds extends React.Component {
           company: null,
           audience: null,
           background: null,
-        }
+        },
+        headers : [
+          { label: "Headline", key: "Headline" },
+          { label: "Description", key: "Description" }
+        ],
+         
+        data : [
+        ]
     };
   }
 
@@ -153,12 +163,17 @@ formSubmit(e) {
     password: 'demo@123'
   }},this.setState({loading:true}),).then(res => {
     let retData = res.data.data.output;
+    console.log(retData);
      this.setState({
        consumedData:retData,loading: false,
      })
      this.setState({
+      data:[retData]
+    })
+     this.setState({
        allCount:retData.length
      })
+
   });
 
   this.setState(prevState => ({ isBoxVisible: !prevState.isBoxVisible }));
@@ -168,7 +183,6 @@ formSubmit(e) {
     this.setState({ 
       consumedData:null 
   })
-  console.log(this.state.consumedData);
   }
   wordCount(event) {
     this.setState({ valueone:event.target.value });
@@ -181,6 +195,21 @@ formSubmit(e) {
   wordCountThree(event) {
     this.setState({ valueFour:event.target.value });
   }
+  addToFavorite = id => {
+    const data = this.state.consumedData.find(item => item.id === id);
+    this.setState({
+      booksfav: [...this.state.booksfav, data]
+    });
+    this.setState({
+      favCount:data.length
+    })
+  };
+  
+  deleteToFavorite = id => {
+    const hapus = this.state.booksfav.filter(item => item.id !== id);
+    this.setState({ booksfav: hapus });
+  };
+
 
   render() {
     let count = 0,
@@ -278,15 +307,22 @@ formSubmit(e) {
               >
                
                 <Tab eventKey="all" title={`All ${this.state.allCount}`}>
-                {loading ? <LoadingSpinner  /> : <ToolkitNotification notifcation={this.state.consumedData}  />}
+                {loading ? <LoadingSpinner  /> : <ToolkitNotification notifcation={this.state.consumedData}   add={this.addToFavorite} />}
                 </Tab>
-                <Tab eventKey="slected" title="Selected">
-                  <ToolkitNotification notifcation={FavNotificationData} copy={this.onCopy} />
+                <Tab eventKey="slected" title={`Selected ${this.state.favCount}`}> 
+                  <FavNotification  booksfav={this.state.booksfav}
+                  delete={this.deleteToFavorite} ></FavNotification>
                   <Link to="/workspaceedit" className="viewAll">Edit your fav items &gt; &gt;</Link>
                 </Tab>
               </Tabs>
               <div className="clearConsole">
-                 <a className="clear">Download All</a>
+              <CSVLink
+              data={this.state.data} headers={this.state.headers} filename={"my-file.csv"}
+              className="btn btn-primary"
+              target="_blank"
+            >
+              Download me
+            </CSVLink>;
                 <a href="#" className="clear">Select All</a>
               </div>
             </Card>
