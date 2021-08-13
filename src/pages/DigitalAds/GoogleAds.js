@@ -18,6 +18,7 @@ import { AllNotificationData, FavNotificationData } from '../NotificationData';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import { CSVLink } from "react-csv";
+import CsvDownload from 'react-json-to-csv'
 class GoogleAds extends React.Component {
   constructor() {
     super();
@@ -49,11 +50,12 @@ class GoogleAds extends React.Component {
           background: null,
         },
         headers : [
-          { label: "Headline", key: "Headline" },
-          { label: "Description", key: "Description" }
+          { label: 'Headline', key: 'details.Headline' },
+          { label: 'Description', key: 'details.Description' },
         ],
          
-        data : [
+        data :[
+          { details: { Headline: '',  Description: '' }},
         ]
     };
   }
@@ -138,9 +140,7 @@ class GoogleAds extends React.Component {
     return errorObj;
   };
 
-  onCopy = () => {
-    this.setState({copied: true});
-  };
+
   handleSubmit = () => {
     const { form, formErrors } = this.state;
     const errorObj = this.validateForm(form, formErrors, this.validateField);
@@ -163,16 +163,19 @@ formSubmit(e) {
     password: 'demo@123'
   }},this.setState({loading:true}),).then(res => {
     let retData = res.data.data.output;
-    console.log(retData);
+    console.log(retData, 'Api data');
      this.setState({
        consumedData:retData,loading: false,
      })
      this.setState({
-      data:[retData]
-    })
-     this.setState({
        allCount:retData.length
      })
+     this.setState({
+      data :[
+        {details:retData}
+      ]
+     })
+     console.log(this.state.data.details);
 
   });
 
@@ -181,8 +184,11 @@ formSubmit(e) {
 
   resetForm = () => {
     this.setState({ 
-      consumedData:null 
+      consumedData:null, 
   })
+  this.setState({ 
+    allCount:''
+})
   }
   wordCount(event) {
     this.setState({ valueone:event.target.value });
@@ -201,7 +207,7 @@ formSubmit(e) {
       booksfav: [...this.state.booksfav, data]
     });
     this.setState({
-      favCount:data.length
+      favCount:[...this.state.booksfav].length
     })
   };
   
@@ -209,7 +215,6 @@ formSubmit(e) {
     const hapus = this.state.booksfav.filter(item => item.id !== id);
     this.setState({ booksfav: hapus });
   };
-
 
   render() {
     let count = 0,
@@ -316,14 +321,8 @@ formSubmit(e) {
                 </Tab>
               </Tabs>
               <div className="clearConsole">
-              <CSVLink
-              data={this.state.data} headers={this.state.headers} filename={"my-file.csv"}
-              className="btn btn-primary"
-              target="_blank"
-            >
-              Download me
-            </CSVLink>;
-                <a href="#" className="clear">Select All</a>
+              <CsvDownload data={this.state.consumedData} />
+                <a href="#" className="clear" >Select All</a>
               </div>
             </Card>
           </Col>

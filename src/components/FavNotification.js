@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom';
 import LandingImage from './../assets/images/landing_image.png';
 
 export const FavNotification = (props) => {
-    console.log(props);
   return (
     <React.Fragment>
       {props.booksfav.map((item) => (
-        <Alert key={item.id}>
+        <Alert  key={item.suggestion.id}>
           <div >
             <h6>{item.suggestion.Headline}</h6>
             <p>{item.suggestion.Description}</p>
