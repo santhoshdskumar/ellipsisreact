@@ -36,22 +36,9 @@ const Support = () => {
           <Box>
             Write us for for any queries, Our team will get in touch with you
             ASAP.
+            <p className="mt-2 mailto"><a href="mailto:support@ellipsis-ai.com">support@ellipsis-ai.com</a></p>
           </Box>
 
-          <Form className="p-0">
-
-            <Form.Group className="mb-4" controlId="formBasicPassword">
-              <Form.Label>Comments</Form.Label>
-              <Form.Control
-                as="textarea"
-                rows={3}
-                placeholder="Lorem ipsum is a description"
-              />
-            </Form.Group>
-            <Button class="update" type="submit">
-              Send
-            </Button>
-          </Form>
         </div>
       </div>
     </div>

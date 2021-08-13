@@ -15,10 +15,11 @@ import axios from 'axios';
 import { ToolkitNotification } from './../../components/ToolkitNotification';
 import { FavNotification } from './../../components/FavNotification';
 import { AllNotificationData, FavNotificationData } from '../NotificationData';
-import {CopyToClipboard} from 'react-copy-to-clipboard';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import { CSVLink } from "react-csv";
 import CsvDownload from 'react-json-to-csv'
+import CopyToClipboard from 'react-copy-to-clipboard';
+
 class GoogleAds extends React.Component {
   constructor() {
     super();
@@ -140,7 +141,9 @@ class GoogleAds extends React.Component {
     return errorObj;
   };
 
-
+  onCopy = () => {
+    this.setState({copied: true});
+  };
   handleSubmit = () => {
     const { form, formErrors } = this.state;
     const errorObj = this.validateForm(form, formErrors, this.validateField);
@@ -215,7 +218,9 @@ formSubmit(e) {
     const hapus = this.state.booksfav.filter(item => item.id !== id);
     this.setState({ booksfav: hapus });
   };
-
+  onCopy = () => {
+    this.setState({copied: true});
+  };
   render() {
     let count = 0,
     lengthOne = this.state.valueone?this.state.valueone.length:0,
@@ -312,7 +317,7 @@ formSubmit(e) {
               >
                
                 <Tab eventKey="all" title={`All ${this.state.allCount}`}>
-                {loading ? <LoadingSpinner  /> : <ToolkitNotification notifcation={this.state.consumedData}   add={this.addToFavorite} />}
+                {loading ? <LoadingSpinner  /> : <ToolkitNotification notifcation={this.state.consumedData}   add={this.addToFavorite}  copy={this.onCopy}/>}
                 </Tab>
                 <Tab eventKey="slected" title={`Selected ${this.state.favCount}`}> 
                   <FavNotification  booksfav={this.state.booksfav}
@@ -322,7 +327,7 @@ formSubmit(e) {
               </Tabs>
               <div className="clearConsole">
               <CsvDownload data={this.state.consumedData} />
-                <a href="#" className="clear" >Select All</a>
+                <a href="#" className="clear">Select All</a>
               </div>
             </Card>
           </Col>
