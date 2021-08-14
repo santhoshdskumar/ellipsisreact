@@ -11,9 +11,14 @@ import {
 } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-import { ToolkitNotification } from './../../components/ToolkitNotification';
 import axios from 'axios';
+import { ToolkitNotification } from './../../components/ToolkitNotification';
+import { FavNotification } from './../../components/FavNotification';
 import { AllNotificationData, FavNotificationData } from '../NotificationData';
+import LoadingSpinner from '../../components/LoadingSpinner';
+import { CSVLink } from "react-csv";
+import CsvDownload from 'react-json-to-csv'
+import CopyToClipboard from 'react-copy-to-clipboard';
 class GoogleAds extends React.Component {
   constructor() {
     super();
@@ -23,6 +28,12 @@ class GoogleAds extends React.Component {
     background: [],
     promo: [],
     consumedData:null,
+    loading: false,
+    copied: false,
+    isBoxVisible:false,
+    booksfav: [],
+    favCount:'',
+    csvData:'',
     allCount:'',
         form: {
           valueone:'',
@@ -131,17 +142,47 @@ class GoogleAds extends React.Component {
     axios.post("https://app2.ellipsis-ai.com/api/v1/abtesting/", abtestings,{auth:{
       username: 'jaffrinkirthiga@gmail.com',
       password: 'demo@123'
-    }},).then(res => {
+    }},this.setState({loading:true}),).then(res => {
       let retData = res.data.data.output;
+      console.log(retData, 'Api data');
        this.setState({
-         consumedData:retData
+         consumedData:retData,loading: false,
        })
        this.setState({
          allCount:retData.length
        })
     });
+  
+    setTimeout(() => {
+     let csvDatas = this.state.consumedData.map(item => ({
+      Headline: item.suggestion.Headline,
+      Description: item.suggestion.Description
+    }))
+     
+     const objectToCsv = (csvDatas) => {
+      const csvRows = [];
+      const headers = Object.keys(csvDatas[0])
+      csvRows.push(headers.join(','));
+      for (const row of csvDatas) {
+        const values = headers.map(header => {
+          const escaped = ('' + row[header]).replace(/"/g, '\\"')
+          return `"${escaped}"`
+        })
+        csvRows.push(values.join(','))
+      }
+      return csvRows.join('\n')
+    }
+    let csvData = objectToCsv(csvDatas);
+    console.log(objectToCsv(csvDatas));
+    
+    this.setState({
+      csvData:csvData
+    })
+    }, 6000);
   };
-
+  onCopy = () => {
+    this.setState({copied: true});
+  };
   handleSubmit = () => {
     const { form, formErrors } = this.state;
     const errorObj = this.validateForm(form, formErrors, this.validateField);
@@ -151,6 +192,17 @@ class GoogleAds extends React.Component {
     }
     console.log("Data: ", form);
   };
+
+
+  
+    resetForm = () => {
+      this.setState({ 
+        consumedData:null, 
+    })
+    this.setState({ 
+        allCount:''
+    })
+    }
 
   wordCount(event) {
     this.setState({ valueone:event.target.value });
@@ -163,13 +215,26 @@ class GoogleAds extends React.Component {
   wordCountThree(event) {
     this.setState({ valueFour:event.target.value });
   }
+  addToFavorite = id => {
+    const data = this.state.consumedData.find(item => item.id === id);
+    this.setState({
+      booksfav: [...this.state.booksfav, data]
+    });
+    this.setState({
+      favCount:[...this.state.booksfav].length
+    })
+  };
 
+  deleteToFavorite = id => {
+    const hapus = this.state.booksfav.filter(item => item.id !== id);
+    this.setState({ booksfav: hapus });
+  };
   render() {
     let count = 0,
     lengthOne = this.state.valueone?this.state.valueone.length:0,
     lengthTwo = this.state.valueThree?this.state.valueThree.length:0,
     lengthThree = this.state.valueFour?this.state.valueFour.length:0;
-    const { form, formErrors } = this.state;
+    const { form, formErrors, loading, isBoxVisible } = this.state;
     const Button = styled.button`
       background: #5433ff;
       mix-blend-mode: normal;
@@ -238,6 +303,7 @@ class GoogleAds extends React.Component {
                   <Button class="update" type="submit" onClick={this.handleSubmit} >
                     Generate Copy
                   </Button>
+                  <button type="reset" onClick={this.resetForm} className="clear">Clear Outputs</button>
                 </Form>
               </Card.Body>
             </Card>
@@ -245,22 +311,25 @@ class GoogleAds extends React.Component {
 
           <Col xs={12}  lg={8} sm={12} className="NotificationEdit">
             <Card>
-              <Tabs
+            <Tabs
                 transition={false}
                 defaultActiveKey="all"
                 id="uncontrolled-tab-example"
                 className="mb-3"
               >
-                <Tab eventKey="all" title="All(6)">
-                  <ToolkitNotification notifcation={this.state.consumedData} />
+               
+                <Tab eventKey="all" title={`All ${this.state.allCount}`}>
+                {loading ? <LoadingSpinner  /> : <ToolkitNotification notifcation={this.state.consumedData}   add={this.addToFavorite}  copy={this.onCopy}/>}
                 </Tab>
-                <Tab eventKey="favourite" title="Favourite(1)">
-                  <ToolkitNotification notifcation={FavNotificationData} />
+                <Tab eventKey="slected" title={`Selected ${this.state.favCount}`}> 
+                  <FavNotification  booksfav={this.state.booksfav}
+                  delete={this.deleteToFavorite} ></FavNotification>
                   <Link to="/workspaceedit" className="viewAll">Edit your fav items &gt; &gt;</Link>
                 </Tab>
               </Tabs>
               <div className="clearConsole">
-                <a onClick={this.resetInputField} className="clear">Clear Output</a>
+              {/* <CsvDownload data={this.state.consumedData} /> */}
+              <CSVLink data={this.state.csvData} filename={"abtesting.csv"}>Download</CSVLink>
                 <a href="#" className="clear">Select All</a>
               </div>
             </Card>

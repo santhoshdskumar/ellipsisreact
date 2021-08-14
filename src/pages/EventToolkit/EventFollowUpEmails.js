@@ -11,9 +11,14 @@ import {
 } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-import { ToolkitNotification } from './../../components/ToolkitNotification';
 import axios from 'axios';
+import { ToolkitNotification } from './../../components/ToolkitNotification';
+import { FavNotification } from './../../components/FavNotification';
 import { AllNotificationData, FavNotificationData } from '../NotificationData';
+import LoadingSpinner from '../../components/LoadingSpinner';
+import { CSVLink } from "react-csv";
+import CsvDownload from 'react-json-to-csv'
+import CopyToClipboard from 'react-copy-to-clipboard';
 class GoogleAds extends React.Component {
   constructor() {
     super();
@@ -33,6 +38,13 @@ class GoogleAds extends React.Component {
         offer: [],
         consumedData:null,
         allCount:'',
+        copySuccess: '',
+        loading: false,
+        copied: false,
+        isBoxVisible:false,
+        booksfav: [],
+        favCount:'',
+        csvData:'',
         form: {
           company: "",
           audience: "",
@@ -165,17 +177,47 @@ class GoogleAds extends React.Component {
     axios.post("https://app2.ellipsis-ai.com/api/v1/event_followup_mail/", event_followup_mail,{auth:{
       username: 'jaffrinkirthiga@gmail.com',
       password: 'demo@123'
-    }},).then(res => {
+    }},this.setState({loading:true}),).then(res => {
       let retData = res.data.data.output;
+      console.log(retData, 'Api data');
        this.setState({
-         consumedData:retData
+         consumedData:retData,loading: false,
        })
        this.setState({
          allCount:retData.length
        })
     });
+  
+    this.setState(prevState => ({ isBoxVisible: !prevState.isBoxVisible }));
+    
+  setTimeout(() => {
+    console.log(this.state.consumedData, 'Consumed Data');
+   let csvDatas = this.state.consumedData.map(item => ({
+    Headline: item.suggestion.Headline,
+    Description: item.suggestion.Description
+  }))
+   
+   const objectToCsv = (csvDatas) => {
+    const csvRows = [];
+    const headers = Object.keys(csvDatas[0])
+    csvRows.push(headers.join(','));
+    for (const row of csvDatas) {
+      const values = headers.map(header => {
+        const escaped = ('' + row[header]).replace(/"/g, '\\"')
+        return `"${escaped}"`
+      })
+      csvRows.push(values.join(','))
+    }
+    return csvRows.join('\n')
+  }
+  let csvData = objectToCsv(csvDatas);
+  console.log(objectToCsv(csvDatas));
+  
+  this.setState({
+    csvData:csvData
+  })
+  }, 5000);
   };
-
   wordCountOne(event) {
     this.setState({ valueOne:event.target.value });
   }
@@ -197,7 +239,31 @@ class GoogleAds extends React.Component {
   wordCountSix(event) {
     this.setState({ valueSix:event.target.value });
   }
-
+  addToFavorite = id => {
+    const data = this.state.consumedData.find(item => item.id === id);
+    this.setState({
+      booksfav: [...this.state.booksfav, data]
+    });
+    this.setState({
+      favCount:[...this.state.booksfav].length
+    })
+  };
+  
+  deleteToFavorite = id => {
+    const hapus = this.state.booksfav.filter(item => item.id !== id);
+    this.setState({ booksfav: hapus });
+  };
+  resetForm = () => {
+    this.setState({ 
+      consumedData:null, 
+  })
+  this.setState({ 
+      allCount:''
+  })
+  }
+  onCopy = () => {
+    this.setState({copied: true});
+  };
   render() {
     let count = 0,
     lengthOne = this.state.valueOne?this.state.valueOne.length:0,
@@ -206,7 +272,7 @@ class GoogleAds extends React.Component {
     lengthFour = this.state.valueFour?this.state.valueFour.length:0,
     lengthFive = this.state.valueFive?this.state.valueFive.length:0,
     lengthSix = this.state.valueSix?this.state.valueSix.length:0;
-    const { form, formErrors } = this.state;
+    const { form, formErrors, loading, isBoxVisible } = this.state;
     const Button = styled.button`
       background: #5433ff;
       mix-blend-mode: normal;
@@ -226,7 +292,7 @@ class GoogleAds extends React.Component {
     `;
     return (
       <React.Fragment>
-        <h1 class="headTitle">Event Toolkit</h1>
+        <h1 class="headTitle">Event</h1>
         <Row>
           <Col xs={12} lg={4} sm={12} md={12} className="mb-md-5 toolkitWebsite">
             <Card>
@@ -311,13 +377,14 @@ class GoogleAds extends React.Component {
                   <Button class="update" type="submit" onClick={this.handleSubmit}>
                     Generate Copy
                   </Button>
+                  <button type="reset" onClick={this.resetForm} className="clear">Clear Outputs</button>
                 </Form>
               </Card.Body>
             </Card>
           </Col>
 
           <Col xs={12}  lg={8} sm={12} className="NotificationEdit">
-            <Card>
+          <Card>
               <Tabs
                 transition={false}
                 defaultActiveKey="all"
@@ -325,16 +392,18 @@ class GoogleAds extends React.Component {
                 className="mb-3"
               >
                
-               <Tab eventKey="all" title={`All ${this.state.allCount}`}>
-                  <ToolkitNotification notifcation={this.state.consumedData} />
+                <Tab eventKey="all" title={`All ${this.state.allCount}`}>
+                {loading ? <LoadingSpinner  /> : <ToolkitNotification notifcation={this.state.consumedData}   add={this.addToFavorite}  copy={this.onCopy}/>}
                 </Tab>
-                <Tab eventKey="favourite" title="Favourite(1)">
-                  <ToolkitNotification notifcation={FavNotificationData} />
+                <Tab eventKey="slected" title={`Selected ${this.state.favCount}`}> 
+                  <FavNotification  booksfav={this.state.booksfav}
+                  delete={this.deleteToFavorite} ></FavNotification>
                   <Link to="/workspaceedit" className="viewAll">Edit your fav items &gt; &gt;</Link>
                 </Tab>
               </Tabs>
               <div className="clearConsole">
-                <a onClick={this.resetInputField} className="clear">Clear Output</a>
+              {/* <CsvDownload data={this.state.consumedData} /> */}
+              <CSVLink data={this.state.csvData} filename={"eventfollowupemails.csv"}>Download</CSVLink>
                 <a href="#" className="clear">Select All</a>
               </div>
             </Card>

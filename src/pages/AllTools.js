@@ -16,6 +16,14 @@ export default class AllTools extends Component {
           <ToolkitCustom className="row " toolkit={Digital} />
         </div>
         <div className="container">
+          <div className="row ">
+            <div className="col-12  mb-4">
+              <h2>Articles</h2>
+            </div>
+          </div>
+          <ToolkitCustom className="row " toolkit={Article} />
+        </div>
+        <div className="container">
           <div className="row">
             <div className="col-12  mb-4 mt-5">
               <h2>Emails</h2>
@@ -40,14 +48,6 @@ export default class AllTools extends Component {
           <ToolkitCustom className="row " toolkit={Website} />
         </div>
         <div className="container">
-          <div className="row ">
-            <div className="col-12  mb-4">
-              <h2>Articles</h2>
-            </div>
-          </div>
-          <ToolkitCustom className="row " toolkit={Article} />
-        </div>
-        <div className="container">
           <div className="row">
             <div className="col-12  mb-4 mt-5">
               <h2>Event Promotions </h2>
@@ -55,6 +55,7 @@ export default class AllTools extends Component {
           </div>
           <ToolkitCustom className="row " toolkit={Event} />
         </div>
+
         <div className="container">
           <div className="row">
             <div className="col-12  mb-4 mt-5">

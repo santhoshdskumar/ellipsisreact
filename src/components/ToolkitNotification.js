@@ -9,6 +9,8 @@ export const ToolkitNotification = (props) => {
   if(data.notifcation==null){
     data = null;
   }
+
+  
   return (
     <React.Fragment>
       {data == null? <div><img src={LandingImage} className="img-fluid"></img></div> : data.notifcation.map((item) => (

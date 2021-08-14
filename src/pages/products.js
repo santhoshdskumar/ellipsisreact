@@ -134,7 +134,7 @@ export const Linkedin = [
     id:'linkedin1',
     socialtype: AdLinkDescriptions,
     title: 'Ad Link Description',
-    text: 'Drive Thought Leadership through LinkedIn Text Ads',
+    text: 'Drive thought leadership through linkedIn text ads',
     link:'/linkedinlinkdesc',
   },
   {
@@ -196,7 +196,7 @@ export const Website = [
     id:'website2',
     socialtype: ProductReviews,
     title: 'Product Reviews',
-    text: 'Lorem Ipsum is simply dummy text of the printing.',
+    text: 'Convert product features into benefits',
     link:'/productreview'
   },
   {
@@ -266,7 +266,7 @@ export const Event = [
     socialtype: EventPromoEmails,
     title: 'Event Promo Emails',
     popular:'Popular',
-    text: 'Drive registrations for events',
+    text: 'High impact event launch promotions',
     link:'/event_promo_mail'
 
   },
@@ -300,8 +300,8 @@ export const Writing = [
   {
     id:'writing1',
     socialtype: Write,
-    title: 'Write Like Me',
-    text: 'Write Like Me',
+    title: 'Writings',
+    text: 'AI writes the next 30 words of your article',
     link:'/write_like_me'
   }
 ];

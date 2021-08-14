@@ -38,6 +38,18 @@ const MenuData = [
     ],
   },
   {
+    name: 'Articles',
+    exact: true,
+    to: "javascript:void(0)",
+    icon: <i class="nav-icon fas fa-newspaper"></i>,
+    subMenus: [
+      { name: 'Article Ideas', to: '/article_ideas' },
+      { name: 'Article Title', to: '/article_title' },
+      { name: 'Article Outlines', to: '/article_outlines' },
+      { name: 'Article Intro', to: '/article_intro' },
+    ],
+  },
+  {
     name: 'Emails',
     exact: true,
     to: "javascript:void(0)",
@@ -76,23 +88,12 @@ const MenuData = [
       { name: 'Hero Text', to: '/hero_text' },
       { name: 'Product Reviews', to: '/productreview' },
       { name: 'Problem-Solution', to: '/problemsoln' },
-      { name: 'Website DEscription', to: '/web_desc' },
+      { name: 'Website Description', to: '/web_desc' },
       { name: 'Feature-Benefits', to: '/feature_benefit' },
     ],
     
   },
-  {
-    name: 'Articles',
-    exact: true,
-    to: "javascript:void(0)",
-    icon: <i class="nav-icon fas fa-newspaper"></i>,
-    subMenus: [
-      { name: 'Article Ideas', to: '/article_ideas' },
-      { name: 'Article Title', to: '/article_title' },
-      { name: 'Article Outlines', to: '/article_outlines' },
-      { name: 'Article Intro', to: '/article_intro' },
-    ],
-  },
+
   {
     name: 'Event Promotions',
     exact: true,
@@ -111,7 +112,7 @@ const MenuData = [
     to:"#javascript:void(0)",
     icon:<i class="nav-icon fas fa-newspaper"></i>,
     subMenus: [
-      { name: 'Write Like Me', to: '/write_like_me' },
+      { name: 'Writings', to: '/write_like_me' },
     ],
   },
 ];

@@ -50,14 +50,7 @@ class GoogleAds extends React.Component {
           company: null,
           audience: null,
           background: null,
-        },
-        headers : [
-          { label: 'Headline', key: 'details.Headline' },
-          { label: 'Description', key: 'details.Description' },
-        ],
-        data :[
-          { details: { Headline: '',  Description: '' }},
-        ]
+        }
     };
   }
 
@@ -128,6 +121,7 @@ class GoogleAds extends React.Component {
     return errorMsg;
   };
   
+  
   validateForm = (form, formErrors, validateFunc) => {
     const errorObj = {};
     Object.keys(formErrors).map(x => {
@@ -173,12 +167,6 @@ formSubmit(e) {
      this.setState({
        allCount:retData.length
      })
-     this.setState({
-      data :[
-        {details:retData}
-      ]
-     })
-
   });
 
   this.setState(prevState => ({ isBoxVisible: !prevState.isBoxVisible }));
@@ -190,7 +178,6 @@ setTimeout(() => {
   Description: item.suggestion.Description
 }))
  
-console.log(csvDatas, 'Csv Data');
  const objectToCsv = (csvDatas) => {
   const csvRows = [];
   const headers = Object.keys(csvDatas[0])
@@ -210,19 +197,16 @@ console.log(objectToCsv(csvDatas));
 this.setState({
   csvData:csvData
 })
-}, 3000);
-console.log(this.state.csvData, 'Csv Data Consumed')
+}, 5000);
 };
-
-
 
   resetForm = () => {
     this.setState({ 
       consumedData:null, 
   })
   this.setState({ 
-    allCount:''
-})
+      allCount:''
+  })
   }
   wordCount(event) {
     this.setState({ valueone:event.target.value });
@@ -287,6 +271,7 @@ console.log(this.state.csvData, 'Csv Data Consumed')
               <Card.Header>
                 <h3>Google Adwords</h3>
               </Card.Header>
+              
               <Card.Body>
                 <p>High converting ads for Google Search</p>
                 <Form className="p-0" onSubmit={this.formSubmit}>
@@ -359,7 +344,7 @@ console.log(this.state.csvData, 'Csv Data Consumed')
               </Tabs>
               <div className="clearConsole">
               {/* <CsvDownload data={this.state.consumedData} /> */}
-              <CSVLink data={this.state.csvData}>Download</CSVLink>
+              <CSVLink data={this.state.csvData} filename={"googleadsense.csv"}>Download</CSVLink>
                 <a href="#" className="clear">Select All</a>
               </div>
             </Card>
