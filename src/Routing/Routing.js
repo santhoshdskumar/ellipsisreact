@@ -54,10 +54,14 @@ import WebinarPromoEmails from '../pages/EventToolkit/WebinarPromoEmails';
 
 import WriteLikeMe from '../pages/WritingToolkit/WriteLikeMe';
 
+
 import { PrivacyPolicy } from '../pages/PrivacyPolicy';
 import { Terms } from '../pages/TermsAndConditions';
 import PasswordChange from '../pages/PasswordChange';
 import { Usage } from '../pages/Usage';
+import Register from '../pages/Register/Register';
+import Login from '../pages/Login/Login';
+import ForgotPassword from '../pages/ForgorPassword/ForgotPassword';
 const Routing = () => {
   return (
     <Switch>
@@ -351,6 +355,19 @@ const Routing = () => {
         <div className="innerPage">
           <Usage />
         </div>
+        </Route>
+
+
+        <Route path="/Register">
+          <Register />
+        </Route>
+
+        <Route path="/Login">
+          <Login />
+        </Route>
+
+        <Route path="/password_reset">
+          <ForgotPassword />
         </Route>
 
         

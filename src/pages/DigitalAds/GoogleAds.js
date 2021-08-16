@@ -147,7 +147,6 @@ class GoogleAds extends React.Component {
     }
   };
 
-
 formSubmit(e) {
   e.preventDefault();
   const googleadwords = {
@@ -171,35 +170,37 @@ formSubmit(e) {
 
   this.setState(prevState => ({ isBoxVisible: !prevState.isBoxVisible }));
   
-setTimeout(() => {
-  console.log(this.state.consumedData, 'Consumed Data');
- let csvDatas = this.state.consumedData.map(item => ({
-  Headline: item.suggestion.Headline,
-  Description: item.suggestion.Description
-}))
- 
- const objectToCsv = (csvDatas) => {
-  const csvRows = [];
-  const headers = Object.keys(csvDatas[0])
-  csvRows.push(headers.join(','));
-  for (const row of csvDatas) {
-    const values = headers.map(header => {
-      const escaped = ('' + row[header]).replace(/"/g, '\\"')
-      return `"${escaped}"`
-    })
-    csvRows.push(values.join(','))
-  }
-  return csvRows.join('\n')
-}
-let csvData = objectToCsv(csvDatas);
-console.log(objectToCsv(csvDatas));
 
-this.setState({
-  csvData:csvData
-})
-}, 5000);
 };
-
+componentDidUpdate(){
+  setTimeout(() => {
+    console.log(this.state.consumedData, 'Consumed Data');
+   let csvDatas = this.state.consumedData.map(item => ({
+    Headline: item.suggestion.Headline,
+    Description: item.suggestion.Description
+  }))
+   
+   const objectToCsv = (csvDatas) => {
+    const csvRows = [];
+    const headers = Object.keys(csvDatas[0])
+    csvRows.push(headers.join(','));
+    for (const row of csvDatas) {
+      const values = headers.map(header => {
+        const escaped = ('' + row[header]).replace(/"/g, '\\"')
+        return `"${escaped}"`
+      })
+      csvRows.push(values.join(','))
+    }
+    return csvRows.join('\n')
+  }
+  let csvData = objectToCsv(csvDatas);
+  console.log(objectToCsv(csvDatas));
+  
+  this.setState({
+    csvData:csvData
+  })
+  }, 7000);
+}
   resetForm = () => {
     this.setState({ 
       consumedData:null, 
@@ -233,9 +234,6 @@ this.setState({
     const hapus = this.state.booksfav.filter(item => item.id !== id);
     this.setState({ booksfav: hapus });
   };
-
-
-
 
   render() {
     let count = 0,

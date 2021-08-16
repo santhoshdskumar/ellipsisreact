@@ -11,6 +11,39 @@
   padding:30px 20px;
   height: 100%;
   position: relative;
+  /*** custom checkboxes***/
+input[type=checkbox] {
+  display:none;
+}
+/* to hide the checkbox itself*/
+input[type=checkbox] + label:before {
+  font-family: FontAwesome;
+  display: inline-block;
+  padding: 11px 12px;
+    background-size: 23px;
+    margin: 7px 0px;
+    /* width: 30px;*/
+    /* height: 30px;*/
+    background-repeat: no-repeat;
+}
+input[type=checkbox] + label:before {
+  content:"";
+  background-image: url('../images/heart.png');
+}
+/* unchecked icon*/
+input[type=checkbox] + label:before {
+  letter-spacing: 10px;
+}
+/* space between checkbox and label*/
+input[type=checkbox]:checked + label:before {
+  content:"";
+  background-image: url('../images/like.png');
+}
+/* checked icon*/
+input[type=checkbox]:checked + label:before {
+  letter-spacing: 5px;
+}
+/* allow space for check mark*/
   img {
     width: 48px;
     min-height: 62px;

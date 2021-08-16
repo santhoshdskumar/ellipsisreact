@@ -1,0 +1,169 @@
+.no-gutter .col-one-half {
+    width: 50%;
+}
+.padding {
+    padding: 5rem;
+}
+.makeStyles-content-2 {
+    padding: 0px !important;
+}
+.bg-image-05:after {
+    background: url('https://app2.ellipsis-ai.com/static/media/bg/image-05@2x.79d60b84af12.jpg');
+}
+[class*="bg-image-"]:before, [class*="bg-image-"]:after, [class*="overlay-"]:before, [class*="overlay-"]:after {
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    bottom: -1px;
+    content: "";
+    height: 101%;
+    left: -1%;
+    position: absolute;
+    top: -1px;
+    width: 102%;
+}
+.featured-image {
+    height: 100%;
+    position: fixed;
+    right: 0;
+}
+[class*="bg-image-"]:before, [class*="bg-image-"]:after, [class*="overlay-"]:before, [class*="overlay-"]:after {
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    bottom: -1px;
+    content: "";
+    height: 101%;
+    left: -1%;
+    position: absolute;
+    top: -1px;
+    width: 102%;
+}
+.main-form  {
+    .form-group {
+        margin-bottom: 1rem;
+        position: relative;
+        label {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5rem;
+            font-weight: 700;
+            line-height: 2.5rem;
+        }
+    }
+     input[type="email"],  input[type="password"],  input[type="text"],  select {
+        height: 2.5rem !important;
+        background: #f6f6f9;
+        border: 1px solid #ececee;
+    }
+     label.checkbox:before {
+        -webkit-border-radius: 0.1875rem;
+        -moz-border-radius: 0.1875rem;
+        border-radius: 0.1875rem;
+    }
+     input[type="checkbox"],  input[type="radio"] {
+        display: none;
+    }
+     label.checkbox:after, label.radio:after {
+        direction: ltr;
+        display: inline-block;
+        font-family: "Material Icons";
+        font-feature-settings: "liga";
+        font-size: 1.5rem;
+        font-style: normal;
+        font-weight: normal;
+        letter-spacing: normal;
+        line-height: 1;
+        text-rendering: optimizeLegibility;
+        text-transform: none;
+        white-space: nowrap;
+        word-wrap: normal;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-transition: all 0.2s;
+        -moz-transition: all 0.2s;
+        -ms-transition: all 0.2s;
+        -o-transition: all 0.2s;
+        transition: all 0.2s;
+        color: transparent;
+        content: "check";
+        font-size: 1.25rem;
+        height: 1.5rem;
+        left: 0;
+        line-height: 1.5rem;
+        pointer-events: none;
+        position: absolute;
+        text-align: center;
+        top: 0.5rem;
+        width: 1.5rem;
+    }
+    label.checkbox,  label.radio {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5rem;
+        cursor: pointer;
+        display: block;
+        line-height: 2.5rem;
+        padding-left: 2rem;
+        position: relative;
+        width: fit-content;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+     label.checkbox:before,  label.radio:before {
+        -webkit-transition: all 0.2s;
+        -moz-transition: all 0.2s;
+        -ms-transition: all 0.2s;
+        -o-transition: all 0.2s;
+        transition: all 0.2s;
+        background: #ececee;
+        content: "";
+        height: 1.5rem;
+        left: 0;
+        position: absolute;
+        top: 0.5rem;
+        width: 1.5rem;
+    }
+     input[type="checkbox"]:checked + label.checkbox:after,  input[type="checkbox"]:checked + label.radio:after, form input[type="radio"]:checked + label.checkbox:after, form input[type="radio"]:checked + label.radio:after {
+        color: #fff;
+        
+    }
+     input[type="checkbox"]:checked + label.checkbox:before,  input[type="checkbox"]:checked + label.radio:before, form input[type="radio"]:checked + label.checkbox:before, form input[type="radio"]:checked + label.radio:before {
+        background: #575bde;
+    }
+    button {
+        width:100%;
+        border:1px solid #5433ff;
+        transition: 0.4s ease-in-out;
+        &:hover {
+            color:#5433ff;
+            background-color: #fff;
+        }
+    }
+}
+.already {
+    span {
+        opacity: 0.4;
+        color: #110f24;
+        font-family: Open Sans;
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+    a {
+        transition: all 0.2s;
+        color: #575bde;
+        cursor: pointer;
+        text-decoration: none;
+    }
+}
+h5 {
+    font-family: $fontreg;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.75rem;
+}
+.paragraph {
+    font-size: 1.25rem;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    line-height: 2rem;
+}
