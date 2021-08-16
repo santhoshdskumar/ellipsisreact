@@ -27,7 +27,7 @@ class Dashboard extends React.Component {
         <h1 className="headTitle">Dashboard</h1>
         <div className="container w-100">
           <div className="row w-100">
-            <div className="col col-sm-12 col-lg-4 projectList">
+            <div className="col col-sm-12 col-lg-4 projectList d-none">
               <div className="card h-100">
                 <div className="card-header">
                   <h3>My Workspace</h3>

@@ -58,7 +58,7 @@ import WriteLikeMe from '../pages/WritingToolkit/WriteLikeMe';
 import { PrivacyPolicy } from '../pages/PrivacyPolicy';
 import { Terms } from '../pages/TermsAndConditions';
 import PasswordChange from '../pages/PasswordChange';
-import { Usage } from '../pages/Usage';
+import  Usage  from '../pages/Usage';
 import Register from '../pages/Register/Register';
 import Login from '../pages/Login/Login';
 import ForgotPassword from '../pages/ForgorPassword/ForgotPassword';

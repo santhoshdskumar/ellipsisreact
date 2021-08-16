@@ -17,6 +17,7 @@ const Register =()=>{
                  <Form.Group className="mb-4" controlId="name">
                         <Form.Label for="password">Password:</Form.Label>
                         <Form.Control type="password"  id="password" name="password" />
+                        <Link to="/Register" className="form-help">Forgot password?</Link>F
                  </Form.Group>
 
                  <Form.Group className="mb-4" controlId="name">
