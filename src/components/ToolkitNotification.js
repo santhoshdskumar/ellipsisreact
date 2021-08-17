@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useRef } from 'react';
 import { Row, Col, Form, Button, Alert } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import LandingImage from './../assets/images/landing_image.png';
@@ -9,6 +9,15 @@ export const ToolkitNotification = (props) => {
   if(data.notifcation==null){
     data = null;
   }
+  console.log(data);
+  const [copySuccess, setCopySuccess] = useState('');
+  const textAreaRef = useRef(null);
+  function copyToClipboard(e) {
+    textAreaRef.current.select();
+    document.execCommand('copy');
+    e.target.focus();
+    setCopySuccess('Copied!');
+  };
 
   
   return (
@@ -17,18 +26,19 @@ export const ToolkitNotification = (props) => {
         <Alert key={item.suggestion.id}>
           <div onCopy={item.copy}>
             <h6 data-value={item.suggestion.Headline}>{item.suggestion.Headline}</h6>
-            <p data-value={item.suggestion.Description}>{item.suggestion.Description}</p>
+            <textarea ref={textAreaRef} value={item.suggestion.Description}>
+            {item.suggestion.Description}
+            </textarea>
             <div className="randomIcons">
-            <span className="text-right float-end"  onClick={() => data.add(item.id)}><i class="fas fa-plus"></i></span>
-            
-            <CopyToClipboard onCopy={props.copy} text={item.suggestion.Headline, item.suggestion.Description}>
+            <input type="radio" onChange={() => data.add(item.id)} id={item.id}></input>
+            {/* <span className="text-right float-end"  onClick={() => data.add(item.id)}></span> */}
+            <CopyToClipboard onCopy={props.copy} text={item.suggestion.Description}>
             <span className="text-right float-end"><i class="fas fa-copy"></i></span>
           </CopyToClipboard>
             </div>
           </div>
         </Alert>
       ))} 
-
     </React.Fragment>
     
   );

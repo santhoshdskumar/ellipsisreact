@@ -58,7 +58,7 @@ const AppMenu = (props) => {
           <img src={user} alt="user" />
         </div>*/}
         <div className="userDrop p-3">
-        <Form className="p-0">
+        <Form className="p-0 d-none">
                 <Form.Group className="mb-4" controlId="formBasicPassword">
                 <select aria-label="Default select example" className="form-control">
                   <option>Select industry type</option>

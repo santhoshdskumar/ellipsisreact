@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Digital, Email, Linkedin, Event, Website, Writing, Article } from './products';
+import { Digital, Email, Linkedin, Event, Website, Writing, Article, Popular } from './products';
 import { projects } from './projects';
 import {Link} from 'react-router-dom';
 import { Tabs, Tab, Container, NavDropdown } from 'react-bootstrap';
@@ -14,12 +14,7 @@ class Dashboard extends React.Component {
       reVAl: [],
     };
   }
-  componentDidMount() {
-    let filteredData = Digital.filter((i, v) => {
-      return v <= 2;
-    });
-    this.setState({ topFour: filteredData });
-  }
+
   render() {
     const { name, slno } = projects;
     return (
@@ -38,16 +33,13 @@ class Dashboard extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="col-12 col-sm-12 col-lg-8">
+            <div className="col-12 col-sm-12 col-lg-12">
               <div class="card">
                 <div class="card-header">
-                  <h3>Favourite Tools</h3>
+                  <h3>Popular Tools</h3>
                 </div>
                 <div className="card-body dashboard-row">
-                  <ToolkitCustom
-                    toolkit={this.state.topFour}
-                    className="row justify-content-between"
-                  />
+                <ProductSlider toolkit={Popular } />
                 </div>
               </div>
             </div>

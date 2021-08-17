@@ -13,6 +13,7 @@ import {
   ListGroupItem,
   Form,
 } from 'react-bootstrap';
+import { FavNotification } from "../components/FavNotification";
 import { Link } from 'react-router-dom';
 
 export const Ckeditor5Build = () => {
@@ -27,7 +28,7 @@ export const Ckeditor5Build = () => {
     <div className="switchWorkspce">
     <Row>
       <Col>
-        <ul className="nav switchNav">
+        <ul className="nav switchNav d-none">
           <li>Switch Workspace</li>
           <li>
           <Form>

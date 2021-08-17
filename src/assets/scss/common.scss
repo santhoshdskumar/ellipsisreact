@@ -562,3 +562,32 @@ button.clear {
     color:#5433ef;
   }
 }
+.tab-content {
+  textarea {
+    width: 80%;
+    border:0px;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    &:focus {
+      border:0px;
+      box-shadow: none;
+      outline: unset;
+    }
+  }
+}
+.randomIcons {
+  input {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    &::before {
+      margin:0px 4px;
+      color: gray;
+      content: "\f067";
+      font-family: FontAwesome;
+      font-size: 19px;
+      cursor: pointer;
+  }
+}
+}

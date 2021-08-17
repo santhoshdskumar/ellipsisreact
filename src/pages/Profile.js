@@ -4,9 +4,30 @@ import Image from 'react-bootstrap/Image';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Billing, Order } from './ProfileData';
+import axios from 'axios';
 import ProductsCustom from '../components/ProductsCustom';
 class Profile extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+            profileData:'',
+            userName:'',
+            userEmail:'',
+            firstName:'',
+    }
+    }
+    handleChange = (e) => {
+      this.setState({ [e.target.name]: e.target.value });
+    }
+    async componentDidMount() {
+                    const response = await axios.get('https://app2.ellipsis-ai.com/api/v1/userdata/36', {auth:{
+                            username: 'jaffrinkirthiga@gmail.com',
+                            password: 'demo@123'
+                    }});
+                    this.setState({ firstName: response.data.userdata.first_name, userEmail:response.data.userdata.email, userName:response.data.userdata.username  })
+    }
   render() {
+    console.log(this.state.firstName);
     const Button = styled.button`
       background: #5433ff;
       border: 1px solid #5433ff;
@@ -36,7 +57,7 @@ class Profile extends React.Component {
           </Card.Header>
           <Card.Body>
             <Row>
-              <Col xl={3} lg={3} md={3} sm={12}>
+              <Col xl={3} lg={3} md={3} sm={12} className="d-none">
                 <Image
                   src="https://via.placeholder.com/150/000000"
                   roundedCircle
@@ -44,21 +65,21 @@ class Profile extends React.Component {
                 />
               </Col>
 
-              <Col xl={9} lg={9} md={9} sm={12}>
+              <Col xl={12} lg={12} md={12} sm={12}>
                 <Form>
                   <Row>
                     <Col xl={6} sm={12} md={12} lg={6}>
                       <Form.Group className="mb-4" controlId="name">
-                        <Form.Label>Your Name</Form.Label>
-                        <Form.Control type="text" placeholder="Rangababu" />
+                        <Form.Label>First Name</Form.Label>
+                        <Form.Control type="text"  onChange={e => { this.handleChange(e)}} placeholder={this.state.firstName} value={this.state.value} />
                       </Form.Group>
                     </Col>
                     <Col xl={6} sm={12} md={12} lg={6}>
                       <Form.Group className="mb-4" controlId="email">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control
-                          type="email"
-                          placeholder="yvrangababu@gmail.com"
+                          type="email"  onChange={e => { this.handleChange(e)}}
+                          placeholder={this.state.userEmail} value={this.state.value}
                         />
                       </Form.Group>
                     </Col>
@@ -67,18 +88,18 @@ class Profile extends React.Component {
                   <Row>
                     <Col xl={6} sm={12} md={12} lg={6}>
                       <Form.Group className="mb-4" controlId="phone">
-                        <Form.Label>Primary Phone Number</Form.Label>
-                        <Form.Control type="tel" placeholder="9739616283" />
+                        <Form.Label>User Name</Form.Label>
+                        <Form.Control type="text"  onChange={e => { this.handleChange(e)}} placeholder={this.state.userName} value={this.state.value}/>
                       </Form.Group>
                     </Col>
-                    <Col xl={6} sm={12} md={12} lg={6}>
+                    <Col xl={6} sm={12} md={12} lg={6} className="d-none">
                       <Form.Group className="mb-4" controlId="currency">
                         <Form.Label>Default Currency</Form.Label>
                         <Form.Control type="tex" placeholder="IND" />
                       </Form.Group>
                     </Col>
                   </Row>
-                  <Row>
+                  <Row className="d-none">
                     <Col xl={12} sm={12} md={12} lg={12}>
                       <Form.Group className="mb-4" controlId="address">
                         <Form.Label>Address</Form.Label>

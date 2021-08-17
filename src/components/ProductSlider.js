@@ -67,8 +67,8 @@ export default class ProductSlider extends Component {
                 </h2>
                 <h3>{product.title}</h3>
                 <p>{product.text} </p>
-                <div className="d-flex justify-content-between">
-                  <a
+                <div className="d-flex justify-content-end">
+                  {/* <a
                     className="btn btn-wishlist"
                     href="javascript:void(0)"
                     onClick={(e) => {
@@ -76,7 +76,7 @@ export default class ProductSlider extends Component {
                     }}
                   >
                     <i className="fas fa-heart"></i>
-                  </a>
+                  </a> */}
                   <Link className="btn btn-next" to={product.link}>
                     <i className="fas fa-arrow-right"></i>
                   </Link>

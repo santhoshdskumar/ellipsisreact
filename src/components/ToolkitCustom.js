@@ -44,8 +44,8 @@ const favoriteCat = cat => {
                   <span className="popularClass">{product.popular}</span>
                 ) : null}
               <p>{product.text} </p>
-              <div className="d-flex justify-content-between">
-                <input
+              <div className="d-flex justify-content-end">
+                {/* <input
                     type="checkbox"
                     id={`custom-checkbox-${product.title}`}
                     value={product.title}
@@ -53,7 +53,7 @@ const favoriteCat = cat => {
                     checked={checkedState[index]}
                     onChange={() => handleOnChange(index)}
                   />
-                <label htmlFor={`custom-checkbox-${product.title}`}></label>
+                <label htmlFor={`custom-checkbox-${product.title}`}></label> */}
                 <Link
                   className="btn btn-next  align-self-center"
                   to={product.link}

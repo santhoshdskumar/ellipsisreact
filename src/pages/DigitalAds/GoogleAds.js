@@ -167,40 +167,33 @@ formSubmit(e) {
        allCount:retData.length
      })
   });
-
   this.setState(prevState => ({ isBoxVisible: !prevState.isBoxVisible }));
-  
-
-};
-componentDidUpdate(){
-  setTimeout(() => {
-    console.log(this.state.consumedData, 'Consumed Data');
-   let csvDatas = this.state.consumedData.map(item => ({
-    Headline: item.suggestion.Headline,
-    Description: item.suggestion.Description
-  }))
-   
-   const objectToCsv = (csvDatas) => {
-    const csvRows = [];
-    const headers = Object.keys(csvDatas[0])
-    csvRows.push(headers.join(','));
-    for (const row of csvDatas) {
-      const values = headers.map(header => {
-        const escaped = ('' + row[header]).replace(/"/g, '\\"')
-        return `"${escaped}"`
-      })
-      csvRows.push(values.join(','))
+  if(this.state.consumedData!=null){
+    let csvDatas = this.state.consumedData.map(item => ({
+      Headline: item.suggestion.Headline,
+      Description: item.suggestion.Description
+    }))
+     
+     const objectToCsv = (csvDatas) => {
+      const csvRows = [];
+      const headers = Object.keys(csvDatas[0])
+      csvRows.push(headers.join(','));
+      for (const row of csvDatas) {
+        const values = headers.map(header => {
+          const escaped = ('' + row[header]).replace(/"/g, '\\"')
+          return `"${escaped}"`
+        })
+        csvRows.push(values.join(','))
+      }
+      return csvRows.join('\n')
     }
-    return csvRows.join('\n')
+    let csvData = objectToCsv(csvDatas);
+    this.setState({
+      csvData:csvData
+    })
   }
-  let csvData = objectToCsv(csvDatas);
-  console.log(objectToCsv(csvDatas));
-  
-  this.setState({
-    csvData:csvData
-  })
-  }, 7000);
-}
+};
+
   resetForm = () => {
     this.setState({ 
       consumedData:null, 
@@ -225,9 +218,8 @@ componentDidUpdate(){
     this.setState({
       booksfav: [...this.state.booksfav, data]
     });
-    console.log(this.state.booksfav);
     this.setState({
-      favCount:[...this.state.booksfav].length
+      favCount:[...this.state.booksfav].length+1
     })
   };
   
@@ -331,14 +323,13 @@ componentDidUpdate(){
                 id="uncontrolled-tab-example"
                 className="mb-3"
               >
-               
                 <Tab eventKey="all" title={`All ${this.state.allCount}`}>
                 {loading ? <LoadingSpinner  /> : <ToolkitNotification notifcation={this.state.consumedData}   add={this.addToFavorite}  copy={this.onCopy}/>}
                 </Tab>
                 <Tab eventKey="slected" title={`Selected ${this.state.favCount}`}> 
                   <FavNotification  booksfav={this.state.booksfav}
-                  delete={this.deleteToFavorite} ></FavNotification>
-                  <Link to="/workspaceedit" className="viewAll">Edit your fav items &gt; &gt;</Link>
+                  ></FavNotification>
+                  <Link to="/workspaceedit" booksfav={this.state.booksfav} className="viewAll">Edit your fav items &gt; &gt;</Link>
                 </Tab>
               </Tabs>
               <div className="clearConsole">

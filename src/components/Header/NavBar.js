@@ -27,11 +27,11 @@ const NavBar = () => {
                   Workspace
                 </Link>
               </Nav.Item> */}
-              <Nav.Item>
+              {/* <Nav.Item>
                 <Link to="/Pricing" className="nav-link">
                   Pricing
                 </Link>
-              </Nav.Item>
+              </Nav.Item> */}
               <Nav.Item>
                 <Link to="/Support" className="nav-link">
                   Support

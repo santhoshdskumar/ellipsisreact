@@ -268,7 +268,6 @@ export const Event = [
     popular:'Popular',
     text: 'High impact event launch promotions',
     link:'/event_promo_mail'
-
   },
   {
     id:'event2',
@@ -304,4 +303,66 @@ export const Writing = [
     text: 'AI writes the next 30 words of your article',
     link:'/write_like_me'
   }
+];
+
+
+export const Popular = [
+  {
+    id:'event4',
+    socialtype: EventDigitalAds,
+    popular:'Popular',
+    title: 'Event Digital Ads',
+    text: 'Ad copy fine tuned for event promotions',
+    link:'event_digitalads'
+  },
+  {
+    id:'event1',
+    socialtype: EventPromoEmails,
+    title: 'Event Promo Emails',
+    popular:'Popular',
+    text: 'High impact event launch promotions',
+    link:'/event_promo_mail'
+  },
+  {
+    id:'article4',
+    socialtype: Intro,
+    popular:'Popular',
+    title: 'Article Intro',
+    text: 'Let AI write the first 200 words of your article',
+    link:'/article_intro'
+  },
+  {
+    id:'article3',
+    socialtype: Outlines,
+    popular:'Popular',
+    title: 'Article Outlines',
+    text: 'Framework for your next article',
+    link:'/article_outlines'
+
+  },
+  {
+    id:'website4',
+    socialtype: WebsiteDescription,
+    popular:'Popular',
+    title: 'Website Description',
+    text: 'Tell Search engines what your website is all about',
+    link:'/web_desc'
+
+  },
+  {
+    id:'digital1',
+    socialtype:GoogleAds,
+    title: 'Google Ads',
+    popular:'Popular',
+    text: 'High converting ads for Google Search',
+    link:'/google-adsense'
+  },
+  {
+    id:'email5',
+    socialtype: Schedule,
+    popular:'Popular',
+    title: 'Schedule Product Demo',
+    text: 'Get that time time commitment from users for demo',
+    link:'schedule_product_demo'
+  },
 ];
