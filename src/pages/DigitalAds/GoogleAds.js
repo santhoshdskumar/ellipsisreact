@@ -225,6 +225,7 @@ componentDidUpdate(){
     this.setState({
       booksfav: [...this.state.booksfav, data]
     });
+    console.log(this.state.booksfav);
     this.setState({
       favCount:[...this.state.booksfav].length
     })
