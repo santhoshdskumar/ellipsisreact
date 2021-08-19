@@ -26,9 +26,9 @@ export const ToolkitNotification = (props) => {
         <Alert key={item.suggestion.id}>
           <div onCopy={item.copy}>
             <h6 data-value={item.suggestion.Headline}>{item.suggestion.Headline}</h6>
-            <textarea ref={textAreaRef} value={item.suggestion.Description}>
+            <p  value={item.suggestion.Description}>
             {item.suggestion.Description}
-            </textarea>
+            </p>
             <div className="randomIcons">
             <input type="radio" onChange={() => data.add(item.id)} id={item.id}></input>
             {/* <span className="text-right float-end"  onClick={() => data.add(item.id)}></span> */}

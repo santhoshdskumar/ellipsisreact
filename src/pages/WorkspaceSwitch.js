@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import {
@@ -16,14 +16,20 @@ import {
 import { FavNotification } from "../components/FavNotification";
 import { Link } from 'react-router-dom';
 
-export const Ckeditor5Build = () => {
+export const Ckeditor5Build = (props) => {
   const handlingDragDrop = (event) => {
     const draggedValue = event.target.dataset["value"];
     // event.dataTransfer.effectAllowed = 'move'
     // event.dataTransfer.dropEffect = 'move';
     event.dataTransfer.setData("text/plain", draggedValue);
   };
+// const saveditemss = localStorage.getItem("data");
 
+let retData = localStorage.getItem("localData");
+console.log(retData);
+let parsedValue = JSON.parse(retData);
+const [itemss, setItemss] = useState(parsedValue || []);
+console.log(itemss);
   return (
     <div className="switchWorkspce">
     <Row>
@@ -58,20 +64,14 @@ export const Ckeditor5Build = () => {
           <h3>Selected Outputs</h3>
         </Card.Header>
         <Card.Body>
-          <h3>Edit and Update the result</h3>
+          <h3>Drag outputs to the content editor to edit/modify.</h3>
           <ListGroup  onDragStart={handlingDragDrop}>
-            <ListGroup.Item  data-value="Developed Apps Games Websites"
+          {itemss.map((item) => (
+            <ListGroup.Item  data-value={item.suggestion.Description}
             className="flow-field--item"
             contentEditable="false"
-            draggable="true">Developed Apps Games Websites</ListGroup.Item>
-            <ListGroup.Item  data-value="Dapibus ac facilisis in"
-            className="flow-field--item"
-            contentEditable="false"
-            draggable="true">Dapibus ac facilisis in</ListGroup.Item>
-            <ListGroup.Item  data-value="Vestibulum at eros"
-            className="flow-field--item"
-            contentEditable="false"
-            draggable="true">Vestibulum at eros</ListGroup.Item>
+            draggable="true">{item.suggestion.Description}</ListGroup.Item>
+           ))}; 
           </ListGroup>
         </Card.Body>
       </Card>

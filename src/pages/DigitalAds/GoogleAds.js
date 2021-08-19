@@ -160,11 +160,16 @@ formSubmit(e) {
   }},this.setState({loading:true}),).then(res => {
     let retData = res.data.data.output;
     console.log(retData, 'Api data');
+    localStorage.setItem('retData', JSON.stringify(retData));
+    let getLocalItem = localStorage.getItem("retData");
+    let parsedValue = JSON.parse(getLocalItem);
+  
+    console.log('retrievedObject: ', parsedValue);
      this.setState({
-       consumedData:retData,loading: false,
+       consumedData:parsedValue,loading: false,
      })
      this.setState({
-       allCount:retData.length
+       allCount:parsedValue.length
      })
   });
   this.setState(prevState => ({ isBoxVisible: !prevState.isBoxVisible }));
@@ -214,10 +219,12 @@ formSubmit(e) {
     this.setState({ valueFour:event.target.value });
   }
   addToFavorite = id => {
-    const data = this.state.consumedData.find(item => item.id === id);
+    let data = this.state.consumedData.find(item => item.id === id);
     this.setState({
-      booksfav: [...this.state.booksfav, data]
+      booksfav: [...this.state.booksfav, data],
     });
+    let localData = this.state.booksfav;
+    localStorage.setItem("localData", JSON.stringify(localData));
     this.setState({
       favCount:[...this.state.booksfav].length+1
     })
@@ -335,7 +342,6 @@ formSubmit(e) {
               <div className="clearConsole">
               {/* <CsvDownload data={this.state.consumedData} /> */}
               <CSVLink data={this.state.csvData} filename={"googleadsense.csv"}>Download</CSVLink>
-                <a href="#" className="clear">Select All</a>
               </div>
             </Card>
           </Col>
