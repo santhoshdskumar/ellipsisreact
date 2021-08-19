@@ -163,7 +163,6 @@ formSubmit(e) {
     localStorage.setItem('retData', JSON.stringify(retData));
     let getLocalItem = localStorage.getItem("retData");
     let parsedValue = JSON.parse(getLocalItem);
-  
     console.log('retrievedObject: ', parsedValue);
      this.setState({
        consumedData:parsedValue,loading: false,

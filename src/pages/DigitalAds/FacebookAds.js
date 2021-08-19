@@ -214,14 +214,17 @@ class GoogleAds extends React.Component {
     this.setState({ valueFour:event.target.value });
   }
   addToFavorite = id => {
-    const data = this.state.consumedData.find(item => item.id === id);
+    let data = this.state.consumedData.find(item => item.id === id);
     this.setState({
-      booksfav: [...this.state.booksfav, data]
+      booksfav: [...this.state.booksfav, data],
     });
+    let localData = this.state.booksfav;
+    localStorage.setItem("localData", JSON.stringify(localData));
     this.setState({
-      favCount:[...this.state.booksfav].length
+      favCount:[...this.state.booksfav].length+1
     })
   };
+  
   
   deleteToFavorite = id => {
     const hapus = this.state.booksfav.filter(item => item.id !== id);
