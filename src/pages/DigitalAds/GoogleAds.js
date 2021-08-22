@@ -8,16 +8,19 @@ import {
   Alert,
   Tab,
   Tabs,
+  Toast,
 } from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 import { ToolkitNotification } from './../../components/ToolkitNotification';
 import { FavNotification } from './../../components/FavNotification';
 import { AllNotificationData, FavNotificationData } from '../NotificationData';
 import LoadingSpinner from '../../components/LoadingSpinner';
-import { CSVLink } from "react-csv";
-import CsvDownload from 'react-json-to-csv'
+import { CSVLink } from 'react-csv';
+import CsvDownload from 'react-json-to-csv';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import CopyToClipboard from 'react-copy-to-clipboard';
 
 class GoogleAds extends React.Component {
@@ -28,29 +31,29 @@ class GoogleAds extends React.Component {
       company: [],
       audience: [],
       background: [],
-      headline:false,
-      consumedData:null,
-      allCount:'',
+      headline: false,
+      consumedData: null,
+      allCount: '',
       copySuccess: '',
       loading: false,
       copied: false,
-      isBoxVisible:false,
+      isBoxVisible: false,
       booksfav: [],
-      favCount:'',
-      csvData:'',
+      favCount: '',
+      csvData: '',
       form: {
-        valueone:'',
-        valueThree:'',
-        valueFour:'',
-        company: "",
-        audience: "",
-        background: "",
-        },
-        formErrors: {
-          company: null,
-          audience: null,
-          background: null,
-        }
+        valueone: '',
+        valueThree: '',
+        valueFour: '',
+        company: '',
+        audience: '',
+        background: '',
+      },
+      formErrors: {
+        company: null,
+        audience: null,
+        background: null,
+      },
     };
   }
 
@@ -58,7 +61,7 @@ class GoogleAds extends React.Component {
     const { name, value, checked } = e.target;
     const { form, formErrors } = this.state;
     let formObj = {};
-    if (name === "language") {
+    if (name === 'language') {
       // handle the change event of language field
       if (checked) {
         // push selected value in list
@@ -68,24 +71,23 @@ class GoogleAds extends React.Component {
         // remove unchecked value from the list
         formObj = {
           ...form,
-          [name]: form[name].filter(x => x !== value)
+          [name]: form[name].filter((x) => x !== value),
         };
       }
     } else {
       // handle change event except language field
       formObj = {
         ...form,
-        [name]: value
+        [name]: value,
       };
     }
     this.setState({ [e.target.name]: e.target.value });
     this.setState({ form: formObj }, () => {
       if (!Object.keys(formErrors).includes(name)) return;
       let formErrorsObj = {};
-      if (name === "password" || name === "confirmPassword") {
-        let refValue = this.state.form[
-          name === "password" ? "confirmPassword" : "password"
-        ];
+      if (name === 'password' || name === 'confirmPassword') {
+        let refValue =
+          this.state.form[name === 'password' ? 'confirmPassword' : 'password'];
         const errorMsg = this.validateField(name, value, refValue);
         formErrorsObj = { ...formErrors, [name]: errorMsg };
         if (!errorMsg && refValue) {
@@ -95,7 +97,7 @@ class GoogleAds extends React.Component {
       } else {
         const errorMsg = this.validateField(
           name,
-          name === "language" ? this.state.form["language"] : value
+          name === 'language' ? this.state.form['language'] : value
         );
         formErrorsObj = { ...formErrors, [name]: errorMsg };
       }
@@ -106,28 +108,27 @@ class GoogleAds extends React.Component {
   validateField = (name, value, refValue) => {
     let errorMsg = null;
     switch (name) {
-      case "company":
-        if (!value) errorMsg = "Please fill the required field.";
+      case 'company':
+        if (!value) errorMsg = 'Please fill the required field.';
         break;
-      case "audience":
-          if (!value) errorMsg = "Please fill the required field.";
-          break;
-      case "background":
-        if (!value) errorMsg = "Please fill the required field.";
+      case 'audience':
+        if (!value) errorMsg = 'Please fill the required field.';
+        break;
+      case 'background':
+        if (!value) errorMsg = 'Please fill the required field.';
         break;
       default:
         break;
     }
     return errorMsg;
   };
-  
-  
+
   validateForm = (form, formErrors, validateFunc) => {
     const errorObj = {};
-    Object.keys(formErrors).map(x => {
+    Object.keys(formErrors).map((x) => {
       let refValue = null;
-      if (x === "password" || x === "confirmPassword") {
-        refValue = form[x === "password" ? "confirmPassword" : "password"];
+      if (x === 'password' || x === 'confirmPassword') {
+        refValue = form[x === 'password' ? 'confirmPassword' : 'password'];
       }
       const msg = validateFunc(x, form[x], refValue);
       if (msg) errorObj[x] = msg;
@@ -136,7 +137,7 @@ class GoogleAds extends React.Component {
   };
 
   onCopy = () => {
-    this.setState({copied: true});
+    this.setState({ copied: true });
   };
   handleSubmit = () => {
     const { form, formErrors } = this.state;
@@ -147,98 +148,117 @@ class GoogleAds extends React.Component {
     }
   };
 
-formSubmit(e) {
-  e.preventDefault();
-  const googleadwords = {
-    company: this.state.company,
-    audience: this.state.audience,
-    background:  this.state.background,
-  }
-  axios.post("https://app2.ellipsis-ai.com/api/v1/googleadwords/", googleadwords,{auth:{
-    username: 'jaffrinkirthiga@gmail.com',
-    password: 'demo@123'
-  }},this.setState({loading:true}),).then(res => {
-    let retData = res.data.data.output;
-    console.log(retData, 'Api data');
-    localStorage.setItem('retData', JSON.stringify(retData));
-    let getLocalItem = localStorage.getItem("retData");
-    let parsedValue = JSON.parse(getLocalItem);
-    console.log('retrievedObject: ', parsedValue);
-     this.setState({
-       consumedData:parsedValue,loading: false,
-     })
-     this.setState({
-       allCount:parsedValue.length
-     })
-  });
-  this.setState(prevState => ({ isBoxVisible: !prevState.isBoxVisible }));
-  if(this.state.consumedData!=null){
-    let csvDatas = this.state.consumedData.map(item => ({
-      Headline: item.suggestion.Headline,
-      Description: item.suggestion.Description
-    }))
-     
-     const objectToCsv = (csvDatas) => {
-      const csvRows = [];
-      const headers = Object.keys(csvDatas[0])
-      csvRows.push(headers.join(','));
-      for (const row of csvDatas) {
-        const values = headers.map(header => {
-          const escaped = ('' + row[header]).replace(/"/g, '\\"')
-          return `"${escaped}"`
-        })
-        csvRows.push(values.join(','))
-      }
-      return csvRows.join('\n')
+  formSubmit(e) {
+    e.preventDefault();
+    const googleadwords = {
+      company: this.state.company,
+      audience: this.state.audience,
+      background: this.state.background,
+    };
+    axios
+      .post(
+        'https://app2.ellipsis-ai.com/api/v1/googleadwords/',
+        googleadwords,
+        {
+          auth: {
+            username: 'jaffrinkirthiga@gmail.com',
+            password: 'demo@123',
+          },
+        },
+        this.setState({ loading: true })
+      )
+      .then((res) => {
+        let retData = res.data.data.output;
+        localStorage.setItem('retData', JSON.stringify(retData));
+        let getLocalItem = localStorage.getItem('retData');
+        let parsedValue = JSON.parse(getLocalItem);
+        this.setState({
+          consumedData: parsedValue,
+          loading: false,
+        });
+        this.setState({
+          allCount: parsedValue.length,
+        });
+      });
+    this.setState((prevState) => ({ isBoxVisible: !prevState.isBoxVisible }));
+    if (this.state.consumedData != null) {
+      let csvDatas = this.state.consumedData.map((item) => ({
+        Headline: item.suggestion.Headline,
+        Description: item.suggestion.Description,
+      }));
+
+      const objectToCsv = (csvDatas) => {
+        const csvRows = [];
+        const headers = Object.keys(csvDatas[0]);
+        csvRows.push(headers.join(','));
+        for (const row of csvDatas) {
+          const values = headers.map((header) => {
+            const escaped = ('' + row[header]).replace(/"/g, '\\"');
+            return `"${escaped}"`;
+          });
+          csvRows.push(values.join(','));
+        }
+        return csvRows.join('\n');
+      };
+      let csvData = objectToCsv(csvDatas);
+      this.setState({
+        csvData: csvData,
+      });
     }
-    let csvData = objectToCsv(csvDatas);
-    this.setState({
-      csvData:csvData
-    })
   }
-};
 
   resetForm = () => {
-    this.setState({ 
-      consumedData:null, 
-  })
-  this.setState({ 
-      allCount:''
-  })
-  }
+    this.setState({
+      consumedData: null,
+    });
+    if (this.state.consumedData == null) {
+      toast('Please fill the all fields');
+    } else {
+      toast('Inputs & outputs cleared successfully');
+    }
+    this.setState({
+      allCount: '',
+    });
+  };
   wordCount(event) {
-    this.setState({ valueone:event.target.value });
+    this.setState({ valueone: event.target.value });
   }
 
   wordCountTwo(event) {
-    this.setState({ valueThree:event.target.value });
+    this.setState({ valueThree: event.target.value });
   }
 
   wordCountThree(event) {
-    this.setState({ valueFour:event.target.value });
+    this.setState({ valueFour: event.target.value });
   }
-  addToFavorite = id => {
-    let data = this.state.consumedData.find(item => item.id === id);
+  addToFavorite = (id) => {
+    let data = this.state.consumedData.find((item) => item.id === id);
+    let localData = [];
+    if (localStorage.getItem('localData')) {
+      let fetchedData = JSON.parse(localStorage.getItem('localData'));
+      localData.push(...fetchedData);
+    }
+    localData.push(data);
+    console.log(localData);
     this.setState({
       booksfav: [...this.state.booksfav, data],
     });
-    let localData = this.state.booksfav;
-    localStorage.setItem("localData", JSON.stringify(localData));
+    localStorage.setItem('localData', JSON.stringify(localData));
     this.setState({
-      favCount:[...this.state.booksfav].length+1
-    })
+      favCount: [...this.state.booksfav].length + 1,
+    });
   };
-  
-  deleteToFavorite = id => {
-    const hapus = this.state.booksfav.filter(item => item.id !== id);
+
+  deleteToFavorite = (id) => {
+    const hapus = this.state.booksfav.filter((item) => item.id !== id);
     this.setState({ booksfav: hapus });
   };
 
   render() {
     let count = 0,
-    lengthOne = this.state.valueone?this.state.valueone.length:0,
-    lengthTwo = this.state.valueThree?this.state.valueThree.length:0,
-    lengthThree = this.state.valueFour?this.state.valueFour.length:0;
+      lengthOne = this.state.valueone ? this.state.valueone.length : 0,
+      lengthTwo = this.state.valueThree ? this.state.valueThree.length : 0,
+      lengthThree = this.state.valueFour ? this.state.valueFour.length : 0;
     const { form, formErrors, loading, isBoxVisible } = this.state;
     const Button = styled.button`
       background: #5433ff;
@@ -248,7 +268,7 @@ formSubmit(e) {
       text-align: center;
       display: block;
       width: 100%;
-      letter-spacing:0.05rem;
+      letter-spacing: 0.05rem;
       border: 1px solid #5433ff;
       margin-bottom: 30px;
       &:hover {
@@ -259,37 +279,62 @@ formSubmit(e) {
     `;
 
     return (
-
       <React.Fragment>
         <h1 class="headTitle">Digital Ads</h1>
         <Row>
-          <Col xs={12} lg={4} sm={12} md={12} className="mb-md-5 toolkitWebsite">
+          <Col
+            xs={12}
+            lg={4}
+            sm={12}
+            md={12}
+            className="mb-md-5 toolkitWebsite"
+          >
             <Card>
               <Card.Header>
                 <h3>Google Adwords</h3>
               </Card.Header>
-              
+
               <Card.Body>
                 <p>High converting ads for Google Search</p>
                 <Form className="p-0" onSubmit={this.formSubmit}>
                   <Form.Group className="mb-4" controlId="company">
                     <Form.Label>Enter company / product name*</Form.Label>
-                    <Form.Control type="text" name="company" value={this.state.value} maxLength="20" 
-                    onChange={e => { this.wordCount(e); this.handleChange(e)}}
-                    placeholder="JBL"
+                    <Form.Control
+                      type="text"
+                      name="company"
+                      value={this.state.value}
+                      maxLength="20"
+                      onChange={(e) => {
+                        this.wordCount(e);
+                        this.handleChange(e);
+                      }}
+                      placeholder="JBL"
                     />
-                    <p className="float-end"><span>{lengthOne}/</span><span>20</span></p>
+                    <p className="float-end">
+                      <span>{lengthOne}/</span>
+                      <span>20</span>
+                    </p>
                     {formErrors.company && (
                       <span className="err">{formErrors.company}</span>
                     )}
                   </Form.Group>
                   <Form.Group className="mb-4" controlId="audience">
                     <Form.Label>Who is your audience*</Form.Label>
-                    <Form.Control type="text" maxLength="20" name="audience"  value={this.state.value}
-                    onChange={e => { this.wordCountTwo(e); this.handleChange(e)}}
+                    <Form.Control
+                      type="text"
+                      maxLength="20"
+                      name="audience"
+                      value={this.state.value}
+                      onChange={(e) => {
+                        this.wordCountTwo(e);
+                        this.handleChange(e);
+                      }}
                       placeholder="Music Lovers"
                     />
-                    <p className="float-end"><span>{lengthTwo}/</span><span>20</span></p>
+                    <p className="float-end">
+                      <span>{lengthTwo}/</span>
+                      <span>20</span>
+                    </p>
                     {formErrors.audience && (
                       <span className="err">{formErrors.audience}</span>
                     )}
@@ -304,24 +349,39 @@ formSubmit(e) {
                       name="background"
                       placeholder="30% OFF on HD-quality earphones, wireless connectivity, use at work, gym, movies, free shipping"
                       value={this.state.value}
-                       onChange={e => { this.handleChange(e)}}
+                      onChange={(e) => {
+                        this.handleChange(e);
+                      }}
                     />
-                    <p className="float-end"><span>{lengthThree}/</span><span>120</span></p>
+                    <p className="float-end">
+                      <span>{lengthThree}/</span>
+                      <span>120</span>
+                    </p>
                     {formErrors.background && (
                       <span className="err">{formErrors.background}</span>
                     )}
                   </Form.Group>
-                  <Button class="update"   type="submit" onClick={this.handleSubmit}  >
+                  <Button
+                    class="update"
+                    type="submit"
+                    onClick={this.handleSubmit}
+                  >
                     Generate Copy
                   </Button>
-                  <button type="reset" onClick={this.resetForm} className="clear">Clear Outputs</button>
+                  <button
+                    type="reset"
+                    onClick={this.resetForm}
+                    className="clear"
+                  >
+                    Clear Outputs
+                  </button>
                   {/* <button className={`loadmore box ${isBoxVisible  ? "show" : "hidden"}`} type="submit" >Load More</button>*/}
                 </Form>
               </Card.Body>
             </Card>
           </Col>
 
-          <Col xs={12}  lg={8} sm={12} className="NotificationEdit">
+          <Col xs={12} lg={8} sm={12} className="NotificationEdit">
             <Card>
               <Tabs
                 transition={false}
@@ -330,20 +390,54 @@ formSubmit(e) {
                 className="mb-3"
               >
                 <Tab eventKey="all" title={`All ${this.state.allCount}`}>
-                {loading ? <LoadingSpinner  /> : <ToolkitNotification notifcation={this.state.consumedData}   add={this.addToFavorite}  copy={this.onCopy}/>}
+                  {loading ? (
+                    <LoadingSpinner />
+                  ) : (
+                    <ToolkitNotification
+                      notifcation={this.state.consumedData}
+                      add={this.addToFavorite}
+                      copy={this.onCopy}
+                    />
+                  )}
                 </Tab>
-                <Tab eventKey="slected" title={`Selected ${this.state.favCount}`}> 
-                  <FavNotification  booksfav={this.state.booksfav}
+                <Tab
+                  eventKey="slected"
+                  title={`Selected ${this.state.favCount}`}
+                >
+                  <FavNotification
+                    booksfav={this.state.booksfav}
                   ></FavNotification>
-                  <Link to="/workspaceedit" booksfav={this.state.booksfav} className="viewAll">Edit your fav items &gt; &gt;</Link>
+                  <Link
+                    to="/workspaceedit"
+                    booksfav={this.state.booksfav}
+                    className="viewAll"
+                  >
+                    Edit your fav items &gt; &gt;
+                  </Link>
                 </Tab>
               </Tabs>
               <div className="clearConsole">
-              {/* <CsvDownload data={this.state.consumedData} /> */}
-              <CSVLink data={this.state.csvData} filename={"googleadsense.csv"}>Download</CSVLink>
+                {/* <CsvDownload data={this.state.consumedData} /> */}
+                <CSVLink
+                  data={this.state.csvData}
+                  filename={'googleadsense.csv'}
+                >
+                  Download
+                </CSVLink>
               </div>
             </Card>
           </Col>
+          <ToastContainer
+            position="top-right"
+            autoClose={2000}
+            hideProgressBar
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
         </Row>
       </React.Fragment>
     );

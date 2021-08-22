@@ -7,25 +7,34 @@ import { Billing, Order } from './ProfileData';
 import axios from 'axios';
 import ProductsCustom from '../components/ProductsCustom';
 class Profile extends React.Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
-            profileData:'',
-            userName:'',
-            userEmail:'',
-            firstName:'',
-    }
-    }
-    handleChange = (e) => {
-      this.setState({ [e.target.name]: e.target.value });
-    }
-    async componentDidMount() {
-                    const response = await axios.get('https://app2.ellipsis-ai.com/api/v1/userdata/36', {auth:{
-                            username: 'jaffrinkirthiga@gmail.com',
-                            password: 'demo@123'
-                    }});
-                    this.setState({ firstName: response.data.userdata.first_name, userEmail:response.data.userdata.email, userName:response.data.userdata.username  })
-    }
+      profileData: '',
+      userName: '',
+      userEmail: '',
+      firstName: '',
+    };
+  }
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+  async componentDidMount() {
+    const response = await axios.get(
+      'https://app2.ellipsis-ai.com/api/v1/userdata/36',
+      {
+        auth: {
+          username: 'jaffrinkirthiga@gmail.com',
+          password: 'demo@123',
+        },
+      }
+    );
+    this.setState({
+      firstName: response.data.userdata.first_name,
+      userEmail: response.data.userdata.email,
+      userName: response.data.userdata.username,
+    });
+  }
   render() {
     console.log(this.state.firstName);
     const Button = styled.button`
@@ -71,15 +80,26 @@ class Profile extends React.Component {
                     <Col xl={6} sm={12} md={12} lg={6}>
                       <Form.Group className="mb-4" controlId="name">
                         <Form.Label>First Name</Form.Label>
-                        <Form.Control type="text"  onChange={e => { this.handleChange(e)}} placeholder={this.state.firstName} value={this.state.value} />
+                        <Form.Control
+                          type="text"
+                          onChange={(e) => {
+                            this.handleChange(e);
+                          }}
+                          placeholder={this.state.firstName}
+                          value={this.state.value}
+                        />
                       </Form.Group>
                     </Col>
                     <Col xl={6} sm={12} md={12} lg={6}>
                       <Form.Group className="mb-4" controlId="email">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control
-                          type="email"  onChange={e => { this.handleChange(e)}}
-                          placeholder={this.state.userEmail} value={this.state.value}
+                          type="email"
+                          onChange={(e) => {
+                            this.handleChange(e);
+                          }}
+                          placeholder={this.state.userEmail}
+                          value={this.state.value}
                         />
                       </Form.Group>
                     </Col>
@@ -89,7 +109,14 @@ class Profile extends React.Component {
                     <Col xl={6} sm={12} md={12} lg={6}>
                       <Form.Group className="mb-4" controlId="phone">
                         <Form.Label>User Name</Form.Label>
-                        <Form.Control type="text"  onChange={e => { this.handleChange(e)}} placeholder={this.state.userName} value={this.state.value}/>
+                        <Form.Control
+                          type="text"
+                          onChange={(e) => {
+                            this.handleChange(e);
+                          }}
+                          placeholder={this.state.userName}
+                          value={this.state.value}
+                        />
                       </Form.Group>
                     </Col>
                     <Col xl={6} sm={12} md={12} lg={6} className="d-none">
@@ -108,10 +135,12 @@ class Profile extends React.Component {
                     </Col>
                   </Row>
 
-                  <Button variant="primary" type="submit">
+                  {/* <Button variant="primary" type="submit">
                     Update
-                  </Button>
-                  <Link to="/Passwordchange" className="changepassword">Change Password</Link>
+                  </Button> */}
+                  <Link to="/Passwordchange" className="changepassword">
+                    Change Password
+                  </Link>
                 </Form>
               </Col>
             </Row>
@@ -123,10 +152,9 @@ class Profile extends React.Component {
           </Col>
           <Col xl={4} lg={4} md="4" sm={12}>
             <Link to="/Usage">
-            <ProductsCustom products={Order} />
+              <ProductsCustom products={Order} />
             </Link>
           </Col>
-  
         </Row>
       </React.Fragment>
     );

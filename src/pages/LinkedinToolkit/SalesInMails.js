@@ -18,6 +18,8 @@ import { AllNotificationData, FavNotificationData } from '../NotificationData';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import { CSVLink } from 'react-csv';
 import CsvDownload from 'react-json-to-csv';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import CopyToClipboard from 'react-copy-to-clipboard';
 class GoogleAds extends React.Component {
   constructor() {
@@ -238,10 +240,16 @@ class GoogleAds extends React.Component {
   }
   addToFavorite = (id) => {
     let data = this.state.consumedData.find((item) => item.id === id);
+    let localData = [];
+    if (localStorage.getItem('localData')) {
+      let fetchedData = JSON.parse(localStorage.getItem('localData'));
+      localData.push(...fetchedData);
+    }
+    localData.push(data);
+    console.log(localData);
     this.setState({
       booksfav: [...this.state.booksfav, data],
     });
-    let localData = this.state.booksfav;
     localStorage.setItem('localData', JSON.stringify(localData));
     this.setState({
       favCount: [...this.state.booksfav].length + 1,
@@ -256,6 +264,11 @@ class GoogleAds extends React.Component {
     this.setState({
       consumedData: null,
     });
+    if (this.state.consumedData == null) {
+      toast('Please fill the all fields');
+    } else {
+      toast('Inputs & outputs cleared successfully');
+    }
     this.setState({
       allCount: '',
     });
@@ -467,6 +480,17 @@ class GoogleAds extends React.Component {
               </div>
             </Card>
           </Col>
+          <ToastContainer
+            position="top-right"
+            autoClose={2000}
+            hideProgressBar
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
         </Row>
       </React.Fragment>
     );

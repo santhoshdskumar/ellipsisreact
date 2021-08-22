@@ -19,17 +19,22 @@ import { Link } from 'react-router-dom';
 export const Ckeditor5Build = (props) => {
   const handlingDragDrop = (event) => {
     const draggedValue = event.target.dataset['value'];
-    // event.dataTransfer.effectAllowed = 'move'
-    // event.dataTransfer.dropEffect = 'move';
+    // event.dataTransfer.effectAllowed = 'move';
+    event.dataTransfer.dropEffect = 'move';
     event.dataTransfer.setData('text/plain', draggedValue);
   };
   // const saveditemss = localStorage.getItem("data");
 
   let retData = localStorage.getItem('localData');
-  console.log(retData);
   let parsedValue = JSON.parse(retData);
+  let lovalD = [];
   const [itemss, setItemss] = useState(parsedValue || []);
-  console.log(itemss);
+  lovalD.push(itemss);
+  lovalD.map((item) => {
+    return item.map((data) => {
+      return console.log(data.suggestion.Headline);
+    });
+  });
   return (
     <div className="switchWorkspce">
       <Row>
@@ -66,19 +71,26 @@ export const Ckeditor5Build = (props) => {
             </Card.Header>
             <Card.Body>
               <h3>Drag outputs to the content editor to edit/modify.</h3>
-              <ListGroup onDragStart={handlingDragDrop}>
-                {itemss.map((item) => (
-                  <ListGroup.Item
-                    data-value={item.suggestion.Description}
-                    className="flow-field--item"
-                    contentEditable="false"
-                    draggable="true"
-                  >
-                    {item.suggestion.Description}
-                  </ListGroup.Item>
-                ))}
-                ;
-              </ListGroup>
+              <React.Fragment>
+                {lovalD.map((item) => {
+                  return (
+                    <ListGroup onDragStart={handlingDragDrop}>
+                      {item.map((data) => {
+                        return (
+                          <ListGroup.Item
+                            data-value={data.suggestion.Description}
+                            className="flow-field--item"
+                            contentEditable="false"
+                            draggable="true"
+                          >
+                            {data.suggestion.Description}
+                          </ListGroup.Item>
+                        );
+                      })}
+                    </ListGroup>
+                  );
+                })}
+              </React.Fragment>
             </Card.Body>
           </Card>
         </Col>
@@ -117,7 +129,7 @@ export const Ckeditor5Build = (props) => {
               />
             </Card.Body>
           </Card>
-          <Button className="update">Update</Button>
+          {/* <Button className="update">Update</Button> */}
         </Col>
       </Row>
     </div>
