@@ -9,65 +9,65 @@ import {
   Tab,
   Tabs,
 } from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 import { ToolkitNotification } from './../../components/ToolkitNotification';
 import { FavNotification } from './../../components/FavNotification';
 import { AllNotificationData, FavNotificationData } from '../NotificationData';
 import LoadingSpinner from '../../components/LoadingSpinner';
-import { CSVLink } from "react-csv";
-import CsvDownload from 'react-json-to-csv'
+import { CSVLink } from 'react-csv';
+import CsvDownload from 'react-json-to-csv';
 import CopyToClipboard from 'react-copy-to-clipboard';
 class GoogleAds extends React.Component {
   constructor() {
     super();
     this.formSubmit = this.formSubmit.bind(this);
     this.state = {
-        valueOne:'',
-        valueTwo:'',
-        valueThree:'',
-        valueFour:'',
-        valueFive:'',
-        valueSix:'',
-        company: [],
-        category: [],
-        audience: [],
-        name: [],
-        offer: [],
-        background: [],
-        consumedData:null,
-        allCount:'',
-        copySuccess: '',
-        loading: false,
-        copied: false,
-        isBoxVisible:false,
-        booksfav: [],
-        favCount:'',
-        csvData:'',
-        form: {
-          company: "",
-          category: "",
-          audience: "",
-          name:'',
-          offer:'',
-          background:'',
-        },
-        formErrors: {
-          company: null,
-          category: null,
-          audience: null,
-          name:null,
-          offer:null,
-          background:null,
-        }
+      valueOne: '',
+      valueTwo: '',
+      valueThree: '',
+      valueFour: '',
+      valueFive: '',
+      valueSix: '',
+      company: [],
+      category: [],
+      audience: [],
+      name: [],
+      offer: [],
+      background: [],
+      consumedData: null,
+      allCount: '',
+      copySuccess: '',
+      loading: false,
+      copied: false,
+      isBoxVisible: false,
+      booksfav: [],
+      favCount: '',
+      csvData: '',
+      form: {
+        company: '',
+        category: '',
+        audience: '',
+        name: '',
+        offer: '',
+        background: '',
+      },
+      formErrors: {
+        company: null,
+        category: null,
+        audience: null,
+        name: null,
+        offer: null,
+        background: null,
+      },
     };
   }
   handleChange = (e) => {
     const { name, value, checked } = e.target;
     const { form, formErrors } = this.state;
     let formObj = {};
-    if (name === "language") {
+    if (name === 'language') {
       // handle the change event of language field
       if (checked) {
         // push selected value in list
@@ -77,24 +77,23 @@ class GoogleAds extends React.Component {
         // remove unchecked value from the list
         formObj = {
           ...form,
-          [name]: form[name].filter(x => x !== value)
+          [name]: form[name].filter((x) => x !== value),
         };
       }
     } else {
       // handle change event except language field
       formObj = {
         ...form,
-        [name]: value
+        [name]: value,
       };
     }
     this.setState({ [e.target.name]: e.target.value });
     this.setState({ form: formObj }, () => {
       if (!Object.keys(formErrors).includes(name)) return;
       let formErrorsObj = {};
-      if (name === "password" || name === "confirmPassword") {
-        let refValue = this.state.form[
-          name === "password" ? "confirmPassword" : "password"
-        ];
+      if (name === 'password' || name === 'confirmPassword') {
+        let refValue =
+          this.state.form[name === 'password' ? 'confirmPassword' : 'password'];
         const errorMsg = this.validateField(name, value, refValue);
         formErrorsObj = { ...formErrors, [name]: errorMsg };
         if (!errorMsg && refValue) {
@@ -104,7 +103,7 @@ class GoogleAds extends React.Component {
       } else {
         const errorMsg = this.validateField(
           name,
-          name === "language" ? this.state.form["language"] : value
+          name === 'language' ? this.state.form['language'] : value
         );
         formErrorsObj = { ...formErrors, [name]: errorMsg };
       }
@@ -115,23 +114,23 @@ class GoogleAds extends React.Component {
   validateField = (name, value, refValue) => {
     let errorMsg = null;
     switch (name) {
-      case "company":
-            if (!value) errorMsg = "Please fill the required field.";
-            break;
-      case "category":
-          if (!value) errorMsg = "Please fill the required field.";
-          break;
-      case "audience":
-            if (!value) errorMsg = "Please fill the required field.";
-            break;
-      case "name":
-            if (!value) errorMsg = "Please fill the required field.";
-            break;
-      case "offer":
-        if (!value) errorMsg = "Please fill the required field.";
+      case 'company':
+        if (!value) errorMsg = 'Please fill the required field.';
         break;
-      case "background":
-        if (!value) errorMsg = "Please fill the required field.";
+      case 'category':
+        if (!value) errorMsg = 'Please fill the required field.';
+        break;
+      case 'audience':
+        if (!value) errorMsg = 'Please fill the required field.';
+        break;
+      case 'name':
+        if (!value) errorMsg = 'Please fill the required field.';
+        break;
+      case 'offer':
+        if (!value) errorMsg = 'Please fill the required field.';
+        break;
+      case 'background':
+        if (!value) errorMsg = 'Please fill the required field.';
         break;
       default:
         break;
@@ -139,20 +138,18 @@ class GoogleAds extends React.Component {
     return errorMsg;
   };
 
-
   validateForm = (form, formErrors, validateFunc) => {
     const errorObj = {};
-    Object.keys(formErrors).map(x => {
+    Object.keys(formErrors).map((x) => {
       let refValue = null;
-      if (x === "password" || x === "confirmPassword") {
-        refValue = form[x === "password" ? "confirmPassword" : "password"];
+      if (x === 'password' || x === 'confirmPassword') {
+        refValue = form[x === 'password' ? 'confirmPassword' : 'password'];
       }
       const msg = validateFunc(x, form[x], refValue);
       if (msg) errorObj[x] = msg;
     });
     return errorObj;
   };
-
 
   handleSubmit = () => {
     const { form, formErrors } = this.state;
@@ -161,7 +158,7 @@ class GoogleAds extends React.Component {
       this.setState({ formErrors: { ...formErrors, ...errorObj } });
       return false;
     }
-    console.log("Data: ", form);
+    console.log('Data: ', form);
   };
 
   formSubmit(e) {
@@ -170,108 +167,120 @@ class GoogleAds extends React.Component {
       company: this.state.company,
       category: this.state.category,
       audience: this.state.audience,
-      name:this.state.name,
+      name: this.state.name,
       offer: this.state.offer,
       background: this.state.background,
-    }
-    axios.post("https://app2.ellipsis-ai.com/api/v1/freeuser_engagement/", freeuserengagement,{auth:{
-      username: 'jaffrinkirthiga@gmail.com',
-      password: 'demo@123'
-    }},this.setState({loading:true}),).then(res => {
-      let retData = res.data.data.output;
-      console.log(retData, 'Api data');
-       this.setState({
-         consumedData:retData,loading: false,
-       })
-       this.setState({
-         allCount:retData.length
-       })
-    });
-  
-    this.setState(prevState => ({ isBoxVisible: !prevState.isBoxVisible }));
-    
-  setTimeout(() => {
-    console.log(this.state.consumedData, 'Consumed Data');
-   let csvDatas = this.state.consumedData.map(item => ({
-    Headline: item.suggestion.Headline,
-    Description: item.suggestion.Description
-  }))
-   
-   const objectToCsv = (csvDatas) => {
-    const csvRows = [];
-    const headers = Object.keys(csvDatas[0])
-    csvRows.push(headers.join(','));
-    for (const row of csvDatas) {
-      const values = headers.map(header => {
-        const escaped = ('' + row[header]).replace(/"/g, '\\"')
-        return `"${escaped}"`
-      })
-      csvRows.push(values.join(','))
-    }
-    return csvRows.join('\n')
+    };
+    axios
+      .post(
+        'https://app2.ellipsis-ai.com/api/v1/freeuser_engagement/',
+        freeuserengagement,
+        {
+          auth: {
+            username: 'jaffrinkirthiga@gmail.com',
+            password: 'demo@123',
+          },
+        },
+        this.setState({ loading: true })
+      )
+      .then((res) => {
+        let retData = res.data.data.output;
+        console.log(retData, 'Api data');
+        this.setState({
+          consumedData: retData,
+          loading: false,
+        });
+        this.setState({
+          allCount: retData.length,
+        });
+      });
+
+    this.setState((prevState) => ({ isBoxVisible: !prevState.isBoxVisible }));
+
+    setTimeout(() => {
+      console.log(this.state.consumedData, 'Consumed Data');
+      let csvDatas = this.state.consumedData.map((item) => ({
+        Headline: item.suggestion.Headline,
+        Description: item.suggestion.Description,
+      }));
+
+      const objectToCsv = (csvDatas) => {
+        const csvRows = [];
+        const headers = Object.keys(csvDatas[0]);
+        csvRows.push(headers.join(','));
+        for (const row of csvDatas) {
+          const values = headers.map((header) => {
+            const escaped = ('' + row[header]).replace(/"/g, '\\"');
+            return `"${escaped}"`;
+          });
+          csvRows.push(values.join(','));
+        }
+        return csvRows.join('\n');
+      };
+      let csvData = objectToCsv(csvDatas);
+      console.log(objectToCsv(csvDatas));
+
+      this.setState({
+        csvData: csvData,
+      });
+    }, 5000);
   }
-  let csvData = objectToCsv(csvDatas);
-  console.log(objectToCsv(csvDatas));
-  
-  this.setState({
-    csvData:csvData
-  })
-  }, 5000);
-  };
 
   wordCountOne(event) {
-    this.setState({ valueOne:event.target.value });
+    this.setState({ valueOne: event.target.value });
   }
 
   wordCountTwo(event) {
-    this.setState({ valueTwo:event.target.value });
+    this.setState({ valueTwo: event.target.value });
   }
   wordCountThree(event) {
-    this.setState({ valueThree:event.target.value });
+    this.setState({ valueThree: event.target.value });
   }
 
   wordCountFour(event) {
-    this.setState({ valueFour:event.target.value });
+    this.setState({ valueFour: event.target.value });
   }
   wordCountFive(event) {
-    this.setState({ valueFive:event.target.value });
+    this.setState({ valueFive: event.target.value });
   }
 
   wordCountSix(event) {
-    this.setState({ valueSix:event.target.value });
+    this.setState({ valueSix: event.target.value });
   }
-  addToFavorite = id => {
-    const data = this.state.consumedData.find(item => item.id === id);
+  addToFavorite = (id) => {
+    let data = this.state.consumedData.find((item) => item.id === id);
     this.setState({
-      booksfav: [...this.state.booksfav, data]
+      booksfav: [...this.state.booksfav, data],
     });
+    let localData = this.state.booksfav;
+    localStorage.setItem('localData', JSON.stringify(localData));
     this.setState({
-      favCount:[...this.state.booksfav].length
-    })
+      favCount: [...this.state.booksfav].length + 1,
+    });
   };
   onCopy = () => {
-    this.setState({copied: true});
+    this.setState({ copied: true });
   };
-  deleteToFavorite = id => {
-    const hapus = this.state.booksfav.filter(item => item.id !== id);
+  deleteToFavorite = (id) => {
+    const hapus = this.state.booksfav.filter((item) => item.id !== id);
     this.setState({ booksfav: hapus });
   };
   resetForm = () => {
-    this.setState({ 
-      consumedData:null, 
-  })
-  this.setState({ 
-      allCount:''
-  })
-  }
+    this.setState({
+      consumedData: null,
+    });
+    this.setState({
+      allCount: '',
+    });
+  };
   render() {
     let count = 0,
-    lengthOne = this.state.valueOne?this.state.valueOne.length:0,
-    lengthTwo = this.state.valueTwo?this.state.valueTwo.length:0,
-    lengthThree = this.state.valueThree?this.state.valueThree.length:0,
-    lengthFour = this.state.valueFour?this.state.valueFour.length:0,
-    lengthFive = this.state.valueFive?this.state.valueFive.length:0,
-    lengthSix = this.state.valueSix?this.state.valueSix.length:0;
+      lengthOne = this.state.valueOne ? this.state.valueOne.length : 0,
+      lengthTwo = this.state.valueTwo ? this.state.valueTwo.length : 0,
+      lengthThree = this.state.valueThree ? this.state.valueThree.length : 0,
+      lengthFour = this.state.valueFour ? this.state.valueFour.length : 0,
+      lengthFive = this.state.valueFive ? this.state.valueFive.length : 0,
+      lengthSix = this.state.valueSix ? this.state.valueSix.length : 0;
     const { form, formErrors, loading, isBoxVisible } = this.state;
     const Button = styled.button`
       background: #5433ff;
@@ -281,7 +290,7 @@ class GoogleAds extends React.Component {
       text-align: center;
       display: block;
       width: 100%;
-      letter-spacing:0.05rem;
+      letter-spacing: 0.05rem;
       border: 1px solid #5433ff;
       margin-bottom: 30px;
       &:hover {
@@ -294,7 +303,13 @@ class GoogleAds extends React.Component {
       <React.Fragment>
         <h1 class="headTitle">Emails</h1>
         <Row>
-          <Col xs={12} lg={4} sm={12} md={12} className="mb-md-5 toolkitWebsite">
+          <Col
+            xs={12}
+            lg={4}
+            sm={12}
+            md={12}
+            className="mb-md-5 toolkitWebsite"
+          >
             <Card>
               <Card.Header>
                 <h3>Free User Engagement</h3>
@@ -304,54 +319,104 @@ class GoogleAds extends React.Component {
                 <Form className="p-0" onSubmit={this.formSubmit}>
                   <Form.Group className="mb-4" controlId="company">
                     <Form.Label>Enter your Company/Brand name*</Form.Label>
-                    <Form.Control type="text" name="company" value={this.state.value} maxLength="20"
-                    onChange={e => { this.wordCountOne(e); this.handleChange(e)}}
+                    <Form.Control
+                      type="text"
+                      name="company"
+                      value={this.state.value}
+                      maxLength="20"
+                      onChange={(e) => {
+                        this.wordCountOne(e);
+                        this.handleChange(e);
+                      }}
                     />
                     {formErrors.company && (
                       <span className="err">{formErrors.company}</span>
                     )}
-                    <p className="float-end"><span>{lengthOne}/</span><span>20</span></p>
+                    <p className="float-end">
+                      <span>{lengthOne}/</span>
+                      <span>20</span>
+                    </p>
                   </Form.Group>
                   <Form.Group className="mb-4" controlId="category">
                     <Form.Label>Product Category*</Form.Label>
-                    <Form.Control type="text" name="category" value={this.state.value} maxLength="20"
-                      onChange={e => { this.wordCountTwo(e); this.handleChange(e)}}
-                      />
-                      {formErrors.category && (
-                        <span className="err">{formErrors.category}</span>
-                      )}
-                    <p className="float-end"><span>{lengthTwo}/</span><span>20</span></p>
+                    <Form.Control
+                      type="text"
+                      name="category"
+                      value={this.state.value}
+                      maxLength="20"
+                      onChange={(e) => {
+                        this.wordCountTwo(e);
+                        this.handleChange(e);
+                      }}
+                    />
+                    {formErrors.category && (
+                      <span className="err">{formErrors.category}</span>
+                    )}
+                    <p className="float-end">
+                      <span>{lengthTwo}/</span>
+                      <span>20</span>
+                    </p>
                   </Form.Group>
                   <Form.Group className="mb-4" controlId="audience">
                     <Form.Label>Describe your customer*</Form.Label>
-                    <Form.Control type="text" name="audience" value={this.state.value} maxLength="20"
-                    onChange={e => { this.wordCountThree(e); this.handleChange(e)}}
+                    <Form.Control
+                      type="text"
+                      name="audience"
+                      value={this.state.value}
+                      maxLength="20"
+                      onChange={(e) => {
+                        this.wordCountThree(e);
+                        this.handleChange(e);
+                      }}
                     />
                     {formErrors.audience && (
                       <span className="err">{formErrors.audience}</span>
                     )}
-                    <p className="float-end"><span>{lengthThree}/</span><span>20</span></p>
+                    <p className="float-end">
+                      <span>{lengthThree}/</span>
+                      <span>20</span>
+                    </p>
                   </Form.Group>
                   <Form.Group className="mb-4" controlId="name">
                     <Form.Label>Customer Name</Form.Label>
-                    <Form.Control type="text" name="name" value={this.state.value} maxLength="20"
-                    onChange={e => { this.wordCountFour(e); this.handleChange(e)}}
+                    <Form.Control
+                      type="text"
+                      name="name"
+                      value={this.state.value}
+                      maxLength="20"
+                      onChange={(e) => {
+                        this.wordCountFour(e);
+                        this.handleChange(e);
+                      }}
                     />
                     {formErrors.name && (
                       <span className="err">{formErrors.name}</span>
                     )}
-                    <p className="float-end"><span>{lengthFour}/</span><span>20</span></p>
+                    <p className="float-end">
+                      <span>{lengthFour}/</span>
+                      <span>20</span>
+                    </p>
                   </Form.Group>
 
                   <Form.Group className="mb-4" controlId="offer">
                     <Form.Label>Offers or promotions?</Form.Label>
-                    <Form.Control type="text" maxLength="20" name="offer"  value={this.state.value}
-                    onChange={e => { this.wordCountFive(e); this.handleChange(e)}}
+                    <Form.Control
+                      type="text"
+                      maxLength="20"
+                      name="offer"
+                      value={this.state.value}
+                      onChange={(e) => {
+                        this.wordCountFive(e);
+                        this.handleChange(e);
+                      }}
                     />
                     {formErrors.offer && (
                       <span className="err">{formErrors.offer}</span>
                     )}
-                    <p className="float-end"><span>{lengthFive}/</span><span>20</span></p>
+                    <p className="float-end">
+                      <span>{lengthFive}/</span>
+                      <span>20</span>
+                    </p>
                   </Form.Group>
 
                   <Form.Group className="mb-4" controlId="background">
@@ -362,41 +427,75 @@ class GoogleAds extends React.Component {
                       maxLength="140"
                       name="background"
                       value={this.state.value}
-                      onChange={e => { this.wordCountSix(e); this.handleChange(e)}}
+                      onChange={(e) => {
+                        this.wordCountSix(e);
+                        this.handleChange(e);
+                      }}
                     />
-                    <p className="float-end"><span>{lengthSix}/</span><span>120</span></p>
+                    <p className="float-end">
+                      <span>{lengthSix}/</span>
+                      <span>120</span>
+                    </p>
                   </Form.Group>
-                  <Button class="update" type="submit"  onClick={this.handleSubmit}>
+                  <Button
+                    class="update"
+                    type="submit"
+                    onClick={this.handleSubmit}
+                  >
                     Generate Copy
                   </Button>
-                  <button type="reset" onClick={this.resetForm} className="clear">Clear Outputs</button>
+                  <button
+                    type="reset"
+                    onClick={this.resetForm}
+                    className="clear"
+                  >
+                    Clear Outputs
+                  </button>
                 </Form>
               </Card.Body>
             </Card>
           </Col>
 
-          <Col xs={12}  lg={8} sm={12} className="NotificationEdit">
-          <Card>
+          <Col xs={12} lg={8} sm={12} className="NotificationEdit">
+            <Card>
               <Tabs
                 transition={false}
                 defaultActiveKey="all"
                 id="uncontrolled-tab-example"
                 className="mb-3"
               >
-               
                 <Tab eventKey="all" title={`All ${this.state.allCount}`}>
-                {loading ? <LoadingSpinner  /> : <ToolkitNotification notifcation={this.state.consumedData}   add={this.addToFavorite}  copy={this.onCopy}/>}
+                  {loading ? (
+                    <LoadingSpinner />
+                  ) : (
+                    <ToolkitNotification
+                      notifcation={this.state.consumedData}
+                      add={this.addToFavorite}
+                      copy={this.onCopy}
+                    />
+                  )}
                 </Tab>
-                <Tab eventKey="slected" title={`Selected ${this.state.favCount}`}> 
-                  <FavNotification  booksfav={this.state.booksfav}
-                  delete={this.deleteToFavorite} ></FavNotification>
-                  <Link to="/workspaceedit" className="viewAll">Edit your fav items &gt; &gt;</Link>
+                <Tab
+                  eventKey="slected"
+                  title={`Selected ${this.state.favCount}`}
+                >
+                  <FavNotification
+                    booksfav={this.state.booksfav}
+                    delete={this.deleteToFavorite}
+                  ></FavNotification>
+                  <Link to="/workspaceedit" className="viewAll">
+                    Edit your fav items &gt; &gt;
+                  </Link>
                 </Tab>
               </Tabs>
               <div className="clearConsole">
-              {/* <CsvDownload data={this.state.consumedData} /> */}
-              <CSVLink data={this.state.csvData} filename={"freeuserengagement.csv"}>Download</CSVLink>
-                <a href="#" className="clear">Select All</a>
+                {/* <CsvDownload data={this.state.consumedData} /> */}
+                <CSVLink
+                  data={this.state.csvData}
+                  filename={'freeuserengagement.csv'}
+                >
+                  Download
+                </CSVLink>
               </div>
             </Card>
           </Col>

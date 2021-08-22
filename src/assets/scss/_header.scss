@@ -1,12 +1,16 @@
-
-.MuiDrawer-paperAnchorLeft{
-  background: rgb(84,51,255);
-background: linear-gradient(180deg, rgba(84,51,255,1) 0%, rgba(149,46,209,1) 80%, rgba(230,19,213,1) 100%);
+.MuiDrawer-paperAnchorLeft {
+  background: rgb(84, 51, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(84, 51, 255, 1) 0%,
+    rgba(149, 46, 209, 1) 80%,
+    rgba(230, 19, 213, 1) 100%
+  );
 }
-.MuiDrawer-paperAnchorLeft{
+.MuiDrawer-paperAnchorLeft {
   border-right: 0 !important;
 }
-@media screen and (max-width:991px) {
+@media screen and (max-width: 991px) {
   .MuiDrawer-paperAnchorLeft {
     width: 240px !important;
     z-index: 9999 !important;
@@ -17,17 +21,17 @@ background: linear-gradient(180deg, rgba(84,51,255,1) 0%, rgba(149,46,209,1) 80%
     }
   }
   .MuiAppBar-positionFixed {
-    width:100% !important;
+    width: 100% !important;
   }
   .makeStyles-hide-11 {
     display: block !important;
   }
 }
-@media screen and (min-width:991px) {
-  .makeStyles-buttonnew-5  {
+@media screen and (min-width: 991px) {
+  .makeStyles-buttonnew-5 {
     display: none !important;
   }
-  .MuiDrawer-paperAnchorLeft{ 
+  .MuiDrawer-paperAnchorLeft {
     width: 240px !important;
   }
   .MuiIconButton-root {
@@ -41,7 +45,7 @@ background: linear-gradient(180deg, rgba(84,51,255,1) 0%, rgba(149,46,209,1) 80%
   box-sizing: border-box;
   padding: 30px 0px;
   min-height: 600px;
-  overflow-x:scroll;
+  overflow-x: scroll;
   transition: width 0.2s ease-in;
   &.inactive {
     width: 80px;
@@ -116,27 +120,26 @@ background: linear-gradient(180deg, rgba(84,51,255,1) 0%, rgba(149,46,209,1) 80%
   }
 }
 
-
 .MuiListItem-gutters a {
   display: flex;
 }
 
 .MuiListItemIcon-root {
-  min-width:27px !important;
+  min-width: 27px !important;
 }
 .MuiListItemText-primary {
   font-family: Lato !important;
-font-style: normal Im !important;
-font-weight: normal !important;
-font-size: 15px !important;
-line-height: 16px !important;
+  font-style: normal Im !important;
+  font-weight: normal !important;
+  font-size: 15px !important;
+  line-height: 16px !important;
 
-color: #FFFFFF;
+  color: #ffffff;
 }
 .MuiListItem-gutters {
   padding: 0px !important;
   a {
-    text-decoration: none  !important;
+    text-decoration: none !important;
     width: 100%;
     padding-right: 15px;
     padding-left: 20px;
@@ -154,20 +157,19 @@ color: #FFFFFF;
   a.active {
     background-color: #fff !important;
     span {
-      color:#5a88d5 !important;
+      color: #5a88d5 !important;
     }
     i {
       color: #5a88d5 !important;
     }
-    svg{
-      color:#5a88d5 !important;
+    svg {
+      color: #5a88d5 !important;
     }
-    
   }
 }
 .MuiListItem-gutters:hover {
   svg {
-    color:#5a88d5 ;
+    color: #5a88d5;
   }
   a {
     text-decoration: none;
@@ -177,7 +179,7 @@ color: #FFFFFF;
   }
   background: #fff !important;
   span {
-    color:#5a88d5 ;
+    color: #5a88d5;
     text-decoration: none;
   }
 }
@@ -215,18 +217,17 @@ color: #FFFFFF;
   top: 0px;
   background: #ffffff;
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.25);
-
 }
 .MuiAppBar-positionFixed .MuiSvgIcon-root {
-  color:#5A88D5;
+  color: #5a88d5;
 }
 .MuiDrawer-paperAnchorDockedLeft .MuiSvgIcon-root {
-color:#fff;
+  color: #fff;
 }
 @media (min-width: 600px) {
-.MuiToolbar-regular {
+  .MuiToolbar-regular {
     min-height: 83px;
-}
+  }
 }
 .MuiAppBar-positionFixed {
   top: 0px;
@@ -253,9 +254,9 @@ color:#fff;
   color: #fff;
   padding: 8px 24px;
   box-shadow: none;
-  border:0px;
+  border: 0px;
   &:hover {
-    color:#fff;
+    color: #fff;
   }
   &:focus {
     box-shadow: none;
@@ -290,53 +291,50 @@ color:#fff;
   }
 }
 .main-menu {
-  .active{
+  .active {
     display: block;
     font-weight: bold;
 
     transition: 0.3s ease-in-out;
     background-color: #fff;
-      padding-bottom: 10px;
+    padding-bottom: 10px;
     li {
       margin-bottom: 0px;
       margin-top: 0px;
       a {
-        color:#5433ff !important;
+        color: #5433ff !important;
         font-weight: bold;
       }
-
     }
     span {
-      color:#5433ff;
+      color: #5433ff;
     }
   }
 }
 
-
-
-.side-menu .main-menu .sub-menu{
+.side-menu .main-menu .sub-menu {
   color: #333;
   margin-left: 20px;
   border-left: 1px solid #666;
   box-sizing: border-box;
   padding-left: 30px;
   overflow: hidden;
-  transition: max-height .2s ease-in;
+  transition: max-height 0.2s ease-in;
 }
 
-.side-menu .main-menu .sub-menu.active{
+.side-menu .main-menu .sub-menu.active {
   max-height: 200px;
 }
 
-
-@media screen and (max-width:991px) {
-  .navbar  {
-    padding:6px 0px !important;
+@media screen and (max-width: 991px) {
+  .navbar {
+    padding: 6px 0px !important;
     justify-content: flex-end;
   }
 }
 
-.makeStyles-drawerClose-12 .MuiListItem-gutters a, .jss12 .MuiListItem-gutters a {
+.makeStyles-drawerClose-12 .MuiListItem-gutters a,
+.jss12 .MuiListItem-gutters a {
   padding-left: 15px !important;
   svg {
     font-size: 18px !important;
@@ -349,11 +347,11 @@ color:#fff;
     text-decoration: none;
   }
   .active {
-    color:#5a88d5 !important;
+    color: #5a88d5 !important;
     .MuiListItem-button {
       background-color: #fff;
       span {
-        color:#5a88d5 !important;
+        color: #5a88d5 !important;
       }
     }
   }
@@ -362,24 +360,24 @@ color:#fff;
 .bottomLine {
   text-align: left;
   p {
-  text-align: left;
+    text-align: left;
     a {
       margin-left: 0px !important;
     }
   }
   border-top: 1px dotted #fff;
   padding-top: 7px !important;
-  @media screen and (min-width:1401px) {
+  @media screen and (min-width: 1401px) {
     margin-top: 90px;
   }
-  @media screen and (max-width:1401px) {
-    margin-top: 10px;;
+  @media screen and (max-width: 1401px) {
+    margin-top: 10px;
   }
   font-size: 11px;
   text-align: center;
   padding: 0px 22px;
   a {
-    color:#fff;
+    color: #fff;
     text-align: center;
     font-size: 10px;
     text-decoration: none;
@@ -402,7 +400,7 @@ color:#fff;
 .MuiAppBar-root {
   z-index: 100 !important ;
 }
-.userDrop  {
+.userDrop {
   p {
     color: #fff;
     font-size: 12px;
@@ -414,7 +412,7 @@ color:#fff;
 }
 
 .MuiDrawer-paperAnchorDockedLeft {
-  &>div {
+  & > div {
     height: 100%;
   }
   .mainMenu {
@@ -427,4 +425,11 @@ color:#fff;
 
 .MuiListItemText-inset {
   padding-left: 43px !important;
+}
+
+.navName {
+  h3 {
+    color: #fff;
+    font-size: 18px;
+  }
 }
