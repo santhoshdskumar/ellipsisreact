@@ -64,7 +64,7 @@ export const Ckeditor5Build = (props) => {
         </Col>
       </Row>
       <Row>
-        <Col xs={5} lg={5} md={12} sm={12}>
+        <Col xs={12} lg={5} md={12} sm={12}>
           <Card>
             <Card.Header>
               <h3>Selected Outputs</h3>
@@ -94,7 +94,7 @@ export const Ckeditor5Build = (props) => {
             </Card.Body>
           </Card>
         </Col>
-        <Col xs={7} lg={7} md={12} sm={12}>
+        <Col xs={12} lg={7} md={12} sm={12}>
           <Card>
             <Card.Header>
               <h3>Content Editor</h3>

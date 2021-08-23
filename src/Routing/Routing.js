@@ -23,7 +23,6 @@ import PostPurchaseEngagement from '../pages/EmailToolkit/PostPurchaseEngagement
 import SalesEmails from '../pages/EmailToolkit/SalesEmails';
 import ScheduleProductDeom from '../pages/EmailToolkit/SchedulepRoductDemo';
 
-
 import AdLinkDescriptions from '../pages/LinkedinToolkit/AdLinkDescriptions';
 import CarouselAds from '../pages/LinkedinToolkit/CarouselAds';
 import DynamicAds from '../pages/LinkedinToolkit/DynamicAds';
@@ -31,8 +30,6 @@ import ConversationalPitches from '../pages/LinkedinToolkit/ConversationalPitche
 import SalesInMails from '../pages/LinkedinToolkit/SalesInMails';
 import ColdCallingInvestors from '../pages/LinkedinToolkit/ColdCallingInvestors';
 import ColdCallingRecruiters from '../pages/LinkedinToolkit/ColdCallingRecruiters';
-
-
 
 import HeroText from '../pages/WebsiteToolkit/HeroText';
 import ProductReview from '../pages/WebsiteToolkit/ProductReview';
@@ -45,20 +42,17 @@ import ArticleTitle from '../pages/ArticelToolkit/ArticleTitle';
 import ArticleOutlines from '../pages/ArticelToolkit/ArticleOutlines';
 import ArticleIntro from '../pages/ArticelToolkit/ArticleIntro';
 
-
 import EventPromoEmails from '../pages/EventToolkit/EventPromoEmails';
 import EventDigitalAds from '../pages/EventToolkit/EventDigitalAds';
 import EventFollowUpEmails from '../pages/EventToolkit/EventFollowUpEmails';
 import WebinarPromoEmails from '../pages/EventToolkit/WebinarPromoEmails';
 
-
 import WriteLikeMe from '../pages/WritingToolkit/WriteLikeMe';
-
 
 import { PrivacyPolicy } from '../pages/PrivacyPolicy';
 import { Terms } from '../pages/TermsAndConditions';
 import PasswordChange from '../pages/PasswordChange';
-import  Usage  from '../pages/Usage';
+import Usage from '../pages/Usage';
 import Register from '../pages/Register/Register';
 import Login from '../pages/Login/Login';
 import ForgotPassword from '../pages/ForgorPassword/ForgotPassword';
@@ -135,14 +129,13 @@ const Routing = () => {
           <Ckeditor5Build />
         </div>
       </Route>
-
       {/* Digital Ads*/}
       <Route path="/google-adsense">
         <div className="innerPage">
           <GoogleAds />
         </div>
-        </Route>
-        <Route path="/mobile_notification">
+      </Route>
+      <Route path="/mobile_notification">
         <div className="innerPage">
           <MobileAppNotifications />
         </div>
@@ -167,17 +160,14 @@ const Routing = () => {
           <ABTesting />
         </div>
       </Route>
-
       {/* Ends Here*/}
-
-
       {/* Email Toolkit*/}
-       <Route path="/sales_emails">
+      <Route path="/sales_emails">
         <div className="innerPage">
           <SalesEmails />
         </div>
-        </Route>
-        <Route path="/new_lead_engagement">
+      </Route>
+      <Route path="/new_lead_engagement">
         <div className="innerPage">
           <NewLeadEngagement />
         </div>
@@ -202,17 +192,14 @@ const Routing = () => {
           <HailMaryPass />
         </div>
       </Route>
-
       {/* Ends Here*/}
-
-
-     {/* LinkedIn Toolkit*/}
-       <Route path="/linkedinlinkdesc">
+      {/* LinkedIn Toolkit*/}
+      <Route path="/linkedinlinkdesc">
         <div className="innerPage">
           <AdLinkDescriptions />
         </div>
-        </Route>
-        <Route path="/carousel_ads">
+      </Route>
+      <Route path="/carousel_ads">
         <div className="innerPage">
           <CarouselAds />
         </div>
@@ -243,15 +230,13 @@ const Routing = () => {
         </div>
       </Route>
       {/* Ends Here*/}
-
-
-     {/* Website Toolkit*/}
-     <Route path="/hero_text">
+      {/* Website Toolkit*/}
+      <Route path="/hero_text">
         <div className="innerPage">
           <HeroText />
         </div>
-        </Route>
-        <Route path="/productreview">
+      </Route>
+      <Route path="/productreview">
         <div className="innerPage">
           <ProductReview />
         </div>
@@ -272,15 +257,13 @@ const Routing = () => {
         </div>
       </Route>
       {/* Ends Here*/}
-
-
-     {/* Article Toolkit*/}
-     <Route path="/article_ideas">
+      {/* Article Toolkit*/}
+      <Route path="/article_ideas">
         <div className="innerPage">
           <ArticleIdeas />
         </div>
-        </Route>
-        <Route path="/article_title">
+      </Route>
+      <Route path="/article_title">
         <div className="innerPage">
           <ArticleTitle />
         </div>
@@ -294,17 +277,15 @@ const Routing = () => {
         <div className="innerPage">
           <ArticleIntro />
         </div>
-        </Route>
-        {/* Ends Here*/}
-
-
+      </Route>
+      {/* Ends Here*/}
       {/* Event Toolkit*/}
-     <Route path="/event_promo_mail">
+      <Route path="/event_promo_mail">
         <div className="innerPage">
           <EventPromoEmails />
         </div>
-        </Route>
-        <Route path="/webinar_promo_mail">
+      </Route>
+      <Route path="/webinar_promo_mail">
         <div className="innerPage">
           <WebinarPromoEmails />
         </div>
@@ -318,59 +299,44 @@ const Routing = () => {
         <div className="innerPage">
           <EventDigitalAds />
         </div>
-        </Route>
-        {/* Ends Here*/}
-
-
+      </Route>
+      {/* Ends Here*/}
       {/* Event Toolkit*/}
-
-
       <Route path="/write_like_me">
         <div className="innerPage">
           <WriteLikeMe />
         </div>
-        </Route>
-        {/* Ends Here*/}
-
-
-        <Route path="/privacy_policy">
+      </Route>
+      {/* Ends Here*/}
+      <Route path="/privacy_policy">
         <div className="innerPage">
           <PrivacyPolicy />
         </div>
-        </Route>
-
-        <Route path="/terms_conditions">
+      </Route>
+      <Route path="/terms_conditions">
         <div className="innerPage">
           <Terms />
         </div>
-        </Route>
-
-        <Route path="/Passwordchange">
+      </Route>
+      <Route path="/Passwordchange">
         <div className="innerPage">
           <PasswordChange />
         </div>
-        </Route>
-
-        <Route path="/Usage">
+      </Route>
+      <Route path="/Usage">
         <div className="innerPage">
           <Usage />
         </div>
-        </Route>
-
-
-        <Route path="/Register">
-          <Register />
-        </Route>
-
-        <Route path="/Login">
-          <Login />
-        </Route>
-
-        <Route path="/password_reset">
-          <ForgotPassword />
-        </Route>
-
-        
+      </Route>
+      <Route path="/Register">
+        <Register />
+      </Route>
+      <Route path="/login">
+        <Login />
+      </Route>
+      <Route path="/password_reset">
+        <ForgotPassword />
+      </Route>
     </Switch>
   );
 };

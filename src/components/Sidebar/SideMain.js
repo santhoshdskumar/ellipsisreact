@@ -19,6 +19,8 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import MenuData from './MenuData';
 import AppMenu from './AppMenu';
 import NavBar from '../Header/NavBar';
+import ellipsis from '../../assets/images/ellipsis_logo.png';
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -71,25 +73,43 @@ function ResponsiveDrawer(props) {
     </div>
   );
 
-  const container = window !== undefined ? () => window().document.body : undefined;
+  const container =
+    window !== undefined ? () => window().document.body : undefined;
 
   return (
     <div className={classes.root}>
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            className={classes.menuButton}
-          >
-            <MenuIcon />
-          </IconButton>
+        <div className="desktopBar">
+          <Toolbar>
+            <img src={ellipsis} alt=" " className="mobimage" />
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              className={classes.menuButton}
+            >
+              <MenuIcon />
+            </IconButton>
+            <NavBar />
+          </Toolbar>
+        </div>
+        <div className="mobileBar">
+          <Toolbar>
+            <img src={ellipsis} alt=" " className="mobimage" />
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              className={classes.menuButton}
+            >
+              <MenuIcon />
+            </IconButton>
+          </Toolbar>
           <NavBar />
-
-        </Toolbar>
+        </div>
       </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">
         {/* The implementation can be swapped with js to avoid SEO duplication of links.*/}
@@ -130,7 +150,6 @@ function ResponsiveDrawer(props) {
 }
 
 ResponsiveDrawer.propTypes = {
-
   window: PropTypes.func,
 };
 

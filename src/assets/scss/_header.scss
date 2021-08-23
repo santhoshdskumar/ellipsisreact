@@ -433,3 +433,27 @@
     font-size: 18px;
   }
 }
+.mobimage {
+  width: 220px;
+}
+@media screen and (min-width: 767px) {
+  .mobimage {
+    display: none;
+  }
+  .mobileBar {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .mobimage {
+    display: none;
+  }
+  .mobileBar .MuiToolbar-regular {
+    position: absolute;
+    z-index: 222;
+  }
+  .desktopBar {
+    display: none;
+  }
+}

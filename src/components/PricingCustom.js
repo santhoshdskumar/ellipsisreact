@@ -30,7 +30,7 @@ const PricingCustom = (props) => {
     <>
       {props.pricing.map((product, index) => {
         return (
-          <Col xl={4} lg={4} md={12} sm={2} className="mt-5">
+          <Col xl={4} lg={4} md={12} sm={12} className="mt-5">
             {props.children}
             <Card as="Card" className={product.activeShows}>
               <h3>{product.type}</h3>

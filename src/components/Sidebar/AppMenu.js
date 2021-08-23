@@ -22,7 +22,7 @@ import IconBarChart from '@material-ui/icons/BarChart';
 import IconLibraryBooks from '@material-ui/icons/LibraryBooks';
 import user from '../../assets/user.jpg';
 import ellipsis from '../../assets/images/ellipsis_logo.png';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, withRouter } from 'react-router-dom';
 import { Form } from 'react-bootstrap';
 import axios from 'axios';
 
@@ -44,14 +44,14 @@ const AppMenu = (props) => {
       setSelectedIndex(index);
     }
   };
-  React.useEffect(() => {
-    fetch('https://app2.ellipsis-ai.com/api/v1/userdata/36').then((results) =>
-      results.json().then((user) => {
-        console.log(user.userdata.first_name);
-        setuserName(user.userdata.first_name);
-      })
-    );
-  }, []); // <-- Have to pass in [] here!
+  // React.useEffect(() => {
+  //   fetch('https://app2.ellipsis-ai.com/api/v1/userdata/36').then((results) =>
+  //     results.json().then((user) => {
+  //       console.log(user.userdata.first_name);
+  //       setuserName(user.userdata.first_name);
+  //     })
+  //   );
+  // }, []); // <-- Have to pass in [] here!
   return (
     <div className="mainMenu">
       <List component="nav" className={classes.appMenu} disablePadding>
@@ -61,9 +61,9 @@ const AppMenu = (props) => {
               <img src={ellipsis} alt="Ellipsis" />
             </Link>
           </div>
-          <div className="navName text-center">
+          {/* <div className="navName text-center">
             <h3>{userName}</h3>
-          </div>
+          </div> */}
           {/* <div className="avatar">
           <img src={user} alt="user" />
         </div>*/}
@@ -212,4 +212,4 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-export default AppMenu;
+export default withRouter(AppMenu);

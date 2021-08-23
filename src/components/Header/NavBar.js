@@ -1,5 +1,11 @@
 import React from 'react';
-import { Route, Switch, Link, BrowserRouter as Router } from 'react-router-dom';
+import {
+  Route,
+  Switch,
+  Link,
+  BrowserRouter as Router,
+  withRouter,
+} from 'react-router-dom';
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { useState } from 'react';
 import Pricing from '../../pages/Pricing';
@@ -14,8 +20,6 @@ const NavBar = () => {
         <div className="navbar">
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            
-            <a href="#"></a>
             <Nav className="justify-content-end w-100" activeKey="/home">
               <Nav.Item>
                 <Link to="/Profile" className="nav-link">
@@ -55,4 +59,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default withRouter(NavBar);
