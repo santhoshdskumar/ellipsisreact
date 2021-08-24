@@ -103,7 +103,7 @@ const Routing = (props) => {
         <PublicRoute
           restricted={true}
           component={ForgotPassword}
-          path="/"
+          path="/password_reset"
           exact
         />
 
@@ -291,6 +291,11 @@ const Routing = (props) => {
                 exact
               />
               <PrivateRoute component={Usage} path="/Usage" exact />
+              <PrivateRoute
+                component={Ckeditor5Build}
+                path="/workspaceedit"
+                exact
+              />
             </div>
           </main>
         </div>

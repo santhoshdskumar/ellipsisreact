@@ -4,12 +4,14 @@ import { useHistory } from 'react-router-dom';
 import { Row, Col, Card, Tabs, Tab, Form, Button } from 'react-bootstrap';
 import { Link, Redirect } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
+import jwt from 'jwt-decode'; // import dependency
 import 'react-toastify/dist/ReactToastify.css';
 const Login = (props) => {
   const [state, setState] = useState({
     email: '',
     password: '',
     successMessage: null,
+    rememberMe: false,
   });
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -33,16 +35,15 @@ const Login = (props) => {
         },
       })
       .then(function (response) {
-        console.log(response.data);
+        const user = jwt(response.data.user.token); // decode your token here
+        console.log(user, { header: true });
         if (response.status === 200) {
           setState((prevState) => ({
             ...prevState,
             successMessage: 'Login successful. Redirecting to home page..',
           }));
+
           localStorage.setItem('login_access_token', response.data.user.token);
-          localStorage.setItem('login_email', response.data.user.email);
-          localStorage.setItem('login_pwd', response.data.user.password);
-          localStorage.setItem('rememberme', rememberMe);
           redirectToHome();
         } else if (response.code === 400) {
           props.showError('Username and password do not match');
@@ -91,7 +92,7 @@ const Login = (props) => {
                   autoComplete="current-password"
                   onChange={handleChange}
                 />
-                <Link to="/Register" className="form-help">
+                <Link to="/password_reset" className="form-help">
                   Forgot password?
                 </Link>
               </Form.Group>
