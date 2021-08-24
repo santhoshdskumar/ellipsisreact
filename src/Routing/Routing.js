@@ -122,25 +122,7 @@ const Routing = (props) => {
               <PrivateRoute component={Pricing} path="/Pricing" exact />
               <PrivateRoute component={Support} path="/Support" exact />
               <PrivateRoute component={ProjectEdit} path="/Projectedit" exact />
-              <PrivateRoute
-                component={WebsiteToolkit}
-                path="/WebsiteToolkit"
-                exact
-              />
-              <PrivateRoute
-                component={WebsiteToolkit}
-                path="/LinkedinToolkit"
-                exact
-              />
-              <PrivateRoute
-                component={WebsiteToolkit}
-                path="/EmailToolkit"
-                exact
-              />
-              <PrivateRoute component={Pricing} path="/Pricing" exact />
-              <PrivateRoute component={Profile} path="/Profile" exact />
-              <PrivateRoute component={Pricing} path="/Pricing" exact />
-              <PrivateRoute component={ProjectEdit} path="/Projectedit" exact />
+
               <PrivateRoute
                 component={GoogleAds}
                 path="/google-adsense"
