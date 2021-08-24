@@ -36,9 +36,12 @@ const Support = () => {
           <Box>
             Write us for for any queries, Our team will get in touch with you
             ASAP.
-            <p className="mt-2 mailto"><a href="mailto:support@ellipsis-ai.com">support@ellipsis-ai.com</a></p>
+            <p className="mt-2 mailto">
+              <a href="mailto:support@ellipsis-ai.com">
+                support@ellipsis-ai.com
+              </a>
+            </p>
           </Box>
-
         </div>
       </div>
     </div>

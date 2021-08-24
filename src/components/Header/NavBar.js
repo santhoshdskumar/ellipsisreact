@@ -5,6 +5,7 @@ import {
   Link,
   BrowserRouter as Router,
   withRouter,
+  useHistory,
 } from 'react-router-dom';
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { useState } from 'react';
@@ -13,7 +14,12 @@ import Support from '../../pages/Support';
 import Profile from '../../pages/Profile';
 import ProjectEdit from '../../pages/ProjectEdit';
 import MenuData from '../Sidebar/MenuData';
-const NavBar = () => {
+const NavBar = (props) => {
+  const logout = () => {
+    localStorage.removeItem('login_access_token');
+    props.history.push('/login');
+  };
+
   return (
     <Navbar expand="lg" className="topBar">
       <Container>
@@ -42,7 +48,7 @@ const NavBar = () => {
                 </Link>
               </Nav.Item>
               <Nav.Item>
-                <Link to="/logout" className="nav-link">
+                <Link className="nav-link" onClick={logout}>
                   Log Out
                 </Link>
               </Nav.Item>

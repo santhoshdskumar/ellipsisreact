@@ -6,24 +6,23 @@ import WebIcon from '@material-ui/icons/Web';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import CreateIcon from '@material-ui/icons/Create';
 const MenuData = [
-
   {
     name: 'Dashboard',
     exact: true,
-    to: `/`,
+    to: `/Dashboard`,
     icon: <IconDashboard />,
   },
   {
     name: 'All Tools',
     exact: true,
     to: '/Alltools',
-    icon:<i class="fas fa-border-all"></i>,
+    icon: <i class="fas fa-border-all"></i>,
   },
   {
     name: 'Digital Ads',
-    to: "javascript:void(0)",
+    to: 'javascript:void(0)',
     exact: true,
-    icon:<i class="nav-icon fas fa-ad"></i>,
+    icon: <i class="nav-icon fas fa-ad"></i>,
     submenuClass: 'subActive',
     subMenus: [
       { name: 'Google Ads', to: '/google-adsense' },
@@ -40,7 +39,7 @@ const MenuData = [
   {
     name: 'Articles',
     exact: true,
-    to: "javascript:void(0)",
+    to: 'javascript:void(0)',
     icon: <i class="nav-icon fas fa-newspaper"></i>,
     subMenus: [
       { name: 'Article Ideas', to: '/article_ideas' },
@@ -52,8 +51,8 @@ const MenuData = [
   {
     name: 'Emails',
     exact: true,
-    to: "javascript:void(0)",
-    icon:<i class="nav-icon fas fa-envelope"></i>,
+    to: 'javascript:void(0)',
+    icon: <i class="nav-icon fas fa-envelope"></i>,
     subMenus: [
       { name: 'Sales Emails', to: '/sales_emails' },
       { name: 'New Lead Engagement', to: '/new_lead_engagement' },
@@ -66,7 +65,7 @@ const MenuData = [
   {
     name: 'LinkedIn',
     exact: true,
-    to: "javascript:void(0)",
+    to: 'javascript:void(0)',
     icon: <i class="nav-icon fab fa-linkedin-in"></i>,
     submenuClass: 'subActive',
     subMenus: [
@@ -82,7 +81,7 @@ const MenuData = [
   {
     name: 'Website',
     exact: true,
-    to: "javascript:void(0)",
+    to: 'javascript:void(0)',
     icon: <i class="nav-icon fas fa-globe"></i>,
     subMenus: [
       { name: 'Hero Text', to: '/hero_text' },
@@ -91,14 +90,13 @@ const MenuData = [
       { name: 'Website Description', to: '/web_desc' },
       { name: 'Feature-Benefits', to: '/feature_benefit' },
     ],
-    
   },
 
   {
     name: 'Event Promotions',
     exact: true,
-    to: "#javascript:void(0)",
-    icon:<i class="nav-icon fa fa-calendar"></i>,
+    to: '#javascript:void(0)',
+    icon: <i class="nav-icon fa fa-calendar"></i>,
     subMenus: [
       { name: 'Event Promo Emails', to: '/event_promo_mail' },
       { name: 'Webinar Promo Emails', to: '/webinar_promo_mail' },
@@ -109,11 +107,9 @@ const MenuData = [
   {
     name: 'Writing',
     exact: true,
-    to:"#javascript:void(0)",
-    icon:<i class="nav-icon fas fa-newspaper"></i>,
-    subMenus: [
-      { name: 'Writings', to: '/write_like_me' },
-    ],
+    to: '#javascript:void(0)',
+    icon: <i class="nav-icon fas fa-newspaper"></i>,
+    subMenus: [{ name: 'Writings', to: '/write_like_me' }],
   },
 ];
 

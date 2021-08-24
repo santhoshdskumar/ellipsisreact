@@ -1,4 +1,3 @@
-
 @import './variables.scss';
 @import './fonts.scss';
 @import './colors.scss';
@@ -10,7 +9,6 @@
 @import './profile.scss';
 @import './Login.scss';
 @import './register.scss';
-
 
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 @import url('https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css');
@@ -24,8 +22,10 @@
   /* override*/
   overflow: initial;
 }
-.owl-stage-outer, .tab-content, .tab-pane {
-  width: 100%  !important;
+.owl-stage-outer,
+.tab-content,
+.tab-pane {
+  width: 100% !important;
 }
 body {
   background-color: #fff !important;
@@ -62,8 +62,9 @@ body {
 .sidemain {
   margin-left: 80px;
 }
-.innerPage {
-  padding:70px 20px 50px;
+.innerPage,
+.productList {
+  padding: 70px 20px 50px;
 }
 .pageTitle {
   position: absolute;
@@ -77,9 +78,9 @@ body {
   text-transform: uppercase;
   top: 28px;
 }
-.addproject{
-  background: #FFFFFF;
-  border: 1px solid #0028B4;
+.addproject {
+  background: #ffffff;
+  border: 1px solid #0028b4;
   box-sizing: border-box;
   border-radius: 4px;
   padding: 9px 26px;
@@ -91,13 +92,13 @@ body {
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
-  color: #0028B4;
+  color: #0028b4;
 
   text-decoration: none;
 }
 .workspace {
   table {
-    border:1px solid rgba(90, 136, 213, 0.3);
+    border: 1px solid rgba(90, 136, 213, 0.3);
   }
 }
 .slides {
@@ -165,9 +166,9 @@ body {
   }
 }
 @media screen and (max-width: 991px) {
-.headTitle {
-  z-index: 2999 !important;
-}
+  .headTitle {
+    z-index: 2999 !important;
+  }
 }
 .innerPage {
   .container {
@@ -188,7 +189,7 @@ body {
   margin: 0px;
   font-family: Lato;
   font-style: normal;
-  z-index:99999;
+  z-index: 99999;
   font-weight: bold;
   font-size: 18px;
   line-height: 26px;
@@ -198,14 +199,14 @@ body {
 
   color: #000000;
 }
-.makeStyles-content-2, .jss2 {
-  width:100%;
+.makeStyles-content-2,
+.jss2 {
+  width: 100%;
   overflow-x: hidden;
 }
 
-
 form {
-  padding:35px 2rem;
+  padding: 35px 2rem;
   label {
     font-family: Lato;
     font-style: normal;
@@ -216,7 +217,7 @@ form {
     color: #000000;
   }
   input.form-control {
-    background: #FFFFFF;
+    background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.4);
     height: 46px;
     border-radius: 6px;
@@ -232,7 +233,7 @@ form {
     }
   }
   select.form-control {
-    background: #FFFFFF;
+    background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.4);
     height: 46px;
     border-radius: 6px;
@@ -249,7 +250,7 @@ form {
     }
   }
   textarea.form-control {
-    background: #FFFFFF;
+    background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.4);
     border-radius: 6px;
     font-family: Lato;
@@ -273,8 +274,8 @@ form {
     font-size: 14px;
     line-height: 17px;
     text-transform: uppercase;
-    color: #FFFFFF;
-    background: #5433FF;
+    color: #ffffff;
+    background: #5433ff;
     border-radius: 8px;
   }
 }
@@ -303,14 +304,13 @@ form {
 }
 
 .popular {
-  background: #F2F5FC !important;
+  background: #f2f5fc !important;
 }
 .itemst {
   .dashboardProduct {
-    margin:4px;
+    margin: 4px;
   }
 }
-
 
 .MuiDrawer-paperAnchorDockedLeft {
   border-right: 1px solid rgba(0, 0, 0, 0.12);
@@ -324,10 +324,8 @@ form {
   letter-spacing: 0.5px;
   font-weight: 700;
   cursor: pointer;
-  background: linear-gradient( 
-294deg
-, #5433ff 0%, #e613d5 100%);
-  color: #FFF;
+  background: linear-gradient(294deg, #5433ff 0%, #e613d5 100%);
+  color: #fff;
   padding: 3px 12px;
   border-radius: 12px;
 }
@@ -340,36 +338,36 @@ table tr:last-child td:last-child {
   border-bottom-right-radius: 10px;
 }
 
-
 /* DivTable.com*/
-.divTable{
-	display: table;
-	width: 100%;
+.divTable {
+  display: table;
+  width: 100%;
 }
 .divTableRow {
-	display: table-row;
+  display: table-row;
 }
 .divTableHeading {
-	background-color: #EEE;
-	display: table-header-group;
+  background-color: #eee;
+  display: table-header-group;
 }
-.divTableCell, .divTableHead {
-	border: 1px solid #999999;
-	display: table-cell;
-	padding: 3px 10px;
+.divTableCell,
+.divTableHead {
+  border: 1px solid #999999;
+  display: table-cell;
+  padding: 3px 10px;
 }
 .divTableHeading {
-	background-color: #EEE;
-	display: table-header-group;
-	font-weight: bold;
+  background-color: #eee;
+  display: table-header-group;
+  font-weight: bold;
 }
 .divTableFoot {
-	background-color: #EEE;
-	display: table-footer-group;
-	font-weight: bold;
+  background-color: #eee;
+  display: table-footer-group;
+  font-weight: bold;
 }
 .divTableBody {
-	display: table-row-group;
+  display: table-row-group;
 }
 
 .pagination {
@@ -382,23 +380,21 @@ table tr:last-child td:last-child {
 }
 .switchNav form {
   padding: 0px;
- li:last-child {
-   padding: 0px;
- }
+  li:last-child {
+    padding: 0px;
+  }
 }
-
 
 .err {
-  font-size:12px;
+  font-size: 12px;
   color: red;
 }
-.asterisk{
-  font-size:12px;
+.asterisk {
+  font-size: 12px;
   color: red;
 }
 
 .projectList {
-
   .pagination {
     display: none;
   }
@@ -417,28 +413,28 @@ table tr:last-child td:last-child {
 .backdrop {
   .modal {
     display: flex;
-    justify-self:center;
+    justify-self: center;
     text-align: center;
     p {
       font-size: 18px;
     }
     div {
-      width:100%;
-    text-align: center;
+      width: 100%;
+      text-align: center;
       align-self: center;
     }
     button {
-      color:#fff;
-      padding: 10px 0px ;
+      color: #fff;
+      padding: 10px 0px;
       margin-right: 20px;
-      &:hover{
-        color:#5433ef !important;
+      &:hover {
+        color: #5433ef !important;
       }
     }
   }
 }
-.billingRow  {
-  a{
+.billingRow {
+  a {
     text-decoration: none;
   }
 }
@@ -449,21 +445,21 @@ table tr:last-child td:last-child {
   }
 }
 .NotificationEdit {
-  @media screen and (max-width:991px) {
-    margin-top: 20px  ;
+  @media screen and (max-width: 991px) {
+    margin-top: 20px;
   }
 }
 .clearConsole {
   position: absolute;
   right: 125px;
-  @media screen and (max-width:991px) {
+  @media screen and (max-width: 991px) {
     right: 15px;
     position: initial;
     margin-bottom: 20px;
   }
   top: 17px;
   font-size: 13px;
-  color:#5433ef;
+  color: #5433ef;
   a {
     text-decoration: none;
     font-size: 11px;
@@ -477,7 +473,7 @@ table tr:last-child td:last-child {
   i {
     margin-left: 15px;
     font-size: 18px;
-  color:#5433ef;
+    color: #5433ef;
   }
 }
 .loadmore {
@@ -494,7 +490,7 @@ table tr:last-child td:last-child {
   letter-spacing: 0.05rem;
   border: 1px solid #5433ff;
   margin-bottom: 30px;
-  color:#fff;
+  color: #fff;
   text-align: center;
   justify-content: center;
   margin: 0 auto;
@@ -502,17 +498,17 @@ table tr:last-child td:last-child {
   border-radius: 13px;
   margin: 0px 6px;
   width: 121px;
-  display:flex;
+  display: flex;
   margin: 0 auto;
   border: 1px solid #5433ff !important;
 }
 .randomIcons {
   position: absolute;
   right: 7px;
-  bottom:7px;
+  bottom: 7px;
   font-size: 16px;
   cursor: pointer;
-  color:gray;
+  color: gray;
   margin: 0px 0px;
   i {
     margin: 0px 4px;
@@ -520,8 +516,8 @@ table tr:last-child td:last-child {
 }
 button.clear {
   width: inherit;
-  @media screen and (max-width:991px) {
-    position:initial;
+  @media screen and (max-width: 991px) {
+    position: initial;
   }
   position: absolute;
   top: 13px;
@@ -541,7 +537,6 @@ button.clear {
   text-transform: inherit;
 }
 
-
 .innerPage {
   .row {
     position: relative;
@@ -550,17 +545,17 @@ button.clear {
     position: static;
   }
 }
-.box  {
+.box {
   display: none;
 }
 .show {
   display: block;
   z-index: 1;
-  bottom:0px;
+  bottom: 0px;
 }
 .mailto {
   a {
     font-size: 16px;
-    color:#5433ef;
+    color: #5433ef;
   }
 }

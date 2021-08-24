@@ -43,40 +43,7 @@ const App = (props) => {
 
   return (
     <React.Fragment>
-      <div className={classes.root}>
-        <Router>
-          {props.location.pathname === '/Register' ||
-          props.location.pathname === '/Login' ||
-          props.location.pathname === '/password_reset' ? null : (
-            <SideMain />
-          )}
-          <main className={classes.content}>
-            <Routing />
-          </main>
-        </Router>
-      </div>
-
-      {/* <Router>
-        <Switch>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <PrivateRoute path="/dashboard">
-            <div className={classes.root}>
-              <SideMain />
-              <main className={classes.content}>
-                <Routing />
-              </main>
-            </div>
-          </PrivateRoute>
-          <Route exact path="/">
-            <Redirect exact from="/" to="Alltools" />
-          </Route>
-          <Route path="*">
-            <Redirect from="/" to="Alltools" />
-          </Route>
-        </Switch>
-      </Router> */}
+      <Routing />
     </React.Fragment>
   );
 };

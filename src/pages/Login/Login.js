@@ -33,13 +33,15 @@ const Login = (props) => {
         },
       })
       .then(function (response) {
-        console.log(response.data.user.token);
+        console.log(response.data);
         if (response.status === 200) {
           setState((prevState) => ({
             ...prevState,
             successMessage: 'Login successful. Redirecting to home page..',
           }));
           localStorage.setItem('login_access_token', response.data.user.token);
+          localStorage.setItem('login_email', response.data.user.email);
+          localStorage.setItem('login_pwd', response.data.user.password);
           redirectToHome();
         } else if (response.code === 400) {
           props.showError('Username and password do not match');
@@ -52,8 +54,7 @@ const Login = (props) => {
       });
   };
   const redirectToHome = () => {
-    alert('ss');
-    return <Redirect to="/Alltools" />;
+    props.history.push('/');
   };
 
   return (

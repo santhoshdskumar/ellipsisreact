@@ -1,5 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  BrowserRouter,
+} from 'react-router-dom';
 import AllTools from '../pages/AllTools';
 import Dashboard from '../pages/Dashboard';
 import Pricing from '../pages/Pricing';
@@ -56,288 +61,260 @@ import Usage from '../pages/Usage';
 import Register from '../pages/Register/Register';
 import Login from '../pages/Login/Login';
 import ForgotPassword from '../pages/ForgorPassword/ForgotPassword';
-const Routing = () => {
+import PublicRoute from './PublicRoute';
+import PrivateRoute from './PrivateRoute';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import NavBar from '../components/Header/NavBar';
+import SideMain from '../components/Sidebar/SideMain';
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+  },
+  content: {
+    flexGrow: 1,
+    height: '100vh',
+    overflow: 'auto',
+  },
+  container: {
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
+  },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3),
+  },
+}));
+const Routing = (props) => {
+  const classes = useStyles();
+  const theme = useTheme();
   return (
-    <Switch>
-      <Route exact path="/">
-        <div className="innerPage">
-          <Dashboard />
+    <BrowserRouter>
+      <Switch>
+        {/* Publick Routes */}
+
+        <PublicRoute restricted={true} component={Login} path="/login" exact />
+        <PublicRoute restricted={true} component={Login} path="/" exact />
+        <PublicRoute
+          restricted={true}
+          component={Register}
+          path="/Register"
+          exact
+        />
+        <PublicRoute
+          restricted={true}
+          component={ForgotPassword}
+          path="/"
+          exact
+        />
+
+        {/* Ends Here */}
+
+        {/* Private Routes */}
+
+        <div className={classes.root}>
+          <SideMain />
+          <main className={classes.content}>
+            <div class="innerPage">
+              <PrivateRoute component={Dashboard} path="/Dashboard" exact />
+              <PrivateRoute component={AllTools} path="/Alltools" exact />
+              <PrivateRoute component={Workspace} path="/Workspace" exact />
+              <PrivateRoute component={Profile} path="/Profile" exact />
+              <PrivateRoute component={Pricing} path="/Pricing" exact />
+              <PrivateRoute component={Support} path="/Support" exact />
+              <PrivateRoute component={ProjectEdit} path="/Projectedit" exact />
+              <PrivateRoute
+                component={WebsiteToolkit}
+                path="/WebsiteToolkit"
+                exact
+              />
+              <PrivateRoute
+                component={WebsiteToolkit}
+                path="/LinkedinToolkit"
+                exact
+              />
+              <PrivateRoute
+                component={WebsiteToolkit}
+                path="/EmailToolkit"
+                exact
+              />
+              <PrivateRoute component={Pricing} path="/Pricing" exact />
+              <PrivateRoute component={Profile} path="/Profile" exact />
+              <PrivateRoute component={Pricing} path="/Pricing" exact />
+              <PrivateRoute component={Support} path="/Support" exact />
+              <PrivateRoute component={ProjectEdit} path="/Projectedit" exact />
+              <PrivateRoute
+                component={GoogleAds}
+                path="/google-adsense"
+                exact
+              />
+              <PrivateRoute
+                component={MobileAppNotifications}
+                path="/mobile_notification"
+                exact
+              />
+              <PrivateRoute component={FacebookAds} path="/facebookads" exact />
+              <PrivateRoute
+                component={LinekedinTextAds}
+                path="/linkedinads"
+                exact
+              />
+              <PrivateRoute
+                component={LinkedinDescription}
+                path="/meta_tags"
+                exact
+              />
+              <PrivateRoute component={ABTesting} path="/ad_copies" exact />
+
+              <PrivateRoute
+                component={SalesEmails}
+                path="/sales_emails"
+                exact
+              />
+              <PrivateRoute
+                component={NewLeadEngagement}
+                path="/new_lead_engagement"
+                exact
+              />
+              <PrivateRoute
+                component={FreeuserEngagement}
+                path="/free_user_engagement"
+                exact
+              />
+              <PrivateRoute
+                component={PostPurchaseEngagement}
+                path="/post_purchase_engagement"
+                exact
+              />
+              <PrivateRoute
+                component={ScheduleProductDeom}
+                path="/schedule_product_demo"
+                exact
+              />
+              <PrivateRoute
+                component={HailMaryPass}
+                path="/activate_dormant_users"
+                exact
+              />
+
+              <PrivateRoute
+                component={AdLinkDescriptions}
+                path="/linkedinlinkdesc"
+                exact
+              />
+              <PrivateRoute
+                component={CarouselAds}
+                path="/carousel_ads"
+                exact
+              />
+              <PrivateRoute component={DynamicAds} path="/dynamic_ads" exact />
+              <PrivateRoute
+                component={ConversationalPitches}
+                path="/sponsored_msg"
+                exact
+              />
+              <PrivateRoute
+                component={SalesInMails}
+                path="/sponsoredmail"
+                exact
+              />
+              <PrivateRoute
+                component={ColdCallingInvestors}
+                path="/coldcalling"
+                exact
+              />
+              <PrivateRoute
+                component={ColdCallingRecruiters}
+                path="/coldcalling_rec"
+                exact
+              />
+
+              <PrivateRoute component={HeroText} path="/hero_text" exact />
+              <PrivateRoute
+                component={ProductReview}
+                path="/productreview"
+                exact
+              />
+              <PrivateRoute
+                component={ProblemSolution}
+                path="/problemsoln"
+                exact
+              />
+              <PrivateRoute
+                component={WebsiteDescription}
+                path="/web_desc"
+                exact
+              />
+              <PrivateRoute
+                component={FeatureBenefits}
+                path="/feature_benefit"
+                exact
+              />
+
+              <PrivateRoute
+                component={ArticleIdeas}
+                path="/article_ideas"
+                exact
+              />
+              <PrivateRoute
+                component={ArticleTitle}
+                path="/article_title"
+                exact
+              />
+              <PrivateRoute
+                component={ArticleOutlines}
+                path="/article_outlines"
+                exact
+              />
+              <PrivateRoute
+                component={ArticleIntro}
+                path="/article_intro"
+                exact
+              />
+
+              <PrivateRoute
+                component={EventPromoEmails}
+                path="/event_promo_mail"
+                exact
+              />
+              <PrivateRoute
+                component={WebinarPromoEmails}
+                path="/webinar_promo_mail"
+                exact
+              />
+              <PrivateRoute
+                component={EventFollowUpEmails}
+                path="/event_followup_mail"
+                exact
+              />
+              <PrivateRoute
+                component={EventDigitalAds}
+                path="/event_digitalads"
+                exact
+              />
+
+              <PrivateRoute
+                component={WriteLikeMe}
+                path="/write_like_me"
+                exact
+              />
+
+              <PrivateRoute
+                component={PrivacyPolicy}
+                path="/privacy_policy"
+                exact
+              />
+              <PrivateRoute component={Terms} path="/terms_conditions" exact />
+              <PrivateRoute
+                component={PasswordChange}
+                path="/Passwordchange"
+                exact
+              />
+              <PrivateRoute component={Usage} path="/Usage" exact />
+            </div>
+          </main>
         </div>
-      </Route>
-      <Route path="/Alltools">
-        <div className="innerPage">
-          <AllTools />
-        </div>
-      </Route>
-      <Route path="/Workspace">
-        <div className="innerPage">
-          <Workspace />
-        </div>
-      </Route>
-      <Route path="/Profile">
-        <div className="innerPage">
-          <Profile />
-        </div>
-      </Route>
-      <Route path="/Pricing">
-        <div className="innerPage">
-          <Pricing />
-        </div>
-      </Route>
-      <Route path="/Support">
-        <div className="innerPage">
-          <Support />
-        </div>
-      </Route>
-      <Route path="/Projectedit">
-        <div className="innerPage">
-          <ProjectEdit />
-        </div>
-      </Route>
-      <Route path="/WebsiteToolkit">
-        <div className="innerPage">
-          <WebsiteToolkit />
-        </div>
-      </Route>
-      <Route path="/LinkedinToolkit">
-        <div className="innerPage">
-          <WebsiteToolkit />
-        </div>
-      </Route>
-      <Route path="/EmailToolkit">
-        <div className="innerPage">
-          <WebsiteToolkit />
-        </div>
-      </Route>
-      <Route path="/Digital">
-        <div className="innerPage">
-          <WebsiteToolkit />
-        </div>
-      </Route>
-      <Route path="/ArticleToolkit">
-        <div className="innerPage">
-          <WebsiteToolkit />
-        </div>
-      </Route>
-      <Route path="/WritingToolkit">
-        <div className="innerPage">
-          <WebsiteToolkit />
-        </div>
-      </Route>
-      <Route path="/workspaceedit">
-        <div className="innerPage">
-          <Ckeditor5Build />
-        </div>
-      </Route>
-      {/* Digital Ads*/}
-      <Route path="/google-adsense">
-        <div className="innerPage">
-          <GoogleAds />
-        </div>
-      </Route>
-      <Route path="/mobile_notification">
-        <div className="innerPage">
-          <MobileAppNotifications />
-        </div>
-      </Route>
-      <Route path="/facebookads">
-        <div className="innerPage">
-          <FacebookAds />
-        </div>
-      </Route>
-      <Route path="/linkedinads">
-        <div className="innerPage">
-          <LinekedinTextAds />
-        </div>
-      </Route>
-      <Route path="/meta_tags">
-        <div className="innerPage">
-          <LinkedinDescription />
-        </div>
-      </Route>
-      <Route path="/ad_copies">
-        <div className="innerPage">
-          <ABTesting />
-        </div>
-      </Route>
-      {/* Ends Here*/}
-      {/* Email Toolkit*/}
-      <Route path="/sales_emails">
-        <div className="innerPage">
-          <SalesEmails />
-        </div>
-      </Route>
-      <Route path="/new_lead_engagement">
-        <div className="innerPage">
-          <NewLeadEngagement />
-        </div>
-      </Route>
-      <Route path="/free_user_engagement">
-        <div className="innerPage">
-          <FreeuserEngagement />
-        </div>
-      </Route>
-      <Route path="/post_purchase_engagement">
-        <div className="innerPage">
-          <PostPurchaseEngagement />
-        </div>
-      </Route>
-      <Route path="/schedule_product_demo">
-        <div className="innerPage">
-          <ScheduleProductDeom />
-        </div>
-      </Route>
-      <Route path="/activate_dormant_users">
-        <div className="innerPage">
-          <HailMaryPass />
-        </div>
-      </Route>
-      {/* Ends Here*/}
-      {/* LinkedIn Toolkit*/}
-      <Route path="/linkedinlinkdesc">
-        <div className="innerPage">
-          <AdLinkDescriptions />
-        </div>
-      </Route>
-      <Route path="/carousel_ads">
-        <div className="innerPage">
-          <CarouselAds />
-        </div>
-      </Route>
-      <Route path="/dynamic_ads">
-        <div className="innerPage">
-          <DynamicAds />
-        </div>
-      </Route>
-      <Route path="/sponsored_msg">
-        <div className="innerPage">
-          <ConversationalPitches />
-        </div>
-      </Route>
-      <Route path="/sponsoredmail">
-        <div className="innerPage">
-          <SalesInMails />
-        </div>
-      </Route>
-      <Route path="/coldcalling">
-        <div className="innerPage">
-          <ColdCallingInvestors />
-        </div>
-      </Route>
-      <Route path="/coldcalling_rec">
-        <div className="innerPage">
-          <ColdCallingRecruiters />
-        </div>
-      </Route>
-      {/* Ends Here*/}
-      {/* Website Toolkit*/}
-      <Route path="/hero_text">
-        <div className="innerPage">
-          <HeroText />
-        </div>
-      </Route>
-      <Route path="/productreview">
-        <div className="innerPage">
-          <ProductReview />
-        </div>
-      </Route>
-      <Route path="/problemsoln">
-        <div className="innerPage">
-          <ProblemSolution />
-        </div>
-      </Route>
-      <Route path="/web_desc">
-        <div className="innerPage">
-          <WebsiteDescription />
-        </div>
-      </Route>
-      <Route path="/feature_benefit">
-        <div className="innerPage">
-          <FeatureBenefits />
-        </div>
-      </Route>
-      {/* Ends Here*/}
-      {/* Article Toolkit*/}
-      <Route path="/article_ideas">
-        <div className="innerPage">
-          <ArticleIdeas />
-        </div>
-      </Route>
-      <Route path="/article_title">
-        <div className="innerPage">
-          <ArticleTitle />
-        </div>
-      </Route>
-      <Route path="/article_outlines">
-        <div className="innerPage">
-          <ArticleOutlines />
-        </div>
-      </Route>
-      <Route path="/article_intro">
-        <div className="innerPage">
-          <ArticleIntro />
-        </div>
-      </Route>
-      {/* Ends Here*/}
-      {/* Event Toolkit*/}
-      <Route path="/event_promo_mail">
-        <div className="innerPage">
-          <EventPromoEmails />
-        </div>
-      </Route>
-      <Route path="/webinar_promo_mail">
-        <div className="innerPage">
-          <WebinarPromoEmails />
-        </div>
-      </Route>
-      <Route path="/event_followup_mail">
-        <div className="innerPage">
-          <EventFollowUpEmails />
-        </div>
-      </Route>
-      <Route path="/event_digitalads">
-        <div className="innerPage">
-          <EventDigitalAds />
-        </div>
-      </Route>
-      {/* Ends Here*/}
-      {/* Event Toolkit*/}
-      <Route path="/write_like_me">
-        <div className="innerPage">
-          <WriteLikeMe />
-        </div>
-      </Route>
-      {/* Ends Here*/}
-      <Route path="/privacy_policy">
-        <div className="innerPage">
-          <PrivacyPolicy />
-        </div>
-      </Route>
-      <Route path="/terms_conditions">
-        <div className="innerPage">
-          <Terms />
-        </div>
-      </Route>
-      <Route path="/Passwordchange">
-        <div className="innerPage">
-          <PasswordChange />
-        </div>
-      </Route>
-      <Route path="/Usage">
-        <div className="innerPage">
-          <Usage />
-        </div>
-      </Route>
-      <Route path="/Register">
-        <Register />
-      </Route>
-      <Route path="/login">
-        <Login />
-      </Route>
-      <Route path="/password_reset">
-        <ForgotPassword />
-      </Route>
-    </Switch>
+      </Switch>
+    </BrowserRouter>
   );
 };
 
