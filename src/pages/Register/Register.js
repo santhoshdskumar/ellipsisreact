@@ -14,8 +14,9 @@ const Register = () => {
   });
 
   const [formData, updateFormData] = useState(initialFormData);
-  const [emailError, setemailError] = useState();
-  const [formErrors, setFormErrors] = useState({});
+  const [fields, updateFields] = useState({});
+  const [errors, updateErrors] = useState({});
+
   const handleChange = (e) => {
     updateFormData({
       ...formData,
@@ -23,10 +24,71 @@ const Register = () => {
       [e.target.name]: e.target.value.trim(),
     });
   };
+  const handleValidation = () => {
+    let updateFields = fields;
+    let errors = {};
+    let formIsValid = true;
+
+    //Name
+    if (!fields['firstname']) {
+      formIsValid = false;
+      errors['firstname'] = 'Cannot be empty';
+    }
+
+    if (typeof fields['firstname'] !== 'undefined') {
+      if (!fields['firstname'].match(/^[a-zA-Z]+$/)) {
+        formIsValid = false;
+        errors['firstname'] = 'Only letters';
+      }
+    }
+
+    if (!fields['password']) {
+      formIsValid = false;
+      errors['password'] = 'Cannot be empty';
+    }
+    if (typeof fields['password'] !== 'undefined') {
+      if (!fields['password'].match(/^[a-zA-Z]+$/)) {
+        formIsValid = false;
+        errors['password'] = 'Comination of letters and numbers';
+      }
+    }
+
+    //Email
+    if (!fields['email']) {
+      formIsValid = false;
+      errors['email'] = 'Cannot be empty';
+    }
+
+    if (typeof fields['email'] !== 'undefined') {
+      let lastAtPos = fields['email'].lastIndexOf('@');
+      let lastDotPos = fields['email'].lastIndexOf('.');
+
+      if (
+        !(
+          lastAtPos < lastDotPos &&
+          lastAtPos > 0 &&
+          fields['email'].indexOf('@@') == -1 &&
+          lastDotPos > 2 &&
+          fields['email'].length - lastDotPos > 2
+        )
+      ) {
+        formIsValid = false;
+        errors['email'] = 'Email is not valid';
+      }
+    }
+
+    updateErrors({ errors: errors });
+    console.log(errors);
+    return formIsValid;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    if (handleValidation()) {
+      alert('Form submitted');
+    } else {
+      toast('Please fill all the fileds and accept terms and conditions');
+    }
     axios
       .post(`https://app2.ellipsis-ai.com/user_api/signup/`, {
         email: formData.email,
@@ -36,9 +98,6 @@ const Register = () => {
       .then((res) => {
         history.push('/Login');
         console.log(res.status);
-      })
-      .catch((error) => {
-        toast('User Name with this email id already exists');
       });
   };
 
@@ -63,6 +122,7 @@ const Register = () => {
                   autoComplete="firstname"
                   onChange={handleChange}
                 />
+                <span className="error">{errors['firstname']}</span>
               </Form.Group>
               <Form.Group className="mb-4">
                 <Form.Label htmlFor="email">Email:</Form.Label>
@@ -75,6 +135,7 @@ const Register = () => {
                   autoComplete="email"
                   onChange={handleChange}
                 />
+                <span className="error">{errors.email}</span>
               </Form.Group>
               <Form.Group className="mb-4">
                 <Form.Label htmlFor="password">Password:</Form.Label>
