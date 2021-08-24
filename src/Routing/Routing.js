@@ -140,7 +140,6 @@ const Routing = (props) => {
               <PrivateRoute component={Pricing} path="/Pricing" exact />
               <PrivateRoute component={Profile} path="/Profile" exact />
               <PrivateRoute component={Pricing} path="/Pricing" exact />
-              <PrivateRoute component={Support} path="/Support" exact />
               <PrivateRoute component={ProjectEdit} path="/Projectedit" exact />
               <PrivateRoute
                 component={GoogleAds}

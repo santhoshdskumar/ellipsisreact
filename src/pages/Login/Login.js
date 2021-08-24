@@ -54,7 +54,7 @@ const Login = (props) => {
       });
   };
   const redirectToHome = () => {
-    props.history.push('/');
+    props.history.push('/Dashboard');
   };
 
   return (
