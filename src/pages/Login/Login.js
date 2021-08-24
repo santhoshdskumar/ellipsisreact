@@ -42,6 +42,7 @@ const Login = (props) => {
           localStorage.setItem('login_access_token', response.data.user.token);
           localStorage.setItem('login_email', response.data.user.email);
           localStorage.setItem('login_pwd', response.data.user.password);
+          localStorage.setItem('rememberme', rememberMe);
           redirectToHome();
         } else if (response.code === 400) {
           props.showError('Username and password do not match');

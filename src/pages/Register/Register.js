@@ -15,6 +15,7 @@ const Register = () => {
 
   const [formData, updateFormData] = useState(initialFormData);
   const [emailError, setemailError] = useState();
+  const [formErrors, setFormErrors] = useState({});
   const handleChange = (e) => {
     updateFormData({
       ...formData,
@@ -25,17 +26,7 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // if (!e.target.checked) {
-    //   toast('Please fill the all fields');
-    // }
 
-    if (
-      formData.email !== 0 &&
-      formData.firstname !== 0 &&
-      formData.password !== 0
-    ) {
-      toast('Please fill all the fields');
-    }
     axios
       .post(`https://app2.ellipsis-ai.com/user_api/signup/`, {
         email: formData.email,
