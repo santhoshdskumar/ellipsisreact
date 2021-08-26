@@ -19,6 +19,8 @@ import { FavNotification } from './../../components/FavNotification';
 import { CSVLink } from 'react-csv';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+let access_token = localStorage.getItem('login_access_token');
+
 class GoogleAds extends React.Component {
   constructor() {
     super();
@@ -150,9 +152,8 @@ class GoogleAds extends React.Component {
         'https://app2.ellipsis-ai.com/api/v1/mobile_notification/',
         mobile_notification,
         {
-          auth: {
-            username: 'jaffrinkirthiga@gmail.com',
-            password: 'demo@123',
+          headers: {
+            Authorization: `Bearer ${access_token}`,
           },
         },
         this.setState({ loading: true })

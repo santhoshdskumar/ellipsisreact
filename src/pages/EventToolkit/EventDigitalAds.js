@@ -21,6 +21,8 @@ import CsvDownload from 'react-json-to-csv';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+let access_token = localStorage.getItem('login_access_token');
+
 class GoogleAds extends React.Component {
   constructor() {
     super();
@@ -193,9 +195,8 @@ class GoogleAds extends React.Component {
         'https://app2.ellipsis-ai.com/api/v1/event_digitalads/',
         event_digitalads,
         {
-          auth: {
-            username: 'jaffrinkirthiga@gmail.com',
-            password: 'demo@123',
+          headers: {
+            Authorization: `Bearer ${access_token}`,
           },
         },
         this.setState({ loading: true })

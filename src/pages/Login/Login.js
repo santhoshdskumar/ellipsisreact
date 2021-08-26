@@ -35,8 +35,7 @@ const Login = (props) => {
         },
       })
       .then(function (response) {
-        const user = jwt(response.data.user.token); // decode your token here
-        console.log(user, { header: true });
+        console.log(response.data.user.token);
         if (response.status === 200) {
           setState((prevState) => ({
             ...prevState,

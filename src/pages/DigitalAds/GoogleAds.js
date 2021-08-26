@@ -22,6 +22,7 @@ import CsvDownload from 'react-json-to-csv';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CopyToClipboard from 'react-copy-to-clipboard';
+let access_token = localStorage.getItem('login_access_token');
 
 class GoogleAds extends React.Component {
   constructor() {
@@ -135,7 +136,6 @@ class GoogleAds extends React.Component {
     });
     return errorObj;
   };
-
   onCopy = () => {
     this.setState({ copied: true });
   };
@@ -147,8 +147,8 @@ class GoogleAds extends React.Component {
       return false;
     }
   };
-
   formSubmit(e) {
+    console.log(access_token);
     e.preventDefault();
     const googleadwords = {
       company: this.state.company,
@@ -160,9 +160,8 @@ class GoogleAds extends React.Component {
         'https://app2.ellipsis-ai.com/api/v1/googleadwords/',
         googleadwords,
         {
-          auth: {
-            username: 'jaffrinkirthiga@gmail.com',
-            password: 'demo@123',
+          headers: {
+            Authorization: `Bearer ${access_token}`,
           },
         },
         this.setState({ loading: true })

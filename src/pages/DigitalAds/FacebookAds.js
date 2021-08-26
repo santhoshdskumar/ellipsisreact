@@ -19,6 +19,8 @@ import axios from 'axios';
 import { FavNotification } from './../../components/FavNotification';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+let access_token = localStorage.getItem('login_access_token');
+
 class GoogleAds extends React.Component {
   constructor() {
     super();
@@ -153,9 +155,8 @@ class GoogleAds extends React.Component {
         'https://app2.ellipsis-ai.com/api/v1/facebookads/',
         facebookadwords,
         {
-          auth: {
-            username: 'jaffrinkirthiga@gmail.com',
-            password: 'demo@123',
+          headers: {
+            Authorization: `Bearer ${access_token}`,
           },
         },
         this.setState({ loading: true })
