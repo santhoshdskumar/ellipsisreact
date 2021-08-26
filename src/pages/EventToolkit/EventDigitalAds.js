@@ -211,8 +211,12 @@ class GoogleAds extends React.Component {
         this.setState({
           allCount: retData.length,
         });
+      })
+      .catch(function (error) {
+        if (error.response.status === 400) {
+          toast('Dont use affensive words');
+        }
       });
-
     this.setState((prevState) => ({ isBoxVisible: !prevState.isBoxVisible }));
 
     setTimeout(() => {

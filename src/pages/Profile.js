@@ -6,6 +6,8 @@ import styled from 'styled-components';
 import { Billing, Order } from './ProfileData';
 import axios from 'axios';
 import ProductsCustom from '../components/ProductsCustom';
+let access_token = localStorage.getItem('login_access_token');
+let user_id = localStorage.getItem('user_id');
 class Profile extends React.Component {
   constructor() {
     super();
@@ -19,21 +21,20 @@ class Profile extends React.Component {
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
-  async componentDidMount() {
-    const response = await axios.get(
-      'https://app2.ellipsis-ai.com/api/v1/userdata/36',
-      {
-        auth: {
-          username: 'jaffrinkirthiga@gmail.com',
-          password: 'demo@123',
+  componentDidMount() {
+    axios
+      .get(`https://app2.ellipsis-ai.com/api/v1/userdata/${user_id}`, {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
         },
-      }
-    );
-    this.setState({
-      firstName: response.data.userdata.first_name,
-      userEmail: response.data.userdata.email,
-      userName: response.data.userdata.username,
-    });
+      })
+      .then((response) => {
+        this.setState({
+          firstName: response.data.userdata.first_name,
+          userEmail: response.data.userdata.email,
+          userName: response.data.userdata.username,
+        });
+      });
   }
   render() {
     console.log(this.state.firstName);

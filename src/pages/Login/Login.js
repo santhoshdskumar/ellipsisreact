@@ -35,7 +35,8 @@ const Login = (props) => {
         },
       })
       .then(function (response) {
-        console.log(response.data.user.token);
+        window.localStorage.clear();
+        console.log(response.data.user);
         if (response.status === 200) {
           setState((prevState) => ({
             ...prevState,
@@ -43,6 +44,7 @@ const Login = (props) => {
           }));
 
           localStorage.setItem('login_access_token', response.data.user.token);
+          localStorage.setItem('user_id', response.data.user.user_id);
           redirectToHome();
         } else if (response.code === 400) {
           props.showError('Username and password do not match');

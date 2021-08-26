@@ -25,6 +25,8 @@ import ellipsis from '../../assets/images/ellipsis_logo.png';
 import { Link, NavLink, withRouter } from 'react-router-dom';
 import { Form } from 'react-bootstrap';
 import axios from 'axios';
+let access_token = localStorage.getItem('login_access_token');
+let user_id = localStorage.getItem('user_id');
 
 const AppMenu = (props) => {
   const classes = useStyles();
@@ -44,14 +46,19 @@ const AppMenu = (props) => {
       setSelectedIndex(index);
     }
   };
-  // React.useEffect(() => {
-  //   fetch('https://app2.ellipsis-ai.com/api/v1/userdata/36').then((results) =>
-  //     results.json().then((user) => {
-  //       console.log(user.userdata.first_name);
-  //       setuserName(user.userdata.first_name);
-  //     })
-  //   );
-  // }, []); // <-- Have to pass in [] here!
+  React.useEffect(() => {
+    console.log(access_token);
+    axios
+      .get(`https://app2.ellipsis-ai.com/api/v1/userdata/${user_id}`, {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      })
+      .then((res) => {
+        let userName = res.data.userdata.first_name;
+        setuserName(userName);
+      });
+  }, []); // <-- Have to pass in [] here!
   return (
     <div className="mainMenu">
       <List component="nav" className={classes.appMenu} disablePadding>
@@ -61,9 +68,9 @@ const AppMenu = (props) => {
               <img src={ellipsis} alt="Ellipsis" />
             </Link>
           </div>
-          {/* <div className="navName text-center">
+          <div className="navName text-center">
             <h3>{userName}</h3>
-          </div> */}
+          </div>
           {/* <div className="avatar">
           <img src={user} alt="user" />
         </div>*/}

@@ -22,6 +22,7 @@ import CsvDownload from 'react-json-to-csv';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CopyToClipboard from 'react-copy-to-clipboard';
+import 'react-toastify/dist/ReactToastify.css';
 let access_token = localStorage.getItem('login_access_token');
 
 class GoogleAds extends React.Component {
@@ -171,6 +172,7 @@ class GoogleAds extends React.Component {
         localStorage.setItem('retData', JSON.stringify(retData));
         let getLocalItem = localStorage.getItem('retData');
         let parsedValue = JSON.parse(getLocalItem);
+
         this.setState({
           consumedData: parsedValue,
           loading: false,
@@ -178,6 +180,11 @@ class GoogleAds extends React.Component {
         this.setState({
           allCount: parsedValue.length,
         });
+      })
+      .catch(function (error) {
+        if (error.response.status === 400) {
+          toast('Dont use affensive words');
+        }
       });
     this.setState((prevState) => ({ isBoxVisible: !prevState.isBoxVisible }));
     if (this.state.consumedData != null) {
@@ -428,7 +435,7 @@ class GoogleAds extends React.Component {
           </Col>
           <ToastContainer
             position="top-right"
-            autoClose={2000}
+            autoClose={5000}
             hideProgressBar
             newestOnTop={false}
             closeOnClick
