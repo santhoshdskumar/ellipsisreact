@@ -6,6 +6,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import jwt from 'jwt-decode'; // import dependency
 import 'react-toastify/dist/ReactToastify.css';
+
 const Login = (props) => {
   const [state, setState] = useState({
     email: '',
@@ -58,6 +59,7 @@ const Login = (props) => {
   };
   const redirectToHome = () => {
     props.history.push('/Dashboard');
+    window.location.reload();
   };
 
   return (

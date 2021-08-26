@@ -58,7 +58,7 @@ const AppMenu = (props) => {
         let userName = res.data.userdata.first_name;
         setuserName(userName);
       });
-  }, []); // <-- Have to pass in [] here!
+  }, [userName]); // <-- Have to pass in [] here!
   return (
     <div className="mainMenu">
       <List component="nav" className={classes.appMenu} disablePadding>
