@@ -19,7 +19,6 @@ const NavBar = (props) => {
     localStorage.removeItem('user_id');
     localStorage.removeItem('login_access_token');
     props.history.push('/login');
-    window.localStorage.clear();
     window.location.reload();
   };
 

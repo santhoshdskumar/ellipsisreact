@@ -88,6 +88,7 @@ class Profile extends React.Component {
                           }}
                           placeholder={this.state.firstName}
                           value={this.state.value}
+                          disabled
                         />
                       </Form.Group>
                     </Col>
@@ -101,6 +102,7 @@ class Profile extends React.Component {
                           }}
                           placeholder={this.state.userEmail}
                           value={this.state.value}
+                          disabled
                         />
                       </Form.Group>
                     </Col>
@@ -117,6 +119,7 @@ class Profile extends React.Component {
                           }}
                           placeholder={this.state.userName}
                           value={this.state.value}
+                          disabled
                         />
                       </Form.Group>
                     </Col>

@@ -6,21 +6,36 @@ import { Link, Redirect } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import jwt from 'jwt-decode'; // import dependency
 import 'react-toastify/dist/ReactToastify.css';
-
+import { useCookies } from 'react-cookie';
+const getLoc = localStorage.getItem('rememberMe');
 const Login = (props) => {
   const [state, setState] = useState({
-    email: '',
+    email: getLoc,
     password: '',
     successMessage: null,
     rememberMe: false,
   });
+  const [rememberMe, setrememberMe] = useState(false);
+  const [userEmail, setuserEmail] = useState();
+
   const handleChange = (e) => {
     const { id, value } = e.target;
+    const valueE = state.email;
+    const valueCheck = e.target.type === 'checkbox' ? e.target.checked : valueE;
+    setrememberMe(valueCheck);
+    setuserEmail(valueCheck);
     setState((prevState) => ({
       ...prevState,
       [id]: value,
     }));
   };
+  useEffect(() => {
+    const rememberMe = localStorage.getItem('rememberMe') === 'true';
+    const user = rememberMe ? localStorage.getItem('email') : '';
+    setuserEmail(user);
+    setrememberMe(true);
+    console.log(rememberMe);
+  }, []);
 
   const handleSubmitClick = (e) => {
     e.preventDefault();
@@ -28,6 +43,7 @@ const Login = (props) => {
       email: state.email,
       password: state.password,
     };
+
     axios
       .post(`https://app2.ellipsis-ai.com/user_api/login/`, {
         user: {
@@ -43,18 +59,19 @@ const Login = (props) => {
             ...prevState,
             successMessage: 'Login successful. Redirecting to home page..',
           }));
-
+          localStorage.setItem('rememberMe', rememberMe);
+          localStorage.setItem('email', rememberMe ? payload.email : '');
           localStorage.setItem('login_access_token', response.data.user.token);
           localStorage.setItem('user_id', response.data.user.user_id);
           redirectToHome();
         } else if (response.code === 400) {
-          props.showError('Username and password do not match');
+          toast('Username and password do not match');
         } else {
-          props.showError('Username does not exists');
+          toast('Username and password do not match');
         }
       })
       .catch(function (error) {
-        console.log(error);
+        toast('Username and password do not match');
       });
   };
   const redirectToHome = () => {

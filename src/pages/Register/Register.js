@@ -152,12 +152,9 @@ const Register = () => {
                 <input id="tandc" type="checkbox" name="tandc" />
                 <label for="tandc" class="checkbox">
                   I agree to the{' '}
-                  <a
-                    href="https://www.ellipsis-ai.com/terms-conditions"
-                    target="_blank"
-                  >
+                  <Link to="https://www.ellipsis-ai.com/terms-conditions">
                     Terms &amp; Conditions
-                  </a>
+                  </Link>
                 </label>
               </Form.Group>
 

@@ -149,7 +149,6 @@ class GoogleAds extends React.Component {
     }
   };
   formSubmit(e) {
-    console.log(access_token);
     e.preventDefault();
     const googleadwords = {
       company: this.state.company,
@@ -245,7 +244,6 @@ class GoogleAds extends React.Component {
       localData.push(...fetchedData);
     }
     localData.push(data);
-    console.log(localData);
     this.setState({
       booksfav: [...this.state.booksfav, data],
     });
@@ -261,6 +259,7 @@ class GoogleAds extends React.Component {
   };
 
   render() {
+    console.log(this.state.csvData);
     let count = 0,
       lengthOne = this.state.valueone ? this.state.valueone.length : 0,
       lengthTwo = this.state.valueThree ? this.state.valueThree.length : 0,
