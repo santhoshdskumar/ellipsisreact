@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { Billing, Order } from './ProfileData';
 import axios from 'axios';
 import ProductsCustom from '../components/ProductsCustom';
+import { ToastContainer, toast } from 'react-toastify';
 let access_token = localStorage.getItem('login_access_token');
 let user_id = localStorage.getItem('user_id');
 class Profile extends React.Component {
@@ -47,6 +48,8 @@ class Profile extends React.Component {
       .then((response) => {
         if (response.status === 200) {
           window.location.href = response.data.message;
+        } else if (response.status === 304) {
+          toast('Billing information is not available');
         }
       });
   };
@@ -174,6 +177,17 @@ class Profile extends React.Component {
               <ProductsCustom products={Order} />
             </Link>
           </Col>
+          <ToastContainer
+            position="top-left"
+            autoClose={5000}
+            hideProgressBar
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
         </Row>
       </React.Fragment>
     );

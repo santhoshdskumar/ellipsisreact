@@ -1,11 +1,24 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { basic, standard, premium } from '../pages/PricingData';
 import PricingCustom from '../components/PricingCustom';
 import { Row, Col, Card, Tabs, Tab } from 'react-bootstrap';
 import '../assets/scss/_pricing.scss';
 import styled from 'styled-components';
+import axios from 'axios';
+let access_token = localStorage.getItem('login_access_token');
 
 const Pricing = () => {
+  useEffect(() => {
+    axios
+      .get(`https://app2.ellipsis-ai.com/pricing_tier/`, {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+      });
+  });
   const Button = styled.button`
     background: #5433ff;
     mix-blend-mode: normal;
