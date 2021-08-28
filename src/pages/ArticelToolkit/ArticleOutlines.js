@@ -181,8 +181,7 @@ class GoogleAds extends React.Component {
 
     this.setState((prevState) => ({ isBoxVisible: !prevState.isBoxVisible }));
 
-    setTimeout(() => {
-      console.log(this.state.consumedData, 'Consumed Data');
+    if (this.state.consumedData != null) {
       let csvDatas = this.state.consumedData.map((item) => ({
         Headline: item.suggestion.Headline,
         Description: item.suggestion.Description,
@@ -202,12 +201,10 @@ class GoogleAds extends React.Component {
         return csvRows.join('\n');
       };
       let csvData = objectToCsv(csvDatas);
-      console.log(objectToCsv(csvDatas));
-
       this.setState({
         csvData: csvData,
       });
-    }, 5000);
+    }
   }
 
   wordCount(event) {
@@ -307,6 +304,7 @@ class GoogleAds extends React.Component {
                       name="company"
                       value={this.state.value}
                       maxLength="20"
+                      placeholder="Email Marketing"
                       onChange={(e) => {
                         this.wordCount(e);
                         this.handleChange(e);
@@ -326,6 +324,7 @@ class GoogleAds extends React.Component {
                       type="text"
                       maxLength="20"
                       name="audience"
+                      placeholder="Marketers"
                       value={this.state.value}
                       onChange={(e) => {
                         this.wordCountTwo(e);
@@ -348,6 +347,7 @@ class GoogleAds extends React.Component {
                     <Form.Control
                       as="textarea"
                       rows={3}
+                      placeholder="Email marketing tips for marketers to improve open rates"
                       maxLength="140"
                       name="background"
                       value={this.state.value}

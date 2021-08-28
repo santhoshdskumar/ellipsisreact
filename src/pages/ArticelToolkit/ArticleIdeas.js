@@ -182,8 +182,7 @@ class GoogleAds extends React.Component {
 
     this.setState((prevState) => ({ isBoxVisible: !prevState.isBoxVisible }));
 
-    setTimeout(() => {
-      console.log(this.state.consumedData, 'Consumed Data');
+    if (this.state.consumedData != null) {
       let csvDatas = this.state.consumedData.map((item) => ({
         Headline: item.suggestion.Headline,
         Description: item.suggestion.Description,
@@ -203,12 +202,10 @@ class GoogleAds extends React.Component {
         return csvRows.join('\n');
       };
       let csvData = objectToCsv(csvDatas);
-      console.log(objectToCsv(csvDatas));
-
       this.setState({
         csvData: csvData,
       });
-    }, 5000);
+    }
   }
   resetForm = () => {
     this.setState({
@@ -308,6 +305,7 @@ class GoogleAds extends React.Component {
                       name="company"
                       value={this.state.value}
                       maxLength="20"
+                      placeholder="Yoga"
                       onChange={(e) => {
                         this.wordCount(e);
                         this.handleChange(e);
@@ -328,6 +326,7 @@ class GoogleAds extends React.Component {
                       maxLength="20"
                       name="audience"
                       value={this.state.value}
+                      placeholder="Yoga Lovers"
                       onChange={(e) => {
                         this.wordCountTwo(e);
                         this.handleChange(e);
@@ -348,6 +347,7 @@ class GoogleAds extends React.Component {
                       as="textarea"
                       rows={3}
                       maxLength="140"
+                      placeholder="yoga, habit formation, lifestyle, healthy"
                       name="background"
                       value={this.state.value}
                       onChange={(e) => {

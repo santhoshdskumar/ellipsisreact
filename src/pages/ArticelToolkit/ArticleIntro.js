@@ -181,8 +181,7 @@ class GoogleAds extends React.Component {
 
     this.setState((prevState) => ({ isBoxVisible: !prevState.isBoxVisible }));
 
-    setTimeout(() => {
-      console.log(this.state.consumedData, 'Consumed Data');
+    if (this.state.consumedData != null) {
       let csvDatas = this.state.consumedData.map((item) => ({
         Headline: item.suggestion.Headline,
         Description: item.suggestion.Description,
@@ -202,12 +201,10 @@ class GoogleAds extends React.Component {
         return csvRows.join('\n');
       };
       let csvData = objectToCsv(csvDatas);
-      console.log(objectToCsv(csvDatas));
-
       this.setState({
         csvData: csvData,
       });
-    }, 5000);
+    }
   }
 
   wordCount(event) {
@@ -305,6 +302,7 @@ class GoogleAds extends React.Component {
                     <Form.Control
                       type="text"
                       name="company"
+                      placeholder="Could Hosting"
                       value={this.state.value}
                       maxLength="20"
                       onChange={(e) => {
@@ -325,6 +323,7 @@ class GoogleAds extends React.Component {
                     <Form.Control
                       type="text"
                       maxLength="20"
+                      placeholder="IT Managers"
                       name="audience"
                       value={this.state.value}
                       onChange={(e) => {
@@ -348,8 +347,8 @@ class GoogleAds extends React.Component {
                       rows={3}
                       maxLength="140"
                       name="background"
+                      placeholder="Helping identify hidden costs in cloud hosting and reducing total cost of ownership and ensure successful cloud deployments"
                       value={this.state.value}
-                      onChange={(event) => this.wordCountThree(event)}
                       onChange={(e) => {
                         this.wordCountThree(e);
                         this.handleChange(e);

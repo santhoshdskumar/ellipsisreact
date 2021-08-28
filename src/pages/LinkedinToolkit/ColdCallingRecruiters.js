@@ -189,8 +189,7 @@ class GoogleAds extends React.Component {
 
     this.setState((prevState) => ({ isBoxVisible: !prevState.isBoxVisible }));
 
-    setTimeout(() => {
-      console.log(this.state.consumedData, 'Consumed Data');
+    if (this.state.consumedData != null) {
       let csvDatas = this.state.consumedData.map((item) => ({
         Headline: item.suggestion.Headline,
         Description: item.suggestion.Description,
@@ -210,12 +209,10 @@ class GoogleAds extends React.Component {
         return csvRows.join('\n');
       };
       let csvData = objectToCsv(csvDatas);
-      console.log(objectToCsv(csvDatas));
-
       this.setState({
         csvData: csvData,
       });
-    }, 5000);
+    }
   }
 
   wordCount(event) {
@@ -317,6 +314,7 @@ class GoogleAds extends React.Component {
                     <Form.Label>The company you are applying to*</Form.Label>
                     <Form.Control
                       type="text"
+                      placeholder="Cred"
                       name="company"
                       value={this.state.company}
                       maxLength="20"
@@ -339,6 +337,7 @@ class GoogleAds extends React.Component {
                       type="text"
                       maxLength="20"
                       name="audience"
+                      placeholder="Data Engineer"
                       value={this.state.audience}
                       onChange={(e) => {
                         this.wordCountTwo(e);
@@ -360,6 +359,7 @@ class GoogleAds extends React.Component {
                     <Form.Control
                       type="text"
                       maxLength="20"
+                      placeholder="Martin"
                       name="background"
                       value={this.state.background}
                       onChange={(e) => {
@@ -381,6 +381,7 @@ class GoogleAds extends React.Component {
                     <Form.Control
                       as="textarea"
                       rows={3}
+                      placeholder="IIT Delhi (2014) graduate working at Microsoft looking for a role at Cred"
                       maxLength="140"
                       name="role"
                       value={this.state.role}

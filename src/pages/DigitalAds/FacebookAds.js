@@ -178,8 +178,7 @@ class GoogleAds extends React.Component {
         }
       });
 
-    setTimeout(() => {
-      console.log(this.state.consumedData, 'Consumed Data');
+    if (this.state.consumedData != null) {
       let csvDatas = this.state.consumedData.map((item) => ({
         Headline: item.suggestion.Headline,
         Description: item.suggestion.Description,
@@ -199,12 +198,10 @@ class GoogleAds extends React.Component {
         return csvRows.join('\n');
       };
       let csvData = objectToCsv(csvDatas);
-      console.log(objectToCsv(csvDatas));
-
       this.setState({
         csvData: csvData,
       });
-    }, 5000);
+    }
   }
 
   resetForm = () => {
@@ -306,7 +303,7 @@ class GoogleAds extends React.Component {
                         this.wordCount(e);
                         this.handleChange(e);
                       }}
-                      placeholedr="Fashionphile"
+                      placeholder="Fashionphile"
                     />
                     {formErrors.company && (
                       <span className="err">{formErrors.company}</span>

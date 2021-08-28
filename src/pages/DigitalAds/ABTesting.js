@@ -168,7 +168,7 @@ class GoogleAds extends React.Component {
         }
       });
 
-    setTimeout(() => {
+    if (this.state.consumedData != null) {
       let csvDatas = this.state.consumedData.map((item) => ({
         Headline: item.suggestion.Headline,
         Description: item.suggestion.Description,
@@ -188,12 +188,10 @@ class GoogleAds extends React.Component {
         return csvRows.join('\n');
       };
       let csvData = objectToCsv(csvDatas);
-      console.log(objectToCsv(csvDatas));
-
       this.setState({
         csvData: csvData,
       });
-    }, 6000);
+    }
   }
   onCopy = () => {
     this.setState({ copied: true });
@@ -302,6 +300,7 @@ class GoogleAds extends React.Component {
                       type="text"
                       name="company"
                       value={this.state.value}
+                      placeholder="JBL Earphones"
                       maxLength="20"
                       onChange={(e) => {
                         this.wordCount(e);
@@ -322,6 +321,7 @@ class GoogleAds extends React.Component {
                       type="text"
                       maxLength="20"
                       name="background"
+                      placeholder="Bikes for  Price-sensitive shoppers"
                       value={this.state.value}
                       onChange={(e) => {
                         this.wordCountTwo(e);
@@ -342,6 +342,7 @@ class GoogleAds extends React.Component {
                     <Form.Control
                       as="textarea"
                       rows={3}
+                      placeholder="HD-quality earphones, wireless connectivity, new listening experience"
                       maxLength="140"
                       name="promo"
                       value={this.state.value}

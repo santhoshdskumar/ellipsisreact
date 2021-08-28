@@ -306,6 +306,7 @@ class GoogleAds extends React.Component {
                       type="text"
                       name="company"
                       value={this.state.value}
+                      placeholder="Could Hosting"
                       maxLength="20"
                       onChange={(e) => {
                         this.wordCount(e);
@@ -326,6 +327,7 @@ class GoogleAds extends React.Component {
                       type="text"
                       maxLength="20"
                       name="audience"
+                      placeholder="IT Managers"
                       value={this.state.value}
                       onChange={(e) => {
                         this.wordCountTwo(e);
@@ -350,6 +352,7 @@ class GoogleAds extends React.Component {
                       rows={3}
                       maxLength="140"
                       name="background"
+                      placeholder="Helping identify hidden costs in cloud hosting"
                       value={this.state.value}
                       onChange={(e) => {
                         this.wordCountThree(e);

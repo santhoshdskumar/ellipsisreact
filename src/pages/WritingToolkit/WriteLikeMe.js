@@ -173,8 +173,7 @@ class GoogleAds extends React.Component {
 
     this.setState((prevState) => ({ isBoxVisible: !prevState.isBoxVisible }));
 
-    setTimeout(() => {
-      console.log(this.state.consumedData, 'Consumed Data');
+    if (this.state.consumedData != null) {
       let csvDatas = this.state.consumedData.map((item) => ({
         Headline: item.suggestion.Headline,
         Description: item.suggestion.Description,
@@ -194,12 +193,10 @@ class GoogleAds extends React.Component {
         return csvRows.join('\n');
       };
       let csvData = objectToCsv(csvDatas);
-      console.log(objectToCsv(csvDatas));
-
       this.setState({
         csvData: csvData,
       });
-    }, 5000);
+    }
   }
   wordCount(event) {
     this.setState({ valueone: event.target.value });
@@ -248,6 +245,7 @@ class GoogleAds extends React.Component {
   };
 
   render() {
+    console.log(this.state.csvData);
     let count = 0,
       lengthOne = this.state.valueone ? this.state.valueone.length : 0,
       lengthTwo = this.state.valueThree ? this.state.valueThree.length : 0;
@@ -291,6 +289,7 @@ class GoogleAds extends React.Component {
                     <Form.Label>Topic*</Form.Label>
                     <Form.Control
                       type="text"
+                      placeholder="Bitcoin"
                       name="company"
                       value={this.state.value}
                       maxLength="20"
@@ -314,6 +313,7 @@ class GoogleAds extends React.Component {
                       maxLength="20"
                       name="background"
                       value={this.state.value}
+                      placeholder="Bitcoins are created as a reward for a process known as mining. They can be exchanged for other currencies, products, and services,[10] but the real-world value of the coins is extremely volatile.[11] Research produced by the University of Cambridge estimated that in 2017, there were 2.9 to 5.8 million unique users using a cryptocurrency wallet, most of them using bitcoin.[12] Users choose to participate in the digital currency for a number of reasons: ideologies such as commitment to anarchism, decentralization and libertarianism, convenience, using the currency as an investment and pseudonymity of transactions."
                       onChange={(e) => {
                         this.wordCountTwo(e);
                         this.handleChange(e);

@@ -168,16 +168,13 @@ class GoogleAds extends React.Component {
       )
       .then((res) => {
         let retData = res.data.data.output;
-        localStorage.setItem('retData', JSON.stringify(retData));
-        let getLocalItem = localStorage.getItem('retData');
-        let parsedValue = JSON.parse(getLocalItem);
-
+        console.log(retData, 'Api data');
         this.setState({
-          consumedData: parsedValue,
+          consumedData: retData,
           loading: false,
         });
         this.setState({
-          allCount: parsedValue.length,
+          allCount: retData.length,
         });
       })
       .catch(function (error) {

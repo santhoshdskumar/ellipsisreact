@@ -175,8 +175,7 @@ class GoogleAds extends React.Component {
         }
       });
 
-    setTimeout(() => {
-      console.log(this.state.consumedData, 'Consumed Data');
+    if (this.state.consumedData != null) {
       let csvDatas = this.state.consumedData.map((item) => ({
         Headline: item.suggestion.Headline,
         Description: item.suggestion.Description,
@@ -196,12 +195,10 @@ class GoogleAds extends React.Component {
         return csvRows.join('\n');
       };
       let csvData = objectToCsv(csvDatas);
-      console.log(objectToCsv(csvDatas));
-
       this.setState({
         csvData: csvData,
       });
-    }, 5000);
+    }
   }
 
   resetForm = () => {
@@ -301,6 +298,7 @@ class GoogleAds extends React.Component {
                       type="text"
                       name="company"
                       value={this.state.value}
+                      placeholder="Solvorine"
                       maxLength="20"
                       onChange={(e) => {
                         this.wordCount(e);
@@ -322,6 +320,7 @@ class GoogleAds extends React.Component {
                       maxLength="20"
                       name="background"
                       value={this.state.value}
+                      placeholder="TAKE15 for 15% off"
                       onChange={(e) => {
                         this.wordCountTwo(e);
                         this.handleChange(e);
@@ -344,6 +343,7 @@ class GoogleAds extends React.Component {
                       maxLength="140"
                       name="promo"
                       value={this.state.value}
+                      placeholder="Protein powders taste bad but Solvorine has tasty honey cinnamon and peanut butter flavour that tastes better and has 26G per serving"
                       onChange={(e) => {
                         this.wordCountThree(e);
                         this.handleChange(e);

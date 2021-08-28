@@ -181,8 +181,7 @@ class GoogleAds extends React.Component {
 
     this.setState((prevState) => ({ isBoxVisible: !prevState.isBoxVisible }));
 
-    setTimeout(() => {
-      console.log(this.state.consumedData, 'Consumed Data');
+    if (this.state.consumedData != null) {
       let csvDatas = this.state.consumedData.map((item) => ({
         Headline: item.suggestion.Headline,
         Description: item.suggestion.Description,
@@ -202,12 +201,10 @@ class GoogleAds extends React.Component {
         return csvRows.join('\n');
       };
       let csvData = objectToCsv(csvDatas);
-      console.log(objectToCsv(csvDatas));
-
       this.setState({
         csvData: csvData,
       });
-    }, 5000);
+    }
   }
 
   wordCount(event) {
@@ -308,6 +305,7 @@ class GoogleAds extends React.Component {
                     <Form.Control
                       type="text"
                       name="company"
+                      placeholder="Asana"
                       value={form.company}
                       maxLength="20"
                       onChange={(e) => {
@@ -330,6 +328,7 @@ class GoogleAds extends React.Component {
                       maxLength="20"
                       name="audience"
                       value={form.audience}
+                      placeholder="project managers"
                       onChange={(e) => {
                         this.wordCountTwo(e);
                         this.handleChange(e);
@@ -351,6 +350,7 @@ class GoogleAds extends React.Component {
                       as="textarea"
                       rows={3}
                       maxLength="140"
+                      placeholder="Project management tool that has a timeline view of tasks"
                       name="background"
                       value={form.background}
                       onChange={(e) => {

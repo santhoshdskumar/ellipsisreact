@@ -205,8 +205,7 @@ class GoogleAds extends React.Component {
 
     this.setState((prevState) => ({ isBoxVisible: !prevState.isBoxVisible }));
 
-    setTimeout(() => {
-      console.log(this.state.consumedData, 'Consumed Data');
+    if (this.state.consumedData != null) {
       let csvDatas = this.state.consumedData.map((item) => ({
         Headline: item.suggestion.Headline,
         Description: item.suggestion.Description,
@@ -226,12 +225,10 @@ class GoogleAds extends React.Component {
         return csvRows.join('\n');
       };
       let csvData = objectToCsv(csvDatas);
-      console.log(objectToCsv(csvDatas));
-
       this.setState({
         csvData: csvData,
       });
-    }, 5000);
+    }
   }
   wordCountOne(event) {
     this.setState({ valueOne: event.target.value });
@@ -341,6 +338,7 @@ class GoogleAds extends React.Component {
                       type="text"
                       name="company"
                       value={form.company}
+                      placeholder="B2B Marketing Forum"
                       maxLength="20"
                       onChange={(e) => {
                         this.wordCountOne(e);
@@ -361,6 +359,7 @@ class GoogleAds extends React.Component {
                       type="text"
                       name="audience"
                       value={form.audience}
+                      placeholder="Marketing Managers"
                       maxLength="20"
                       onChange={(e) => {
                         this.wordCountTwo(e);
@@ -382,6 +381,7 @@ class GoogleAds extends React.Component {
                       type="text"
                       name="product"
                       value={form.product}
+                      placeholder="B2B Marketing"
                       maxLength="20"
                       onChange={(e) => {
                         this.wordCountThree(e);
@@ -400,6 +400,7 @@ class GoogleAds extends React.Component {
                     <Form.Label>Event Date*</Form.Label>
                     <Form.Control
                       type="text"
+                      placeholder="October 8th 2021"
                       name="date"
                       value={form.date}
                       maxLength="20"
@@ -423,6 +424,7 @@ class GoogleAds extends React.Component {
                       type="text"
                       maxLength="20"
                       name="offer"
+                      placeholder="30% Off"
                       value={this.state.offer}
                       onChange={(e) => {
                         this.wordCountFive(e);
@@ -444,6 +446,7 @@ class GoogleAds extends React.Component {
                       as="textarea"
                       rows={3}
                       maxLength="140"
+                      placeholder="Actionable insights and tips from industry experts on content strategy, big data, analytics, video content curation. Networking opportunities"
                       name="background"
                       value={this.state.background}
                       onChange={(e) => {

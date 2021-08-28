@@ -188,9 +188,7 @@ class GoogleAds extends React.Component {
       });
 
     this.setState((prevState) => ({ isBoxVisible: !prevState.isBoxVisible }));
-
-    setTimeout(() => {
-      console.log(this.state.consumedData, 'Consumed Data');
+    if (this.state.consumedData != null) {
       let csvDatas = this.state.consumedData.map((item) => ({
         Headline: item.suggestion.Headline,
         Description: item.suggestion.Description,
@@ -210,12 +208,10 @@ class GoogleAds extends React.Component {
         return csvRows.join('\n');
       };
       let csvData = objectToCsv(csvDatas);
-      console.log(objectToCsv(csvDatas));
-
       this.setState({
         csvData: csvData,
       });
-    }, 5000);
+    }
   }
 
   wordCount(event) {
@@ -317,6 +313,7 @@ class GoogleAds extends React.Component {
                       type="text"
                       name="company"
                       value={form.company}
+                      placeholder="LinkedIn"
                       maxLength="20"
                       onChange={(e) => {
                         this.wordCount(e);
@@ -337,6 +334,7 @@ class GoogleAds extends React.Component {
                       type="text"
                       maxLength="20"
                       name="product"
+                      placeholder="Lead Qualification"
                       value={form.product}
                       onChange={(e) => {
                         this.wordCountTwo(e);
@@ -357,6 +355,7 @@ class GoogleAds extends React.Component {
                       type="text"
                       maxLength="20"
                       name="audience"
+                      placeholder="Marketers"
                       value={this.state.audience}
                       onChange={(e) => {
                         this.wordCountThree(e);
@@ -376,6 +375,7 @@ class GoogleAds extends React.Component {
                     <Form.Label>Describe your product*</Form.Label>
                     <Form.Control
                       as="textarea"
+                      placeholder="Marketing managers looking for reliable methods to generate and qualify quality leads"
                       rows={3}
                       maxLength="140"
                       name="background"

@@ -192,8 +192,7 @@ class GoogleAds extends React.Component {
 
     this.setState((prevState) => ({ isBoxVisible: !prevState.isBoxVisible }));
 
-    setTimeout(() => {
-      console.log(this.state.consumedData, 'Consumed Data');
+    if (this.state.consumedData != null) {
       let csvDatas = this.state.consumedData.map((item) => ({
         Headline: item.suggestion.Headline,
         Description: item.suggestion.Description,
@@ -213,12 +212,10 @@ class GoogleAds extends React.Component {
         return csvRows.join('\n');
       };
       let csvData = objectToCsv(csvDatas);
-      console.log(objectToCsv(csvDatas));
-
       this.setState({
         csvData: csvData,
       });
-    }, 5000);
+    }
   }
   wordCountOne(event) {
     this.setState({ valueOne: event.target.value });
@@ -325,6 +322,7 @@ class GoogleAds extends React.Component {
                       name="company"
                       value={this.state.company}
                       maxLength="20"
+                      placeholder="Asana"
                       onChange={(e) => {
                         this.wordCountOne(e);
                         this.handleChange(e);
@@ -345,6 +343,7 @@ class GoogleAds extends React.Component {
                       name="category"
                       value={this.state.category}
                       maxLength="20"
+                      placeholder="Productivity Tool"
                       onChange={(e) => {
                         this.wordCountTwo(e);
                         this.handleChange(e);
@@ -365,6 +364,7 @@ class GoogleAds extends React.Component {
                       name="audience"
                       value={this.state.audience}
                       maxLength="20"
+                      placeholder="Professionals"
                       onChange={(e) => {
                         this.wordCountThree(e);
                         this.handleChange(e);
@@ -383,6 +383,7 @@ class GoogleAds extends React.Component {
                     <Form.Control
                       type="email"
                       name="name"
+                      placeholder="Robert"
                       value={this.state.name}
                       maxLength="20"
                       onChange={(e) => {
@@ -406,6 +407,7 @@ class GoogleAds extends React.Component {
                       rows={3}
                       maxLength="140"
                       name="background"
+                      placeholder="Browser extension that helps you get more productive by allowing you to add only three tasks a day"
                       value={this.state.background}
                       onChange={(e) => {
                         this.wordCountFive(e);

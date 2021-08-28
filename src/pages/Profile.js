@@ -36,8 +36,19 @@ class Profile extends React.Component {
         });
       });
   }
+
+  stripeLogin = () => {
+    axios
+      .get(`https://app2.ellipsis-ai.com/customer-portal/`, {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      })
+      .then((response) => {
+        console.log(response);
+      });
+  };
   render() {
-    console.log(this.state.firstName);
     const Button = styled.button`
       background: #5433ff;
       border: 1px solid #5433ff;
@@ -152,7 +163,9 @@ class Profile extends React.Component {
         </Card>
         <Row className="billingRow mt-5">
           <Col xl={4} lg={4} md="4" sm={12}>
-            <ProductsCustom products={Billing} />
+            <div onClick={this.stripeLogin}>
+              <ProductsCustom products={Billing} />
+            </div>
           </Col>
           <Col xl={4} lg={4} md="4" sm={12}>
             <Link to="/Usage">

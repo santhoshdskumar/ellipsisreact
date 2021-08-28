@@ -189,8 +189,7 @@ class GoogleAds extends React.Component {
 
     this.setState((prevState) => ({ isBoxVisible: !prevState.isBoxVisible }));
 
-    setTimeout(() => {
-      console.log(this.state.consumedData, 'Consumed Data');
+    if (this.state.consumedData != null) {
       let csvDatas = this.state.consumedData.map((item) => ({
         Headline: item.suggestion.Headline,
         Description: item.suggestion.Description,
@@ -210,12 +209,10 @@ class GoogleAds extends React.Component {
         return csvRows.join('\n');
       };
       let csvData = objectToCsv(csvDatas);
-      console.log(objectToCsv(csvDatas));
-
       this.setState({
         csvData: csvData,
       });
-    }, 5000);
+    }
   }
 
   wordCount(event) {
@@ -318,6 +315,7 @@ class GoogleAds extends React.Component {
                       type="text"
                       name="company"
                       value={this.state.company}
+                      placeholder="Mapistry"
                       maxLength="20"
                       onChange={(e) => {
                         this.wordCount(e);
@@ -340,6 +338,7 @@ class GoogleAds extends React.Component {
                       type="text"
                       maxLength="20"
                       name="problem"
+                      placeholder="Manually managing environmental regulations on spreadsheets risk errors and lawsuits so we built a SaaS app to manage compliance"
                       value={this.state.problem}
                       onChange={(e) => {
                         this.wordCountTwo(e);
@@ -360,6 +359,7 @@ class GoogleAds extends React.Component {
                       type="text"
                       maxLength="20"
                       name="market"
+                      placeholder="$1 Tr market global (20)"
                       value={this.state.market}
                       onChange={(e) => {
                         this.wordCountThree(e);
@@ -383,6 +383,7 @@ class GoogleAds extends React.Component {
                       maxLength="140"
                       name="traction"
                       value={this.state.traction}
+                      placeholder="MRR of $3000, growing by 50% for 6 months"
                       onChange={(e) => {
                         this.wordCountFour(e);
                         this.handleChange(e);

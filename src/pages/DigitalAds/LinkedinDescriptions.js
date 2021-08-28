@@ -180,8 +180,7 @@ class GoogleAds extends React.Component {
         }
       });
 
-    setTimeout(() => {
-      console.log(this.state.consumedData, 'Consumed Data');
+    if (this.state.consumedData != null) {
       let csvDatas = this.state.consumedData.map((item) => ({
         Headline: item.suggestion.Headline,
         Description: item.suggestion.Description,
@@ -201,12 +200,10 @@ class GoogleAds extends React.Component {
         return csvRows.join('\n');
       };
       let csvData = objectToCsv(csvDatas);
-      console.log(objectToCsv(csvDatas));
-
       this.setState({
         csvData: csvData,
       });
-    }, 5000);
+    }
   }
 
   resetForm = () => {
@@ -304,6 +301,7 @@ class GoogleAds extends React.Component {
                       name="company"
                       value={this.state.value}
                       maxLength="20"
+                      placeholder="Lonely Planet"
                       onChange={(e) => {
                         this.wordCount(e);
                         this.handleChange(e);
@@ -324,6 +322,7 @@ class GoogleAds extends React.Component {
                       maxLength="20"
                       name="product"
                       value={this.state.value}
+                      placeholder="Travel Inspiration"
                       onChange={(e) => {
                         this.wordCountTwo(e);
                         this.handleChange(e);
@@ -345,6 +344,7 @@ class GoogleAds extends React.Component {
                       rows={3}
                       maxLength="140"
                       name="background"
+                      placeholder="Online catalog for travelers to plan travel and read reviews about locations"
                       value={this.state.value}
                       onChange={(e) => {
                         this.wordCountThree(e);

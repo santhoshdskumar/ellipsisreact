@@ -200,8 +200,7 @@ class GoogleAds extends React.Component {
 
     this.setState((prevState) => ({ isBoxVisible: !prevState.isBoxVisible }));
 
-    setTimeout(() => {
-      console.log(this.state.consumedData, 'Consumed Data');
+    if (this.state.consumedData != null) {
       let csvDatas = this.state.consumedData.map((item) => ({
         Headline: item.suggestion.Headline,
         Description: item.suggestion.Description,
@@ -221,12 +220,10 @@ class GoogleAds extends React.Component {
         return csvRows.join('\n');
       };
       let csvData = objectToCsv(csvDatas);
-      console.log(objectToCsv(csvDatas));
-
       this.setState({
         csvData: csvData,
       });
-    }, 5000);
+    }
   }
   wordCountOne(event) {
     this.setState({ valueOne: event.target.value });
@@ -331,6 +328,7 @@ class GoogleAds extends React.Component {
                     <Form.Control
                       type="text"
                       name="company"
+                      placeholder="Prioritizer"
                       value={this.state.company}
                       maxLength="20"
                       onChange={(e) => {
@@ -351,6 +349,7 @@ class GoogleAds extends React.Component {
                     <Form.Control
                       type="text"
                       name="category"
+                      placeholder="Productivity App"
                       value={this.state.category}
                       maxLength="20"
                       onChange={(e) => {
@@ -370,6 +369,7 @@ class GoogleAds extends React.Component {
                     <Form.Label>Describe your Customer*</Form.Label>
                     <Form.Control
                       type="text"
+                      placeholder="Professionals"
                       name="audience"
                       value={this.state.audience}
                       maxLength="20"
@@ -392,6 +392,7 @@ class GoogleAds extends React.Component {
                       type="text"
                       name="event"
                       value={this.state.event}
+                      placeholder="user signed up free trial/ newsletter/ downloaded ebook/: Downloaded eBook"
                       maxLength="20"
                       onChange={(e) => {
                         this.wordCountFour(e);
@@ -410,6 +411,7 @@ class GoogleAds extends React.Component {
                     <Form.Control
                       as="textarea"
                       rows={3}
+                      placeholder="App to help you get more productive and accomplish great goals. Weekly blog with actionable insights"
                       maxLength="140"
                       name="background"
                       value={this.state.background}
