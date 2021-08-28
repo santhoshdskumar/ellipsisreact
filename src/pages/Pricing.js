@@ -16,7 +16,11 @@ const Pricing = () => {
         },
       })
       .then((response) => {
-        console.log(response.data);
+        let resVal;
+        response.data.monthly_prices.map((res) => {
+          resVal = res;
+        });
+        console.log(resVal.product);
       });
   });
   const Button = styled.button`

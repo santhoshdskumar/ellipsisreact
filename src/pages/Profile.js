@@ -46,9 +46,9 @@ class Profile extends React.Component {
         },
       })
       .then((response) => {
-        if (response.status === 200) {
+        if (response.data.status === 'success') {
           window.location.href = response.data.message;
-        } else if (response.status === 304) {
+        } else if (response.data.status === 'failure') {
           toast('Billing information is not available');
         }
       });
@@ -178,7 +178,7 @@ class Profile extends React.Component {
             </Link>
           </Col>
           <ToastContainer
-            position="top-left"
+            position="top-right"
             autoClose={5000}
             hideProgressBar
             newestOnTop={false}
