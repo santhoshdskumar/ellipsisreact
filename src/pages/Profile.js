@@ -39,13 +39,15 @@ class Profile extends React.Component {
 
   stripeLogin = () => {
     axios
-      .get(`https://app2.ellipsis-ai.com/customer-portal/`, {
+      .get(`https://app2.ellipsis-ai.com/customer-portal/?user_id=${user_id}`, {
         headers: {
           Authorization: `Bearer ${access_token}`,
         },
       })
       .then((response) => {
-        console.log(response);
+        if (response.status === 200) {
+          window.location.href = response.data.message;
+        }
       });
   };
   render() {
