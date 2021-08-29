@@ -168,7 +168,6 @@ class GoogleAds extends React.Component {
       )
       .then((res) => {
         let retData = res.data.data.output;
-        console.log(retData, 'Api data');
         this.setState({
           consumedData: retData,
           loading: false,
@@ -188,7 +187,6 @@ class GoogleAds extends React.Component {
         Headline: item.suggestion.Headline,
         Description: item.suggestion.Description,
       }));
-
       const objectToCsv = (csvDatas) => {
         const csvRows = [];
         const headers = Object.keys(csvDatas[0]);
@@ -202,6 +200,7 @@ class GoogleAds extends React.Component {
         }
         return csvRows.join('\n');
       };
+      console.log(objectToCsv);
       let csvData = objectToCsv(csvDatas);
       this.setState({
         csvData: csvData,
