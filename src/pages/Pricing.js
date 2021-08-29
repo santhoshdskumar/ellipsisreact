@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { basic, standard, premium } from '../pages/PricingData';
 import PricingCustom from '../components/PricingCustom';
 import { Row, Col, Card, Tabs, Tab } from 'react-bootstrap';
@@ -8,21 +8,23 @@ import axios from 'axios';
 let access_token = localStorage.getItem('login_access_token');
 
 const Pricing = () => {
-  useEffect(() => {
-    axios
-      .get(`https://app2.ellipsis-ai.com/pricing_tier/`, {
-        headers: {
-          Authorization: `Bearer ${access_token}`,
-        },
-      })
-      .then((response) => {
-        let resVal;
-        response.data.monthly_prices.map((res) => {
-          resVal = res;
-        });
-        console.log(resVal.product);
+  const [yearData, setstateyearData] = useState([]);
+  const [monthlyData, setstatemonthlyData] = useState([]);
+
+  axios
+    .get(`https://app2.ellipsis-ai.com/pricing_tier/`, {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+    })
+    .then((response) => {
+      let resVal;
+      response.data.yearly_prices.map((res) => {
+        resVal = res;
       });
-  });
+      setstateyearData(response.data.yearly_prices);
+      setstatemonthlyData(response.data.monthly_prices);
+    });
   const Button = styled.button`
     background: #5433ff;
     mix-blend-mode: normal;
@@ -55,27 +57,50 @@ const Pricing = () => {
         </Col>
       </Row>
       <Row className="pricing">
+        <ul class="nav nav-tabs d-none" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link active"
+              id="INR-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#INR"
+              type="button"
+              role="tab"
+              aria-controls="INR"
+              aria-selected="true"
+            >
+              INR
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="USD-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#USD"
+              type="button"
+              role="tab"
+              aria-controls="USD"
+              aria-selected="false"
+            >
+              USD
+            </button>
+          </li>
+        </ul>
         <Tabs
           transition={false}
           defaultActiveKey="Yearly"
           id="uncontrolledTbas"
-          className="mb-3"
+          className="mb-3 priceTab"
         >
           <Tab eventKey="Yearly" title="Yearly">
             <Row>
-              <PricingCustom pricing={basic}></PricingCustom>
-              <PricingCustom pricing={standard}>
-                <button className="poular">Popular</button>
-              </PricingCustom>
-              <PricingCustom pricing={premium}></PricingCustom>
+              <PricingCustom pricing={yearData}></PricingCustom>
             </Row>
           </Tab>
           <Tab eventKey="Monthly" title="Monthly">
             <Row>
-              <PricingCustom pricing={basic}></PricingCustom>
-              <PricingCustom pricing={standard}>
-                <button className="poular">Popular</button>
-              </PricingCustom>
+              <PricingCustom pricing={monthlyData}></PricingCustom>
             </Row>
           </Tab>
         </Tabs>

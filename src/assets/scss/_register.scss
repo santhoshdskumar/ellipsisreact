@@ -1,11 +1,26 @@
 .no-gutter .col-one-half {
     width: 50%;
+    @media screen and (max-width:576px) {
+        width:100%;
+        .featured-image {
+            display:none;
+        }
+    }
+
+}
+@media screen and (max-width:576px) {
+    .featured-image {
+        display:none;
+    }
 }
 .padding {
     padding: 5rem;
 }
 .makeStyles-content-2 {
     padding: 0px !important;
+}
+.loginpage .bg-image-05:after{
+    background: url('https://app2.ellipsis-ai.com/static/media/bg/image-04@2x.88c7f40e818b.jpg');
 }
 .bg-image-05:after {
     background: url('https://app2.ellipsis-ai.com/static/media/bg/image-05@2x.79d60b84af12.jpg');

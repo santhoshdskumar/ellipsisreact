@@ -3,51 +3,42 @@ import { Row, Col, Card, Button } from 'react-bootstrap';
 import styled from 'styled-components';
 
 const PricingCustom = (props) => {
-  const Button = styled.button`
-    background: #5433ff;
-    mix-blend-mode: normal;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.11);
-    border-radius: 8px;
-    padding: 15px 0px;
-    width: 165.62px;
-    margin: 0 auto;
-    color: #fff;
-    border: 1px solid #5433ff;
-    font-family: Lato;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 16px;
-    line-height: 19px;
-
-    color: #ffffff;
-    &:hover {
-      background: #fff;
-      color: #5433ff;
-      transition: 0.3s ease-in;
-    }
-  `;
+  props.pricing.map((item) => {
+    return (
+      item.product.features.map((data)=>{
+        console.log(data);
+      })
+    )})
   return (
     <>
       {props.pricing.map((product, index) => {
         return (
-          <Col xl={4} lg={4} md={12} sm={12} className="mt-5">
+          <Col
+            xl={4}
+            lg={4}
+            md={12}
+            sm={12}
+            className={product.product.name}
+            id={product.price.currency}
+          >
             {props.children}
-            <Card as="Card" className={product.activeShows}>
-              <h3>{product.type}</h3>
-              <p className="descr">{product.description}</p>
+            <Card as="Card" className={product.activeShows} >
+              <h3>{product.product.name}</h3>
+              <p className="descr">{product.product.metadata.audience}</p>
               <p className="price">
                 <span className="pro">
-                  {product.priceSym}
-                  {product.priceRange}
+                  {product.price.currency}
+                  {parseFloat(product.price.unit_amount)}
                 </span>
-                <span className="dea">{product.priceB}</span>
+                <span className="dea">per user/month</span>
               </p>
-              <ul className="">
-                {product.offers.map((offers, index) => {
+               <ul className="">
+                {product.product.features.map((offers, index) => {
                   return <li>{offers}</li>;
                 })}
               </ul>
-              <Button variant="primary">Start Now</Button>
+
+              <Button variant="primary" className="update">Start Now</Button>
             </Card>
           </Col>
         );

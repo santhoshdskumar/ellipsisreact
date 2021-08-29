@@ -104,6 +104,9 @@ const Register = () => {
   return (
     <React.Fragment>
       <Row className="row no-gutter reverse-order">
+      <div className="col-sm-12 col-md-12 d-lg-none d-md-none d-sm-none">
+          <img src="https://app2.ellipsis-ai.com/static/media/bg/image-05@2x.79d60b84af12.jpg" className="w-100 img-fluid"/>
+      </div>
         <div className="col-one-half middle padding">
           <div className="max-width-s">
             <h5>Welcome!</h5>

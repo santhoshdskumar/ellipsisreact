@@ -597,3 +597,8 @@ button.clear {
 .makeStyles-content-5 {
   overflow: hidden;
 }
+@media screen and (max-width:991px) {
+  .padding {
+    padding: 20px 30px;
+}
+}
