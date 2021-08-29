@@ -123,7 +123,7 @@ const Login = (props) => {
               <Form.Group className="mb-4">
                 <input id="tandc" type="checkbox" name="tandc" />
                 <label for="tandc" class="checkbox">
-                  Remomber Me
+                  Remember Me
                 </label>
               </Form.Group>
 

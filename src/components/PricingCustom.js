@@ -3,12 +3,6 @@ import { Row, Col, Card, Button } from 'react-bootstrap';
 import styled from 'styled-components';
 
 const PricingCustom = (props) => {
-  props.pricing.map((item) => {
-    return (
-      item.product.features.map((data)=>{
-        console.log(data);
-      })
-    )})
   return (
     <>
       {props.pricing.map((product, index) => {
