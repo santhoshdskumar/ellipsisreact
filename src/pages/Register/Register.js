@@ -84,11 +84,11 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (handleValidation()) {
-      alert('Form submitted');
-    } else {
-      toast('Please fill all the fileds and accept terms and conditions');
-    }
+    // if (handleValidation()) {
+    //   alert('Form submitted');
+    // } else {
+    //   toast('Please fill all the fileds and accept terms and conditions');
+    // }
     axios
       .post(`https://app2.ellipsis-ai.com/user_api/signup/`, {
         email: formData.email,
@@ -98,15 +98,25 @@ const Register = () => {
       .then((res) => {
         history.push('/Login');
         console.log(res.status);
+      })
+      .catch((error) => {
+        console.log(error.response.status);
+        if (error.response.status === 400) {
+          toast('User is already registred with this email id');
+        }
       });
   };
 
   return (
     <React.Fragment>
       <Row className="row no-gutter reverse-order">
-      <div className="col-sm-12 col-md-12 d-lg-none d-md-none d-sm-none">
-          <img src="https://app2.ellipsis-ai.com/static/media/bg/image-05@2x.79d60b84af12.jpg" className="w-100 img-fluid"/>
-      </div>
+        <div className="col-sm-12 col-md-12 d-lg-none d-md-none d-sm-none">
+          <img
+            src="https://app2.ellipsis-ai.com/static/media/bg/image-05@2x.79d60b84af12.jpg"
+            className="w-100 img-fluid"
+            alt=""
+          />
+        </div>
         <div className="col-one-half middle padding">
           <div className="max-width-s">
             <h5>Welcome!</h5>
