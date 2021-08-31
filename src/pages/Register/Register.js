@@ -23,6 +23,7 @@ const Register = () => {
       // Trimming any whitespace
       [e.target.name]: e.target.value.trim(),
     });
+    console.log(formData);
   };
   const handleValidation = () => {
     let updateFields = fields;
@@ -83,28 +84,26 @@ const Register = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    // if (handleValidation()) {
-    //   alert('Form submitted');
-    // } else {
-    //   toast('Please fill all the fileds and accept terms and conditions');
-    // }
-    axios
-      .post(`https://app2.ellipsis-ai.com/user_api/signup/`, {
-        email: formData.email,
-        firstname: formData.firstname,
-        password: formData.password,
-      })
-      .then((res) => {
-        history.push('/Login');
-        console.log(res.status);
-      })
-      .catch((error) => {
-        console.log(error.response.status);
-        if (error.response.status === 400) {
-          toast('User is already registred with this email id');
-        }
-      });
+    if (formData.firstname || formData.password || formData.email > 0) {
+      axios
+        .post(`https://app2.ellipsis-ai.com/user_api/signup/`, {
+          email: formData.email,
+          firstname: formData.firstname,
+          password: formData.password,
+        })
+        .then((res) => {
+          history.push('/Login');
+          console.log(res.status);
+        })
+        .catch((error) => {
+          console.log(error.response.status);
+          if (error.response.status === 400) {
+            toast('User is already registred with this email id');
+          }
+        });
+    } else {
+      toast('Please fill all the fields and accet terms and conditions ');
+    }
   };
 
   return (
