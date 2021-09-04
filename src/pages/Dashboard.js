@@ -17,6 +17,7 @@ import ToolkitCustom from '../components/ToolkitCustom';
 import ProjectCustom from '../components/ProjectsCustom';
 import axios from 'axios';
 let user_id = localStorage.getItem('user_id');
+let access_token = localStorage.getItem('login_access_token');
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -28,7 +29,11 @@ class Dashboard extends React.Component {
   }
   componentDidMount() {
     axios
-      .get(`https://app2.ellipsis-ai.com/userhome?user_id=${user_id}`)
+      .get(`https://app2.ellipsis-ai.com/userhome?user_id=${user_id}`, {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      })
       .then((res) => {
         console.log(res);
       });
