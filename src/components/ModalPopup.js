@@ -19,7 +19,6 @@ export default class ModalPopup extends Component {
     const target = e.target;
     const name = target.name;
     const value = target.value;
-    console.log(value);
     this.setState({
       [e.target.name]: e.target.value,
     });
@@ -48,8 +47,8 @@ export default class ModalPopup extends Component {
   render() {
     const Button = styled.button`
       background: #5433ff;
-      width:125px;
-      letter-spacing:0.08rem;
+      width: 125px;
+      letter-spacing: 0.08rem;
       mix-blend-mode: normal;
       box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.11);
       border-radius: 8px;
@@ -89,19 +88,22 @@ export default class ModalPopup extends Component {
                   />
                 </Form.Group>
                 <Form.Group className="mb-4" controlId="formBasicPassword">
-                <select aria-label="Default select example" className="form-control">
+                  <select
+                    aria-label="Default select example"
+                    className="form-control"
+                  >
                     <option>Open this select menu</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
                   </select>
-                  </Form.Group>
+                </Form.Group>
                 <Button
                   class="update"
                   type="submit"
                   onClick={(e) => this.handleSubmit(e)}
                 >
-                  Update 
+                  Update
                 </Button>
               </Form>
               {/* <div className="form-group">

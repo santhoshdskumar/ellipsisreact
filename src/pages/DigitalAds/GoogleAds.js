@@ -200,7 +200,6 @@ class GoogleAds extends React.Component {
         }
         return csvRows.join('\n');
       };
-      console.log(objectToCsv);
       let csvData = objectToCsv(csvDatas);
       this.setState({
         csvData: csvData,
@@ -255,7 +254,6 @@ class GoogleAds extends React.Component {
   };
 
   render() {
-    console.log(this.state.csvData);
     let count = 0,
       lengthOne = this.state.valueone ? this.state.valueone.length : 0,
       lengthTwo = this.state.valueThree ? this.state.valueThree.length : 0,

@@ -23,7 +23,6 @@ const Register = () => {
       // Trimming any whitespace
       [e.target.name]: e.target.value.trim(),
     });
-    console.log(formData);
   };
   const handleValidation = () => {
     let updateFields = fields;
@@ -79,7 +78,6 @@ const Register = () => {
     }
 
     updateErrors({ errors: errors });
-    console.log(errors);
     return formIsValid;
   };
 
@@ -93,10 +91,8 @@ const Register = () => {
         })
         .then((res) => {
           history.push('/Login');
-          console.log(res.status);
         })
         .catch((error) => {
-          console.log(error.response.status);
           if (error.response.status === 400) {
             toast('User is already registred with this email id');
           }

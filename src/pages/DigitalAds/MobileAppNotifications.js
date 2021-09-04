@@ -138,7 +138,6 @@ class GoogleAds extends React.Component {
       this.setState({ formErrors: { ...formErrors, ...errorObj } });
       return false;
     }
-    console.log('Data: ', form);
   };
   formSubmit(e) {
     e.preventDefault();
@@ -160,7 +159,6 @@ class GoogleAds extends React.Component {
       )
       .then((res) => {
         let retData = res.data.data.output;
-        console.log(retData, 'Api data');
         this.setState({
           consumedData: retData,
           loading: false,
@@ -234,7 +232,6 @@ class GoogleAds extends React.Component {
       localData.push(...fetchedData);
     }
     localData.push(data);
-    console.log(localData);
     this.setState({
       booksfav: [...this.state.booksfav, data],
     });

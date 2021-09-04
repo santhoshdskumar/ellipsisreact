@@ -1,11 +1,23 @@
 import React, { Component } from 'react';
-import { Digital, Email, Linkedin, Event, Website, Writing, Article, Popular } from './products';
+import {
+  Digital,
+  Email,
+  Linkedin,
+  Event,
+  Website,
+  Writing,
+  Article,
+  Popular,
+} from './products';
 import { projects } from './projects';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Tabs, Tab, Container, NavDropdown } from 'react-bootstrap';
 import ProductSlider from '../components/ProductSlider';
 import ToolkitCustom from '../components/ToolkitCustom';
 import ProjectCustom from '../components/ProjectsCustom';
+import axios from 'axios';
+let user_id = localStorage.getItem('user_id');
+
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
@@ -14,7 +26,13 @@ class Dashboard extends React.Component {
       reVAl: [],
     };
   }
-
+  componentDidMount() {
+    axios
+      .get(`https://app2.ellipsis-ai.com/userhome?user_id=${user_id}`)
+      .then((res) => {
+        console.log(res);
+      });
+  }
   render() {
     const { name, slno } = projects;
     return (
@@ -29,7 +47,9 @@ class Dashboard extends React.Component {
                 </div>
                 <div className="card-body">
                   <ProjectCustom projects={projects} />
-                  <Link to="/Workspace" className="viewAll">View All &gt;&gt;</Link>
+                  <Link to="/Workspace" className="viewAll">
+                    View All &gt;&gt;
+                  </Link>
                 </div>
               </div>
             </div>
@@ -39,7 +59,7 @@ class Dashboard extends React.Component {
                   <h3>Popular Tools</h3>
                 </div>
                 <div className="card-body dashboard-row">
-                <ProductSlider toolkit={Popular } />
+                  <ProductSlider toolkit={Popular} />
                 </div>
               </div>
             </div>
@@ -80,7 +100,7 @@ class Dashboard extends React.Component {
                     <Tab eventKey="writing" title="Writing ">
                       <ProductSlider toolkit={Writing} />
                     </Tab>
-                     <Tab eventKey="Event" title="Event Promotions ">
+                    <Tab eventKey="Event" title="Event Promotions ">
                       <ProductSlider toolkit={Event} />
                     </Tab>
                   </Tabs>

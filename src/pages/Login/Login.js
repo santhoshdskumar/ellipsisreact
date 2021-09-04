@@ -53,7 +53,6 @@ const Login = (props) => {
       })
       .then(function (response) {
         window.localStorage.clear();
-        console.log(response.data.user);
         if (response.status === 200) {
           setState((prevState) => ({
             ...prevState,
@@ -82,9 +81,12 @@ const Login = (props) => {
   return (
     <React.Fragment>
       <Row className="row no-gutter reverse-order loginpage">
-      <div className="col-sm-12 col-md-12 d-lg-none d-md-none d-sm-none">
-          <img src="https://app2.ellipsis-ai.com/static/media/bg/image-04@2x.88c7f40e818b.jpg" className="w-100 img-fluid"/>
-      </div>
+        <div className="col-sm-12 col-md-12 d-lg-none d-md-none d-sm-none">
+          <img
+            src="https://app2.ellipsis-ai.com/static/media/bg/image-04@2x.88c7f40e818b.jpg"
+            className="w-100 img-fluid"
+          />
+        </div>
         <div class="col-one-half middle padding">
           <div class="max-width-s">
             <h5>Welcome back.</h5>

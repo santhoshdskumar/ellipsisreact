@@ -21,7 +21,6 @@ class Workspace extends React.Component {
     const target = e.target;
     const name = target.name;
     const value = target.value;
-    console.log(value);
     this.setState({
       [e.target.name]: e.target.value,
     });
@@ -48,27 +47,27 @@ class Workspace extends React.Component {
   }
   render() {
     const Button = styled.button`
-    background: #fff;
-    width:165px;
-    letter-spacing:0.08rem;
-    mix-blend-mode: normal;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.11);
-    border-radius: 8px;
-    border: 1px solid #5433ff;
-    margin-bottom: 30px;
-    float:right;
-    padding:8px 10px;
-    color:#5433ff;
-    &:hover {
-      background: rgba(90, 136, 213, 0.08);
+      background: #fff;
+      width: 165px;
+      letter-spacing: 0.08rem;
+      mix-blend-mode: normal;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.11);
+      border-radius: 8px;
+      border: 1px solid #5433ff;
+      margin-bottom: 30px;
+      float: right;
+      padding: 8px 10px;
       color: #5433ff;
-      transition: 0.3s ease-in;
-    }
-  `;
+      &:hover {
+        background: rgba(90, 136, 213, 0.08);
+        color: #5433ff;
+        transition: 0.3s ease-in;
+      }
+    `;
     return (
       <div className="workspace">
         <h1 className="headTitle">WorkSpace</h1>
-        <Button  onClick={this.showModal}>Add Workspace</Button>
+        <Button onClick={this.showModal}>Add Workspace</Button>
         <ProjectCustom projects={projects}></ProjectCustom>
         <Modal show={this.state.show} handleClose={this.hideModal}>
           <div className="modal-dialog m-0">
@@ -96,25 +95,26 @@ class Workspace extends React.Component {
                   />
                 </Form.Group>
                 <Form.Group className="mb-4" controlId="formBasicPassword">
-                <Form.Label>Industry Type</Form.Label>
-                <select aria-label="Default select example" className="form-control">
+                  <Form.Label>Industry Type</Form.Label>
+                  <select
+                    aria-label="Default select example"
+                    className="form-control"
+                  >
                     <option>Ecommerce</option>
                     <option value="1">SaaS</option>
-                    <option value="2">Enterprise Tech
-                    </option>
-                     <option value="3">Blockchain/ Crypto
-                    </option>
+                    <option value="2">Enterprise Tech</option>
+                    <option value="3">Blockchain/ Crypto</option>
                     <option>Fintech</option>
                     <option>Edtech</option>
                     <option>Martech</option>
-                   </select>
-                  </Form.Group>
+                  </select>
+                </Form.Group>
                 <Button
                   class="update"
                   type="submit"
                   onClick={(e) => this.handleSubmit(e)}
                 >
-                  Add 
+                  Add
                 </Button>
               </Form>
             </div>

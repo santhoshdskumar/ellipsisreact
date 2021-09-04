@@ -47,7 +47,6 @@ const AppMenu = (props) => {
     }
   };
   React.useEffect(() => {
-    console.log(access_token);
     axios
       .get(`https://app2.ellipsis-ai.com/api/v1/userdata/${user_id}`, {
         headers: {

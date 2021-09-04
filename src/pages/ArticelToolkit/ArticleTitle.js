@@ -141,7 +141,6 @@ class GoogleAds extends React.Component {
       this.setState({ formErrors: { ...formErrors, ...errorObj } });
       return false;
     }
-    console.log('Data: ', form);
   };
 
   formSubmit(e) {
@@ -164,7 +163,6 @@ class GoogleAds extends React.Component {
       )
       .then((res) => {
         let retData = res.data.data.output;
-        console.log(retData, 'Api data');
         this.setState({
           consumedData: retData,
           loading: false,
@@ -182,7 +180,6 @@ class GoogleAds extends React.Component {
     this.setState((prevState) => ({ isBoxVisible: !prevState.isBoxVisible }));
 
     setTimeout(() => {
-      console.log(this.state.consumedData, 'Consumed Data');
       let csvDatas = this.state.consumedData.map((item) => ({
         Headline: item.suggestion.Headline,
         Description: item.suggestion.Description,
@@ -202,7 +199,6 @@ class GoogleAds extends React.Component {
         return csvRows.join('\n');
       };
       let csvData = objectToCsv(csvDatas);
-      console.log(objectToCsv(csvDatas));
 
       this.setState({
         csvData: csvData,
@@ -229,7 +225,6 @@ class GoogleAds extends React.Component {
       localData.push(...fetchedData);
     }
     localData.push(data);
-    console.log(localData);
     this.setState({
       booksfav: [...this.state.booksfav, data],
     });

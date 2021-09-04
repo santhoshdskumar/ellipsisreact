@@ -35,9 +35,7 @@ class PasswordChange extends Component {
     e.preventDefault();
     axios
       .post(`https://app2.ellipsis-ai.com/accounts/password_change/`)
-      .then(function (response) {
-        console.log(response);
-      });
+      .then(function (response) {});
   };
   render() {
     const Button = styled.button`
