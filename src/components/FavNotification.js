@@ -17,7 +17,6 @@ export const FavNotification = (props) => {
           </div>
         </Alert>
       ))}
-      ;
     </React.Fragment>
   );
 };
