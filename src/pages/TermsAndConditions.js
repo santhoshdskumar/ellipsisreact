@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {Row, Col} from 'react-bootstrap';
 export const Terms = () => {
     return (
-        <div>
+        <div  className="extraPage">
             <Row>
                 <Col sm={12}>
                 <div data-testid="richTextElement">

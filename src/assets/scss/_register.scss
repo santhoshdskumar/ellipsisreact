@@ -140,7 +140,7 @@
     }
      input[type="checkbox"]:checked + label.checkbox:after,  input[type="checkbox"]:checked + label.radio:after, form input[type="radio"]:checked + label.checkbox:after, form input[type="radio"]:checked + label.radio:after {
         color: #fff;
-        
+
     }
      input[type="checkbox"]:checked + label.checkbox:before,  input[type="checkbox"]:checked + label.radio:before, form input[type="radio"]:checked + label.checkbox:before, form input[type="radio"]:checked + label.radio:before {
         background: #575bde;
@@ -171,7 +171,6 @@
     span {
         opacity: 0.4;
         color: #110f24;
-        font-family: Open Sans;
         font-size: 1rem;
         line-height: 1.5rem;
     }

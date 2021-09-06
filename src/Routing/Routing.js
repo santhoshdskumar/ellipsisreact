@@ -66,6 +66,7 @@ import PrivateRoute from './PrivateRoute';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import NavBar from '../components/Header/NavBar';
 import SideMain from '../components/Sidebar/SideMain';
+import Verification from '../pages/Verification.js';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -107,6 +108,9 @@ const Routing = (props) => {
           exact
         />
 
+        <PublicRoute restricted={true} component={PrivacyPolicy} path="/privacy_policy" exact />
+        <PublicRoute restricted={true} component={Terms} path="/terms_conditions" exact />
+        <PublicRoute restricted={true} component={Verification} path="/verification" exact />
         {/* Ends Here */}
 
         {/* Private Routes */}
@@ -122,6 +126,7 @@ const Routing = (props) => {
               <PrivateRoute component={Pricing} path="/Pricing" exact />
               <PrivateRoute component={Support} path="/Support" exact />
               <PrivateRoute component={ProjectEdit} path="/Projectedit" exact />
+
 
               <PrivateRoute
                 component={GoogleAds}
@@ -279,12 +284,7 @@ const Routing = (props) => {
                 exact
               />
 
-              <PrivateRoute
-                component={PrivacyPolicy}
-                path="/privacy_policy"
-                exact
-              />
-              <PrivateRoute component={Terms} path="/terms_conditions" exact />
+
               <PrivateRoute
                 component={PasswordChange}
                 path="/Passwordchange"

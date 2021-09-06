@@ -92,7 +92,7 @@ const Register = () => {
           password: formData.password,
         })
         .then((res) => {
-          history.push('/verification');
+          history.push('/Login');
         })
         .catch((error) => {
           if (error.response.status === 400) {
@@ -118,81 +118,16 @@ const Register = () => {
           <div className="max-width-s">
             <h5>Welcome!</h5>
             <p className="paragraph">
-              Enter your details to create an account.
+              Thanks for sign-up to EllipsisAI. Please verify your email id to complete the sign-up process. Check your inbox!
             </p>
-            <Form className="main-form p-0" noValidate>
-              <Form.Group className="mb-4">
-                <Form.Label htmlFor="name">Name:</Form.Label>
-                <Form.Control
-                  type="text"
-                  required
-                  fullWidth
-                  id="firstname"
-                  name="firstname"
-                  autoComplete="firstname"
-                  onChange={handleChange}
-                />
-                <span className="error">{errors['firstname']}</span>
-              </Form.Group>
-              <Form.Group className="mb-4">
-                <Form.Label htmlFor="email">Email:</Form.Label>
-                <Form.Control
-                  type="email"
-                  required
-                  fullWidth
-                  id="email"
-                  name="email"
-                  autoComplete="email"
-                  onChange={handleChange}
-                />
-                <span className="error">{errors.email}</span>
-              </Form.Group>
-              <Form.Group className="mb-4">
-                <Form.Label htmlFor="password">Password:</Form.Label>
-                <Form.Control
-                  name="password"
-                  type="password"
-                  id="password"
-                  autoComplete="current-password"
-                  onChange={handleChange}
-                />
-              </Form.Group>
-
-              <Form.Group className="mb-4">
-                <input id="tandc" type="checkbox" name="tandc" />
-                <label for="tandc" class="checkbox">
-                  I agree to the{' '}
-                  <Link to="https://www.ellipsis-ai.com/terms-conditions">
-                    Terms &amp; Conditions
-                  </Link>
-                </label>
-              </Form.Group>
-
-              <Form.Group>
-                <button className="update" type="button" onClick={handleSubmit}>
-                  Create Account
-                </button>
-              </Form.Group>
-            </Form>
           </div>
           <div className="text-center max-width-s already">
-            <span className="muted">Already have an account? </span>
+            <span className="muted">Sign In With Your Account </span>
             <Link to="/Login">Login</Link>
           </div>
         </div>
         <div className="col-one-half bg-image-05 featured-image"></div>
       </Row>
-      <ToastContainer
-        position="top-left"
-        autoClose={5000}
-        hideProgressBar
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
 
     </React.Fragment>
   );

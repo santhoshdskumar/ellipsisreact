@@ -50,6 +50,7 @@
     "react-scripts": "4.0.3",
     "react-slick": "^0.28.1",
     "react-toastify": "^7.0.4",
+    "reactjs-alert": "^1.2.7",
     "reactstrap": "^8.9.0",
     "scss": "^0.2.4",
     "simple-flexbox": "^2.3.3",
