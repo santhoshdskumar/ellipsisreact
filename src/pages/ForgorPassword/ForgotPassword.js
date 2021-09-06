@@ -16,7 +16,7 @@ const ForgotPassword =()=>{
                         <Form.Control type="email"  id="email" name="email" />
                  </Form.Group>
                 <Form.Group>
-                    <button className="update">Reset my assword</button>
+                    <button className="update">Reset my Password</button>
                 </Form.Group>
                 </Form>
 
