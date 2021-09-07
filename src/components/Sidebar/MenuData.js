@@ -104,13 +104,13 @@ const MenuData = [
       { name: 'Event Digital Ads', to: '/event_digitalads' },
     ],
   },
-  {
-    name: 'Writing',
-    exact: true,
-    to: '#javascript:void(0)',
-    icon: <i class="nav-icon fas fa-newspaper"></i>,
-    subMenus: [{ name: 'Writings', to: '/write_like_me' }],
-  },
+  // {
+  //   name: 'Writing',
+  //   exact: true,
+  //   to: '#javascript:void(0)',
+  //   icon: <i class="nav-icon fas fa-newspaper"></i>,
+  //   subMenus: [{ name: 'Writings', to: '/write_like_me' }],
+  // },
 ];
 
 export default MenuData;
