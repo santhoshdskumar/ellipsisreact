@@ -53,7 +53,7 @@ const Pricing = () => {
       <Row className="planning">
         <Col>
           <h3>Choose your plan</h3>
-          <p>33% launch offer discount</p>
+          {/* <p>33% launch offer discount</p> */}
         </Col>
       </Row>
       <Row className="pricing">

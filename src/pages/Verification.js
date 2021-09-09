@@ -121,10 +121,7 @@ const Register = () => {
               Thanks for sign-up to EllipsisAI. Please verify your email id to complete the sign-up process. Check your inbox!
             </p>
           </div>
-          <div className="text-center max-width-s already">
-            <span className="muted">Sign In With Your Account </span>
-            <Link to="/Login">Login</Link>
-          </div>
+
         </div>
         <div className="col-one-half bg-image-05 featured-image"></div>
       </Row>
