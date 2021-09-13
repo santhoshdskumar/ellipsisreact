@@ -5,6 +5,7 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import WebIcon from '@material-ui/icons/Web';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import CreateIcon from '@material-ui/icons/Create';
+import ArticleGenerator from '@material-ui/icons/Create';
 const MenuData = [
   {
     name: 'Dashboard',
@@ -17,6 +18,12 @@ const MenuData = [
     exact: true,
     to: '/Alltools',
     icon: <i class="fas fa-border-all"></i>,
+  },
+    {
+    name: 'Article Generator',
+    exact: true,
+    to: '/articlegenerator',
+    icon: <i class="nav-icon fas fa-newspaper"></i>,
   },
   {
     name: 'Digital Ads',

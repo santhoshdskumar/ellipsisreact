@@ -8,6 +8,7 @@ import {
   Writing,
   Article,
   Popular,
+  ArticleGen,
 } from './products';
 import { projects } from './projects';
 import { Link } from 'react-router-dom';
@@ -107,6 +108,9 @@ class Dashboard extends React.Component {
                     </Tab>
                     <Tab eventKey="Event" title="Event Promotions ">
                       <ProductSlider toolkit={Event} />
+                    </Tab>
+                    <Tab eventKey="Article Generator" title="Article Generator">
+                      <ProductSlider toolkit={ArticleGen} />
                     </Tab>
                   </Tabs>
                 </div>

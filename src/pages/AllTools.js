@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Digital, Email, Linkedin, Event, Website, Writing, Article } from './products';
+import { Digital, Email, Linkedin, Event, Website, Writing, Article, ArticleGen } from './products';
 import ToolkitCustom from '../components/ToolkitCustom';
 
 export default class AllTools extends Component {
@@ -7,6 +7,15 @@ export default class AllTools extends Component {
     return (
       <section class="productList">
         <h1 className="headTitle">All Tools</h1>
+
+        <div className="container">
+          <div className="row">
+            <div className="col-12 mb-4">
+              <h2>Article Generator</h2>
+            </div>
+          </div>
+          <ToolkitCustom className="row " toolkit={ArticleGen} />
+        </div>
         <div className="container">
           <div className="row ">
             <div className="col-12  mb-4">
@@ -56,14 +65,7 @@ export default class AllTools extends Component {
           <ToolkitCustom className="row " toolkit={Event} />
         </div>
 
-        <div className="container">
-          <div className="row">
-            <div className="col-12  mb-4 mt-5">
-              <h2>Writing Tools</h2>
-            </div>
-          </div>
-          <ToolkitCustom className="row " toolkit={Writing} />
-        </div>
+
       </section>
     );
   }

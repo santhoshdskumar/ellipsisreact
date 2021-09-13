@@ -31,6 +31,8 @@ import EventFollowupEmailsupEmailsro from '../assets/images/icons/EventFollow-up
 import EventPromoEmails from '../assets/images/icons/EventPromoEmails.svg';
 import WebinarPromoEmails from '../assets/images/icons/WebinarPromoEmails.svg';
 import Write from '../assets/images/icons/Write.svg';
+import ArticleGenerator from '../assets/images/icons/ArticleGenerator.svg';
+
 
 
 export const Digital = [
@@ -364,5 +366,16 @@ export const Popular = [
     title: 'Schedule Product Demo',
     text: 'Get that time time commitment from users for demo',
     link:'schedule_product_demo'
+  },
+];
+
+export const ArticleGen = [
+  {
+    id:'event6',
+    socialtype: ArticleGenerator,
+    popular:'New',
+    title: 'Article Generator',
+    text: 'Generate full-length, original articles. ',
+    link:'articlegenerator'
   },
 ];

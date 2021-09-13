@@ -67,6 +67,9 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import NavBar from '../components/Header/NavBar';
 import SideMain from '../components/Sidebar/SideMain';
 import Verification from '../pages/Verification.js';
+
+import ArticleGenerator from '../pages/ArticleGenerator/ArticleGenerator';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -294,6 +297,12 @@ const Routing = (props) => {
               <PrivateRoute
                 component={Ckeditor5Build}
                 path="/workspaceedit"
+                exact
+              />
+
+              <PrivateRoute
+                component={ArticleGenerator}
+                path="/articlegenerator"
                 exact
               />
             </div>
