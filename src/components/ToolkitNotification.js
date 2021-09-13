@@ -38,6 +38,7 @@ export const ToolkitNotification = (props) => {
                 <input
                   type="radio"
                   onChange={() => data.add(item.id)}
+                  title="Select"
                   id={item.id}
                 ></input>
                 {/* <span className="text-right float-end"  onClick={() => data.add(item.id)}></span> */}

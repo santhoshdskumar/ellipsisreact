@@ -587,7 +587,7 @@ button.clear {
     &::before {
       margin: 0px 4px;
       color: gray;
-      content: '\f067';
+      content: '\f00c';
       font-family: FontAwesome;
       font-size: 19px;
       cursor: pointer;
@@ -595,12 +595,7 @@ button.clear {
 
     &:checked {
       &::before{
-        margin: 0px 4px;
-        color: gray;
-        content: '\f068';
-        font-family: FontAwesome;
-        font-size: 19px;
-        cursor: pointer;
+        color: #5433ff;
       }
     }
   }
