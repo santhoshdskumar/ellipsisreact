@@ -32,7 +32,7 @@ const PricingCustom = (props) => {
                 })}
               </ul>
 
-              <Button variant="primary" className="update">Start Now</Button>
+              <a href="https://appsumo.com/products/ellipsisai/" target="_blank" className="update">Start Now</a>
             </Card>
           </Col>
         );

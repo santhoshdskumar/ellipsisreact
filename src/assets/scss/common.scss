@@ -592,6 +592,17 @@ button.clear {
       font-size: 19px;
       cursor: pointer;
     }
+
+    &:checked {
+      &::before{
+        margin: 0px 4px;
+        color: gray;
+        content: '\f068';
+        font-family: FontAwesome;
+        font-size: 19px;
+        cursor: pointer;
+      }
+    }
   }
 }
 .makeStyles-content-5 {
