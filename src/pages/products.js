@@ -207,7 +207,6 @@ export const Website = [
     title: 'Problem-Solution',
     text: 'Translate customer pain-points into product benefits',
     link:'/problemsoln'
-
   },
   {
     id:'website4',
@@ -259,7 +258,15 @@ export const Article = [
     title: 'Article Intro',
     text: 'Let AI write the first 200 words of your article',
     link:'/article_intro'
-  }
+  },
+  {
+    id:'article5',
+    socialtype: ArticleGenerator,
+    popular:'New',
+    title: 'Article Generator',
+    text: 'Generate full-length, original articles.',
+    link:'articlegenerator',
+  },
 ];
 
 export const Event = [
@@ -366,16 +373,5 @@ export const Popular = [
     title: 'Schedule Product Demo',
     text: 'Get that time time commitment from users for demo',
     link:'schedule_product_demo'
-  },
-];
-
-export const ArticleGen = [
-  {
-    id:'event6',
-    socialtype: ArticleGenerator,
-    popular:'New',
-    title: 'Article Generator',
-    text: 'Generate full-length, original articles. ',
-    link:'articlegenerator'
   },
 ];

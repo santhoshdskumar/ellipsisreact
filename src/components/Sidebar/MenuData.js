@@ -19,12 +19,6 @@ const MenuData = [
     to: '/Alltools',
     icon: <i class="fas fa-border-all"></i>,
   },
-    {
-    name: 'Article Generator',
-    exact: true,
-    to: '/articlegenerator',
-    icon: <i class="nav-icon fas fa-newspaper"></i>,
-  },
   {
     name: 'Digital Ads',
     to: 'javascript:void(0)',
@@ -53,6 +47,7 @@ const MenuData = [
       { name: 'Article Title', to: '/article_title' },
       { name: 'Article Outlines', to: '/article_outlines' },
       { name: 'Article Intro', to: '/article_intro' },
+      { name: 'Article Generator', to: '/articlegenerator' },
     ],
   },
   {

@@ -109,9 +109,7 @@ class Dashboard extends React.Component {
                     <Tab eventKey="Event" title="Event Promotions ">
                       <ProductSlider toolkit={Event} />
                     </Tab>
-                    <Tab eventKey="Article Generator" title="Article Generator">
-                      <ProductSlider toolkit={ArticleGen} />
-                    </Tab>
+             
                   </Tabs>
                 </div>
               </div>

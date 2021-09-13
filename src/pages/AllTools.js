@@ -7,15 +7,6 @@ export default class AllTools extends Component {
     return (
       <section class="productList">
         <h1 className="headTitle">All Tools</h1>
-
-        <div className="container">
-          <div className="row">
-            <div className="col-12 mb-4">
-              <h2>Article Generator</h2>
-            </div>
-          </div>
-          <ToolkitCustom className="row " toolkit={ArticleGen} />
-        </div>
         <div className="container">
           <div className="row ">
             <div className="col-12  mb-4">

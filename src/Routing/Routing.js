@@ -68,7 +68,7 @@ import NavBar from '../components/Header/NavBar';
 import SideMain from '../components/Sidebar/SideMain';
 import Verification from '../pages/Verification.js';
 
-import ArticleGenerator from '../pages/ArticleGenerator/ArticleGenerator';
+import ArticleGenerator from '../pages/ArticelToolkit/ArticleGenerator';
 
 const useStyles = makeStyles((theme) => ({
   root: {
